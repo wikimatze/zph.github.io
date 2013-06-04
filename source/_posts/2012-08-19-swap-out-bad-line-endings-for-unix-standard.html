@@ -1,0 +1,22 @@
+---
+layout: post
+title: Swap out BAD line endings for Unix standard
+tags:
+- OSX
+- Technology
+- VIM
+status: publish
+type: post
+published: true
+meta:
+  dsq_thread_id: '1053812288'
+:alias: /2012/08/swap-out-bad-line-endings-for-unix-standard/
+---
+<p>[cc_vim]:setlocal ff=Unix
+:w [/cc_vim]</p>
+<p>Converts and saves current buffer as Unix standard line endings. 
+n FTW!</p>
+<h1>Update</h1>
+<p>[cc_bash]brew install dos2unix[/cc_bash]
+Then use dos2unix to easily swap line endings into Unix format
+[cc_bash]dos2unix *.rb[/cc_bash]</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/11/wpid289-vimrepress_50319568_mkd.odt wpid289-vimrepress_50319568_mkd.odt -->

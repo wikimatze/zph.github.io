@@ -1,0 +1,27 @@
+---
+layout: post
+title: 'How to Fix FreeNX pub key problem on #! Linux'
+tags:
+- Debian
+- FreeNX
+- LINUX
+- Technology
+- Troubleshooting
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+:alias: /2011/09/how-to-fix-freenx-pub-key-problem-on-linux/
+---
+/etc/ssh/sshd_config Controls these actions and has a line:
+
+[cce_bash]AuthorizedKeysFile %h/.ssh/authorized_keys2[/cce_bash]
+
+If not present in /var/lib/nxserver/home/.ssh/ (ie mine was authorized_keys not authorized_keys2) then link one with the right name to it
+
+ie  [cce_bash]ln -s ~.sshauthorized_keys2 ~.sshauthorized_key[/cce_bash]
+
+I found a reference stating that authorized_key and authorized_key2 were historically different files denoting where public keys were stored respectively for SSH Protocol 1 and SSH Protocol 2.  With Protocol 1 having some vulnerabilities, this seems to be more of a legacy issue.
+
+As an aside, I tried it and then swapped it out for x2go... so far it's been a good choice given my technical requirements and lean financial constraints.  Community version of FreeNX limits to 2 TS connections at once :(.  Reasonable on their side but I needed more.

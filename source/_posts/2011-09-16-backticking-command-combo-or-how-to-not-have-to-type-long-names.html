@@ -1,0 +1,26 @@
+---
+layout: post
+title: Backticking command combo - Or how to not have to type long names
+tags:
+- Command Interpolation
+- Debian
+- LINUX
+- Locate
+- Technology
+status: publish
+type: post
+published: true
+meta: {}
+:alias: /2011/09/backticking-command-combo-or-how-to-not-have-to-type-long-names/
+---
+So, your instructions say to edit config.xml while setting up a program in Ubuntu/Debian Linux.
+
+You realize you don't have a clue where it's at... [ccie_bash]sudo apt-get install locate &amp;&amp; sudo updatedb [/ccie_bash]
+
+Then once it indexes your files, type a quick [ccie_bash]locate config.xml [/ccie_bash] to find it.
+
+At this point you realize it's buried in many sub folders of subfolders, but you need to edit it with your favorite editor (vim, nano, emacs..)
+
+If it's the only result from the [ccie_bash]locate[/ccie_bash] command, type [ccie_bash]vim `locate config.xml`[/ccie_bash].  This uses command interpolation to substitute the answer of the locate request :).
+
+There should be a snappy way also to chop the results (if more than one appears)...but I'm out of time!

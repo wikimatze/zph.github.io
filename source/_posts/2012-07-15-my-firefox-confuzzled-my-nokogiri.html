@@ -1,0 +1,25 @@
+---
+layout: post
+title: My Firefox confuzzled my Nokogiri
+tags:
+- Firebug
+- Firefox
+- Firepath
+- Nokogiri
+- Ruby
+- Technology
+status: publish
+type: post
+published: true
+meta:
+  dsq_thread_id: '1069682883'
+:alias: /2012/07/my-firefox-confuzzled-my-nokogiri/
+---
+<p>I've been working on a project to import a large dataset from HTML pages where the content isn't very clearly divided with CSS classes. The tool that normally works for me is Ruby's Nokogiri library.<br />
+</p>
+<p>I'd had some trouble in the past where Nokogiri insists that a certain xpath doesn't exist, while it can clearly find it through the css selector.  This time instead of going with the css, I investigated to see why it wasn't finding the 'correct' xpath.  After playing with it in a Pry session, I figured it out.  Here's the xpath that Firefox/Firebug/Firepath all report:
+[cc]//html/body/p[4]/table/tbody/tr[3][/cc]
+Here's the true xpath as parsed by Nokogiri:
+[cc]//html/body/table/tr[3][/cc]</p>
+<p>Notice that the 'p[4]' element disappears along with the 'tbody' element.  After reading on StackOverflow.com about the issue it sounds like Firefox 'corrects' improperly formed HTML by adding tags.  So thus the disparity between what Firefox sees (the orderly HTML standards) and what Nokogiri sees (the cold hard real-life web).</p>
+<p>Now I want a browser plugin that shows me what is truly there so I don't have to interpret and modify the information that Firefox gives me.  Please speak up in the comments if you know a better way to avoid this annoyance.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/07/vimrepress_5002e173_mkd.odt vimrepress_5002e173_mkd.odt -->
