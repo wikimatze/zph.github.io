@@ -2,24 +2,15 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Civet]]></title>
-  <link href="http://civet.com/atom.xml" rel="self"/>
-  <link href="http://civet.com/"/>
-  <updated>2013-06-03T18:39:19-04:00</updated>
-  <id>http://civet.com/</id>
+  <link href="http://zph.github.io/atom.xml" rel="self"/>
+  <link href="http://zph.github.io/"/>
+  <updated>2013-06-03T23:07:57-04:00</updated>
+  <id>http://zph.github.io/</id>
   <author>
     <name><![CDATA[Zander]]></name>
     <email><![CDATA[zander@civet.ws]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[This is a dummy post]]></title>
-    <link href="http://civet.com/blog/2013/06/03/this-is-a-dummy-post/"/>
-    <updated>2013-06-03T17:39:00-04:00</updated>
-    <id>http://civet.com/blog/2013/06/03/this-is-a-dummy-post</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
   
 </feed>
