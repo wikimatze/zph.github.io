@@ -1,0 +1,80 @@
+---
+layout: post
+title: Make the Shell Your $HOME
+tags:
+- BASH
+- LINUX
+- Linux Terminal
+- OSX
+- shell
+- Technology
+- Zsh
+status: publish
+type: post
+published: true
+meta:
+  mkd_text: ! 'Let''s talk about how to use the shell.  It''s a dirty secret that
+    many of the repetitive commands used in the day-to-day world of developers are
+    rudimentary shell commands.
+
+
+    Think of the activity of making a new folder and moving into that folder to start
+    writing code, it looks something like this: `mkdir new_project; cd new_project;
+    vim new_project_code_file.rb`.
+
+
+    Tighten it up and pay attention to simple improvements in the shell environment.  (
+    My experiences are with BASH and ZSH ).  That command becomes the following command
+    with a little bit of improved shell configs: `mkdircd new_project (makes dir and
+    cds in the same command); e !!1_code_file.rb`.
+
+
+    What''s in this shorter series of commands?  Let''s break it down to parts:
+
+
+    * `mkdir` and `cd` are replaced by a single new command `mkdircd`.  We save the
+    repetition of typing the folder name twice by compressing the command into a single
+    request.  It''s accomplished by setting up an alias in the shell configs.
+
+    * `vim new_project_code_file.rb` is replaced with `e !!1_code_file.rb`. The `e`
+    command is another shell tweak of mine.  `e` is a shell function that steps in
+    for the vim command and opens files for editing in a more intelligent way.  See
+    the source here: [e](https://gist.github.com/0aec0ef19fce9bbd3e3d) (Note that
+    it also depends upon the wonderful FASD utility available on Github.com).
+
+    * `!!1` becomes the first argument from the prior line, i.e. the first item after
+    the command itself.  Using !!1, !!2, !!3 has saved me countless seconds of retyping
+    the same long folder/file names.
+
+
+    So, make the shell work for you!  If you''re spending time in a new envionrment
+    like the Linux Terminal or OSX''s Terminal, learn to configure that BASH or ZSH
+    environment.
+
+
+    It will pay off nicely!
+
+
+    If you liked the article, follow me on Twitter at [@_ZPH](http://www.twitter.com/_zph).'
+  dsq_thread_id: '1082939798'
+  _yoast_wpseo_linkdex: '0'
+---
+<p>Let's talk about how to use the shell.  It's a dirty secret that many of the repetitive commands used in the day-to-day world of developers are rudimentary shell commands.</p>
+
+<p>Think of the activity of making a new folder and moving into that folder to start writing code, it looks something like this: <code>mkdir new_project; cd new_project; vim new_project_code_file.rb</code>.</p>
+
+<p>Tighten it up and pay attention to simple improvements in the shell environment.  ( My experiences are with BASH and ZSH ).  That command becomes the following command with a little bit of improved shell configs: <code>mkdircd new_project (makes dir and cds in the same command); e !!1_code_file.rb</code>.</p>
+
+<p>What's in this shorter series of commands?  Let's break it down to parts:</p>
+
+<ul>
+<li><code>mkdir</code> and <code>cd</code> are replaced by a single new command <code>mkdircd</code>.  We save the repetition of typing the folder name twice by compressing the command into a single request.  It's accomplished by setting up an alias in the shell configs.</li>
+<li><code>vim new_project_code_file.rb</code> is replaced with <code>e !!1_code_file.rb</code>. The <code>e</code> command is another shell tweak of mine.  <code>e</code> is a shell function that steps in for the vim command and opens files for editing in a more intelligent way.  See the source here: <a href="https://gist.github.com/0aec0ef19fce9bbd3e3d">e</a> (Note that it also depends upon the wonderful FASD utility available on Github.com).</li>
+<li><code>!!1</code> becomes the first argument from the prior line, i.e. the first item after the command itself.  Using !!1, !!2, !!3 has saved me countless seconds of retyping the same long folder/file names.</li>
+</ul>
+
+<p>So, make the shell work for you!  If you're spending time in a new envionrment like the Linux Terminal or OSX's Terminal, learn to configure that BASH or ZSH environment.</p>
+
+<p>It will pay off nicely!</p>
+
+<p>If you liked the article, follow me on Twitter at <a href="http://www.twitter.com/_zph">@_ZPH</a>.</p>

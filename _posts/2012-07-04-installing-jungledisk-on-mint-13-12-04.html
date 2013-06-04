@@ -1,0 +1,19 @@
+---
+layout: post
+title: Installing JungleDisk on Mint 13 (12.04)
+tags:
+- LINUX
+- Mint
+- Technology
+status: publish
+type: post
+published: true
+meta:
+  dsq_thread_id: '1063642697'
+---
+<p>I'm setting up a home server (which will be a blog post for a later date).</p>
+<p>But in the process of setting up Amazon S3 backups, I was installing <a href="www.jungledisk.com">JungleDisk</a>.  This allows mounting of a remote S3 bucket as if it were a local drive.</p>
+<p>After installing, I received the following error stating that it could not find 'libnotify.so.1'.  I used the locate command to find libnotify (currently libnotify.so.4) and used symlinked it into place.
+[cc_bash]sudo ln -s /usr/lib/x86_64-linux-gnu/libnotify.so.4 /usr/lib/x86_64-linux-gnu/libnotify.so.1[/cc_bash]</p>
+<p>After the symlink everything started up correctly :).</p>
+<p>Btw, server is a quad core AMD (Phenom), 12 GB RAM, plenty of storage, SSD for boot drive, spinner platters for storage... and ZFS =D.</p><!-- #VIMREPRESS_TAG# http://www.civet.ws/wp-content/uploads/2012/07/vimrepress_4ff4b054_mkd.odt vimrepress_4ff4b054_mkd.odt -->

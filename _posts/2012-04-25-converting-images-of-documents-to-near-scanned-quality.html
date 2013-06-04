@@ -1,0 +1,27 @@
+---
+layout: post
+title: Converting Images of Documents to Near Scanned Quality
+tags:
+- Image Manipulation
+- ImageMagick
+- Ruby
+- Scans
+- Technology
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '1050355991'
+---
+I'm working on a project at the moment where we're handling large quantity of documents that have been photographed in less than ideal circumstances.
+
+These photographs are high resolution color photos of typed and handwritten documents that need to be transformed into scan quality documents.  The steps involved are:
+<ul>
+	<li>Convert color to grayscale (128 shades or less)</li>
+	<li>Remove background noise and speckles/flecks/etc</li>
+	<li>Reduce size of images for easier distribution and lower bandwidth usage (currently ~40 GB for set of images)</li>
+</ul>
+After a few days of working on the problem and learning about the technologies involved... here's the script I came up with, along with notes about sources and inspirations (note much of the heavy lifting is done by <a title="ImageMagick" href="www.imagemagick.org/" target="_blank">ImageMagick</a> and   <a title="Fred's ImageMagick Scripts" href="www.fmwconcepts.com/imagemagick/" target="_blank">Fred's ImageMagick Scripts</a>
+
+[gist id=2494870]

@@ -1,0 +1,19 @@
+---
+layout: post
+title: ! 'RVM: Ruby Version Manager - Using God with RVM'
+tags:
+- Technology
+status: private
+type: post
+published: false
+meta:
+  _edit_last: '1'
+---
+<a href="https://rvm.beginrescueend.com/integration/god/">RVM: Ruby Version Manager - Using God with RVM</a>.
+
+Setup the God Ruby Gem to monitor my runaway Dropbox daemon (all rather apropos).
+
+The key to setting rc.local to start 'god' automatically on startup, I used the RVM wrapper utility with the following code:
+
+[cc]root@example:/usr/local/rvm/bin# rvm wrapper ruby-1.9.2-p290 bootup god[/cc]
+<div>This was the magic ticket after trying all the other iterations properly listed in various tutorials. ([cci]root@server:/usr/local/rvm/bin# rvm wrapper ruby-1.9.2-p290@global bootup god[/cci] didn't work correctly)</div>

@@ -1,0 +1,133 @@
+---
+layout: post
+title: Buff - A Gem that Puts Muscle in the Buffer API
+tags:
+- API
+- Buffer Gem
+- PS
+- Ruby Wrapper
+status: publish
+type: post
+published: true
+meta:
+  mkd_text: ! "It's Done!  [Buff](http://github.com/zph/buff) is a Ruby Gem that wraps
+    the [Buffer](http://bufferapp.com) API.\r\n\r\n## Why Write It When Buffer Gem
+    Exists?\r\nBecause the current Buffer Gem doesn't have full coverage for the API.
+    \ I started to update the Buffer Gem but quickly realized that I was spinning
+    my wheels.  I wanted to implement the gem as a set of layered abstractions and
+    to be able to process the responses using Hashie::Mash.  I envisioned a Gem where
+    each response was a first class Ruby object, where each nested key could be called
+    as a method.\r\n\r\nI realized that it would be cleaner and more expedient to
+    code from scratch: I spent the next few hours and produced a gem that had feature
+    parity with Buffer's existing gem:\r\n\r\nIntroducing [Buff](http://github.com/zph/buff),
+    the API complete Ruby Wrapper for [ BufferApp.com. ](http://bufferapp.com).\r\n\r\n####
+    Buff is RSpec tested, Webmocked, Travis CI'd, and easy to use.\r\n\r\n<script
+    src=\"https://gist.github.com/zph/5654310.js\"></script>\r\n\r\n## Setbacks and
+    Triumphs\r\nIt wasn't all roses and perfume in the creation of this gem.   Three
+    setbacks stand out in my mind.\r\n\r\n### Webmock\r\nI've previously used VCR
+    for testing web APIs, but wanted to use a new system to build new skills.  Webmocks
+    are very pleasant to use and allowed the Specs to verify what API was contacted,
+    along with testing the body content and return values.\r\n\r\n### HTTP Libraries\r\nBuff
+    Gem started with **HTTParty**, which was splendid while implementing the [cci]HTTP
+    GET API[/cci] methods.  Once I began implementing the [cci]HTTP POST[/cci] requests
+    I started experiencing discomfort with using **HTTParty**.  It's a reliable library
+    but I didn't gel with the DSL for describing HTTP requests.  Thankfully the **HTTParty**
+    calls were wrapped inside the [cci]post[/cci] and [cci]get[/cci] methods in [cci]Buff::Client::Core[/cci].\r\n\r\nSince
+    the code was tested with Rspec and the post and get methods were abstracted, swapping
+    out **HTTParty** for **Faraday** was merely a one hour setback.\r\n\r\nWhat a
+    wonderful confirmation that it's valuable to wrap external library calls in an
+    abstraction method inside your own library.  This made dependency swaps much simpler.\r\n\r\n###
+    Creating correct \"application/x-www-form-urlencoded\" Data\r\n\r\nI expected
+    to find a Standard Library tool for converting a nested Hash + Array object into
+    www-form-encoded data.  I was sorely disappointed and spent hours trying to find
+    an already coded solution.\r\n\r\nAfter stepping back from the code for two days,
+    I was explaining the problem to non-technical coworkers.  In that moment, my subconscious
+    presented the answer.  I realized how easily I could write the transformation
+    myself.  I mentally coded it on the way home that afternoon and wrote it in bytes
+    that evening.  Here's the implementation from [cci]Buff::Client::Encode[/cci]:\r\n\r\n<script
+    src=\"https://gist.github.com/94a89ea5abcfa6f60ee1.js\"></script>\r\n\r\n**Moral
+    of the story**: When stumped, back off and solve another problem.  The subconscious
+    is a useful ally.  Hours of struggling could have been saved through patience
+    and getting other things done.\r\n\r\n## What's Next?\r\nSince the Buff Gem provides
+    greater coverage of the Buffer API than the existing Gem, it'd be awesome to see
+    it replace Buffer Gem as the official Ruby Wrapper.\r\n\r\nI feel awesome about
+    completing a Gem with 100% coverage of an HTTP API :).\r\n\r\nI'm considering
+    writing a couple of small Buffer CommandLine tools for easy posting.  If I have
+    more steam, I'll add an Alfred Workflow on top that allows posting to Buffer!\r\n\r\n##
+    PS\r\nIf you work with [ Bufferapp ](http://bufferapp.com) and want to adopt this
+    Gem as your Official Ruby Wrapper, that would be snazzy.  Let's talk: [@_ZPH](http://twitter.com/_ZPH)
+    or [Zander](mailto:zander@civet.ws)!"
+  _yoast_wpseo_linkdex: '0'
+  _edit_last: '1'
+  wp-to-buffer: a:1:{s:7:"publish";s:1:"0";}
+  _yoast_wpseo_focuskw: ''
+  _yoast_wpseo_title: ''
+  _yoast_wpseo_metadesc: ''
+  _yoast_wpseo_meta-robots-noindex: '0'
+  _yoast_wpseo_meta-robots-nofollow: '0'
+  _yoast_wpseo_meta-robots-adv: none
+  _yoast_wpseo_sitemap-include: ! '-'
+  _yoast_wpseo_sitemap-prio: ! '-'
+  _yoast_wpseo_canonical: ''
+  _yoast_wpseo_redirect: ''
+  _yoast_wpseo_opengraph-description: ''
+  _yoast_wpseo_google-plus-description: ''
+  image: ''
+  _pingme: '1'
+  _encloseme: '1'
+  _clicky_goal: a:2:{s:2:"id";s:0:"";s:5:"value";s:0:"";}
+  dsq_needs_sync: '1'
+---
+<p>It's Done!  <a href="http://github.com/zph/buff">Buff</a> is a Ruby Gem that wraps the <a href="http://bufferapp.com">Buffer</a> API.</p>
+
+<h2>Why Write Buff Gem from Scratch?</h2>
+
+<p>Because the current Buffer Gem doesn't have full coverage for the API.  I started to update the Buffer Gem but quickly realized that I was spinning my wheels.  I wanted to implement the gem as a set of layered abstractions and to be able to process the responses using Hashie::Mash.  I envisioned a Gem where each response was a first class Ruby object, where each nested key could be called as a method.</p>
+
+<p>I realized that it would be cleaner and more expedient to code from scratch: I spent the next few hours and produced a gem that had feature parity with Buffer's existing gem:</p>
+
+<p>Introducing <a href="http://github.com/zph/buff">Buff</a>, the API complete Ruby Wrapper for <a href="http://bufferapp.com"> BufferApp.com. </a> Buff muscles Ruby into Buffer's API.</p>
+
+<h4>Buff is RSpec tested, Webmocked, Travis CI'd, and easy to use.</h4>
+
+<script src="https://gist.github.com/zph/5654310.js"></script>
+
+<h2>Setbacks and Triumphs</h2>
+
+<p>It wasn't all roses and perfume in the creation of this gem.   Three setbacks stand out in my mind.</p>
+
+<h3>Webmock</h3>
+
+<p>I've previously used VCR for testing web APIs, but wanted to use a new system to build new skills.  Webmocks are very pleasant to use and allowed the Specs to verify what API was contacted, along with testing the body content and return values.</p>
+
+<h3>HTTP Libraries</h3>
+
+<p>Buff Gem started with <strong>HTTParty</strong>, which was splendid while implementing the [cci]HTTP GET API[/cci] methods.  Once I began implementing the [cci]HTTP POST[/cci] requests I started experiencing discomfort with using <strong>HTTParty</strong>.  It's a reliable library but I didn't gel with the DSL for describing HTTP requests.  Thankfully the <strong>HTTParty</strong> calls were wrapped inside the [cci]post[/cci] and [cci]get[/cci] methods in [cci]Buff::Client::Core[/cci].</p>
+
+<p>Since the code was tested with Rspec and the post and get methods were abstracted, swapping out <strong>HTTParty</strong> for <strong>Faraday</strong> was merely a one hour setback.</p>
+
+<p>What a wonderful confirmation that it's valuable to wrap external library calls in an abstraction method inside your own library.  This made dependency swaps much simpler.</p>
+
+<h3>Creating correct "application/x-www-form-urlencoded" Data</h3>
+
+<p>I expected to find a Standard Library tool for converting a nested Hash + Array object into www-form-encoded data.  I was sorely disappointed, looking at you Addressable Gem, and spent hours trying to find an already coded solution.</p>
+
+<p>After stepping back from the code for two days, I was explaining the problem to non-technical coworkers.  In that moment, my subconscious presented the answer.  I realized how easily I could write the transformation myself.  I mentally coded it on the way home that afternoon and wrote it in bytes that evening.  Here's the implementation from [cci]Buff::Client::Encode[/cci]:</p>
+
+<script src="https://gist.github.com/94a89ea5abcfa6f60ee1.js"></script>
+
+<p><strong>Moral of the story</strong>: When stumped, back off and solve another problem.  The subconscious is a useful ally.  Hours of struggling could have been saved through patience and getting other things done.</p>
+
+<h2>What's Next?</h2>
+
+<p>Since the Buff Gem provides greater coverage of the Buffer API than the existing Gem, it'd be awesome to see it replace Buffer Gem as the official Ruby Wrapper.</p>
+
+<p>I feel great about completing a Gem with 100% coverage of an HTTP API :).</p>
+
+<p>I'm considering writing a couple of small Buffer CommandLine tools for easy posting.  If I have more steam, I'll add an Alfred Workflow on top that allows posting to Buffer!</p>
+
+<h2>Want a Demo of Using Buff inside Pry?</h2>
+<iframe src="http://showterm.io/1b512291be06a620e4bc6#fast" width="640" height="480"></iframe>
+<h2>PS</h2>
+
+<p>If you work with <a href="http://bufferapp.com"> Bufferapp </a> and want to adopt this Gem as your Official Ruby Wrapper, that would be snazzy.  Let's talk: <a href="http://twitter.com/_ZPH">@_ZPH</a> or <a href="mailto:zander@civet.ws">Zander</a>!</p>

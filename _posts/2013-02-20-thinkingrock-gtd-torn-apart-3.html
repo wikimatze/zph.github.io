@@ -1,0 +1,111 @@
+---
+layout: post
+title: ! 'ThinkingRock GTD: Torn Apart'
+tags:
+- EMAIL
+- GREAT
+- GTD
+- RAM
+- Stephen Covey
+- Technology
+status: publish
+type: post
+published: true
+meta:
+  mkd_text: ! "##GTD FTW!\n\nWhy am I engaging in this hipster habit of using Covey's
+    'Getting Things Done' methodology?  _Because_ there's something very valuable
+    to it!\n\nThe analogies that Stephen Covey uses in his book hit home for geeks.
+    \ He describes the working memory we humans possess as Random Access Memory, which
+    requires energy to sustain it.  Furthermore, he reminds the reader that if the
+    RAM is busy, other thoughts can't percolate through that stage of consciousness?\n\n###Sound
+    too esoteric?\nLet's get down to _bare metal_. Or _brass tacks_. Or any other
+    colloquialism that suits.\n\nThroughout the day I have ideas.  Many of them are
+    good ideas :).  Many of these good ideas percolate to the surface at inopportune
+    moments... like meetings, reviewing reports, or writing code.  These ideas are
+    *GREAT* but what's their value if they disappear before I can act on them?\n\nNothing.
+    \ That's how much value these ideas have if they flit right back out of my consciousness.
+    \ Might not be a big deal if it's remembering a food item to pick-up on the way
+    home.  Might be a _huge deal_ if it's a programming or business idea that could
+    be implemented and turned into a product!\n\n####What's the solution?\nI mentioned
+    using ThinkingRock GTD system in this [post](http://www.civet.ws/2013/02/getting-thinking-rock-v2-1-work-on-osx-10-8/).
+    \ ThinkingRock v2.1 is an open-source project hosted on [ SourceForge ](http://sourceforge.net/projects/thinkingrock/files/ThinkingRock/TR%202.2.1/).\n\nThinkingRock
+    does the usual stuff that one would expect from a GTD program:\n* Collect Thoughts
+    in an Inbox\n* Processing\n* Organization\n* Reviewing\n* Action\n\nWhat's the
+    killer feature of this app for my workflow?\n\n###That ideas can be dumped into
+    it using the universal communication currency of our age, _EMAIL_!\n\nMy goal
+    is to reduce the friction in the GTD system so that I waste as little energy as
+    possible on the process itself.\n\nEmail input is a very powerful feature.  I've
+    setup a dedicated email account for receiving GTD tasks and then configured ThinkingRock
+    to import tasks from there every 15 minutes.\n\nThe next step in this process
+    was writing a short commandline script that is prefilled with the GTD email address.
+    \ The script combines all commandline input less the scriptname itself and uses
+    that value as the subject line of the email.  This makes for an incredibly fluid
+    system of GTD task entry.\n\nHere's the simple Ruby script for this task (note
+    that auth info is placed in `~/.gmailrc`):\n  <script src=\"https://gist.github.com/zph/5001831.js\"></script>\n\nBut
+    wait, there's more!  If you keep reading this blog post, you'll receive more time
+    saving advice at no additional cost.  That's \"#{SOME_MADE_UP_VALUE}\"!\n\nBack
+    to the point, I integrated this script into Alfred.app.  Now the tasks can be
+    entered directly from Alfred!\n\nI've only scratched the surface so far with getting
+    back into the GTD methodology... but I'm excited!  Having better programming chops
+    this time when approaching GTD is certainly improving the process :).\n\n####
+    Still to come:\nI discussed in this [post](http://www.civet.ws/2013/02/getting-thinking-rock-v2-1-work-on-osx-10-8/)
+    that I wanted to use the open-source version rather than the newer closed source
+    version because of having the ability to dig into the code.  In an upcoming post
+    I'll discuss how the open-source program allowed me to investigate the data structure
+    used for ThinkingRock in a way that would be much more challenging if I lacked
+    access to the project source-code!\n\nLet me know in the comments or on Twitter
+    ([@_ZPH](http://www.twitter.com/_ZPH)) if you have ideas on how to improve the
+    process."
+  dsq_thread_id: '1095923805'
+  _clicky_goal: a:2:{s:2:"id";N;s:5:"value";N;}
+  _yoast_wpseo_linkdex: '0'
+---
+<h2>GTD FTW!</h2>
+
+<p>Why am I engaging in this hipster habit of using Covey's 'Getting Things Done' methodology?  <em>Because</em> there's something very valuable to it!</p>
+
+<p>The analogies that Stephen Covey uses in his book hit home for geeks.  He describes the working memory we humans possess as Random Access Memory, which requires energy to sustain it.  Furthermore, he reminds the reader that if the RAM is busy, other thoughts can't percolate through that stage of consciousness?</p>
+
+<h3>Sound too esoteric?</h3>
+
+<p>Let's get down to <em>bare metal</em>. Or <em>brass tacks</em>. Or any other colloquialism that suits.</p>
+
+<p>Throughout the day I have ideas.  Many of them are good ideas :).  Many of these good ideas percolate to the surface at inopportune moments... like meetings, reviewing reports, or writing code.  These ideas are <em>GREAT</em> but what's their value if they disappear before I can act on them?</p>
+
+<p>Nothing.  That's how much value these ideas have if they flit right back out of my consciousness.  Might not be a big deal if it's remembering a food item to pick-up on the way home.  Might be a <em>huge deal</em> if it's a programming or business idea that could be implemented and turned into a product!</p>
+
+<h4>What's the solution?</h4>
+
+<p>I mentioned using ThinkingRock GTD system in this <a href="http://www.civet.ws/2013/02/getting-thinking-rock-v2-1-work-on-osx-10-8/">post</a>.  ThinkingRock v2.1 is an open-source project hosted on <a href="http://sourceforge.net/projects/thinkingrock/files/ThinkingRock/TR%202.2.1/"> SourceForge </a>.</p>
+
+<p>ThinkingRock does the usual stuff that one would expect from a GTD program:
+* Collect Thoughts in an Inbox
+* Processing
+* Organization
+* Reviewing
+* Action</p>
+
+<p>What's the killer feature of this app for my workflow?</p>
+
+<h3>That ideas can be dumped into it using the universal communication currency of our age, <em>EMAIL</em>!</h3>
+
+<p>My goal is to reduce the friction in the GTD system so that I waste as little energy as possible on the process itself.</p>
+
+<p>Email input is a very powerful feature.  I've setup a dedicated email account for receiving GTD tasks and then configured ThinkingRock to import tasks from there every 15 minutes.</p>
+
+<p>The next step in this process was writing a short commandline script that is prefilled with the GTD email address.  The script combines all commandline input less the scriptname itself and uses that value as the subject line of the email.  This makes for an incredibly fluid system of GTD task entry.</p>
+
+<p>Here's the simple Ruby script for this task (note that auth info is placed in <code>~/.gmailrc</code>):
+  <script src="https://gist.github.com/zph/5001831.js"></script></p>
+
+<p>But wait, there's more!  If you keep reading this blog post, you'll receive more time saving advice at no additional cost.  That's "#{SOME<em>MADE</em>UP_VALUE}"!</p>
+
+<p>Back to the point, I integrated this script into Alfred.app.  Now the tasks can be entered directly from Alfred!</p>
+
+<p>I've only scratched the surface so far with getting back into the GTD methodology... but I'm excited!  Having better programming chops this time when approaching GTD is certainly improving the process :).</p>
+
+<h4>Still to come:</h4>
+
+<p>I discussed in this <a href="http://www.civet.ws/2013/02/getting-thinking-rock-v2-1-work-on-osx-10-8/">post</a> that I wanted to use the open-source version rather than the newer closed source version because of having the ability to dig into the code.  In an upcoming post I'll discuss how the open-source program allowed me to investigate the data structure used for ThinkingRock in a way that would be much more challenging if I lacked access to the project source-code!</p>
+
+<p>Let me know in the comments or on Twitter (<a href="http://www.twitter.com/_ZPH">@_ZPH</a>) if you have ideas on how to improve the process.</p>

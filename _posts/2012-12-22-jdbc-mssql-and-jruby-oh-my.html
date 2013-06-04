@@ -1,0 +1,84 @@
+---
+layout: post
+title: JDBC, MsSQL, and JRuby, Oh My!
+tags:
+- JDBC
+- NIX
+- ODBC
+- README
+- Ruby
+- SQLEXPRESS
+- Technology
+status: publish
+type: post
+published: true
+meta:
+  _oembed_fedd5104b354562db8fe6c12604a4555: ! '{{unknown}}'
+  _oembed_0c808911d3d35ae759828ce239ea7d7a: ! '{{unknown}}'
+  bfa_virtual_template: hierarchy
+  _edit_last: '1'
+  dsq_thread_id: '1045299012'
+  _yoast_wpseo_linkdex: '0'
+---
+I was recently in a position of needing to access information from a legacy database on a Microsoft SQL Server ( 2005 ). Since I'd prefer that the contact came from a *NIX system (probably Ubuntu), I checked out ODBC and JDBC as options.
+
+Based on a couple of blog entries by fellow Rubyists and ODBC users, the ODBC configuration files add an extra layer of complexity for the database connection. I chose to do it with JDBC because it allows those settings to be configured in the script/config itself. Also, with the sqljdbc*.jar running on the JVM we have platform independence.
+
+Now, on to the implementation:
+<ul>
+	<li>On the SQL Server box</li>
+	<li>Allow mixed authentication (it appears that JDBC does not interface with Windows User credentials based on cursory research)</li>
+	<li>Setup a unique SQL Server Auth User who has the appropriate degree of authorization on the database. Consider read-only if your application is limited to querying the DB rather than writing to it. This will limit the risk of inadvertent writes.</li>
+	<li>Depending on setup, you may need to open ports 1433 and 1434 on the SQL Server's firewall. If possible, only do this step on an internally facing instance of the SQL Server. (Less attack surface to the internet is a good idea).</li>
+	<li>Test the connection by using SQL User authentication when connecting with the builtin Microsoft SQL Server Management program. If all goes well, this tells you that it's configured correctly when accessing from the same system.</li>
+</ul>
+Next to connect from a remote system. You'll need the following pieces of information: the database's name, the database ip address, the database instance name (ie defaults to SQLEXPRESS when using SQL Express), the Sql username and password
+<ul>
+	<li>On the remote system (the Linux box)</li>
+	<li>Download and extract the following file from Microsoft, this is the JDBC adapter file that they provide</li>
+</ul>
+[cc]
+http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=21599
+[/cc]
+OR the direct link at the time of this article:
+[cc]
+http://download.microsoft.com/download/D/6/A/D6A241AC-433E-4CD2-A1CE-50177E8428F0/1033/sqljdbc<em>3.0.1301.101</em>enu.tar.gz
+[/cc]
+
+Extract that into a convenient place in near where your connection code exists. I chose to use a standard Ruby project layout as follows:
+[cc]
+|-- Gemfile
+|-- Gemfile.lock
+|-- Guardfile
+|-- README.md
+|-- bin
+|-- features
+|-- jars
+| |-- sqljdbc.jar
+| |-- sqljdbc4.jar
+| <code>-- sqljdbc_3.0.1301.101_enu.tar.gz
+|-- lib
+| |-- README
+| |-- jruby_demo.rb
+| |-- tds_demo.rb
+|</code>-- demo.rb
+|-- spec
+`-- spec_helper.rb
+7 directories, 16 files
+[/cc]
+
+Notice that the sqljdbc*.jar files are inside jars which is on the same level of nesting as the lib directory. This is important when referencing their location in the code.
+
+Then install JRuby if not currently installed. I use <a href="www.rvm.io">RVM</a> for easy Ruby switching. (Thanks to Keith Burnett for posting a comment indicating that this portion was out of order... silly me!)
+
+Once the JARs are extracted, run <code>bundle install</code> to request that Bundler install the required dependencies. 
+
+Next modify the following script to help you get started. Note that you'll need to replace the values of the CONSTANTS as appropriate for your IP addresses, username, passwords, etc.
+
+<script src="https://gist.github.com/4361158.js"></script>
+
+Of further note is that a class will need to be defined for each table in the database that you wish to access. I briefly outline this in the comments of the code. This is fairly standard ActiveRecord use.
+
+Questions, comments, post them here or to me on Twitter <a href="www.twitter.com/_ZPH"> @_ZPH </a>.
+
+<!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/12/vimrepress_50d62160_mkd.odt vimrepress_50d62160_mkd.odt -->

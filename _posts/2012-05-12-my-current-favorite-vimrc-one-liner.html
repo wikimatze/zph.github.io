@@ -1,0 +1,38 @@
+---
+layout: post
+title: My current favorite VIMRC one-liner
+tags:
+- ESC
+- ESCAPE
+- LINUX
+- Technology
+- VIM
+- VIMRC
+status: publish
+type: post
+published: true
+meta:
+  mkd_text: ! "Very handy for quickly swapping between prior file and current file
+    in VIM:\n\nAdd the following to VIMRC:\n[cc_vim]nnoremap <Leader>, :b#<CR>[/cc_vim]\n\nMy
+    current leader key is set to comma (,) so punching ,, switches between prior and
+    current file, or back again.\n\nRunner up for other good one liners:\n[cc_vim]inoremap
+    jk <ESC>[/cc_vim] \nThis one allows you to stay on the commandline and ESCAPE
+    out of insert mode by using key combo 'jk'!Note: I find this faster than a more
+    common binding of 'jj' for this purpose.  With jj the same finger needs to activate
+    the key in quick succession.  With j & k the right hand index and middle finger
+    both activate at a similar time. Thus my preference goes to the slightly easier
+    and faster option.\n\nSource & Credit: Gary Bernhardt's Dotfiles on Github (though
+    escape sequence of jj swapped to j k)\n\nPS - The only conflict I've had with
+    j k being an ESC sequence is this blog post.  In code and prose I haven't run
+    into problems."
+  dsq_thread_id: '1055711357'
+---
+<p>Very handy for quickly swapping between prior file and current file in VIM:</p>
+<p>Add the following to VIMRC:
+[cc_vim]nnoremap <Leader>, :b#<CR>[/cc_vim]</p>
+<p>My current leader key is set to comma (,) so punching ,, switches between prior and current file, or back again.</p>
+<p>Runner up for other good one liners:
+[cc_vim]inoremap jk <ESC>[/cc_vim] 
+This one allows you to stay on the commandline and ESCAPE out of insert mode by using key combo 'jk'!Note: I find this faster than a more common binding of 'jj' for this purpose.  With jj the same finger needs to activate the key in quick succession.  With j &amp; k the right hand index and middle finger both activate at a similar time. Thus my preference goes to the slightly easier and faster option.</p>
+<p>Source &amp; Credit: Gary Bernhardt's Dotfiles on Github (though escape sequence of jj swapped to j k)</p>
+<p>PS - The only conflict I've had with j k being an ESC sequence is this blog post.  In code and prose I haven't run into problems.</p>

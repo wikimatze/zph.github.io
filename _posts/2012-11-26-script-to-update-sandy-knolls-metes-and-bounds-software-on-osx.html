@@ -1,0 +1,19 @@
+---
+layout: post
+title: Script to Update Sandy Knolls Metes and Bounds Software on OSX
+tags:
+- OSX
+- Ruby
+- Technology
+status: publish
+type: post
+published: true
+meta:
+  _edit_last: '1'
+  dsq_thread_id: '1068023547'
+---
+After frequently finding myself not using the current version of Metes and Bounds, I wrote a Ruby script to automagically do that very thing.  It checks current version, downloads the current version, and installs it into /Applications (BEWARNED, it nukes your current version of Metes and Bounds.app, use at your own risk):
+
+<script src="https://gist.github.com/4151195.js"></script>
+
+Thanks to <a href="http://www.tuaw.com/2011/12/30/daily-mac-app-flashmount-quickly-mounts-disk-images/">this random blog</a> for the hint on mounting DMGs from commandline!
