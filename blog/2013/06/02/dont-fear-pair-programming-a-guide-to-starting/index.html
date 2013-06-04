@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Don't fear pair programming - A Guide to Starting - Civet</title>
+  <meta name="author" content="Zander">
+  <link rel="author" href="humans.txt">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  
+    
+  
+  <meta name="description" content="Pair Programming is becoming a big deal in the Ruby programming world: this guide will help you get started. Pre-Reqs: General familiarity with Ruby &hellip;">
+  
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zph.github.io/blog/2013/06/02/dont-fear-pair-programming-a-guide-to-starting/">
+  <link href="/favicon.png" rel="icon">
+  <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Civet" type="application/atom+xml">
+  <meta name="og:type" content="website" />
+  <meta name="og:site_name" content="Civet" />
+  <meta name="og:title" content="Don't fear pair programming - A Guide to Starting" />
+  <meta name="og:description" content="Pair Programming is becoming a big deal in the Ruby programming world: this guide will help you get started. Pre-Reqs: General familiarity with Ruby &hellip;" />
+  <meta name="og:url" content="http://zph.github.io/blog/2013/06/02/dont-fear-pair-programming-a-guide-to-starting/"/>
+  <meta name="url" content="http://zph.github.io/blog/2013/06/02/dont-fear-pair-programming-a-guide-to-starting/">
+  
+  <meta name="subject" content=""/>
+  <meta name="category" content=""/>
+  
+  <meta name="distribution" content="global">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <nav role="navigation"><div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="/">Civet</a>
+    <ul class="nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/archives">Archives</a></li>
+    </ul>
+    <ul class="nav" data-subscription="rss">
+      <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+      
+    </ul>
+      
+    <form class="navbar-form" action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:zph.github.io" />
+        <input class="span2" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+      
+    
+  </div>
+</div>
+</nav>
+  <div class="wrapper_single">
+    <div class="container">
+      <article class="span8 offset2" role="article">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title">Don't Fear Pair Programming - a Guide to Starting</h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-02T00:00:00-04:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2013</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Pair Programming is becoming a big deal in the Ruby programming world: this guide will help you get started.</p>
+
+
+
+
+<h2>Pre-Reqs:</h2>
+
+
+
+
+<p>General familiarity with Ruby tools (Bundler, Gems, RVM/Rbenv)
+Basic commandline comfort</p>
+
+
+
+
+<h2>What is Pairing?</h2>
+
+
+
+
+<p>In its simplest form, pair programming is where a pair of programmers work on a problem using the same computer.</p>
+
+
+
+
+<p>Since I live don&#8217;t live in a technology hub in America, programming in the same physical location is challenging.  Instead, it&#8217;s possible to replicate that experience with both parties in separate locations.</p>
+
+
+
+
+<h2>How Does it Work?</h2>
+
+
+
+
+<p>Setup a video call using Skype, Google Plus, Twelephone.
+Both partners connect into a shared machine such as a Virtual Private Server (VPS).
+Each partner connects into a shared Tmux session.
+Both of the individuals can jointly edit the same files, as if they were present at the same keyboard.</p>
+
+
+
+
+<h2>Setting It Up From Scratch</h2>
+
+
+
+
+<p>Signup with a VPS provider (I&#8217;m currently very happy with <a href="www.digitalocean.com">DigitalOcean</a>)
+Boot up a basic 512MB RAM instance in the Linux flavor of your choice. I&#8217;ll use Ubuntu 12.04 x32 for this example.
+Once the instance is booted up, let&#8217;s connect and setup basic sane defaults.
+Install tmux and vim-nox using the package manager.
+Install Ruby using RVM, Rbenv, or Chruby.
+Install Tweemux Gem - <code>gem install tweemux</code>
+Now that we&#8217;ve laid the groundwork for it, let&#8217;s work on making it available for a partner.</p>
+
+
+
+
+<h2>Inviting a Pair</h2>
+
+
+
+
+<p>When ready to invite a pairing partner, we start by adding a unique user for them.  For convenience, it&#8217;s best to add their username from Github.</p>
+
+
+
+
+<p><code>adduser --disabled-password $PAIRNAME</code></p>
+
+
+
+
+<p>Next we&#8217;ll use the Tweemux Gem from RKing to pull down the partner&#8217;s public key from Github, and add it to their <code>~/.ssh/authorized_keys</code>.</p>
+
+
+
+
+<p><code>tweemux hubkey $PAIRNAME</code></p>
+
+
+
+
+<p>At this point in the process, that user can login to your server using the IP address, their Github username, and their matching private key.</p>
+
+
+
+
+<p>ie - <code>ssh $PAIRNAME@IP_ADDRESS_OF_SERVER</code></p>
+
+
+
+
+<p>At this point, the host should fire up a shared Tmux session:</p>
+
+
+
+
+<p><code>tmux -S /tmp/pair</code></p>
+
+
+
+
+<p>And enable that socket to be world readable:</p>
+
+
+
+
+<p><code>chmod 777 /tmp/pair</code></p>
+
+
+
+
+<p>NOTE: Doing this on anything other than a bare server, or with someone you don&#8217;t trust, isn&#8217;t a secure or a good idea.  Don&#8217;t do this on a production server or with sketchy folks!</p>
+
+
+
+
+<p>Next, it&#8217;s time for the guest to join the shared Tmux session:</p>
+
+
+
+
+<p><code>tmux -S /tmp/pair attach</code></p>
+
+
+
+
+<p>And you&#8217;re both in the same Tmux session!  The view, keyboard and such is all shared =).</p>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-06-02T00:00:00-04:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+    
+    
+      <a class="pull-left" href="/blog/2013/05/26/starting-with-vim/" title="Previous Post: Starting with Vim">&laquo; Starting with Vim</a>
+    
+    
+  </footer>
+
+</div>
+
+        
+      </article>
+    </div>
+  </div>
+  <div id="footer-widgets">
+  <div class="container">
+    <div class="row">
+  <div class="span3">
+    <h2>recent posts</h2>
+    <ul class="recent_posts">
+      
+        <li>
+          <a href="/blog/2013/06/02/dont-fear-pair-programming-a-guide-to-starting/">Don't fear pair programming - A Guide to Starting</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2013/05/26/starting-with-vim/">Starting with Vim</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2013/05/26/buff-a-gem-that-puts-muscle-in-the-buffer-api/">Buff - A Gem that Puts Muscle in the Buffer API</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2013/05/06/travel-advice-you-cant-afford-to-miss/">Travel Advice You Can't Afford to Miss</a>
+        </li>
+      
+        <li>
+          <a href="/blog/2013/05/04/privilege-means-responsibility/">Privilege Means Responsibility</a>
+        </li>
+      
+    </ul>
+    <h2><a href="/blog/archives">archives</a></h2>
+  </div>
+  <div class="span3">
+    
+
+  </div>
+  <div class="span4">
+    
+<h2>twitter</h2>
+<a href="https://twitter.com/_ZPH" class="twitter-follow-button" data-show-count="true" data-lang="en">Follow @_ZPH</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="tweet" data-twitter-user="_ZPH">
+</div>
+
+
+  </div>
+  <div class="span2">
+    <h2>found on</h2>
+
+<a href="https://github.com/ZPH/" rel="tooltip" title="Github"><img class="social_icon" title="Github" alt="github icon" src="/images/glyphicons_381_github.png"></a>
+
+
+
+
+
+
+
+<a href="http://twitter.com/_ZPH" rel="tooltip" title="Twitter"><img class="social_icon" title="Twitter" alt="Twitter icon" src="/images/glyphicons_391_twitter_t.png"></a>
+
+
+
+
+
+
+
+<h2>contact at</h2>
+<a href="mailto:zander@civet.ws">zander@civet.ws</a>
+
+
+  </div>
+</div>
+
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-left">
+  <a href="/">Civet</a>
+  - Copyright &copy; 2013 - Zander
+</p>
+<p class="pull-right">
+  <span>Powered by <a href="http://octopress.org/">Octopress</a>.</span>
+  
+    <span>Designed by <a href="http://www.AdrianArtiles.com">Adrian Artiles</a>.</span>
+  
+</p>
+
+  </div>
+</footer>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script>window.jQuery || document.write('<script src="/javascripts/libs/jquery-1.7.2.min.js" type="text/javascript"><\/script>')</script>
+<script src="/javascripts/libs/bootstrap.min.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.tweet.js" type="text/javascript"></script>
+<script src="/javascripts/jquery.instagram.js" type="text/javascript"></script>
+<script src="/javascripts/libs/jquery.masonry.min.js" type="text/javascript"></script>
+<script src="/javascripts/custom.js" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>
