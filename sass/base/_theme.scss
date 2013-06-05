@@ -24,10 +24,16 @@
 }
 #hero-inner h1 {
   font-size: 60px;
+  color: white;
+}
+
+#hero-inner h2 {
+  color:white;
 }
 #hero-inner em {
   font-style: normal;
-  color: #99CDE3;
+  // color: #99CDE3;
+  color: white;
   text-shadow: -1px -1px 2px #FAFAFA, 1px 1px 2px #070707;
 }
 body {
