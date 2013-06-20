@@ -38,7 +38,7 @@ It felt like progress and I wanted a better way to tweak the net/http library.  
 With net/http libs loaded from the local file, I was off to the races. I tapped into the internal workings by using the 'sack' utility [sack](https://github.com/zph/sack) for jumping directly into and editing `ack` results.  With the addition of a strategically placed `binding.pry`, I was able to tap into the live socket info via a `socket.read_all` and write that out as a binary dump to `socket_content.bin`.
 
 ## Reducing it to Elements
-The last step in my troubleshooting was to create `zlib_targeted.rb` for isolating the zlib load issues from net/http.  Since the underlying issue appears to be a malformed gzip returned from Wunderground's API, I created zlib_targeted.rb to remove net/http from the equasion.  Check out the demo content of the file below:
+The last step in my troubleshooting was to create `zlib_targeted.rb` for isolating the zlib load issues from net/http.  Since the underlying issue appears to be a malformed gzip returned from Wunderground's API, I created zlib_targeted.rb to remove net/http from the equation.  Check out the demo content of the file below:
 
 <script src="https://gist.github.com/a7bfc0acbc0876363ede.js"></script>
 
