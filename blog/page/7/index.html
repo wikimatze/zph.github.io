@@ -139,6 +139,69 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/05/07/slick-zsh-trick-for-vi-mode/">Slick ZSH Trick for Vi-Mode</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-07T00:00:00-04:00" pubdate data-updated="true">May 7<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Found a neat trick today for making the commandline vi-mode much more friendly.</p>
+<p>Back-story: As I&#8217;ve been spending more time programming, I find myself more comfortable on the commandline and in VIM.  Also, there&#8217;s a setting that can be placed in .bashrc and/or .zshrc to allow vi style editing of the commandline.  This is all well and good but without any visual indicator of whether I&#8217;m in INSERT MODE or NORMAL MODE&#8230; well, it&#8217;s disorenting.</p>
+<p>So the neat trick is to add code in your .zshrc to insert a right-hand side prompt (RPROMPT) that will show a notifier depending on what mode you&#8217;re in.</p>
+<p>Add the following code (and thank you to wherever I found this trick online)
+[cc_vim]
+function zle-line-init zle-keymap-select {
+    RPS1=&#8221;${${KEYMAP/vicmd/&#8211;NOR&#8211;}/(main|viins)/&#8211;INS&#8211;}&#8221;
+    RPS2=$RPS1
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select[/cc_vim]</p>
+<p>Have another nice trick for your .zshrc, please share it in the comments!</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/04/29/easier-directory-navigation/">Easier Directory Navigation</a></h1>
     
     
@@ -682,83 +745,6 @@ To this:
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/10/05/puppet-hostname-doesnt-match-server-certificate-server-fault/">Uggh - &#8220;Puppet Hostname Doesnt Match Server Certificate&#8221;</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-10-05T00:00:00-04:00" pubdate data-updated="true">Oct 5<span>th</span>, 2011</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Wow, this one stumped me for the better part of 12 hrs&#8230;
-
-So Puppet (the Ruby Gem) uses SSL certificates to authenticate to the Puppet Master.  I kept receiving the warning listed in the title of this post no matter how I altered my configs.
-
-Here&#8217;s the short version:
-
-Determine what Fully Qualified Domain Name is being used by the PuppetMaster to created the signing cert.  On my virtual platform this ended up being the hostname
-
-Add that hostname/FQDN and it&#8217;s IP address to your PuppetClient&#8217;s /etc/hosts like so:
-
-[cce_bash]173.999.999.999    hostname[/cce_bash]
-
-Now start up the PuppetMaster Server with the following command [cce_bash]# puppetmasterd &#8211;verbose &#8211;no-daemonize[/cce_bash]
-
-Now invoke the puppet client like so: [cce_bash]puppet agent &#8211;no-daemonize &#8211;verbose &#8211;server=HostnameOfServer[/cce_bash]
-
-Finally, now that we know it&#8217;s working well edit the /etc/puppet/puppet.conf on Puppet Client so that you have a server entry in the [main] section:
-
-[cce_bash][main]
-
-server=HostnameOfServer [/cce_bash]
-
-Tada!
-
-&nbsp;
-
-Source of partial answer: <a href="http://serverfault.com/questions/197074/puppet-hostname-doesnt-match-server-certificate">Puppet hostname doesnt match server certificate - Server Fault</a>.
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -786,6 +772,10 @@ Source of partial answer: <a href="http://serverfault.com/questions/197074/pupp
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2013/06/20/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
+        </li>
+      
+        <li>
           <a href="/blog/2013/06/02/dont-fear-pair-programming-a-guide-to-starting/">Don't fear pair programming - A Guide to Starting</a>
         </li>
       
@@ -799,10 +789,6 @@ Source of partial answer: <a href="http://serverfault.com/questions/197074/pupp
       
         <li>
           <a href="/blog/2013/05/06/travel-advice-you-cant-afford-to-miss/">Travel Advice You Can't Afford to Miss</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/05/04/privilege-means-responsibility/">Privilege Means Responsibility</a>
         </li>
       
     </ul>

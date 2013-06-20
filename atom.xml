@@ -4,7 +4,7 @@
   <title><![CDATA[Civet]]></title>
   <link href="http://zph.github.io/atom.xml" rel="self"/>
   <link href="http://zph.github.io/"/>
-  <updated>2013-06-11T15:00:30-04:00</updated>
+  <updated>2013-06-20T00:43:01-04:00</updated>
   <id>http://zph.github.io/</id>
   <author>
     <name><![CDATA[Zander]]></name>
@@ -12,6 +12,78 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips]]></title>
+    <link href="http://zph.github.io/blog/2013/06/20/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/"/>
+    <updated>2013-06-20T00:42:00-04:00</updated>
+    <id>http://zph.github.io/blog/2013/06/20/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips</id>
+    <content type="html"><![CDATA[<p>It started off as a casual inquiry on Twitter:</p>
+
+<blockquote class="twitter-tweet"><p><a href="https://twitter.com/geopet">@geopet</a> Sounds strange that 193 would work for external API and not 2.0.. can you share what you’re working on? Or TDD test via webmock?</p>&mdash; Zander (@_ZPH) <a href="https://twitter.com/_ZPH/statuses/345536278604963841">June 14, 2013</a></blockquote>
+
+
+<script async src="http://zph.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>And led to my friend @geopet posting the Minimum Viable Demo as a Gist:</p>
+
+<blockquote class="twitter-tweet"><p><a href="https://twitter.com/Strabd">@Strabd</a> <a href="https://twitter.com/_ZPH">@_ZPH</a> But here’s the gist with the code and the results: <a href="https://t.co/ajiAh8lQTN">https://t.co/ajiAh8lQTN</a></p>&mdash; Geoff Petrie (@geopet) <a href="https://twitter.com/geopet/statuses/345567430841597952">June 14, 2013</a></blockquote>
+
+
+<script async src="http://zph.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<h2>And it was interesting</h2>
+
+<p>What we found out was that the Ruby open-uri library would make calls to an external API (Wunderground) and throw a Zlib::DataError when run in MRI Ruby 2.0.0.  The strange thing was that MRI 1.9.3 works perfectly fine.  Same exact story when the GET Request comes from Net/HTTP instead of open-uri.  But it succeeds on 2.0.0 when using the RestClient Gem, as documented by @injekt.</p>
+
+<h2>The Gloves Come Off</h2>
+
+<p>We dove into the source of the error and determined that it was thrown from <code>net/http/response.rb:357</code>.  In order to better understand the error, I sequentially placed <code>binding.pry</code> statements to determine where the error percolated to the surface.  It was the call to <code>@inflate.finish</code> which was where the Zlib::DataError surfaced.</p>
+
+<p>I left the code at this point and posted my initial findings back to Geoff and left the project alone.</p>
+
+<h2>Today</h2>
+
+<p>Then I saw this message and it was time for more digging :).</p>
+
+<blockquote class="twitter-tweet"><p>Big thanks to <a href="https://twitter.com/_ZPH">@_ZPH</a> &amp; <a href="https://twitter.com/lee_jarvis">@lee_jarvis</a> for helping out with my 1.9.3/2.0 question. The discussion has led to more questions, but it’s a start!</p>&mdash; Geoff Petrie (@geopet) <a href="https://twitter.com/geopet/statuses/347460923130269696">June 19, 2013</a></blockquote>
+
+
+<script async src="http://zph.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+<p>I started by forking his Gist and pulling it down to my local computer. My first phase of troubleshooting was to try alternate tools, in order to see how they dump the HTTP response.  Good ol&#8217; <code>curl</code> came to the rescue and provided me with the results that I placed in <a href="https://github.com/zph/mri_2_0_0_zlib_troubleshooting/blob/master/curl_response.txt">curl_response.txt</a> and <a href="https://github.com/zph/mri_2_0_0_zlib_troubleshooting/blob/master/curl_raw.txt">curl_raw.txt</a>.  Notice the rather interesting artifact around line 12 on the RAW version that isn&rsquo;t present in the alternate curl response.</p>
+
+<h2>Pulling in Net/HTTP</h2>
+
+<p>It felt like progress and I wanted a better way to tweak the net/http library.  I prepended the local directory to Ruby&rsquo;s LOAD_PATH and copies the net folder out from MRI&rsquo;s lib directory.  Having the <code>Dir.pwd</code> prepended to the path enabled me to make very convenient testing tweaks to the Ruby Standard Library without needing to alter my standard RVM install :).</p>
+
+<h2>Tapping the Sockets</h2>
+
+<p>With net/http libs loaded from the local file, I was off to the races. I tapped into the internal workings by using the &lsquo;sack&rsquo; utility <a href="https://github.com/zph/sack">sack</a> for jumping directly into and editing <code>ack</code> results.  With the addition of a strategically placed <code>binding.pry</code>, I was able to tap into the live socket info via a <code>socket.read_all</code> and write that out as a binary dump to <code>socket_content.bin</code>.</p>
+
+<h2>Reducing it to Elements</h2>
+
+<p>The last step in my troubleshooting was to create <code>zlib_targeted.rb</code> for isolating the zlib load issues from net/http.  Since the underlying issue appears to be a malformed gzip returned from Wunderground&rsquo;s API, I created zlib_targeted.rb to remove net/http from the equasion.  Check out the demo content of the file below:</p>
+
+<script src="https://gist.github.com/a7bfc0acbc0876363ede.js"></script>
+
+
+<h2>Conclusion</h2>
+
+<p>Now we have a very narrowly tailored set of examples that dig into the exact errors, thanks to @geopet, myself, and @injekt.</p>
+
+<p>For more info, see the comments in this Gist repo from @geopet:
+<a href="https://gist.github.com/geopet/5782836">Initial Gist</a></p>
+
+<p>Or my repo that includes the files described in this post:
+<a href="https://github.com/zph/mri_2_0_0_zlib_troubleshooting">Full repo</a></p>
+
+<p>I&rsquo;m happy with how the toubleshooting has progressed and would like to see this issue resolved, whether it is a malformed response from Wunderground, intolerant behavior from MRI 2.0.0, or anything else.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Don't fear pair programming - A Guide to Starting]]></title>
@@ -889,21 +961,6 @@ Here&#8217;s the modified file:
 Note that line 21 is the modified line.
 
 Now on to revive my 3 year old GTD files, do some major deleting, get email dumps setup, and Get Things Done.
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Executing Ruby from Vim]]></title>
-    <link href="http://zph.github.io/blog/2013/02/18/executing-ruby-from-vim/"/>
-    <updated>2013-02-18T00:00:00-05:00</updated>
-    <id>http://zph.github.io/blog/2013/02/18/executing-ruby-from-vim</id>
-    <content type="html"><![CDATA[<p>Want to run a Ruby script in Vim? Maybe you&#8217;re testing a little commandline snippet. Maybe you want to run a quick query against a webpage. Maybe it&#8217;s none of my business why you want to run the Ruby script!</p>
-
-<p>Well here&#8217;s a little selection of my Vimscript that accomplishes just that:</p>
-
-<script src="https://gist.github.com/zph/4980336.js"></script>
-
-<p>Typing your leader key (mapped to &#8221; by default but remapped to &#8216;,&#8217; by you, right? ) and hitting &#8216;rr&#8217; in quick sequence will execute the current file using your Ruby interpreter.  If you&#8217;re using RVM to manage your Rubies, you might also want to consider adding the vim-rvm extension to use the &#8216;correct&#8217; Ruby.</p>
 ]]></content>
   </entry>
   

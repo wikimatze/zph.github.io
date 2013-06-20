@@ -139,6 +139,63 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/02/18/executing-ruby-from-vim/">Executing Ruby From Vim</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-18T00:00:00-05:00" pubdate data-updated="true">Feb 18<span>th</span>, 2013</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Want to run a Ruby script in Vim? Maybe you&#8217;re testing a little commandline snippet. Maybe you want to run a quick query against a webpage. Maybe it&#8217;s none of my business why you want to run the Ruby script!</p>
+
+<p>Well here&#8217;s a little selection of my Vimscript that accomplishes just that:</p>
+
+<script src="https://gist.github.com/zph/4980336.js"></script>
+
+<p>Typing your leader key (mapped to &#8221; by default but remapped to &#8216;,&#8217; by you, right? ) and hitting &#8216;rr&#8217; in quick sequence will execute the current file using your Ruby interpreter.  If you&#8217;re using RVM to manage your Rubies, you might also want to consider adding the vim-rvm extension to use the &#8216;correct&#8217; Ruby.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/02/17/the-value-of-experienced-developers/">The Value of Experienced Developers</a></h1>
     
     
@@ -806,80 +863,6 @@ Questions, comments, post them here or to me on Twitter <a href="www.twitter.com
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/12/18/refactoring-a-weighty-question/">Refactoring. .. a Weighty Question</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-18T00:00:00-05:00" pubdate data-updated="true">Dec 18<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">I&#8217;ve been working on a library for easily exporting <a href="www.trello.com">Trello</a> information to CSV, TSV, and XLSX. It&#8217;s currently working well for all three formats although the code itself is first or second draft quality. (Not that XLSX has some issues of its own when done from Ruby. I&#8217;d like to solve it eventually but it&#8217;s on the back seat since the files still open.)
-I took the time to import it into CodeClimate&#8217;s automated test system to see where potential issues are.
-
-It revealed that one particular set of methods was far too complex. These were the methods that generate the CSV or XLSX file.
-
-I sat down to refactor them while under the weather this weekend and here&#8217;s what I accomplished:
-
--Extracted code out into methods (needs more of this as methods don&#8217;t have single responsibilities)
--Abstracted the process into a single uber method that calls submethods (could be private methods later in development)
--In order to abstract the process to be identical for CSV and XLSX, I found one spot that needed an [cci_ruby]eval(content)[/cci_ruby] statement. ( Perhaps in the future I can adapt a lambda to better suit this purpose?? )
-
-Here are the different versions of it:
-
-Before-<script type="text/javascript" src="https://gist.github.com/4330951.js"></script>
-
-After-<script type="text/javascript" src="https://gist.github.com/4330957.js"></script>
-
-Diff-<script type="text/javascript" src="https://gist.github.com/4331152.js"></script>
-
-Looking at it again I want to extract the different classes into their own files for better compartmentalizing the code.
-
-Let me know in the comments what code smells are present or what refactorings are still advised.
-
-<!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/12/vimrepress_50d0c28d_mkd.odt vimrepress_50d0c28d_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -907,6 +890,10 @@ Let me know in the comments what code smells are present or what refactorings ar
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2013/06/20/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
+        </li>
+      
+        <li>
           <a href="/blog/2013/06/02/dont-fear-pair-programming-a-guide-to-starting/">Don't fear pair programming - A Guide to Starting</a>
         </li>
       
@@ -920,10 +907,6 @@ Let me know in the comments what code smells are present or what refactorings ar
       
         <li>
           <a href="/blog/2013/05/06/travel-advice-you-cant-afford-to-miss/">Travel Advice You Can't Afford to Miss</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/05/04/privilege-means-responsibility/">Privilege Means Responsibility</a>
         </li>
       
     </ul>

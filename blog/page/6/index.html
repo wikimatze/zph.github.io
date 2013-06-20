@@ -139,6 +139,68 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2012/05/28/an-exercise-contact-scraping-or-how-to-get-hired-with-zeromail/">An Exercise: Contact Scraping or How to Get Hired With ZeroMail</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-28T00:00:00-04:00" pubdate data-updated="true">May 28<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m trying out ZeroMail and saw their job listing at <a href="http://zeromail.com/jobs">zeromail</a>.</p>
+<p>Though I&#8217;m happily and gainfully employed, it looked like an interesting exercise.  The challenge is (verbatim from website):
+  (1) Download http://zeromail.com/static/download/emails.txt
+  (2) Write a python program that extracts contact information from signatures in the emails
+  (3) Send your solution to bart@zeromail.com or skype it to bartjellema</p>
+<p>After an hour of tinkering with it on my own terms (my Ruby &gt; my Python), I&#8217;m realizing it&#8217;s more complex than I initially expected.</p>
+<p>I see it as a multipart process:
+(1) Strip junk characters and lines out of the data
+(2) Determine and locate signature blocks
+(3) Extract pertinent data from signature blocks (might resort to wordlists of given names)</p>
+<p>I tried using easily identifiable information through regexes (ie looking for Australian and US format phone numbers).  This yielded decent results on the numbers themselves and I&#8217;m considering using phone number&#8217;s (or email addresses&#8217;) line numbers as &#8216;hotspots&#8217; that I can extract and further process. </p>
+<p>If I spend more time on the process, I&#8217;ll post my results here.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/vimrepress_4fc3d799_mkd.odt vimrepress_4fc3d799_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/05/27/todo-txt-count-in-rprompt-zsh/">Todo.txt Count in RPrompt ZSH</a></h1>
     
     
@@ -681,69 +743,6 @@ ln -s ~/Dropbox/dotfiles/* ~/. [/cc_bash]</p>
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/07/slick-zsh-trick-for-vi-mode/">Slick ZSH Trick for Vi-Mode</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-07T00:00:00-04:00" pubdate data-updated="true">May 7<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Found a neat trick today for making the commandline vi-mode much more friendly.</p>
-<p>Back-story: As I&#8217;ve been spending more time programming, I find myself more comfortable on the commandline and in VIM.  Also, there&#8217;s a setting that can be placed in .bashrc and/or .zshrc to allow vi style editing of the commandline.  This is all well and good but without any visual indicator of whether I&#8217;m in INSERT MODE or NORMAL MODE&#8230; well, it&#8217;s disorenting.</p>
-<p>So the neat trick is to add code in your .zshrc to insert a right-hand side prompt (RPROMPT) that will show a notifier depending on what mode you&#8217;re in.</p>
-<p>Add the following code (and thank you to wherever I found this trick online)
-[cc_vim]
-function zle-line-init zle-keymap-select {
-    RPS1=&#8221;${${KEYMAP/vicmd/&#8211;NOR&#8211;}/(main|viins)/&#8211;INS&#8211;}&#8221;
-    RPS2=$RPS1
-    zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select[/cc_vim]</p>
-<p>Have another nice trick for your .zshrc, please share it in the comments!</p>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -771,6 +770,10 @@ zle -N zle-keymap-select[/cc_vim]</p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2013/06/20/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
+        </li>
+      
+        <li>
           <a href="/blog/2013/06/02/dont-fear-pair-programming-a-guide-to-starting/">Don't fear pair programming - A Guide to Starting</a>
         </li>
       
@@ -784,10 +787,6 @@ zle -N zle-keymap-select[/cc_vim]</p>
       
         <li>
           <a href="/blog/2013/05/06/travel-advice-you-cant-afford-to-miss/">Travel Advice You Can't Afford to Miss</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/05/04/privilege-means-responsibility/">Privilege Means Responsibility</a>
         </li>
       
     </ul>

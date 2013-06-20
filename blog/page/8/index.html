@@ -139,6 +139,83 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2011/10/05/puppet-hostname-doesnt-match-server-certificate-server-fault/">Uggh - &#8220;Puppet Hostname Doesnt Match Server Certificate&#8221;</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-10-05T00:00:00-04:00" pubdate data-updated="true">Oct 5<span>th</span>, 2011</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Wow, this one stumped me for the better part of 12 hrs&#8230;
+
+So Puppet (the Ruby Gem) uses SSL certificates to authenticate to the Puppet Master.  I kept receiving the warning listed in the title of this post no matter how I altered my configs.
+
+Here&#8217;s the short version:
+
+Determine what Fully Qualified Domain Name is being used by the PuppetMaster to created the signing cert.  On my virtual platform this ended up being the hostname
+
+Add that hostname/FQDN and it&#8217;s IP address to your PuppetClient&#8217;s /etc/hosts like so:
+
+[cce_bash]173.999.999.999    hostname[/cce_bash]
+
+Now start up the PuppetMaster Server with the following command [cce_bash]# puppetmasterd &#8211;verbose &#8211;no-daemonize[/cce_bash]
+
+Now invoke the puppet client like so: [cce_bash]puppet agent &#8211;no-daemonize &#8211;verbose &#8211;server=HostnameOfServer[/cce_bash]
+
+Finally, now that we know it&#8217;s working well edit the /etc/puppet/puppet.conf on Puppet Client so that you have a server entry in the [main] section:
+
+[cce_bash][main]
+
+server=HostnameOfServer [/cce_bash]
+
+Tada!
+
+&nbsp;
+
+Source of partial answer: <a href="http://serverfault.com/questions/197074/puppet-hostname-doesnt-match-server-certificate">Puppet hostname doesnt match server certificate - Server Fault</a>.
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2011/09/25/launchy-search-everything-win/">Launchy + Search Everything = Win</a></h1>
     
     
@@ -704,65 +781,6 @@ Now it&#8217;s available and shared @ <a title="bit.ly/r01M0q" href="http://bit
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2011/09/07/debian-install-on-hp-tm2t-error/">Debian Install on HP TM2t Error</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-07T00:00:00-04:00" pubdate data-updated="true">Sep 7<span>th</span>, 2011</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">After trying to install #! (Crunchbang) Linux on a laptop, I received an error that wouldn&#8217;t let me boot into the system.
-
-Turns out all that needs to be done is append the following command your kernel boot line:
-
-[cce_bash]intel_iommu=on[/cce_bash]
-
-&nbsp;
-
-More details available here in the bug report (where I found the answer): <a title="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/742296" href="https://bugs.launchpad.net/ubuntu/+source/linux/+bug/742296" target="_blank">https://bugs.launchpad.net/ubuntu/+source/linux/+bug/742296</a>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -790,6 +808,10 @@ More details available here in the bug report (where I found the answer): <a ti
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2013/06/20/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
+        </li>
+      
+        <li>
           <a href="/blog/2013/06/02/dont-fear-pair-programming-a-guide-to-starting/">Don't fear pair programming - A Guide to Starting</a>
         </li>
       
@@ -803,10 +825,6 @@ More details available here in the bug report (where I found the answer): <a ti
       
         <li>
           <a href="/blog/2013/05/06/travel-advice-you-cant-afford-to-miss/">Travel Advice You Can't Afford to Miss</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/05/04/privilege-means-responsibility/">Privilege Means Responsibility</a>
         </li>
       
     </ul>
