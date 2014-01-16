@@ -4,7 +4,7 @@
   <title><![CDATA[Civet]]></title>
   <link href="http://zph.github.io/atom.xml" rel="self"/>
   <link href="http://zph.github.io/"/>
-  <updated>2013-06-20T00:43:01-04:00</updated>
+  <updated>2014-01-15T00:55:42-05:00</updated>
   <id>http://zph.github.io/</id>
   <author>
     <name><![CDATA[Zander]]></name>
@@ -66,7 +66,7 @@
 
 <h2>Reducing it to Elements</h2>
 
-<p>The last step in my troubleshooting was to create <code>zlib_targeted.rb</code> for isolating the zlib load issues from net/http.  Since the underlying issue appears to be a malformed gzip returned from Wunderground&rsquo;s API, I created zlib_targeted.rb to remove net/http from the equasion.  Check out the demo content of the file below:</p>
+<p>The last step in my troubleshooting was to create <code>zlib_targeted.rb</code> for isolating the zlib load issues from net/http.  Since the underlying issue appears to be a malformed gzip returned from Wunderground&rsquo;s API, I created zlib_targeted.rb to remove net/http from the equation.  Check out the demo content of the file below:</p>
 
 <script src="https://gist.github.com/a7bfc0acbc0876363ede.js"></script>
 
