@@ -1,0 +1,16 @@
+I switched to ZSH a few months back and am spending more and more time in commandline + VIM/MacVIM.
+
+Once I added the tag to my dotfile to force vi-mode on the commandline I lost the ability to do incremental searches of my zsh history.  So here's the fix which saves lots of typing:
+
+First, the regular keybind to allow Ctrl-R to enter history search backward mode:
+[cc_bash]bindkey "^R" history-incremental-search-backward[/cc_bash]
+
+To fix the fact that the prior keymap no longer works in vi-mode zsh, add this to a zsh config:
+[cc_bash]
+bindkey -M viins '^R' history-incremental-search-backward
+bindkey -M vicmd '^R' history-incremental-search-backward[/cc_bash]
+
+Now I can ^R with aplomb...
+
+This is thanks to the explanation from JDeBP over on [superuser.com](http://superuser.com/questions/328026/can-i-use-vim-editing-mode-on-the-command-line-without-losing-recursive-history).
+
