@@ -15,6 +15,7 @@ group :development do
   gem 'liquid', '~> 2.3.0'
   gem 'pry'
   gem 'pry-stack_explorer'
+  gem 'pry-byebug'
 end
 
 gem 'sinatra', '~> 1.4.2'
