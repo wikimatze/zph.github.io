@@ -1,7 +1,8 @@
 #!/bin/bash
 
-message=$(ruby "print Time.now.utc")
+message=$(ruby -e "print Time.now.utc")
 bundle exec rake gen_deploy && \
+  git stash && \
   git push && \
   git checkout master && \
   rm -rf && \
@@ -11,4 +12,5 @@ bundle exec rake gen_deploy && \
   git add --all && \
   git cim $message && \
   git push && \
+  git checkout - && \
 echo "Site deployed"
