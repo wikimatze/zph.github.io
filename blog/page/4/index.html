@@ -98,7 +98,7 @@
       <div class="row">
   <div class="span4">
     <h2>About Me</h2>
-<p>Rubyist, Tinkerer, et cetera.</p>
+<p>Polyglot, Problem Solver, and into improving systemic efficiencies.</p>
 
   </div>
   <div class="span6">
@@ -144,6 +144,118 @@
   <div class="container">
     <div class="row" id="post-container">
     
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/22/jdbc-mssql-and-jruby-oh-my/">JDBC, MsSQL, and JRuby, Oh My!</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-22T00:00:00-05:00" pubdate data-updated="true">Dec 22<span>nd</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">I was recently in a position of needing to access information from a legacy database on a Microsoft SQL Server ( 2005 ). Since I&#8217;d prefer that the contact came from a *NIX system (probably Ubuntu), I checked out ODBC and JDBC as options.
+
+Based on a couple of blog entries by fellow Rubyists and ODBC users, the ODBC configuration files add an extra layer of complexity for the database connection. I chose to do it with JDBC because it allows those settings to be configured in the script/config itself. Also, with the sqljdbc*.jar running on the JVM we have platform independence.
+
+Now, on to the implementation:
+<ul>
+	<li>On the SQL Server box</li>
+	<li>Allow mixed authentication (it appears that JDBC does not interface with Windows User credentials based on cursory research)</li>
+	<li>Setup a unique SQL Server Auth User who has the appropriate degree of authorization on the database. Consider read-only if your application is limited to querying the DB rather than writing to it. This will limit the risk of inadvertent writes.</li>
+	<li>Depending on setup, you may need to open ports 1433 and 1434 on the SQL Server&#8217;s firewall. If possible, only do this step on an internally facing instance of the SQL Server. (Less attack surface to the internet is a good idea).</li>
+	<li>Test the connection by using SQL User authentication when connecting with the builtin Microsoft SQL Server Management program. If all goes well, this tells you that it&#8217;s configured correctly when accessing from the same system.</li>
+</ul>
+Next to connect from a remote system. You&#8217;ll need the following pieces of information: the database&#8217;s name, the database ip address, the database instance name (ie defaults to SQLEXPRESS when using SQL Express), the Sql username and password
+<ul>
+	<li>On the remote system (the Linux box)</li>
+	<li>Download and extract the following file from Microsoft, this is the JDBC adapter file that they provide</li>
+</ul>
+[cc]
+http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&amp;id=21599
+[/cc]
+OR the direct link at the time of this article:
+[cc]
+http://download.microsoft.com/download/D/6/A/D6A241AC-433E-4CD2-A1CE-50177E8428F0/1033/sqljdbc<em>3.0.1301.101</em>enu.tar.gz
+[/cc]
+
+Extract that into a convenient place in near where your connection code exists. I chose to use a standard Ruby project layout as follows:
+[cc]
+|&#8211; Gemfile
+|&#8211; Gemfile.lock
+|&#8211; Guardfile
+|&#8211; README.md
+|&#8211; bin
+|&#8211; features
+|&#8211; jars
+| |&#8211; sqljdbc.jar
+| |&#8211; sqljdbc4.jar
+| <code>-- sqljdbc_3.0.1301.101_enu.tar.gz
+|-- lib
+| |-- README
+| |-- jruby_demo.rb
+| |-- tds_demo.rb
+|</code>&#8211; demo.rb
+|&#8211; spec
+`&#8211; spec_helper.rb
+7 directories, 16 files
+[/cc]
+
+Notice that the sqljdbc*.jar files are inside jars which is on the same level of nesting as the lib directory. This is important when referencing their location in the code.
+
+Then install JRuby if not currently installed. I use <a href="www.rvm.io">RVM</a> for easy Ruby switching. (Thanks to Keith Burnett for posting a comment indicating that this portion was out of order&#8230; silly me!)
+
+Once the JARs are extracted, run <code>bundle install</code> to request that Bundler install the required dependencies. 
+
+Next modify the following script to help you get started. Note that you&#8217;ll need to replace the values of the CONSTANTS as appropriate for your IP addresses, username, passwords, etc.
+
+<script src="https://gist.github.com/4361158.js"></script>
+
+Of further note is that a class will need to be defined for each table in the database that you wish to access. I briefly outline this in the comments of the code. This is fairly standard ActiveRecord use.
+
+Questions, comments, post them here or to me on Twitter <a href="www.twitter.com/_ZPH"> @_ZPH </a>.
+
+<!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/12/vimrepress_50d62160_mkd.odt vimrepress_50d62160_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
     
     
       <article class="span4">
@@ -753,67 +865,6 @@ Revelations: spending time learning social intricacies of collaborating</p><!-- 
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/08/06/dear-osx-mail-app-go-away/">Dear OSX Mail.app, Go Away</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-06T00:00:00-04:00" pubdate data-updated="true">Aug 6<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Dear Mail.app,
-
-I don&#8217;t want to open Mail for configuration every time an iCal notification arrives. And no I don&#8217;t want to use Mail as my default. And no, I don&#8217;t want to setup even a dummy email account in Mail. [cc_bash]sudo chmod 000 /Applications/Mail.app[/cc_bash]
-
-PS - You too iTunes [cc_bash]sudo chmod 000 /Applications/iTunes.app[/cc_bash]
-
-#fixing_OSX
-
-kthxbye
-
-<!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/08/vimrepress_501fd45b_mkd.odt vimrepress_501fd45b_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -841,6 +892,10 @@ kthxbye
     <ul class="recent_posts">
       
         <li>
+          <a href="/blog/2014/02/09/automating-email-with-ruby/">Automating Email with Ruby</a>
+        </li>
+      
+        <li>
           <a href="/blog/2013/06/20/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
         </li>
       
@@ -854,10 +909,6 @@ kthxbye
       
         <li>
           <a href="/blog/2013/05/26/buff-a-gem-that-puts-muscle-in-the-buffer-api/">Buff - A Gem that Puts Muscle in the Buffer API</a>
-        </li>
-      
-        <li>
-          <a href="/blog/2013/05/06/travel-advice-you-cant-afford-to-miss/">Travel Advice You Can't Afford to Miss</a>
         </li>
       
     </ul>

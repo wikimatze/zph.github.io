@@ -4,7 +4,7 @@
   <title><![CDATA[Civet]]></title>
   <link href="http://zph.github.io/atom.xml" rel="self"/>
   <link href="http://zph.github.io/"/>
-  <updated>2014-01-15T00:55:42-05:00</updated>
+  <updated>2014-02-10T19:15:04-05:00</updated>
   <id>http://zph.github.io/</id>
   <author>
     <name><![CDATA[Zander]]></name>
@@ -12,6 +12,456 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Automating Email with Ruby]]></title>
+    <link href="http://zph.github.io/blog/2014/02/09/automating-email-with-ruby/"/>
+    <updated>2014-02-09T20:28:00-05:00</updated>
+    <id>http://zph.github.io/blog/2014/02/09/automating-email-with-ruby</id>
+    <content type="html"><![CDATA[<p>Last Friday was the kind of day where I dropped into a Pry repl in order to bang out an automation script.</p>
+
+<p>The challenge was: automate the retrival of specific emails that contained receipts, wrangle them into sane data structures, and dump them into a spreadsheet with both daily totals and an absolute total.</p>
+
+<p>An example email looked like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> Receipt #9999999999999
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'> County:Example, FL      Date: 2014-1-27 
+</span><span class='line'>
+</span><span class='line'> Name:Jill Doe
+</span><span class='line'> Credit Card #XXXXXXXXXXXX9999
+</span><span class='line'> Authorization code:999999
+</span><span class='line'>
+</span><span class='line'> No.of Pages viewed:3
+</span><span class='line'> Total Amount: $ 3.00
+</span><span class='line'>
+</span><span class='line'> Thank you for visiting http://www.example.com  </span></code></pre></td></tr></table></div></figure>
+
+
+<p>First step was to build an email parser for this format.  I tried to keep it tolerant of future changes to the email generation scheme.</p>
+
+<p>The general steps involved are:
+1. Split the body linewise
+2. Create a method for each piece of content to extract.
+3. From the collection of lines, grep for the line with appropriate unique text.
+4. Then in that line, use a regex to find the specific portion of data.</p>
+
+<p>The full code for that module is listed below.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">Email</span>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Parser</span>
+</span><span class='line'>      <span class="kp">attr_accessor</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:content</span>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@raw_content</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'>        <span class="vi">@content</span> <span class="o">=</span> <span class="vi">@raw_content</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:strip</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">receipt</span>
+</span><span class='line'>        <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/receipt/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="sr">/\d+/</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">county_line</span>
+</span><span class='line'>        <span class="vi">@county_line</span> <span class="o">||=</span> <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/county.*date/i</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>                                <span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sr">/\W{3,}/</span><span class="p">)</span>
+</span><span class='line'>                                <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="no">Hash</span><span class="o">[*</span><span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:strip</span><span class="p">)</span><span class="o">]</span> <span class="p">}</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">county</span>
+</span><span class='line'>        <span class="n">county_line</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="s2">&quot;County&quot;</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">date</span>
+</span><span class='line'>        <span class="n">county_line</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="s2">&quot;Date&quot;</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">name</span>
+</span><span class='line'>        <span class="n">array</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/name/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">credit_card_number</span>
+</span><span class='line'>        <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/credit card/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="sr">/#.*$/</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">authorization_code</span>
+</span><span class='line'>        <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/authorization code/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">pages_viewed</span>
+</span><span class='line'>        <span class="k">begin</span>
+</span><span class='line'>          <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/pages viewed/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="sr">/\d+/</span><span class="o">].</span><span class="n">strip</span>
+</span><span class='line'>        <span class="k">rescue</span> <span class="no">NoMethodError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+</span><span class='line'>          <span class="nb">warn</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2"> for </span><span class="si">#{</span><span class="n">content</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">total_amount</span>
+</span><span class='line'>        <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/total amount/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+</span><span class='line'>                                     <span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>                                     <span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/\$/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>                                     <span class="o">.</span><span class="n">strip</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">website</span>
+</span><span class='line'>        <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/visiting http/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="sr">/http.*$/i</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">all</span>
+</span><span class='line'>        <span class="no">ParsingPresenter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span><span class='line'>          <span class="ss">county</span><span class="p">:</span> <span class="n">county</span><span class="p">,</span>
+</span><span class='line'>          <span class="ss">date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span>
+</span><span class='line'>          <span class="nb">name</span><span class="p">:</span> <span class="nb">name</span><span class="p">,</span>
+</span><span class='line'>          <span class="n">credit_card_number</span><span class="p">:</span> <span class="n">credit_card_number</span><span class="p">,</span>
+</span><span class='line'>          <span class="n">authorization_code</span><span class="p">:</span> <span class="n">authorization_code</span><span class="p">,</span>
+</span><span class='line'>          <span class="n">pages_viewed</span><span class="p">:</span> <span class="n">pages_viewed</span><span class="p">,</span>
+</span><span class='line'>          <span class="n">total_amount</span><span class="p">:</span> <span class="n">total_amount</span><span class="p">,</span>
+</span><span class='line'>          <span class="ss">website</span><span class="p">:</span> <span class="n">website</span><span class="p">,</span>
+</span><span class='line'>          <span class="ss">receipt</span><span class="p">:</span> <span class="n">receipt</span>
+</span><span class='line'>        <span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">all</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ps</span> <span class="o">=</span> <span class="kp">new</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ps</span><span class="o">.</span><span class="n">all</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="no">ParsingPresenter</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">OpenStruct</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With that in order, I set about using the awesome <code>ruby-gmail</code> gem for retrieving said emails. Note: after completing this project, I learned of a continuation of the <code>ruby-gmail</code> gem called <code>gmail</code>.  All the code in these examples is specific to the older incarnation of the gem.</p>
+
+<p><code>ruby-gmail</code> has a simple interface for retrieving messages between date ranges.  So I setup a specific Gmail filter for emails from a certain sender that included the text &lsquo;receipt&rsquo;.</p>
+
+<p>There&rsquo;s nothing too fancy in this code, but it&rsquo;s important to set <code>@gmail.peek = true</code> so that programatically viewed emails aren&rsquo;t marked &lsquo;read&rsquo;.  Also of note is the use of Dotenv for setting secret values without risking them in a git repo.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'> <span class="k">class</span> <span class="nc">Retriever</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="no">USER</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;GMAIL_USER&#39;</span><span class="o">]</span>
+</span><span class='line'>      <span class="no">PASSWORD</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;GMAIL_PASSWORD&#39;</span><span class="o">]</span>
+</span><span class='line'>      <span class="no">LABEL</span> <span class="o">=</span> <span class="s1">&#39;Receipts&#39;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kp">attr_accessor</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:password</span><span class="p">,</span> <span class="ss">:gmail</span><span class="p">,</span> <span class="ss">:messages</span>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="no">USER</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="no">PASSWORD</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span>
+</span><span class='line'>        <span class="vi">@password</span> <span class="o">=</span> <span class="n">password</span>
+</span><span class='line'>        <span class="vi">@gmail</span> <span class="o">=</span> <span class="no">Gmail</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="vi">@password</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@gmail</span><span class="o">.</span><span class="n">peek</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">message_count_in_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+</span><span class='line'>        <span class="c1">#dates as &#39;2010-02-10&#39;</span>
+</span><span class='line'>        <span class="n">gmail</span><span class="o">.</span><span class="n">inbox</span>
+</span><span class='line'>             <span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="ss">:after</span> <span class="o">=&gt;</span> <span class="n">start_date</span><span class="p">,</span> <span class="ss">:before</span> <span class="o">=&gt;</span> <span class="n">end_date</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">emails_in_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="no">LABEL</span><span class="p">)</span>
+</span><span class='line'>        <span class="c1">#dates as &#39;2010-02-10&#39;</span>
+</span><span class='line'>        <span class="n">gmail</span><span class="o">.</span><span class="n">mailbox</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+</span><span class='line'>             <span class="o">.</span><span class="n">emails</span><span class="p">(</span><span class="ss">:after</span> <span class="o">=&gt;</span> <span class="n">start_date</span><span class="p">,</span> <span class="ss">:before</span> <span class="o">=&gt;</span> <span class="n">end_date</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">message_presenters_in_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">msgs</span> <span class="o">=</span> <span class="n">emails_in_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@messages</span> <span class="o">=</span> <span class="n">msgs</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">msg</span><span class="o">|</span>
+</span><span class='line'>          <span class="no">Presenter</span><span class="o">.</span><span class="n">present</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Presenter</span>
+</span><span class='line'>      <span class="kp">attr_accessor</span> <span class="ss">:email</span>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@email</span> <span class="o">=</span> <span class="n">msg</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">body</span>
+</span><span class='line'>        <span class="n">email</span><span class="o">.</span><span class="n">body</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">date</span>
+</span><span class='line'>        <span class="n">email</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">to_date</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">date_string</span>
+</span><span class='line'>        <span class="n">date</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">present</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">presenter</span> <span class="o">=</span> <span class="kp">new</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class='line'>        <span class="no">Message</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">date</span><span class="p">:</span> <span class="n">presenter</span><span class="o">.</span><span class="n">date_string</span><span class="p">,</span> <span class="ss">body</span><span class="p">:</span> <span class="n">presenter</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="no">Message</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">OpenStruct</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The last task in building this tool was dumping the data to a CSV with totals by date as well as a grand total. The process is simple, pass in a collection of messages and iterate through them by date, add a subtotal per date, then add a final row with grand total.</p>
+
+<p>I like to break out rows into their own methods when possible.  In fact, were I to rewrite this code, the message row would have its own method to clean up the inner loop of <code>messages_by_date()</code>.  Another trick that helped for testing was to not generate a file on the filesystem.  <code>CSV</code> takes either an <code>open</code> or a <code>generate</code> method.  With <code>generate</code> it will pass the complete csv file out as the return value!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">CSVBuilder</span>
+</span><span class='line'>    <span class="kp">attr_accessor</span> <span class="ss">:messages</span><span class="p">,</span> <span class="ss">:csv</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+</span><span class='line'>      <span class="vi">@messages</span> <span class="o">=</span> <span class="n">messages</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">create</span>
+</span><span class='line'>      <span class="vi">@csv</span> <span class="o">=</span> <span class="no">CSV</span><span class="o">.</span><span class="n">generate</span> <span class="k">do</span> <span class="o">|</span><span class="n">csv</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">header</span>
+</span><span class='line'>        <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">empty_row</span>
+</span><span class='line'>        <span class="n">uniq_dates</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">date</span><span class="o">|</span>
+</span><span class='line'>          <span class="n">messages_by_date</span><span class="p">(</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">msg</span><span class="o">|</span>
+</span><span class='line'>            <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="o">[</span><span class="n">msg</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">receipt</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">authorization_code</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">pages_viewed</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">credit_card_number</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">total_amount</span><span class="o">]</span>
+</span><span class='line'>          <span class="k">end</span>
+</span><span class='line'>          <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">sum_totals_row</span><span class="p">(</span><span class="n">messages_by_date</span><span class="p">(</span><span class="n">date</span><span class="p">),</span> <span class="s2">&quot;Subtotal for </span><span class="si">#{</span><span class="n">date</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>        <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">empty_row</span>
+</span><span class='line'>        <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">sum_totals_row</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="s2">&quot;Total Amount&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">header</span>
+</span><span class='line'>      <span class="o">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span>
+</span><span class='line'>       <span class="s1">&#39;Receipt #&#39;</span><span class="p">,</span>
+</span><span class='line'>       <span class="s1">&#39;Authorization Code&#39;</span><span class="p">,</span>
+</span><span class='line'>       <span class="s1">&#39;Pages Viewed&#39;</span><span class="p">,</span>
+</span><span class='line'>       <span class="s1">&#39;Name&#39;</span><span class="p">,</span>
+</span><span class='line'>       <span class="s1">&#39;Credit Card #&#39;</span><span class="p">,</span>
+</span><span class='line'>       <span class="s1">&#39;Total Amount&#39;</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">empty_row</span>
+</span><span class='line'>      <span class="nb">Array</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">messages_by_date</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">messages</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="n">m</span><span class="o">.</span><span class="n">date</span> <span class="o">==</span> <span class="n">date</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">uniq_dates</span>
+</span><span class='line'>      <span class="n">messages</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:date</span><span class="p">)</span><span class="o">.</span><span class="n">uniq</span><span class="o">.</span><span class="n">sort</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">sum_totals_row</span><span class="p">(</span><span class="n">msgs</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">rawsum</span> <span class="o">=</span> <span class="n">msgs</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="n">m</span><span class="o">.</span><span class="n">total_amount</span><span class="o">.</span><span class="n">to_f</span> <span class="p">}</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="ss">:+</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">sum</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span> <span class="s2">&quot;%.2f&quot;</span><span class="p">,</span> <span class="n">rawsum</span> <span class="p">)</span>
+</span><span class='line'>      <span class="n">sum_row_padding</span> <span class="o">=</span> <span class="nb">Array</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">sum_row</span> <span class="o">=</span> <span class="o">[</span> <span class="n">sum_row_padding</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">sum</span> <span class="o">].</span><span class="n">flatten</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&rsquo;m also quite proud of the variable name <code>rawsum</code> because it&rsquo;s rawsome to design code that will save a couple hours every two weeks.</p>
+
+<p>With a good ecosystem of libraries, it&rsquo;s only a couple hours of work to write a re-usable tool that saves significant amounts of time. Hooray :).</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips]]></title>
@@ -934,33 +1384,6 @@ What other methods do you have for reducing repetition?
 <script src="https://gist.github.com/zph/4980402.js"></script>
 
 <p>Enjoy seeing your markdown render while typing in a 30+ year old text editor =D.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Making Thinking Rock v2.1 Work on OSX 10.8]]></title>
-    <link href="http://zph.github.io/blog/2013/02/18/getting-thinking-rock-v2-1-work-on-osx-10-8/"/>
-    <updated>2013-02-18T00:00:00-05:00</updated>
-    <id>http://zph.github.io/blog/2013/02/18/getting-thinking-rock-v2-1-work-on-osx-10-8</id>
-    <content type="html"><![CDATA[So, PRODUCTIVITY, GTD, BUZZWORDS HERE.
-
-I&#8217;ve used ThinkingRock before when on a GTD kick a few years back. I liked how strictly it followed GTD. I liked being able to email myself thoughts to act on later, since email is the universal currency. I liked the tickle feature.
-
-I&#8217;m certainly willing to pay for software, as evidenced even by my donations to VIM, but I like the flexibility that&#8217;s available with open source software.
-
-The older version, v2.1, of ThinkingRock is available on SourceForge along with the source files. Given that I know zero Java, I thought it would be fun to have the source available for any program that I&#8217;m regularly using.
-
-So that leaves me with installing v2.1 on OSX 10.8 rather than the newer version. Unfortunately, while the newer version installs quite nicely and opens as you&#8217;d expect, v2.1 throws an error : unable to locate jdkhome, use &#8211;jdkhome switch.
-
-I Googled around and found this <a href="http://stackoverflow.com/questions/6614380/jdk-on-osx-10-7-lion"> explanation of the JDK location </a> and combined it with this <a href="http://www.microchip.com/forums/m668597.aspx">explanation</a> in order to come up with the following solution: hard code the <code>bin/tr</code> shell script to include the appropriate jdkhome location.
-
-Here&#8217;s the modified file:
-
-<script src="https://gist.github.com/zph/4975686.js"></script>
-
-Note that line 21 is the modified line.
-
-Now on to revive my 3 year old GTD files, do some major deleting, get email dumps setup, and Get Things Done.
 ]]></content>
   </entry>
   
