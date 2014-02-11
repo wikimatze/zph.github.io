@@ -7,8 +7,8 @@ bundle exec rake gen_deploy && \
   git checkout master && \
   rm -rf && \
   git checkout source -- _deploy && \
-  mv _deploy/* . && \
-  rm -rf _deploy && \
+  cp -r _deploy/* . && \
+  rm -rf _deploy/ && \
   git add --all && \
   git cim $message && \
   git push && \
