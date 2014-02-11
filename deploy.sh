@@ -10,7 +10,7 @@ bundle exec rake gen_deploy && \
   cp -r _deploy/* . && \
   rm -rf _deploy/ && \
   git add --all && \
-  git cim $message && \
+  git cim "$message" && \
   git push && \
   git checkout - && \
 echo "Site deployed"
