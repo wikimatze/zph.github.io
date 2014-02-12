@@ -1,0 +1,56 @@
+I was recently in a position of needing to access information from a legacy database on a Microsoft SQL Server ( 2005 ).  Since I'd prefer that the contact came from a *NIX system (probably Ubuntu), I checked out ODBC and JDBC as options.
+
+Based on a couple of blog entries by fellow Rubyists and ODBC users, the ODBC configuration files add an extra layer of complexity for the database connection.  I chose to do it with JDBC because it allows those settings to be configured in the script/config itself.  Also, with the sqljdbc*.jar running on the JVM we have platform independence.
+
+Now, on to the implementation:
+-On the SQL Server box
+  -Allow mixed authentication (it appears that JDBC does not interface with Windows User credentials based on cursory research)
+  -Setup a unique SQL Server Auth User who has the appropriate degree of authorization on the database. Consider read-only if your application is limited to querying the DB rather than writing to it.  This will limit the risk of inadvertent writes.
+  -Depending on setup, you may need to open ports 1433 and 1434 on the SQL Server's firewall.  If possible, only do this step on an internally facing instance of the SQL Server.  (Less attack surface to the internet is a good idea).
+  -Test the connection by using SQL User authentication when connecting with the builtin Microsoft SQL Server Management program.  If all goes well, this tells you that it's configured correctly when accessing from the same system.
+
+Now to connect from a remote system.  You'll need the following pieces of information: the database's name, the database ip address, the database instance name (ie defaults to SQLEXPRESS when using SQL Express), the Sql username and password
+
+-On the remote system (the Linux box)
+  -Download and extract the following file from Microsoft, this is the JDBC adapter file that they provide
+  [code]
+  http://www.microsoft.com/en-us/download/details.aspx?displaylang=en&id=21599
+  [/code]
+  OR the direct link at the time of this article:
+  [code]
+  http://download.microsoft.com/download/D/6/A/D6A241AC-433E-4CD2-A1CE-50177E8428F0/1033/sqljdbc_3.0.1301.101_enu.tar.gz
+  [/code]
+
+  Extract that into a convenient place in near where your connection code exists.  I chose to use a standard Ruby project layout as follows:
+  [code]
+|-- Gemfile
+|-- Gemfile.lock
+|-- Guardfile
+|-- README.md
+|-- bin
+|-- features
+|-- jars
+|   |-- sqljdbc.jar
+|   |-- sqljdbc4.jar
+|   `-- sqljdbc_3.0.1301.101_enu.tar.gz
+|-- lib
+|   |-- README
+|   |-- jruby_demo.rb
+|   |-- tds_demo.rb
+|   `-- demo.rb
+|-- spec
+    `-- spec_helper.rb
+7 directories, 16 files
+  [/code]
+
+  Notice that the sqljdbc*.jar files are inside `jars` which is on the same level of nesting as the `lib` directory.  This is important when referencing their location in the code.
+
+  Once the JARs are extracted, run `bundle install` to request that Bundler install the required dependencies.  Then install JRuby if not currently installed.  I use [RVM](www.rvm.io) for easy Ruby switching.
+
+  Next modify the following script to help you get started.  Note that you'll need to replace the values of the CONSTANTS as appropriate for your IP addresses, username, passwords, etc.
+
+<script src="https://gist.github.com/4361158.js"></script>
+
+  Of further note is that a class will need to be defined for each table in the database that you wish to access.  I briefly outline this in the comments of the code.  This is fairly standard ActiveRecord use.
+
+  Questions, comments, post them here or to me on Twitter [ @_ZPH ](www.twitter.com/_ZPH).

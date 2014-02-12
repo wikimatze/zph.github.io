@@ -1,0 +1,13 @@
+Source:
+http://stackoverflow.com/questions/3986760/cd-1-2-3-etc-in-z-shell
+
+While looking for a zsh compatible way to replace AutoJump with a ZSH compatible option, I found the following:
+[cc_bash]setopt autocd
+setopt AUTO_PUSHD[/cc_bash]
+The first option allow moving into a new directory by directly typing it's name without 'cd DIRECTORY'.
+
+The second option allows easier navigation using 'dirs -v' to check for recent directories or cd ~+<TAB> for tab completion jumping :).
+
+Another little way to save small repetitions!
+
+As a side note: I'm quite sad not to have the flexibility of AutoJump in my repetoire with ZSH.  It's the only feature I find lacking compared to BASH.  Hopefully it works better in ZSH in the near future, or hopefully I can look into why it doesn't work and learn how to patch it. 

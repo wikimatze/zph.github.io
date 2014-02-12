@@ -1,0 +1,14 @@
+Very handy for quickly swapping between prior file and current file in VIM:
+
+Add the following to VIMRC:
+[cc_vim]nnoremap <Leader>, :b#<CR>[/cc_vim]
+
+My current leader key is set to comma (,) so punching ,, switches between prior and current file, or back again.
+
+Runner up for other good one liners:
+[cc_vim]inoremap jk <ESC>[/cc_vim] 
+This one allows you to stay on the commandline and ESCAPE out of insert mode by using key combo 'jk'!
+
+Source & Credit: Gary Bernhardt's Dotfiles on Github (though escape sequence of jj swapped to j k)
+
+PS - The only conflict I've had with j k being an ESC sequence is this blog post.  In code and prose I haven't run into problems.
