@@ -1,0 +1,9 @@
+[FASD](https://github.com/clvv/fasd) is a shell script that follows in the concept and footsteps of Autojump and Z.  It extends the functionality of both of those systems to better differentiate between files and directories.  FASD also allows for tacking on different commands to the beginning of a fasd reference such as using vim in an alias, ie:
+[cc_bash]alias v='f -e vim'[/cc_bash]
+
+
+Or a simple 'z {search_term}' will find the most often and recently used folder and 'cd' into it!
+
+It's magic and I'll post back if I keep having good success.
+
+Try it out with a [cci_bash]brew install fasd[/cci_bash] or check the install instructions on their github page for more options - [FASD](https://github.com/clvv/fasd).

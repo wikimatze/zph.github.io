@@ -1,0 +1,20 @@
+I've been working on a library for easily exporting [Trello](www.trello.com) information to CSV, TSV, and XLSX. It's currently working well for all three formats although the code itself is first or second draft quality.  (Not that XLSX has some issues of its own when done from Ruby.  I'd like to solve it eventually but it's on the back seat since the files still open.)
+I took the time to import it into CodeClimate's automated test system to see where potential issues are.
+
+It revealed that one particular set of methods was far too complex.  These were the methods that generate the CSV or XLSX file.
+
+I sat down to refactor them while under the weather this weekend and here's what I accomplished:
+
+-Extracted code out into methods (needs more of this as methods don't have single responsibilities)
+-Abstracted the process into a single uber method that calls submethods (could be private methods later in development)
+-In order to abstract the process to be identical for CSV and XLSX, I found one spot that needed an [cci_ruby]eval(content)[/cci_ruby] statement. ( Perhaps in the future I can adapt a lambda to better suit this purpose?? )
+
+Here are the different versions of it:
+
+Before- <script src="https://gist.github.com/4330951.js"></script>
+
+After- <script src="https://gist.github.com/4330957.js"></script>
+
+Looking at it again I want to extract the different classes into their own files for better compartmentalizing the code.
+
+Let me know in the comments what code smells are present or what refactorings are still advised.
