@@ -151,6 +151,135 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2013/02/toggling-pry-in-ruby-script/">Toggling Pry in Ruby Script</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-18T00:00:00-05:00" pubdate data-updated="true">Feb 18<span>th</span>, 2013</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been using the daylights out of <a href="https://github.com/pry/pry">Pry</a> ever since learning about it ~ 1 year ago.  I&#8217;ve also been evangelizing about it to anyone who will listen:</p>
+
+<blockquote class="twitter-tweet"><p>@<a href="https://twitter.com/_zph">_zph</a> Thanks for reading!And thanks for teaching me tmux and pry.Been trying them here and there - still very shaky with tmux.</p>&mdash; Steve Jackson (@stevejxsn) <a href="https://twitter.com/stevejxsn/status/302758800069365761">February 16, 2013</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>The most recent way that I&#8217;m using Pry is by dropping the following line into anywhere that I need to work with:
+<code>require 'pry'; binding.pry</code></p>
+
+<p>But adding that to scripts and then deleting it becomes repetitive.  So here&#8217;s a little Vim function that that toggles my Pry statement.  If the current line matches the Pry snipped, the line&#8217;s deleted.  If the current line doesn&#8217;t match the snippet, then the snippet is added at the cursor.  ( It&#8217;s best used on a blank line until I make the function more robust. )</p>
+
+<script src="https://gist.github.com/zph/4980163.js"></script>
+
+<p>Special thanks go to <a href="http://twitter.com/banisterfiend">@Banisterfiend</a> for all his hard work on the Pry gem.  It makes my Ruby life a much happier experience.  If you&#8217;ve benefited from his hard work, please consider a donation @ the following <a href="http://pryrepl.org/"> link </a>.</p>
+
+<p>Also, special thanks to <a href="http://www.twitter/tpope">Tim Pope</a>.  Reading his vim-fugitive code gave me the syntax hint on how to make this work.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/02/making-marked-app-work-with-vim/">Making Marked.app Work With Vim</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-18T00:00:00-05:00" pubdate data-updated="true">Feb 18<span>th</span>, 2013</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I found the delightful &#8217;<a href="http://markedapp.com/"> Marked.app </a>&#8217; for OSX recently.  It takes any Markdown file and parses it using a few standard Markdown interpreters, displaying a live view of the text as html.</p>
+
+<p>Of course I wanted to use it everywhere.  And by everywhere, I mean in Vim.  And by that I mean <a href="http://www.twitter.com/jeg2">@JEG2</a> posted the idea on Twitter:</p>
+
+<blockquote class="twitter-tweet"><p>Open an Emacs file in Marked.app:<a href="https://t.co/2JBfev25" title="https://github.com/JEG2/dotfiles/blob/master/emacs.d/packages.el#L121">github.com/JEG2/dotfiles/…</a></p>&mdash; James Edward Gray II (@JEG2) <a href="https://twitter.com/JEG2/status/294607873370120192">January 25, 2013</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>And I ported it into a couple of lines in my .vimrc:</p>
+
+<script src="https://gist.github.com/zph/4980402.js"></script>
+
+<p>Enjoy seeing your markdown render while typing in a 30+ year old text editor =D.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/02/getting-thinking-rock-v2-1-work-on-osx-10-8/">Making Thinking Rock v2.1 Work on OSX 10.8</a></h1>
     
     
@@ -262,6 +391,57 @@ Now on to revive my 3 year old GTD files, do some major deleting, get email dump
 <script src="https://gist.github.com/zph/4980336.js"></script>
 
 <p>Typing your leader key (mapped to &#8221; by default but remapped to &#8216;,&#8217; by you, right? ) and hitting &#8216;rr&#8217; in quick sequence will execute the current file using your Ruby interpreter.  If you&#8217;re using RVM to manage your Rubies, you might also want to consider adding the vim-rvm extension to use the &#8216;correct&#8217; Ruby.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/02/a-perfect-storm-gtd-commandline-emails-alfred-and-thinkingrock/">A Perfect Storm: GTD, Commandline Emails, Alfred, and ThinkingRock</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-18T00:00:00-05:00" pubdate data-updated="true">Feb 18<span>th</span>, 2013</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Talk about my script for emailing items to myself as actionable things </p>
 </div>
   
   
@@ -641,188 +821,6 @@ Questions, thoughts, jeers, feedback&#8230; catch me on &#8216;ye ol Twitters&#8
 <p>Below is a Gist showing the shell commands</p>
 
 <script src="https://gist.github.com/4411301.js"></script>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/12/rcodetools/">RCodeTools - How to Get Them Working in VIM</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-25T00:00:00-05:00" pubdate data-updated="true">Dec 25<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="https://github.com/tnoda/rcodetools">RCodeTools</a> is an add-on for popular neckbeard text editors such as VIM and Emacs. (My preference currently being VIM).
-
-I came across it through <a href="http://devblog.avdi.org/rubytapas/">RubyTapas Screencasts</a> by Avdi Grimm.  He uses it extensively in his screencasts for crystal clear explanations and live displays of code execution.</p>
-
-<p>RCodeTools adds hash comments (ie [cci_bash] #=> [/cci_bash]) to the text editor buffer.  Then when another command is executed, the whole buffer is evaluated and the area beyond the hash comment is populated with the output from that specific line(s) of code.</p>
-
-<p>It&#8217;s remarkably helpful for explaining and demonstrating code because it avoids any context shift.  The comments serve to demonstrate the code&#8217;s state at any given moment!</p>
-
-<p>Avdi Grimm uses RCodeTools inside Emacs in the screencasts and I was eager to begin using RCodeTools myself.  I had difficulty getting the plugin to work in VIM, resulting in attempts to reinstall VIM, modify the $PATH, etc.</p>
-
-<p>Turns out there is a simpler way:
-1. Install RCodeTools into your ~/.vim/ folder.  Specifically this means the vimscript files.
-2. Install vim-rvm for managing path.
-3. Gem install rcodetools inside your standard RVM ruby.
-4. Add mappings to VIMRC.  Included are my mappings (which are recommended by the README.vim)</p>
-
-<script src="https://gist.github.com/4459982.js"></script>
-
-<p>I look forward to putting this addon to good use at future <a href="http://coderetreat-leandog-2013-1.eventbrite.com/">CodeRetreats</a>!  And it&#8217;s the perfect compliment to screencasting.</p>
-
-<p>Thanks Avdi for drawing my attention to this wonderful tool.</p>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/12/ruby-off-the-rails-ep-1-zero-to-ruby-pt-2/">Ruby Off the Rails - Ep. 1 &#8211; Zero to Ruby &#8211; Pt. 2</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-24T00:00:00-05:00" pubdate data-updated="true">Dec 24<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Here&#8217;s the second installment, briefly covering installing RVM and an approachable text editor (Sublime Text 2). I advocate for focusing learning on one area at a time which means learn Ruby rather than starting to learn Ruby and VIM at the same time. (Learn VIM or EMACS once you&#8217;re further along with the language itself and see it as a long term investment in your productivity and happiness as a code crafter). Ep. 2 &#8211; Zero to Ruby &#8211; Pt. 2 <a href="http://vimeo.com/56214356">Ruby Off the Rails - Ep 2. - Zero to Ruby Pt. 2</a> from <a href="http://vimeo.com/zph">ZPH</a> on <a href="http://vimeo.com">Vimeo</a>. Here&#8217;s the source for the commands used in the episode:</p>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/12/ruby-off-the-rails-ep-1-zero-to-ruby-pt-1/">Ruby Off the Rails - Ep. 1 &#8211; Zero to Ruby &#8211; Pt. 1</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-23T00:00:00-05:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Ruby Off The Rails is a new series of screencasts that I will be publishing.
-
-The first cluster of videos will address the problem of getting started with Ruby development by using a virtual installation of Ubuntu Linux running inside Virtualbox.  It&#8217;s simpler than it sounds and it preserves the integrity of your everyday system.
-
-Here&#8217;s the first installment, enjoy!  (I recommend opening the video for fullscreen display to better view the text)
-
-<iframe src="http://player.vimeo.com/video/56184359" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p><a href="http://vimeo.com/56184359">Ruby Off the Rails - Ep. 1 - Zero to Ruby - Part 1</a> from <a href="http://vimeo.com/zph">ZPH</a> on <a href="http://vimeo.com">Vimeo</a>.</p>
-
-<p>Commands from Ep. 1</p>
-<script src="https://gist.github.com/4368084.js"></script>
 </div>
   
   

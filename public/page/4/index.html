@@ -151,6 +151,188 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/12/rcodetools/">RCodeTools - How to Get Them Working in VIM</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-25T00:00:00-05:00" pubdate data-updated="true">Dec 25<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="https://github.com/tnoda/rcodetools">RCodeTools</a> is an add-on for popular neckbeard text editors such as VIM and Emacs. (My preference currently being VIM).
+
+I came across it through <a href="http://devblog.avdi.org/rubytapas/">RubyTapas Screencasts</a> by Avdi Grimm.  He uses it extensively in his screencasts for crystal clear explanations and live displays of code execution.</p>
+
+<p>RCodeTools adds hash comments (ie [cci_bash] #=> [/cci_bash]) to the text editor buffer.  Then when another command is executed, the whole buffer is evaluated and the area beyond the hash comment is populated with the output from that specific line(s) of code.</p>
+
+<p>It&#8217;s remarkably helpful for explaining and demonstrating code because it avoids any context shift.  The comments serve to demonstrate the code&#8217;s state at any given moment!</p>
+
+<p>Avdi Grimm uses RCodeTools inside Emacs in the screencasts and I was eager to begin using RCodeTools myself.  I had difficulty getting the plugin to work in VIM, resulting in attempts to reinstall VIM, modify the $PATH, etc.</p>
+
+<p>Turns out there is a simpler way:
+1. Install RCodeTools into your ~/.vim/ folder.  Specifically this means the vimscript files.
+2. Install vim-rvm for managing path.
+3. Gem install rcodetools inside your standard RVM ruby.
+4. Add mappings to VIMRC.  Included are my mappings (which are recommended by the README.vim)</p>
+
+<script src="https://gist.github.com/4459982.js"></script>
+
+<p>I look forward to putting this addon to good use at future <a href="http://coderetreat-leandog-2013-1.eventbrite.com/">CodeRetreats</a>!  And it&#8217;s the perfect compliment to screencasting.</p>
+
+<p>Thanks Avdi for drawing my attention to this wonderful tool.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/12/ruby-off-the-rails-ep-1-zero-to-ruby-pt-2/">Ruby Off the Rails - Ep. 1 &#8211; Zero to Ruby &#8211; Pt. 2</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-24T00:00:00-05:00" pubdate data-updated="true">Dec 24<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Here&#8217;s the second installment, briefly covering installing RVM and an approachable text editor (Sublime Text 2). I advocate for focusing learning on one area at a time which means learn Ruby rather than starting to learn Ruby and VIM at the same time. (Learn VIM or EMACS once you&#8217;re further along with the language itself and see it as a long term investment in your productivity and happiness as a code crafter). Ep. 2 &#8211; Zero to Ruby &#8211; Pt. 2 <a href="http://vimeo.com/56214356">Ruby Off the Rails - Ep 2. - Zero to Ruby Pt. 2</a> from <a href="http://vimeo.com/zph">ZPH</a> on <a href="http://vimeo.com">Vimeo</a>. Here&#8217;s the source for the commands used in the episode:</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/12/ruby-off-the-rails-ep-1-zero-to-ruby-pt-1/">Ruby Off the Rails - Ep. 1 &#8211; Zero to Ruby &#8211; Pt. 1</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-23T00:00:00-05:00" pubdate data-updated="true">Dec 23<span>rd</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Ruby Off The Rails is a new series of screencasts that I will be publishing.
+
+The first cluster of videos will address the problem of getting started with Ruby development by using a virtual installation of Ubuntu Linux running inside Virtualbox.  It&#8217;s simpler than it sounds and it preserves the integrity of your everyday system.
+
+Here&#8217;s the first installment, enjoy!  (I recommend opening the video for fullscreen display to better view the text)
+
+<iframe src="http://player.vimeo.com/video/56184359" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> <p><a href="http://vimeo.com/56184359">Ruby Off the Rails - Ep. 1 - Zero to Ruby - Part 1</a> from <a href="http://vimeo.com/zph">ZPH</a> on <a href="http://vimeo.com">Vimeo</a>.</p>
+
+<p>Commands from Ep. 1</p>
+<script src="https://gist.github.com/4368084.js"></script>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/12/jdbc-mssql-and-jruby-oh-my/">JDBC, MsSQL, and JRuby, Oh My!</a></h1>
     
     
@@ -675,187 +857,6 @@ Save dashboard settings, click &#8216;Domain Status&#8217; tab, and gloat in you
 <p>-Dropbox, Evernote, DashExpander, Pomodairo, TweetDeck, Sparrow/Thunderbird (Sparrow for slick integration, Thunderbird for extensions and power), and last but certainly not least Z-Shell.</p>
 <p>Let me know in the comments or on Twitter if I&#8217;m missing any good tools!</p>
 <p><a href="https://twitter.com/_zph">@_zph</a></p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/09/wpid310-vimrepress_5051394d_mkd.odt wpid310-vimrepress_5051394d_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/08/coderetreat-steelcityruby-things-i-learned/">CodeRetreat @SteelCityRuby - Things I Learned</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-22T00:00:00-04:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I attended the CodeRetreat at @SteelCityRuby 2012 and this post is an abbreviated recap of my experience.</p>
-<p>It was great!  I had fun. There, I&#8217;ve thoroughly explained it.  Go forth and try it out when CodeRetreat comes to a city near you.</p>
-<p>Oh, you wanted more of an explanation?  It was an event lasting from 8am to 5pm and it involved turning programming on its head.  Corey Haines led the event with the space donated by 4Moms (thanks!!!).<br />
-</p>
-<p>We ran through a series of 45 min pair programming sessions interspersed with lecture sessions and short breaks.  Each session was with a new random programming partner and had its own evil (but useful) coding constraints.  Think of the constraints as a way to shake free many coding habits and relearn more maintainable patterns.</p>
-<p>So what did I and others learn from this day of intense and fun coding?
-1. Re-usable and easily modified code is worth its weight in rubies.
-2. Think of the ways that constraints may change in the future, code to allow this (ie is true/false sufficient or should it be more than a binary choice?).
-3. Tests are more than tests, they&#8217;re a roadmap for talking with fellow programmers on your team.
-4. Communication is very important, sometimes more than programming skill when working as a pair.  I found myself spending time and effort working on communicating well and understanding what my pair partner was envisioning.
-5. Contemplate why you&#8217;re passing primitives as output from methods.  Consider where passing an object could be better.
-6. Short methods are maintainable methods, also helps with easier testing.
-6b. The idea of a &#8216;screen-full of code&#8217; being the max for a method came from our elder days when very few lines fit on a screen &#8230;. not from now with a 1080p screen with 9 pt font.
-7. Possibly the most important learning of the day: Rubyists are very fun and supportive, even of newer programmers.</p>
-<p>So think of a CodeRetreat as a sassy, challenging, sometimes infuriating exploration of &#8216;the code less written&#8217;, with apologies to Robert Frost.</p>
-<p>Give CodeRetreat a try when its in your area.  I&#8217;ll be hitting up the next one that comes this way.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/08/wpid294-vimrepress_503589cb_mkd.odt wpid294-vimrepress_503589cb_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/08/swap-out-bad-line-endings-for-unix-standard/">Swap Out BAD Line Endings for Unix Standard</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-19T00:00:00-04:00" pubdate data-updated="true">Aug 19<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>[cc_vim]:setlocal ff=Unix
-:w [/cc_vim]</p>
-<p>Converts and saves current buffer as Unix standard line endings. 
-n FTW!</p>
-<h1>Update</h1>
-<p>[cc_bash]brew install dos2unix[/cc_bash]
-Then use dos2unix to easily swap line endings into Unix format
-[cc_bash]dos2unix *.rb[/cc_bash]</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/11/wpid289-vimrepress_50319568_mkd.odt wpid289-vimrepress_50319568_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/08/coderetreat-steelcityruby-a-post-mortem/">CodeRetreat @SteelCityRuby: A Post Mortem</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-08-12T00:00:00-04:00" pubdate data-updated="true">Aug 12<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>My head has finally stopped spinning from the CodeRetreat at this year&#8217;s Steel City Ruby Conference (2012), the fires are extinguished at work, and I&#8217;m ready to document the experience.
-I arrived as the first participant, not because I&#8217;m overachieving but because the Pittsburg taxi system is very irregular.  I allowed the same time as the day before for a cabbie to pick me up, which was 30 minutes.  Instead I was swooped up in 10 minutes and arrived nearly an hour early for the CodeRetreat at 4Mom&#8217;s office.
-The CodeRetreat was lead by the charismatic Corey Haines, the same bloke who set a wonderful tone on day one of @SteelCityRuby by emphasizing personal networking.  In fact, the tone set by his keynote speech kept the conference largely free from individuals using their laptops during speeches!  Quite a difference from other conference scenes that I&#8217;ve experienced :).
-But back to the point, the CodeRetreat was held in the offices of <a href="http://www.4moms.com/"> 4Moms </a> and the food was sponsored by those fine folks.
-We started the day by pair programming Conway&#8217;s Game of Life using Test Driven Development.  The first round lasted 45 min and we were then told that the specs had changed and to fix our code in another 10 min.  Thankfully our code was relatively modular and the changes needed were minimal.  We reviewed the amount of code revision needed to implement small requirement shifts and discussed how to build in flexibility and simplicity into the code.</p>
-<p>Notes:
-Revelations: spending time learning social intricacies of collaborating</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/08/wpid287-vimrepress_50287683_mkd.odt wpid287-vimrepress_50287683_mkd.odt -->
 </div>
   
   

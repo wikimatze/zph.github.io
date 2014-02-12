@@ -151,6 +151,175 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/07/awesome-tool-for-recovering-ecryptfs-from-ubuntucanonical/">Awesome Tool for Recovering Ecryptfs From Ubuntu/Canonical</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-05T00:00:00-04:00" pubdate data-updated="true">Jul 5<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>During the process of recovering an encrypted filesystem from an old server of mine, I found that I couldn&#8217;t access any of the data.  It appears that I encrypted my home folder on the server using Ubuntu&#8217;s default ecryptfs.</p>
+<p>I &#8216;Googled&#8217; my way through locating the encrypted &#8216;.Private&#8217; folder and tried unsuccessfully to mount the folder. I then used ecryptfs-unwrap-passphrase to unwrap my unique passphrase using the old login password.</p>
+<p>Armed with that and a tool from Dustin Kirkland over at Canonical (ecrypt-recover-private) I succeeded in using the following command to recover my data
+[cc_bash]sudo ecryptfs-recover-private .Private(at appropriate location)[/cc_bash]
+(Note - replace .Private with whichever location it&#8217;s at)
+Then type in the login password, which yields the passphrase, which leads to mounting the data as a read-only directory in /tmp.</p>
+<p>Thanks Canonical!</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/07/wpid247-vimrepress_4ff657ed_mkd.odt wpid247-vimrepress_4ff657ed_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/07/installing-jungledisk-on-mint-13-12-04/">Installing JungleDisk on Mint 13 (12.04)</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-04T00:00:00-04:00" pubdate data-updated="true">Jul 4<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m setting up a home server (which will be a blog post for a later date).</p>
+<p>But in the process of setting up Amazon S3 backups, I was installing <a href="www.jungledisk.com">JungleDisk</a>.  This allows mounting of a remote S3 bucket as if it were a local drive.</p>
+<p>After installing, I received the following error stating that it could not find &#8216;libnotify.so.1&#8217;.  I used the locate command to find libnotify (currently libnotify.so.4) and used symlinked it into place.
+[cc_bash]sudo ln -s /usr/lib/x86_64-linux-gnu/libnotify.so.4 /usr/lib/x86_64-linux-gnu/libnotify.so.1[/cc_bash]</p>
+<p>After the symlink everything started up correctly :).</p>
+<p>Btw, server is a quad core AMD (Phenom), 12 GB RAM, plenty of storage, SSD for boot drive, spinner platters for storage&#8230; and ZFS =D.</p><!-- #VIMREPRESS_TAG# http://www.civet.ws/wp-content/uploads/2012/07/vimrepress_4ff4b054_mkd.odt vimrepress_4ff4b054_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/06/parallels-your-ads-belong-in-trial-versions/">Parallels - Your Ads Belong in Trial Versions</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-25T00:00:00-04:00" pubdate data-updated="true">Jun 25<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Dear Parallels Team,</p>
+<p>It&#8217;s unacceptable to put ads in a product for which I paid full price (ie Parallels Desktop 7).</p>
+<p>Thanks to Google and someone in the Parallels forum for mentioning that the answer is here:
+  <a href="http://netizensmith.org.uk/wp/?p=76">NetizenSmith.org.uk</a>.  This is a much more palattable place to learn about it compared to needing a Private Message on the Parallels Forum.</p>
+<p>Credit to Netizen for finding out that you can type the following in the terminal to remove their ads:
+  [cc]defaults write com.parallels.Parallels Desktop ProductPromo.ForcePromoOff -bool YES[/cc]</p><!-- #VIMREPRESS_TAG# http://www.civet.ws/wp-content/uploads/2012/06/vimrepress_4fe8cf44_mkd.odt vimrepress_4fe8cf44_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/05/tmux-a-reluctant-love-story/">Tmux, a Reluctant Love Story</a></h1>
     
     
@@ -405,6 +574,57 @@ Using &#8216;G&#8217; moves to the end of the file (or more specifically to the 
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/05/cost-of-osx-or-how-i-justify-additional-expense/">Cost of OSX, or How I Justify Additional Expense</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-23T00:00:00-04:00" pubdate data-updated="true">May 23<span>rd</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Break down percentage that I&#8217;m paying for each neat feature&#8230; justify it</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/vimrepress_4fbd34ee_mkd.odt vimrepress_4fbd34ee_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/05/why-i-love-open-source-software/">Why I Love Open-Source Software</a></h1>
     
     
@@ -510,243 +730,6 @@ bindkey -M viins &#8216;^R&#8217; history-incremental-search-backward
 bindkey -M vicmd &#8216;^R&#8217; history-incremental-search-backward[/cc_bash]</p>
 <p>Now I can ^R with aplomb&#8230;</p>
 <p>This is thanks to the explanation from JDeBP over on <a href="http://superuser.com/questions/328026/can-i-use-vim-editing-mode-on-the-command-line-without-losing-recursive-history">superuser.com</a>.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/vimrepress_4fbb0104_mkd.odt vimrepress_4fbb0104_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/5-days-of-osx/">5 Days of OSX</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-21T00:00:00-04:00" pubdate data-updated="true">May 21<span>st</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Well, it&#8217;s been 5 days since getting an OSX laptop (MBA) and it&#8217;s treating me pretty well.</p>
-<p>Here are some initial impressions:
-Some of the coolest things:
-1. Spotlight
-2. Quicksilver (launcher app)
-3. Quickcursor (vim geek app lets edit with vim everywhere&#8230; like this an email or blog post) Thanks to <a href="http://connermcd.wordpress.com">Conner&#8217;s Blog</a>
-4. Touchpad is magnificent&#8230; crazy amount of multitouch gestures
-5. System based on BSD Mach kernel&#8230; allowing all sorts of Unix-compliant
-goodness
-  Along with that goes MacVim, iTerm2, growl, and all my unix commandline favs
-6. Homebrew and MacPorts&#8230; both very good but not as well integrated as
-Debian&#8217;s apt-get and Arch&#8217;s pacman.  Oh well, still waiting for slick Linux
-laptop with the hardware support of OSX&#8230;(not holding my breath)</p>
-<p>What&#8217;s not so cool:
-1. Learning new keyboard shortcuts
-2. Fn key is a complete waste of space, need to remap it to be Ctrl (Did this with <a href="http://pqrs.org/macosx/keyremap4macbook/">KeyReMap4Macbook</a>: Note that the config can be tricky depending on other keyboard tweaks, but it&#8217;s now working)
-3. Logitech mouse is a bit tweakier than under Linux &amp; windows. (Update: MagicMouse looks pretty cool, esp with multitouchtool)
-4. Terminal based VIM is SegFaulting with one of my addons (it allows me to
-    blog from commandline for www.civet.ws, my tech blog. Thankfully it works
-    ok in MacVIM). Haven&#8217;t solved this yet but with it working for 99% of my tasks&#8230; the troubleshooting can wait for a rainy day. Maybe updating Mac&#8217;s pre-installed python&#8230;and recompiling VIM.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/wpid203-vimrepress_4fbac464_mkd.odt wpid203-vimrepress_4fbac464_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/vim-video-by-bram/">VIM Video by Bram</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-20T00:00:00-04:00" pubdate data-updated="true">May 20<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Watched this video today by the author of VIM: Bram Moolenaar
-<a href="http://video.google.com/videoplay?docid=2538831956647446078">VIM Video by Bram Moolenaar</a></p>
-<p>It&#8217;s about 1.3 hours long and worth the watch.</p>
-<p>A useful tip so far is the [cc_bash]*[/cc_bash]</p>
-<p>Which uses your current word as a search term and incremental searches forward.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/vimrepress_4fb92a64_mkd.odt vimrepress_4fb92a64_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/useful-vim-cheetsheet/">Useful VIM Cheetsheet</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-20T00:00:00-04:00" pubdate data-updated="true">May 20<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>New VIM command of the day: [cc_bash]d/(searchterm)[/cc_bash]
-This will delete up until the search term.</p>
-<p>Source of this wisdom: <a href="http://www.brezeale.com/technical_notes/vim_notes.shtml">VIM Commands</a></p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/wpid187-vimrepress_4fb91c24_mkd.odt wpid187-vimrepress_4fb91c24_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/my-current-favorite-vimrc-one-liner/">My Current Favorite VIMRC One-liner</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-12T00:00:00-04:00" pubdate data-updated="true">May 12<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Very handy for quickly swapping between prior file and current file in VIM:</p>
-<p>Add the following to VIMRC:
-[cc_vim]nnoremap <Leader>, :b#<CR>[/cc_vim]</p>
-<p>My current leader key is set to comma (,) so punching ,, switches between prior and current file, or back again.</p>
-<p>Runner up for other good one liners:
-[cc_vim]inoremap jk <ESC>[/cc_vim] 
-This one allows you to stay on the commandline and ESCAPE out of insert mode by using key combo &#8216;jk&#8217;!Note: I find this faster than a more common binding of &#8216;jj&#8217; for this purpose.  With jj the same finger needs to activate the key in quick succession.  With j &amp; k the right hand index and middle finger both activate at a similar time. Thus my preference goes to the slightly easier and faster option.</p>
-<p>Source &amp; Credit: Gary Bernhardt&#8217;s Dotfiles on Github (though escape sequence of jj swapped to j k)</p>
-<p>PS - The only conflict I&#8217;ve had with j k being an ESC sequence is this blog post.  In code and prose I haven&#8217;t run into problems.</p>
 </div>
   
   
