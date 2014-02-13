@@ -4,7 +4,7 @@
   <title><![CDATA[Civet]]></title>
   <link href="http://zph.github.io/atom.xml" rel="self"/>
   <link href="http://zph.github.io/"/>
-  <updated>2014-02-12T18:07:23-05:00</updated>
+  <updated>2014-02-13T01:54:57-05:00</updated>
   <id>http://zph.github.io/</id>
   <author>
     <name><![CDATA[Zander]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Using Null Terminators in Linux/OSX]]></title>
+    <link href="http://zph.github.io/2014/02/using-null-terminators-in-star-nix/"/>
+    <updated>2014-02-13T01:49:00-05:00</updated>
+    <id>http://zph.github.io/2014/02/using-null-terminators-in-star-nix</id>
+    <content type="html"><![CDATA[<p>I ran into an issue with using <code>xargs</code> with <code>rm -rf</code>.</p>
+
+<p>This could be dicey, so get your safety hats on.</p>
+
+<p>The issue was that the filename included an apostrophe.  So when trying to do a simple command such as <code>tree -fi | grep conflicted | xargs rm -f '{}'</code>, I received an error about having an unterminated quote in the parameter.</p>
+
+<p>Apparently, some versions of xargs allow you to specify a delimiter with a <code>-d</code> but the copy on my Mac didn&rsquo;t have such a flag.</p>
+
+<p>Instead, I learned that <code>egrep --null</code> will use a null character as the divider between matches.  So the following solved my problem:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>tree -fi | egrep --null conflicted | xargs -0 rm -f <span class="s1">&#39;{}&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&rsquo;s break that command set down:</p>
+
+<ul>
+<li><code>tree -fi</code> is a trick I recently learned from my friend @olleolleolle.  It prints out the local tree of files and the -fi prints out the whole filename (including directories).</li>
+<li><code>egrep --null conflicted</code> is where the magic starts.  The <code>--null</code> flag tell egrep to separate matches with a null character.</li>
+<li><code>xargs -0 rm -f '{}'</code> this tells xargs that the null character is divider and to remove each filename that comes through the linux pipe.</li>
+</ul>
+
+
+<p>This is yet another example of why I&rsquo;m impressed with the commandline.  Simple little tools that can be chained together with symbiotic behavior.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Automating Email with Ruby]]></title>
@@ -1363,27 +1396,6 @@ What other methods do you have for reducing repetition?
 <p>Special thanks go to <a href="http://twitter.com/banisterfiend">@Banisterfiend</a> for all his hard work on the Pry gem.  It makes my Ruby life a much happier experience.  If you&#8217;ve benefited from his hard work, please consider a donation @ the following <a href="http://pryrepl.org/"> link </a>.</p>
 
 <p>Also, special thanks to <a href="http://www.twitter/tpope">Tim Pope</a>.  Reading his vim-fugitive code gave me the syntax hint on how to make this work.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Making Marked.app Work with Vim]]></title>
-    <link href="http://zph.github.io/2013/02/making-marked-app-work-with-vim/"/>
-    <updated>2013-02-18T00:00:00-05:00</updated>
-    <id>http://zph.github.io/2013/02/making-marked-app-work-with-vim</id>
-    <content type="html"><![CDATA[<p>I found the delightful &#8217;<a href="http://markedapp.com/"> Marked.app </a>&#8217; for OSX recently.  It takes any Markdown file and parses it using a few standard Markdown interpreters, displaying a live view of the text as html.</p>
-
-<p>Of course I wanted to use it everywhere.  And by everywhere, I mean in Vim.  And by that I mean <a href="http://www.twitter.com/jeg2">@JEG2</a> posted the idea on Twitter:</p>
-
-<blockquote class="twitter-tweet"><p>Open an Emacs file in Marked.app:<a href="https://t.co/2JBfev25" title="https://github.com/JEG2/dotfiles/blob/master/emacs.d/packages.el#L121">github.com/JEG2/dotfiles/…</a></p>&mdash; James Edward Gray II (@JEG2) <a href="https://twitter.com/JEG2/status/294607873370120192">January 25, 2013</a></blockquote>
-
-<script async src="http://zph.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<p>And I ported it into a couple of lines in my .vimrc:</p>
-
-<script src="https://gist.github.com/zph/4980402.js"></script>
-
-<p>Enjoy seeing your markdown render while typing in a 30+ year old text editor =D.</p>
 ]]></content>
   </entry>
   

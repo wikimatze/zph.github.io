@@ -151,6 +151,65 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/05/my-current-favorite-vimrc-one-liner/">My Current Favorite VIMRC One-liner</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-12T00:00:00-04:00" pubdate data-updated="true">May 12<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Very handy for quickly swapping between prior file and current file in VIM:</p>
+<p>Add the following to VIMRC:
+[cc_vim]nnoremap <Leader>, :b#<CR>[/cc_vim]</p>
+<p>My current leader key is set to comma (,) so punching ,, switches between prior and current file, or back again.</p>
+<p>Runner up for other good one liners:
+[cc_vim]inoremap jk <ESC>[/cc_vim] 
+This one allows you to stay on the commandline and ESCAPE out of insert mode by using key combo &#8216;jk&#8217;!Note: I find this faster than a more common binding of &#8216;jj&#8217; for this purpose.  With jj the same finger needs to activate the key in quick succession.  With j &amp; k the right hand index and middle finger both activate at a similar time. Thus my preference goes to the slightly easier and faster option.</p>
+<p>Source &amp; Credit: Gary Bernhardt&#8217;s Dotfiles on Github (though escape sequence of jj swapped to j k)</p>
+<p>PS - The only conflict I&#8217;ve had with j k being an ESC sequence is this blog post.  In code and prose I haven&#8217;t run into problems.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/05/keeping-track-of-config-files-with-git-and-dropbox/">Keeping Track of Config Files With Git and Dropbox</a></h1>
     
     
@@ -666,61 +725,6 @@ Moral of the story; sometimes it&#8217;s more important to solve the problem tha
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/02/absence/">Absence</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-02-19T00:00:00-05:00" pubdate data-updated="true">Feb 19<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Dear spammers,
-
-You&#8217;ll be relieved to know that i am planning to get back to blogging more.  Thus you&#8217;ll have fresh tech posts where you can vainly attempt to post about Viagra and knockoff phones.
-
-Ps, to human readers&#8230; I&#8217;ve been very busy with work and getting up to speed on web scraping, ruby, active record & sqlite3, Sinatra, and GIS. It&#8217;s an exciting time but a it mellows I&#8217;ll get back to blogging.
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -748,6 +752,10 @@ Ps, to human readers&#8230; I&#8217;ve been very busy with work and getting up t
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/automating-email-with-ruby/">Automating Email with Ruby</a>
         </li>
       
@@ -761,10 +769,6 @@ Ps, to human readers&#8230; I&#8217;ve been very busy with work and getting up t
       
         <li>
           <a href="/2013/05/starting-with-vim/">Starting with Vim</a>
-        </li>
-      
-        <li>
-          <a href="/2013/05/buff-a-gem-that-puts-muscle-in-the-buffer-api/">Buff - A Gem that Puts Muscle in the Buffer API</a>
         </li>
       
     </ul>
