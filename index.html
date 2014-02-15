@@ -61,9 +61,9 @@
     <a class="brand" href="/">Civet</a>
     <ul class="nav">
       <li><a href="/">Home</a></li>
-      <li><a href="/blog/archives">Archives</a></li>
-      <li><a href="/blog/me">About</a></li>
-      <li><a href="/blog/yo-contact-me">Hire Me</a></li>
+      <li><a href="/archives">Archives</a></li>
+      <li><a href="/me">About</a></li>
+      <li><a href="/yo-contact-me">Hire Me</a></li>
     </ul>
     <ul class="nav" data-subscription="rss">
       <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
@@ -98,7 +98,7 @@
       <div class="row">
   <div class="span4">
     <h2>About Me</h2>
-<p>Polyglot, Tinkerer, et cetera.</p>
+<p>Polyglot, Problem Solver, and into improving systemic efficiencies.</p>
 
   </div>
   <div class="span6">
@@ -151,7 +151,706 @@
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/06/20/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures With MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a></h1>
+      <h1 class="entry-title"><a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues With RVM on BSD</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-15T03:00:00-05:00" pubdate data-updated="true">Feb 15<span>th</span>, 2014</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>RVM installation went poorly on FreeBSD.</p>
+
+<p>The ca-certificates weren&rsquo;t up to date according to the install script.</p>
+
+<p>Really, the ca-certificates weren&rsquo;t in the right location for RVM&rsquo;s curl install script.</p>
+
+<p>These commands as root fixed it:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mkdir -p /usr/local/opt/curl-ca-bundle
+</span><span class='line'>ln -s /usr/local/share/certs/ca-root-nss.crt /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/02/finding-myself-in-bsd/">Finding Myself in BSD</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-15T02:01:00-05:00" pubdate data-updated="true">Feb 15<span>th</span>, 2014</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Blame smartOS not reading my SATA controller.</p>
+
+<p>Blame Linux for not having first class support for ZFS (where my data is held).</p>
+
+<p>Blame <a href="@canadiancreed">https://twitter.com/canadiancreed</a> for giving me a way out of the quandry.</p>
+
+<p>The backstory is that I moved all of my backups to two ZFS pools a few years ago.  I was running ZFSonLinux and it generally worked&hellip;. except when I rebooted the server and had to force import the pools.</p>
+
+<p>Fast forward to that server being replaced by a workstation (i7 Haswell, 240GB Sata3 SSD, and 24GB RAM).  I tried smartOS by Joyent and ran into issues with my SATA controller not being recognized.  It&rsquo;s a shame given how awesome the smartOS vm administration is.  I mean vmadm and imgadm are light years ahead of Docker.</p>
+
+<p>Since smartOS refused to recognize 3 of my 8 drives I ran back to Linux.  The good new, Linux recognized the sata controller.  The bad news, Linux couldn&rsquo;t import the pools.  Frankly, Linux had a hell of a time with building the ZFS on Linux kernel modules.  I managed to piece together a few clues from the ZFSonLinux Issues on Github.  In fact, thanks to <a href="@dajhorn">https://github.com/dajhorn</a> for supplying answers on that Github issue which allowed me to build the kernel modules.</p>
+
+<p>This sounds promising doesn&rsquo;t it? It&rsquo;s not, it was a horrorshow.  Linux refused to import the one of the two zpools.  One of them imported nicely, the mission critical financial records.  The other semi-critical zpool was shot and refused to import under Linux.</p>
+
+<p>I spent a whole evening banging my head against this issue. If it hadn&rsquo;t been for <a href="Chris%20Reed">https://twitter.com/canadiancreed</a> I wouldn&rsquo;t have hit upon the solution.</p>
+
+<p>His recommendation was to try FreeBSD&hellip; so I did.  And it recognized the SATA controller and also imported the zpools cleanly!  So after a dry run w/ FreeBSD, I installed PC-BSD, which is a desktop variant based on FreeBSD. Think of it as the Ubuntu of the BSD world.  And hell yeah, it&rsquo;s all working :).</p>
+
+<p>So far, I&rsquo;m really liking it.  Replace &lsquo;aptitude&rsquo; with &lsquo;pkg&rsquo; and it&rsquo;s pretty similar.  Except, PC-BSD is working where Linux &amp; ZFS were a hassle.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-13T01:49:00-05:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I ran into an issue with using <code>xargs</code> with <code>rm -rf</code>.</p>
+
+<p>This could be dicey, so get your safety hats on.</p>
+
+<p>The issue was that the filename included an apostrophe.  So when trying to do a simple command such as <code>tree -fi | grep conflicted | xargs rm -f '{}'</code>, I received an error about having an unterminated quote in the parameter.</p>
+
+<p>Apparently, some versions of xargs allow you to specify a delimiter with a <code>-d</code> but the copy on my Mac didn&rsquo;t have such a flag.</p>
+
+<p>Instead, I learned that <code>egrep --null</code> will use a null character as the divider between matches.  So the following solved my problem:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>tree -fi | egrep --null conflicted | xargs -0 rm -f <span class="s1">&#39;{}&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&rsquo;s break that command set down:</p>
+
+<ul>
+<li><code>tree -fi</code> is a trick I recently learned from my friend @olleolleolle.  It prints out the local tree of files and the -fi prints out the whole filename (including directories).</li>
+<li><code>egrep --null conflicted</code> is where the magic starts.  The <code>--null</code> flag tell egrep to separate matches with a null character.</li>
+<li><code>xargs -0 rm -f '{}'</code> this tells xargs that the null character is divider and to remove each filename that comes through the linux pipe.</li>
+</ul>
+
+
+<p>This is yet another example of why I&rsquo;m impressed with the commandline.  Simple little tools that can be chained together with symbiotic behavior.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/02/automating-email-with-ruby/">Automating Email With Ruby</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-09T20:28:00-05:00" pubdate data-updated="true">Feb 9<span>th</span>, 2014</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Last Friday was the kind of day where I dropped into a Pry repl in order to bang out an automation script.</p>
+
+<p>The challenge was: automate the retrival of specific emails that contained receipts, wrangle them into sane data structures, and dump them into a spreadsheet with both daily totals and an absolute total.</p>
+
+<p>An example email looked like this:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'> Receipt #9999999999999
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'> County:Example, FL      Date: 2014-1-27 
+</span><span class='line'>
+</span><span class='line'> Name:Jill Doe
+</span><span class='line'> Credit Card #XXXXXXXXXXXX9999
+</span><span class='line'> Authorization code:999999
+</span><span class='line'>
+</span><span class='line'> No.of Pages viewed:3
+</span><span class='line'> Total Amount: $ 3.00
+</span><span class='line'>
+</span><span class='line'> Thank you for visiting http://www.example.com  </span></code></pre></td></tr></table></div></figure>
+
+
+<p>First step was to build an email parser for this format.  I tried to keep it tolerant of future changes to the email generation scheme.</p>
+
+<p>The general steps involved are:
+1. Split the body linewise
+2. Create a method for each piece of content to extract.
+3. From the collection of lines, grep for the line with appropriate unique text.
+4. Then in that line, use a regex to find the specific portion of data.</p>
+
+<p>The full code for that module is listed below.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">module</span> <span class="nn">Email</span>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Parser</span>
+</span><span class='line'>      <span class="kp">attr_accessor</span> <span class="ss">:email</span><span class="p">,</span> <span class="ss">:content</span>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@raw_content</span> <span class="o">=</span> <span class="n">email</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'>        <span class="vi">@content</span> <span class="o">=</span> <span class="vi">@raw_content</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:strip</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">receipt</span>
+</span><span class='line'>        <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/receipt/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="sr">/\d+/</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">county_line</span>
+</span><span class='line'>        <span class="vi">@county_line</span> <span class="o">||=</span> <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/county.*date/i</span><span class="p">)</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</span><span class='line'>                                <span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sr">/\W{3,}/</span><span class="p">)</span>
+</span><span class='line'>                                <span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span> <span class="no">Hash</span><span class="o">[*</span><span class="n">i</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:strip</span><span class="p">)</span><span class="o">]</span> <span class="p">}</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">county</span>
+</span><span class='line'>        <span class="n">county_line</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="s2">&quot;County&quot;</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">date</span>
+</span><span class='line'>        <span class="n">county_line</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="s2">&quot;Date&quot;</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">name</span>
+</span><span class='line'>        <span class="n">array</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/name/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">credit_card_number</span>
+</span><span class='line'>        <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/credit card/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="sr">/#.*$/</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">authorization_code</span>
+</span><span class='line'>        <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/authorization code/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">pages_viewed</span>
+</span><span class='line'>        <span class="k">begin</span>
+</span><span class='line'>          <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/pages viewed/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="sr">/\d+/</span><span class="o">].</span><span class="n">strip</span>
+</span><span class='line'>        <span class="k">rescue</span> <span class="no">NoMethodError</span> <span class="o">=&gt;</span> <span class="n">e</span>
+</span><span class='line'>          <span class="nb">warn</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s2"> for </span><span class="si">#{</span><span class="n">content</span><span class="o">.</span><span class="n">inspect</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">total_amount</span>
+</span><span class='line'>        <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/total amount/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span>
+</span><span class='line'>                                     <span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+</span><span class='line'>                                     <span class="o">.</span><span class="n">gsub</span><span class="p">(</span><span class="sr">/\$/</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>                                     <span class="o">.</span><span class="n">strip</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">website</span>
+</span><span class='line'>        <span class="n">content</span><span class="o">.</span><span class="n">grep</span><span class="p">(</span><span class="sr">/visiting http/i</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="o">[</span><span class="sr">/http.*$/i</span><span class="o">]</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">all</span>
+</span><span class='line'>        <span class="no">ParsingPresenter</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+</span><span class='line'>          <span class="ss">county</span><span class="p">:</span> <span class="n">county</span><span class="p">,</span>
+</span><span class='line'>          <span class="ss">date</span><span class="p">:</span> <span class="n">date</span><span class="p">,</span>
+</span><span class='line'>          <span class="nb">name</span><span class="p">:</span> <span class="nb">name</span><span class="p">,</span>
+</span><span class='line'>          <span class="n">credit_card_number</span><span class="p">:</span> <span class="n">credit_card_number</span><span class="p">,</span>
+</span><span class='line'>          <span class="n">authorization_code</span><span class="p">:</span> <span class="n">authorization_code</span><span class="p">,</span>
+</span><span class='line'>          <span class="n">pages_viewed</span><span class="p">:</span> <span class="n">pages_viewed</span><span class="p">,</span>
+</span><span class='line'>          <span class="n">total_amount</span><span class="p">:</span> <span class="n">total_amount</span><span class="p">,</span>
+</span><span class='line'>          <span class="ss">website</span><span class="p">:</span> <span class="n">website</span><span class="p">,</span>
+</span><span class='line'>          <span class="ss">receipt</span><span class="p">:</span> <span class="n">receipt</span>
+</span><span class='line'>        <span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>      <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">all</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ps</span> <span class="o">=</span> <span class="kp">new</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">ps</span><span class="o">.</span><span class="n">all</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="no">ParsingPresenter</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">OpenStruct</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With that in order, I set about using the awesome <code>ruby-gmail</code> gem for retrieving said emails. Note: after completing this project, I learned of a continuation of the <code>ruby-gmail</code> gem called <code>gmail</code>.  All the code in these examples is specific to the older incarnation of the gem.</p>
+
+<p><code>ruby-gmail</code> has a simple interface for retrieving messages between date ranges.  So I setup a specific Gmail filter for emails from a certain sender that included the text &lsquo;receipt&rsquo;.</p>
+
+<p>There&rsquo;s nothing too fancy in this code, but it&rsquo;s important to set <code>@gmail.peek = true</code> so that programatically viewed emails aren&rsquo;t marked &lsquo;read&rsquo;.  Also of note is the use of Dotenv for setting secret values without risking them in a git repo.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'> <span class="k">class</span> <span class="nc">Retriever</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="no">USER</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;GMAIL_USER&#39;</span><span class="o">]</span>
+</span><span class='line'>      <span class="no">PASSWORD</span> <span class="o">=</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;GMAIL_PASSWORD&#39;</span><span class="o">]</span>
+</span><span class='line'>      <span class="no">LABEL</span> <span class="o">=</span> <span class="s1">&#39;Receipts&#39;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="kp">attr_accessor</span> <span class="ss">:user</span><span class="p">,</span> <span class="ss">:password</span><span class="p">,</span> <span class="ss">:gmail</span><span class="p">,</span> <span class="ss">:messages</span>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">user</span><span class="o">=</span><span class="no">USER</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="no">PASSWORD</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@user</span> <span class="o">=</span> <span class="n">user</span>
+</span><span class='line'>        <span class="vi">@password</span> <span class="o">=</span> <span class="n">password</span>
+</span><span class='line'>        <span class="vi">@gmail</span> <span class="o">=</span> <span class="no">Gmail</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="vi">@user</span><span class="p">,</span> <span class="vi">@password</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@gmail</span><span class="o">.</span><span class="n">peek</span> <span class="o">=</span> <span class="kp">true</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">message_count_in_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+</span><span class='line'>        <span class="c1">#dates as &#39;2010-02-10&#39;</span>
+</span><span class='line'>        <span class="n">gmail</span><span class="o">.</span><span class="n">inbox</span>
+</span><span class='line'>             <span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="ss">:after</span> <span class="o">=&gt;</span> <span class="n">start_date</span><span class="p">,</span> <span class="ss">:before</span> <span class="o">=&gt;</span> <span class="n">end_date</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">emails_in_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="no">LABEL</span><span class="p">)</span>
+</span><span class='line'>        <span class="c1">#dates as &#39;2010-02-10&#39;</span>
+</span><span class='line'>        <span class="n">gmail</span><span class="o">.</span><span class="n">mailbox</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+</span><span class='line'>             <span class="o">.</span><span class="n">emails</span><span class="p">(</span><span class="ss">:after</span> <span class="o">=&gt;</span> <span class="n">start_date</span><span class="p">,</span> <span class="ss">:before</span> <span class="o">=&gt;</span> <span class="n">end_date</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">message_presenters_in_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">msgs</span> <span class="o">=</span> <span class="n">emails_in_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@messages</span> <span class="o">=</span> <span class="n">msgs</span><span class="o">.</span><span class="n">map</span> <span class="k">do</span> <span class="o">|</span><span class="n">msg</span><span class="o">|</span>
+</span><span class='line'>          <span class="no">Presenter</span><span class="o">.</span><span class="n">present</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">Presenter</span>
+</span><span class='line'>      <span class="kp">attr_accessor</span> <span class="ss">:email</span>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class='line'>        <span class="vi">@email</span> <span class="o">=</span> <span class="n">msg</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">body</span>
+</span><span class='line'>        <span class="n">email</span><span class="o">.</span><span class="n">body</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">date</span>
+</span><span class='line'>        <span class="n">email</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">to_date</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nf">date_string</span>
+</span><span class='line'>        <span class="n">date</span><span class="o">.</span><span class="n">to_s</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">present</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">presenter</span> <span class="o">=</span> <span class="kp">new</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</span><span class='line'>        <span class="no">Message</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">date</span><span class="p">:</span> <span class="n">presenter</span><span class="o">.</span><span class="n">date_string</span><span class="p">,</span> <span class="ss">body</span><span class="p">:</span> <span class="n">presenter</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="no">Message</span> <span class="o">=</span> <span class="no">Class</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">OpenStruct</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The last task in building this tool was dumping the data to a CSV with totals by date as well as a grand total. The process is simple, pass in a collection of messages and iterate through them by date, add a subtotal per date, then add a final row with grand total.</p>
+
+<p>I like to break out rows into their own methods when possible.  In fact, were I to rewrite this code, the message row would have its own method to clean up the inner loop of <code>messages_by_date()</code>.  Another trick that helped for testing was to not generate a file on the filesystem.  <code>CSV</code> takes either an <code>open</code> or a <code>generate</code> method.  With <code>generate</code> it will pass the complete csv file out as the return value!</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">CSVBuilder</span>
+</span><span class='line'>    <span class="kp">attr_accessor</span> <span class="ss">:messages</span><span class="p">,</span> <span class="ss">:csv</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+</span><span class='line'>      <span class="vi">@messages</span> <span class="o">=</span> <span class="n">messages</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">create</span>
+</span><span class='line'>      <span class="vi">@csv</span> <span class="o">=</span> <span class="no">CSV</span><span class="o">.</span><span class="n">generate</span> <span class="k">do</span> <span class="o">|</span><span class="n">csv</span><span class="o">|</span>
+</span><span class='line'>        <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">header</span>
+</span><span class='line'>        <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">empty_row</span>
+</span><span class='line'>        <span class="n">uniq_dates</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">date</span><span class="o">|</span>
+</span><span class='line'>          <span class="n">messages_by_date</span><span class="p">(</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">msg</span><span class="o">|</span>
+</span><span class='line'>            <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="o">[</span><span class="n">msg</span><span class="o">.</span><span class="n">date</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">receipt</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">authorization_code</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">pages_viewed</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">credit_card_number</span><span class="p">,</span> <span class="n">msg</span><span class="o">.</span><span class="n">total_amount</span><span class="o">]</span>
+</span><span class='line'>          <span class="k">end</span>
+</span><span class='line'>          <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">sum_totals_row</span><span class="p">(</span><span class="n">messages_by_date</span><span class="p">(</span><span class="n">date</span><span class="p">),</span> <span class="s2">&quot;Subtotal for </span><span class="si">#{</span><span class="n">date</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="k">end</span>
+</span><span class='line'>        <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">empty_row</span>
+</span><span class='line'>        <span class="n">csv</span> <span class="o">&lt;&lt;</span> <span class="n">sum_totals_row</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="s2">&quot;Total Amount&quot;</span><span class="p">)</span>
+</span><span class='line'>      <span class="k">end</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">header</span>
+</span><span class='line'>      <span class="o">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span>
+</span><span class='line'>       <span class="s1">&#39;Receipt #&#39;</span><span class="p">,</span>
+</span><span class='line'>       <span class="s1">&#39;Authorization Code&#39;</span><span class="p">,</span>
+</span><span class='line'>       <span class="s1">&#39;Pages Viewed&#39;</span><span class="p">,</span>
+</span><span class='line'>       <span class="s1">&#39;Name&#39;</span><span class="p">,</span>
+</span><span class='line'>       <span class="s1">&#39;Credit Card #&#39;</span><span class="p">,</span>
+</span><span class='line'>       <span class="s1">&#39;Total Amount&#39;</span><span class="o">]</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">empty_row</span>
+</span><span class='line'>      <span class="nb">Array</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">messages_by_date</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">messages</span><span class="o">.</span><span class="n">select</span> <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="n">m</span><span class="o">.</span><span class="n">date</span> <span class="o">==</span> <span class="n">date</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">uniq_dates</span>
+</span><span class='line'>      <span class="n">messages</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:date</span><span class="p">)</span><span class="o">.</span><span class="n">uniq</span><span class="o">.</span><span class="n">sort</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">sum_totals_row</span><span class="p">(</span><span class="n">msgs</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">rawsum</span> <span class="o">=</span> <span class="n">msgs</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">m</span><span class="o">|</span> <span class="n">m</span><span class="o">.</span><span class="n">total_amount</span><span class="o">.</span><span class="n">to_f</span> <span class="p">}</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="ss">:+</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">sum</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span> <span class="s2">&quot;%.2f&quot;</span><span class="p">,</span> <span class="n">rawsum</span> <span class="p">)</span>
+</span><span class='line'>      <span class="n">sum_row_padding</span> <span class="o">=</span> <span class="nb">Array</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">header</span><span class="o">.</span><span class="n">count</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">sum_row</span> <span class="o">=</span> <span class="o">[</span> <span class="n">sum_row_padding</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">sum</span> <span class="o">].</span><span class="n">flatten</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I&rsquo;m also quite proud of the variable name <code>rawsum</code> because it&rsquo;s rawsome to design code that will save a couple hours every two weeks.</p>
+
+<p>With a good ecosystem of libraries, it&rsquo;s only a couple hours of work to write a re-usable tool that saves significant amounts of time. Hooray :).</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures With MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a></h1>
     
     
       <p class="meta">
@@ -265,7 +964,7 @@
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/06/02/dont-fear-pair-programming-a-guide-to-starting/">Don&#8217;t Fear Pair Programming - a Guide to Starting</a></h1>
+      <h1 class="entry-title"><a href="/2013/06/dont-fear-pair-programming-a-guide-to-starting/">Don&#8217;t Fear Pair Programming - a Guide to Starting</a></h1>
     
     
       <p class="meta">
@@ -447,7 +1146,7 @@ Now that we&#8217;ve laid the groundwork for it, let&#8217;s work on making it a
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/05/26/starting-with-vim/">Starting With Vim</a></h1>
+      <h1 class="entry-title"><a href="/2013/05/starting-with-vim/">Starting With Vim</a></h1>
     
     
       <p class="meta">
@@ -594,7 +1293,7 @@ vim-surround
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/05/26/buff-a-gem-that-puts-muscle-in-the-buffer-api/">Buff - a Gem That Puts Muscle in the Buffer API</a></h1>
+      <h1 class="entry-title"><a href="/2013/05/buff-a-gem-that-puts-muscle-in-the-buffer-api/">Buff - a Gem That Puts Muscle in the Buffer API</a></h1>
     
     
       <p class="meta">
@@ -697,7 +1396,7 @@ vim-surround
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/05/06/travel-advice-you-cant-afford-to-miss/">Travel Advice You Can&#8217;t Afford to Miss</a></h1>
+      <h1 class="entry-title"><a href="/2013/05/travel-advice-you-cant-afford-to-miss/">Travel Advice You Can&#8217;t Afford to Miss</a></h1>
     
     
       <p class="meta">
@@ -777,7 +1476,7 @@ vim-surround
 
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/05/04/privilege-means-responsibility/">Privilege Means Responsibility</a></h1>
+      <h1 class="entry-title"><a href="/2013/05/privilege-means-responsibility/">Privilege Means Responsibility</a></h1>
     
     
       <p class="meta">
@@ -876,317 +1575,12 @@ Stand up and lend your voice to the conversation. Your voice offsets the hatred 
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/05/02/hack-your-finances-thoughts-on-extreme-retirement-planning/">Hack Your Finances - Thoughts on Extreme Retirement Planning</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-02T00:00:00-04:00" pubdate data-updated="true">May 2<span>nd</span>, 2013</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Extreme Retirement Planning is a financial movement that I discovered a few weeks ago.  At least, that&#8217;s when I heard of that terminology for being frugal.  As it happens, I&#8217;ve been implementing some of those ideas for the past year or two.  But these Extreme Retirement Planning (ERP) folks crank it up to 11 and that&#8217;s where I have something to learn.</p>
-
-<h2>Concept in a Nutshell</h2>
-
-<ul>
-<li>Save as great a % as possible (up to 85% or more) of net income (post tax dollars).</li>
-<li>Live off as little spendable income, including cutting out luxuries and vehicles, to the greatest degree possible.</li>
-</ul>
-
-<p>What&#8217;s the result? Being able to &#8220;retire&#8221; in 4-15 years on the lower level of income that the ERPer has become accustomed to.</p>
-
-<h2>What Does This Mean for Me?</h2>
-
-<p>If I can live off of $1000 / mo while putting the rest of my take home cash into savings, for the next 7 years, I can retire in 2020.  And by retire, I mean live off of the expected 4% growth on my principle even after factoring in 3% inflation.  Then at that point, any income that I make is free to fritter or save because my daily costs are taken care of.</p>
-
-<p>Assuming that there are two people working at this level of income, then living off $2000/mo as a family isn&#8217;t too tough in some parts of the country. And retiring in 7 years wouldn&#8217;t be too bad either :).</p>
-
-<p>I&#8217;ll explore this concept more as I dig into trimming my excess spending.</p>
-
-<p>Credit for the concept and basic calculations goes to Mr. Money Moustache.</p>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/29/goals-and-giving-back-creating-meaning-in-life/">Goals and Giving Back: Creating Meaning in Life</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-29T00:00:00-04:00" pubdate data-updated="true">Apr 29<span>th</span>, 2013</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">[caption id=&#8221;attachment_599&#8221; align=&#8221;alignleft&#8221; width=&#8221;500&#8221;]<a href="http://www.civet.ws/wp-content/uploads/2013/04/4701714888_e29a0e3e8e1.jpg"><img src="http://www.civet.ws/wp-content/uploads/2013/04/4701714888_e29a0e3e8e1.jpg" alt="" width="500" height="331" class="size-full wp-image-599" /></a> By: <a href='http://www.flickr.com/photos/johnonolan/4701714888/' target='_blank'>John O&#8217;Nolan</a>[/caption]
-
-<p>I&#8217;ve been in serious discussions with a new friend regarding the refinement of the self.  The discussions started at RubyMidwest but since I don&#8217;t yet have their permission, I&#8217;ll leave the individual as a shadowy anonymous figure.</p>
-
-<p>The evening of the discussion brought about a conversation regarding refactoring oneself through a constant process of testing and revising.</p>
-
-<p>I shared my own experience of setting actionable goals related to various facets of my life, a choice that was influence by <em>7 Habits of Highly Effective People</em>.  These goals run the gamut of goals, anywhere from family, friendship, business, personal knowledge, technical skill acquisition, etc.  Each of the goals is categorized and provides a broadly sketched roadmap of what I want to apply my energy to during 2013.</p>
-
-<p>Without going into all of the details, I&#8217;d like to provide a couple of examples.</p>
-
-<p>One of my larger goals for the year is to be less of a consumer and more of a producer.  This applies both in the technical world, where I want to write more code and blog entries (rather than simply consuming them) and also in my online social experience where I&#8217;m moving out of my introverted shell and making connections with likeminded individuals.  Thus far, this goal has been a smashing success.  I made new Ruby friends at RubyMidwest and I&#8217;m a much more active member of the online community.  I&#8217;m pleasantly surprised that this is such a natural goal to work on.  It has become an outlet of my energy that&#8217;s relaxing and fulfilling.</p>
-
-<p>In this same vein, I&#8217;ve become increasingly interested in giving back and contributing via teaching or volunteering in order to help others along their path.  <em>Pragmatic Thinking and Learning</em> cites the Dreyfus Model of Learning, which loosely paraphrased, indicates that because I&#8217;m a beginning intermediate programmer, I&#8217;m uniquely prepared to lend a hand to beginners.  The fact that I&#8217;ve been teaching myself Ruby for the past 3 years means that beginners&#8217; struggles are fresh in my mind.  So I&#8217;m taking what time I can out of my schedule to lend a hand to the next generation of passionate programmers.</p>
-
-<p>Perhaps in the not too distant future, I&#8217;ll have a work setup that encourages and allows me to spend a portion of my time giving back to the community.  The time&#8217;s approaching where I won&#8217;t be able to resist the allure of professionally joining the ranks of software developers.</p>
-
-<p>If I may breach the fourth wall, what are your goals and aspirations gentle reader? I&#8217;d love to hear about them in the comments or in the walled garden of Twitter <a href="http://twitter.com/_ZPH">@_ZPH</a>.</p>
-
-<p>PS - Start mentoring someone, now!</p>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/24/stop-drop-and-sleep/">Stop, Drop, and Sleep</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-24T00:00:00-04:00" pubdate data-updated="true">Apr 24<span>th</span>, 2013</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Exhaustion is in the air today. I fell asleep at 7pm and according to my Twitter feed, it&#8217;s not just me.
-<h3>So is:</h3>
-<blockquote class="twitter-tweet"><p>Passed out on the couch at 9. Been working so much lately :/</p>&mdash; ashe dryden (@ashedryden) <a href="https://twitter.com/ashedryden/status/326888578204434433">April 24, 2013</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<h3>And:</h3>
-<blockquote class="twitter-tweet"><p>to code or sleep? that is the question.</p>&mdash; Derek Bender (@djbender) <a href="https://twitter.com/djbender/status/326892518992138241">April 24, 2013</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<h3>And Later (live update while blogging):</h3>
-<blockquote class="twitter-tweet"><p>feel in all sorts of squinty. rest is coming.</p>&mdash; Derek Bender (@djbender) <a href="https://twitter.com/djbender/status/326911928024854528">April 24, 2013</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<h3>And Even:</h3>
-<blockquote class="twitter-tweet"><p>@<a href="https://twitter.com/elight">elight</a> @<a href="https://twitter.com/_zph">_zph</a> @<a href="https://twitter.com/centipedefarmer">centipedefarmer</a> @<a href="https://twitter.com/bantik">bantik</a> @<a href="https://twitter.com/kerrizor">kerrizor</a> methinks I may be a bit tired.</p>&mdash; PJ Hagerty (@aspleenic) <a href="https://twitter.com/aspleenic/status/326899253261783040">April 24, 2013</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<h3>We&#8217;re exhausted!</h3>
-[caption id=&#8221;attachment_588&#8221; align=&#8221;alignnone&#8221; width=&#8221;500&#8221;]<a href="http://www.civet.ws/wp-content/uploads/2013/04/497374910_9ae0f0adfa.jpg"><img src="http://www.civet.ws/wp-content/uploads/2013/04/497374910_9ae0f0adfa.jpg" alt="" width="500" height="375" class="size-full wp-image-588" /></a> By: <a href='http://www.flickr.com/photos/umjanedoan/497374910/' target='_blank'>umjanedoan</a>[/caption]
-
-Exhaustion has become the norm.
-
-Take my own evening last night as an example. We had a long day at work and I was spent by the time I arrived home. After running a necessary errand, the hour had pushed towards 9PM, which meant dinner was going to be a cursory affair.
-
-You, my gentle reader, might expect me to crash into an uninterupted slumber at this point in the story. Unfortunately, I didn&#8217;t.
-
-I spent the next ~ 3 hours reading tech news, catching up with friends on Twitter, and staring semi-comatose at my laptop monitor. I tried to work on learning new programming techniques, but it wasn&#8217;t sinking in, nor did I have the requisite motivation. I collapsed into bed sometime after midnight and woke feeling groggy and spent.
-
-I&#8217;ve been reflecting on the <em>WHY</em> of this behavior and it&#8217;s the motivation for this blog post.
-<h1><em>WHY</em></h1>
-I spend a fair bit of effort in life considering my actions and the outcomes involved. I try to play these in the right manner to &#8220;Optimize for Happiness(TM)&#8221; as <a href="http://twitter.com/erniemiller">@erniemiller</a> so eloquently stated at RubyMidwest 2013.
-
-But I didn&#8217;t follow through on the logical process last night because in addition to needing rest, I also needed to decompress and stimulate my mind.
-
-I&#8217;m going to go out on a limb here: I think that my reluctance to fall asleep is endemic of our social expectations in a slice of American society.
-<h1>Work Longer, Faster, Smarter</h1>
-Living in a culture that idolizes workaholics demands a special response from those of us who yearn to maintain a work-life balance. Especially when prone to hard work and long hours, stepping back and turning off can be a challenging habit to cultivate.
-
-I&#8217;m not sure what the right response is when we have competing pressures in life, beyond making the best decisions available given the resources at that moment. And with each decision, reflect on the behavior and outcome to determine if it should be repeated.
-
-The right answer for me that night was probably a bit of interracting with friends on Twitter (no more than 60 min) followed by time with kittens and my partner.
-
-Lesson learned, hopefully :).
-
-I&#8217;d love to hear tips and feedback for how you, my reader, addresses this. Leave a note in the comments or shout at me on Twitter: <a href="http://twitter.com/_ZPH">@_ZPH</a>.
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/04/20/increasing-productivity-with-shortcuts/">Increasing Productivity With Shortcuts</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-04-20T00:00:00-04:00" pubdate data-updated="true">Apr 20<span>th</span>, 2013</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">[caption id=&#8221;attachment_582&#8221; align=&#8221;alignleft&#8221; width=&#8221;500&#8221;]<a href="http://www.civet.ws/wp-content/uploads/2013/04/3879260111_c56e8a0c1c.jpg"><img class="size-full wp-image-582" alt="" src="http://www.civet.ws/wp-content/uploads/2013/04/3879260111_c56e8a0c1c.jpg" width="500" height="333" /></a> By: <a href="http://www.flickr.com/photos/orcmid/3879260111/" target="_blank">Dennis Hamilton</a>[/caption]
-
-I&#8217;m writing this to the incessant tick-tock of a digital Pomodoro, which seems fitting as this post will discuss productivity hacks.
-
-We won&#8217;t be talking about run of the mill ones. I won&#8217;t berate my readers to modify their &#8216;/etc/hosts&#8217; file in order to route Reddit or Twitter to localhost.
-
-No, these are real habits that help me be happier and more productive with the time that I spend on a computer.
-<h1>Pre-Hack Step</h1>
-Have a goal. Know where you&#8217;re heading and why. Act intentionally. This has been driven home to me by my own experiences in life. Recently, I&#8217;ve been reminded of this concept by the wonderful book, <em>7 Habits of Highly Effective People</em>. In it, the author paints the picture of chopping through a forest without knowing what cardinal direction one is following.
-
-If you&#8217;re trying to learn a new technology, set actionable goals for yourself and talk about it with friends and colleagues. If you&#8217;re working on personal relationships, admit that to yourself and push yourself to be better.
-<h1>Technological Hacks</h1>
-<ul>
-	<li>Make everything a shortcut. I accomplished this by following Steve Losh&#8217;s article <a href="http://stevelosh.com/blog/2012/10/a-modern-space-cadet/#hyper">On the Cadet Keyboard</a>. I configured my MacBook Air&#8217;s keyboard to use the right Alt key as a hyper key (a chord combination of 4 modifiers). This yields a unique key namespace for setting up non-conflicting keyboard shortcuts.</li>
-	<li>Use a program like Keyboard Maestro or BetterTouchTool to setup shortcuts for all of your regular programs. For me these are iTerm2, Chrome, Finder (or alternative), ThinkingRock, Email Client etc. My terminal is never further away than a HyperKey-T and possibly a Cmd-N to create a new window.</li>
-	<li>One keyboard shortcut that stands out on my system is a keybinding via Sparrow&#8217;s preferences. The combination alternately brings Sparrow to the front, or hides it. This is amazingly useful in order to not lose as much energy in context switching. In a matter of 4 seconds and by mashing the same key combination twice, I can check on a new email and then relegate Sparrow to the background.</li>
-	<li>Make great use of Alfred.app! Use custom searches for common items (ie Google search becomes &#8220;g <em>searchterm</em>&#8221;, note that this is built into Alfred). Add your own shell scripts for common tasks, ie checking for information on a public website via a prefilled URL. Use Alfred to execute regular shell commands by prefixing the command with a &#8220;&gt;&#8221;. For example, I added a Ruby script to my &#8216;~/bin&#8217; directory that sends an email to my dedicated GTD account. I access the script from Alfred, fire off a note for later, and am back to my current task without much distraction. This is a great way to keep your mind empty and receptive (just make sure to process the GTD tasks in a timely manner).</li>
-</ul>
-Have more productivity hacks? I&#8217;d love to hear them in the comments below or via Twitter <a href="https://twitter.com/_ZPH">@_ZPH</a>.
-
-I&#8217;ll post at some point about my experiences with the Pomodoro technique, but at this point it&#8217;s too early for me to comment.
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
           
             <li class="previous">
-              <a href="/blog/page/2/">&larr; Older</a>
+              <a href="/page/2/">&larr; Older</a>
             </li>
           
           
@@ -1204,27 +1598,27 @@ I&#8217;ll post at some point about my experiences with the Pomodoro technique, 
     <ul class="recent_posts">
       
         <li>
-          <a href="/blog/2013/06/20/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
+          <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
         </li>
       
         <li>
-          <a href="/blog/2013/06/02/dont-fear-pair-programming-a-guide-to-starting/">Don't fear pair programming - A Guide to Starting</a>
+          <a href="/2014/02/finding-myself-in-bsd/">Finding myself in BSD</a>
         </li>
       
         <li>
-          <a href="/blog/2013/05/26/starting-with-vim/">Starting with Vim</a>
+          <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
         </li>
       
         <li>
-          <a href="/blog/2013/05/26/buff-a-gem-that-puts-muscle-in-the-buffer-api/">Buff - A Gem that Puts Muscle in the Buffer API</a>
+          <a href="/2014/02/automating-email-with-ruby/">Automating Email with Ruby</a>
         </li>
       
         <li>
-          <a href="/blog/2013/05/06/travel-advice-you-cant-afford-to-miss/">Travel Advice You Can't Afford to Miss</a>
+          <a href="/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
         </li>
       
     </ul>
-    <h2><a href="/blog/archives">archives</a></h2>
+    <h2><a href="/archives">archives</a></h2>
   </div>
   <div class="span3">
     
