@@ -1,0 +1,12 @@
+Dotfiles are all the rage right now on Github, and for a good reason.  They're the files that allow you to configure your Vim, Linux, Mac, etc.  They're simple textfiles written in a specific format for each given application.  Being a textfile they're easily added to a version control system like Git or Mercurial and changes can be tracked, commited, diffed, etc.
+
+How does it work? Make a folder in your Dropbox folder and place config files there.
+[cc_bash]mkdir ~/Dropbox/dotfiles
+mv ~/.vimrc ~/Dropbox/dotfiles/.
+ln -s ~/Dropbox/dotfiles/* ~/. [/cc_bash]
+
+The first command creates the folder. The second command moves the .vimrc configuration file into that folder.  The last command symbolically links all files/folders inside the dotfiles folder into the base of the home folder, ie /home/tevic/.
+
+Add all those files into a git repository via a 'git init; git add .; git commit -m "Initial Commit with Vimrc"'.  Now you can also use git for tracking changes on various branches.
+
+I've been very happy with storing my vimrc, zshrc, ~/.config/zsh.d, ~/.vim/ configurations in Dropbox.  Switching to a new computer or reconfiguring is no effort whatsoever.
