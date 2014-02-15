@@ -151,6 +151,119 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/07/awesome-tool-for-recovering-ecryptfs-from-ubuntucanonical/">Awesome Tool for Recovering Ecryptfs From Ubuntu/Canonical</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-05T00:00:00-04:00" pubdate data-updated="true">Jul 5<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>During the process of recovering an encrypted filesystem from an old server of mine, I found that I couldn&#8217;t access any of the data.  It appears that I encrypted my home folder on the server using Ubuntu&#8217;s default ecryptfs.</p>
+<p>I &#8216;Googled&#8217; my way through locating the encrypted &#8216;.Private&#8217; folder and tried unsuccessfully to mount the folder. I then used ecryptfs-unwrap-passphrase to unwrap my unique passphrase using the old login password.</p>
+<p>Armed with that and a tool from Dustin Kirkland over at Canonical (ecrypt-recover-private) I succeeded in using the following command to recover my data
+[cc_bash]sudo ecryptfs-recover-private .Private(at appropriate location)[/cc_bash]
+(Note - replace .Private with whichever location it&#8217;s at)
+Then type in the login password, which yields the passphrase, which leads to mounting the data as a read-only directory in /tmp.</p>
+<p>Thanks Canonical!</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/07/wpid247-vimrepress_4ff657ed_mkd.odt wpid247-vimrepress_4ff657ed_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/07/installing-jungledisk-on-mint-13-12-04/">Installing JungleDisk on Mint 13 (12.04)</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-04T00:00:00-04:00" pubdate data-updated="true">Jul 4<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;m setting up a home server (which will be a blog post for a later date).</p>
+<p>But in the process of setting up Amazon S3 backups, I was installing <a href="www.jungledisk.com">JungleDisk</a>.  This allows mounting of a remote S3 bucket as if it were a local drive.</p>
+<p>After installing, I received the following error stating that it could not find &#8216;libnotify.so.1&#8217;.  I used the locate command to find libnotify (currently libnotify.so.4) and used symlinked it into place.
+[cc_bash]sudo ln -s /usr/lib/x86_64-linux-gnu/libnotify.so.4 /usr/lib/x86_64-linux-gnu/libnotify.so.1[/cc_bash]</p>
+<p>After the symlink everything started up correctly :).</p>
+<p>Btw, server is a quad core AMD (Phenom), 12 GB RAM, plenty of storage, SSD for boot drive, spinner platters for storage&#8230; and ZFS =D.</p><!-- #VIMREPRESS_TAG# http://www.civet.ws/wp-content/uploads/2012/07/vimrepress_4ff4b054_mkd.odt vimrepress_4ff4b054_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/06/parallels-your-ads-belong-in-trial-versions/">Parallels - Your Ads Belong in Trial Versions</a></h1>
     
     
@@ -645,114 +758,6 @@ laptop with the hardware support of OSX&#8230;(not holding my breath)</p>
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/vim-video-by-bram/">VIM Video by Bram</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-20T00:00:00-04:00" pubdate data-updated="true">May 20<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Watched this video today by the author of VIM: Bram Moolenaar
-<a href="http://video.google.com/videoplay?docid=2538831956647446078">VIM Video by Bram Moolenaar</a></p>
-<p>It&#8217;s about 1.3 hours long and worth the watch.</p>
-<p>A useful tip so far is the [cc_bash]*[/cc_bash]</p>
-<p>Which uses your current word as a search term and incremental searches forward.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/vimrepress_4fb92a64_mkd.odt vimrepress_4fb92a64_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/useful-vim-cheetsheet/">Useful VIM Cheetsheet</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-20T00:00:00-04:00" pubdate data-updated="true">May 20<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>New VIM command of the day: [cc_bash]d/(searchterm)[/cc_bash]
-This will delete up until the search term.</p>
-<p>Source of this wisdom: <a href="http://www.brezeale.com/technical_notes/vim_notes.shtml">VIM Commands</a></p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/wpid187-vimrepress_4fb91c24_mkd.odt wpid187-vimrepress_4fb91c24_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -780,6 +785,14 @@ This will delete up until the search term.</p>
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
+        </li>
+      
+        <li>
+          <a href="/2014/02/finding-myself-in-bsd/">Finding myself in BSD</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
         </li>
       
@@ -789,14 +802,6 @@ This will delete up until the search term.</p>
       
         <li>
           <a href="/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
-        </li>
-      
-        <li>
-          <a href="/2013/06/dont-fear-pair-programming-a-guide-to-starting/">Don't fear pair programming - A Guide to Starting</a>
-        </li>
-      
-        <li>
-          <a href="/2013/05/starting-with-vim/">Starting with Vim</a>
         </li>
       
     </ul>
