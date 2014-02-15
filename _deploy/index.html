@@ -253,17 +253,17 @@
 
 <p>Blame Linux for not having first class support for ZFS (where my data is held).</p>
 
-<p>Blame ( <a href="https://twitter.com/canadiancreed">https://twitter.com/canadiancreed</a> )[ @canadiancreed ] for giving me a way out of the quandry.</p>
+<p>Blame <a href="https://twitter.com/canadiancreed"> @canadiancreed </a> for giving me a way out of the quandry.</p>
 
 <p>The backstory is that I moved all of my backups to two ZFS pools a few years ago.  I was running ZFSonLinux and it generally worked&hellip;. except when I rebooted the server and had to force import the pools.</p>
 
 <p>Fast forward to that server being replaced by a workstation (i7 Haswell, 240GB Sata3 SSD, and 24GB RAM).  I tried smartOS by Joyent and ran into issues with my SATA controller not being recognized.  It&rsquo;s a shame given how awesome the smartOS vm administration is.  I mean vmadm and imgadm are light years ahead of Docker.</p>
 
-<p>Since smartOS refused to recognize 3 of my 8 drives I ran back to Linux.  The good new, Linux recognized the sata controller.  The bad news, Linux couldn&rsquo;t import the pools.  Frankly, Linux had a hell of a time with building the ZFS on Linux kernel modules.  I managed to piece together a few clues from the ZFSonLinux Issues on Github.  In fact, thanks to ( <a href="https://github.com/dajhorn">https://github.com/dajhorn</a> )[ @dajhorn ] for supplying answers on that Github issue which allowed me to build the kernel modules.</p>
+<p>Since smartOS refused to recognize 3 of my 8 drives I ran back to Linux.  The good new, Linux recognized the sata controller.  The bad news, Linux couldn&rsquo;t import the pools.  Frankly, Linux had a hell of a time with building the ZFS on Linux kernel modules.  I managed to piece together a few clues from the ZFSonLinux Issues on Github.  In fact, thanks to <a href="https://github.com/dajhorn"> @dajhorn </a> for supplying answers on that Github issue which allowed me to build the kernel modules.</p>
 
 <p>This sounds promising doesn&rsquo;t it? It&rsquo;s not, it was a horrorshow.  Linux refused to import the one of the two zpools.  One of them imported nicely, the mission critical financial records.  The other semi-critical zpool was shot and refused to import under Linux.</p>
 
-<p>I spent a whole evening banging my head against this issue. If it hadn&rsquo;t been for ( <a href="https://twitter.com/canadiancreed">https://twitter.com/canadiancreed</a> )[ Chris Reed ] I wouldn&rsquo;t have hit upon the solution.</p>
+<p>I spent a whole evening banging my head against this issue. If it hadn&rsquo;t been for <a href="https://twitter.com/canadiancreed"> Chris Reed </a> I wouldn&rsquo;t have hit upon the solution.</p>
 
 <p>His recommendation was to try FreeBSD&hellip; so I did.  And it recognized the SATA controller and also imported the zpools cleanly!  So after a dry run w/ FreeBSD, I installed PC-BSD, which is a desktop variant based on FreeBSD. Think of it as the Ubuntu of the BSD world.  And hell yeah, it&rsquo;s all working :).</p>
 
