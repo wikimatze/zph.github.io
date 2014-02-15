@@ -5,7 +5,8 @@ bundle exec rake gen_deploy && \
   git stash && \
   git push && \
   git checkout master && \
-  rm -rf "${pwd}/*" && \
+  git ls-files | xargs rm -rf "{}"
+  # rm -rf "${pwd}/*" && \
   git checkout source -- _deploy && \
   cp -r _deploy/* . && \
   rm -rf _deploy/ && \
