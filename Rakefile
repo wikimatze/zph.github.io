@@ -16,7 +16,7 @@ task :zdeploy do
   Rake::Task[:gen_deploy].invoke
   sh "git stash"
   sh "git push"
-  sh "git checkout master" && \
+  sh "git checkout master"
   Dir.glob("**/*").reject { |i| i[/vendor/] }.each do |f|
     FileUtils.rm_rf(f)
   end
