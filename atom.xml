@@ -4,7 +4,7 @@
   <title><![CDATA[Civet]]></title>
   <link href="http://zph.github.io/atom.xml" rel="self"/>
   <link href="http://zph.github.io/"/>
-  <updated>2014-02-13T01:54:57-05:00</updated>
+  <updated>2014-02-17T01:38:54-05:00</updated>
   <id>http://zph.github.io/</id>
   <author>
     <name><![CDATA[Zander]]></name>
@@ -12,6 +12,54 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Solving Issues with RVM on BSD]]></title>
+    <link href="http://zph.github.io/2014/02/solving-issues-with-rvm-on-bsd/"/>
+    <updated>2014-02-15T03:00:00-05:00</updated>
+    <id>http://zph.github.io/2014/02/solving-issues-with-rvm-on-bsd</id>
+    <content type="html"><![CDATA[<p>RVM installation went poorly on FreeBSD.</p>
+
+<p>The ca-certificates weren&rsquo;t up to date according to the install script.</p>
+
+<p>Really, the ca-certificates weren&rsquo;t in the right location for RVM&rsquo;s curl install script.</p>
+
+<p>These commands as root fixed it:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mkdir -p /usr/local/opt/curl-ca-bundle
+</span><span class='line'>ln -s /usr/local/share/certs/ca-root-nss.crt /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Finding myself in BSD]]></title>
+    <link href="http://zph.github.io/2014/02/finding-myself-in-bsd/"/>
+    <updated>2014-02-15T02:01:00-05:00</updated>
+    <id>http://zph.github.io/2014/02/finding-myself-in-bsd</id>
+    <content type="html"><![CDATA[<p>Blame smartOS not reading my SATA controller.</p>
+
+<p>Blame Linux for not having first class support for ZFS (where my data is held).</p>
+
+<p>Blame <a href="https://twitter.com/canadiancreed"> @canadiancreed </a> for giving me a way out of the quandry.</p>
+
+<p>The backstory is that I moved all of my backups to two ZFS pools a few years ago.  I was running ZFSonLinux and it generally worked&hellip;. except when I rebooted the server and had to force import the pools.</p>
+
+<p>Fast forward to that server being replaced by a workstation (i7 Haswell, 240GB Sata3 SSD, and 24GB RAM).  I tried smartOS by Joyent and ran into issues with my SATA controller not being recognized.  It&rsquo;s a shame given how awesome the smartOS vm administration is.  I mean vmadm and imgadm are light years ahead of Docker.</p>
+
+<p>Since smartOS refused to recognize 3 of my 8 drives I ran back to Linux.  The good new, Linux recognized the sata controller.  The bad news, Linux couldn&rsquo;t import the pools.  Frankly, Linux had a hell of a time with building the ZFS on Linux kernel modules.  I managed to piece together a few clues from the ZFSonLinux Issues on Github.  In fact, thanks to <a href="https://github.com/dajhorn"> @dajhorn </a> for supplying answers on that Github issue which allowed me to build the kernel modules.</p>
+
+<p>This sounds promising doesn&rsquo;t it? It&rsquo;s not, it was a horrorshow.  Linux refused to import the one of the two zpools.  One of them imported nicely, the mission critical financial records.  The other semi-critical zpool was shot and refused to import under Linux.</p>
+
+<p>I spent a whole evening banging my head against this issue. If it hadn&rsquo;t been for <a href="https://twitter.com/canadiancreed"> Chris Reed </a> I wouldn&rsquo;t have hit upon the solution.</p>
+
+<p>His recommendation was to try FreeBSD&hellip; so I did.  And it recognized the SATA controller and also imported the zpools cleanly!  So after a dry run w/ FreeBSD, I installed PC-BSD, which is a desktop variant based on FreeBSD. Think of it as the Ubuntu of the BSD world.  And hell yeah, it&rsquo;s all working :).</p>
+
+<p>So far, I&rsquo;m really liking it.  Replace &lsquo;aptitude&rsquo; with &lsquo;pkg&rsquo; and it&rsquo;s pretty similar.  Except, PC-BSD is working where Linux &amp; ZFS were a hassle.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Null Terminators in Linux/OSX]]></title>
@@ -1315,87 +1363,6 @@ I&#8217;ve used the text expansion feature to save thousands of keystrokes in re
 Try it out and let me know what you think in the comments or on Twitter <a href="http://www.twitter.com/_ZPH">@_ZPH</a>. Oh yeah and map the HUD to something easy to remember like CMD-CTRL-SHIFT D. I keep all of my system-wide shortcuts on the same triple modifier chord so that they&#8217;re unlikely to overwrite standard shortcuts :).
 
 What other methods do you have for reducing repetition?
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ThinkingRock GTD: Torn Apart]]></title>
-    <link href="http://zph.github.io/2013/02/thinkingrock-gtd-torn-apart-3/"/>
-    <updated>2013-02-20T00:00:00-05:00</updated>
-    <id>http://zph.github.io/2013/02/thinkingrock-gtd-torn-apart-3</id>
-    <content type="html"><![CDATA[<h2>GTD FTW!</h2>
-
-<p>Why am I engaging in this hipster habit of using Covey&#8217;s &#8216;Getting Things Done&#8217; methodology?  <em>Because</em> there&#8217;s something very valuable to it!</p>
-
-<p>The analogies that Stephen Covey uses in his book hit home for geeks.  He describes the working memory we humans possess as Random Access Memory, which requires energy to sustain it.  Furthermore, he reminds the reader that if the RAM is busy, other thoughts can&#8217;t percolate through that stage of consciousness?</p>
-
-<h3>Sound too esoteric?</h3>
-
-<p>Let&#8217;s get down to <em>bare metal</em>. Or <em>brass tacks</em>. Or any other colloquialism that suits.</p>
-
-<p>Throughout the day I have ideas.  Many of them are good ideas :).  Many of these good ideas percolate to the surface at inopportune moments&#8230; like meetings, reviewing reports, or writing code.  These ideas are <em>GREAT</em> but what&#8217;s their value if they disappear before I can act on them?</p>
-
-<p>Nothing.  That&#8217;s how much value these ideas have if they flit right back out of my consciousness.  Might not be a big deal if it&#8217;s remembering a food item to pick-up on the way home.  Might be a <em>huge deal</em> if it&#8217;s a programming or business idea that could be implemented and turned into a product!</p>
-
-<h4>What&#8217;s the solution?</h4>
-
-<p>I mentioned using ThinkingRock GTD system in this <a href="http://www.civet.ws/2013/02/getting-thinking-rock-v2-1-work-on-osx-10-8/">post</a>.  ThinkingRock v2.1 is an open-source project hosted on <a href="http://sourceforge.net/projects/thinkingrock/files/ThinkingRock/TR%202.2.1/"> SourceForge </a>.</p>
-
-<p>ThinkingRock does the usual stuff that one would expect from a GTD program:
-* Collect Thoughts in an Inbox
-* Processing
-* Organization
-* Reviewing
-* Action</p>
-
-<p>What&#8217;s the killer feature of this app for my workflow?</p>
-
-<h3>That ideas can be dumped into it using the universal communication currency of our age, <em>EMAIL</em>!</h3>
-
-<p>My goal is to reduce the friction in the GTD system so that I waste as little energy as possible on the process itself.</p>
-
-<p>Email input is a very powerful feature.  I&#8217;ve setup a dedicated email account for receiving GTD tasks and then configured ThinkingRock to import tasks from there every 15 minutes.</p>
-
-<p>The next step in this process was writing a short commandline script that is prefilled with the GTD email address.  The script combines all commandline input less the scriptname itself and uses that value as the subject line of the email.  This makes for an incredibly fluid system of GTD task entry.</p>
-
-<p>Here&#8217;s the simple Ruby script for this task (note that auth info is placed in <code>~/.gmailrc</code>):
-  <script src="https://gist.github.com/zph/5001831.js"></script></p>
-
-<p>But wait, there&#8217;s more!  If you keep reading this blog post, you&#8217;ll receive more time saving advice at no additional cost.  That&#8217;s &#8220;#{SOME<em>MADE</em>UP_VALUE}&#8221;!</p>
-
-<p>Back to the point, I integrated this script into Alfred.app.  Now the tasks can be entered directly from Alfred!</p>
-
-<p>I&#8217;ve only scratched the surface so far with getting back into the GTD methodology&#8230; but I&#8217;m excited!  Having better programming chops this time when approaching GTD is certainly improving the process :).</p>
-
-<h4>Still to come:</h4>
-
-<p>I discussed in this <a href="http://www.civet.ws/2013/02/getting-thinking-rock-v2-1-work-on-osx-10-8/">post</a> that I wanted to use the open-source version rather than the newer closed source version because of having the ability to dig into the code.  In an upcoming post I&#8217;ll discuss how the open-source program allowed me to investigate the data structure used for ThinkingRock in a way that would be much more challenging if I lacked access to the project source-code!</p>
-
-<p>Let me know in the comments or on Twitter (<a href="http://www.twitter.com/_ZPH">@_ZPH</a>) if you have ideas on how to improve the process.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Toggling Pry in Ruby Script]]></title>
-    <link href="http://zph.github.io/2013/02/toggling-pry-in-ruby-script/"/>
-    <updated>2013-02-18T00:00:00-05:00</updated>
-    <id>http://zph.github.io/2013/02/toggling-pry-in-ruby-script</id>
-    <content type="html"><![CDATA[<p>I&#8217;ve been using the daylights out of <a href="https://github.com/pry/pry">Pry</a> ever since learning about it ~ 1 year ago.  I&#8217;ve also been evangelizing about it to anyone who will listen:</p>
-
-<blockquote class="twitter-tweet"><p>@<a href="https://twitter.com/_zph">_zph</a> Thanks for reading!And thanks for teaching me tmux and pry.Been trying them here and there - still very shaky with tmux.</p>&mdash; Steve Jackson (@stevejxsn) <a href="https://twitter.com/stevejxsn/status/302758800069365761">February 16, 2013</a></blockquote>
-
-<script async src="http://zph.github.io//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<p>The most recent way that I&#8217;m using Pry is by dropping the following line into anywhere that I need to work with:
-<code>require 'pry'; binding.pry</code></p>
-
-<p>But adding that to scripts and then deleting it becomes repetitive.  So here&#8217;s a little Vim function that that toggles my Pry statement.  If the current line matches the Pry snipped, the line&#8217;s deleted.  If the current line doesn&#8217;t match the snippet, then the snippet is added at the cursor.  ( It&#8217;s best used on a blank line until I make the function more robust. )</p>
-
-<script src="https://gist.github.com/zph/4980163.js"></script>
-
-<p>Special thanks go to <a href="http://twitter.com/banisterfiend">@Banisterfiend</a> for all his hard work on the Pry gem.  It makes my Ruby life a much happier experience.  If you&#8217;ve benefited from his hard work, please consider a donation @ the following <a href="http://pryrepl.org/"> link </a>.</p>
-
-<p>Also, special thanks to <a href="http://www.twitter/tpope">Tim Pope</a>.  Reading his vim-fugitive code gave me the syntax hint on how to make this work.</p>
 ]]></content>
   </entry>
   

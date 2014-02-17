@@ -1,4 +1,0 @@
-[cc_bash]#shutdown now -h[/cc_bash]
-Pretty important but didn't know about the '-h' flag until today.  When run as root this will shutdown system now and send it to a init-level 0, ie a full halt.
-
-Good to know =D.

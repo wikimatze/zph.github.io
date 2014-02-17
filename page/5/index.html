@@ -151,6 +151,130 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/08/coderetreat-steelcityruby-things-i-learned/">CodeRetreat @SteelCityRuby - Things I Learned</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-22T00:00:00-04:00" pubdate data-updated="true">Aug 22<span>nd</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I attended the CodeRetreat at @SteelCityRuby 2012 and this post is an abbreviated recap of my experience.</p>
+<p>It was great!  I had fun. There, I&#8217;ve thoroughly explained it.  Go forth and try it out when CodeRetreat comes to a city near you.</p>
+<p>Oh, you wanted more of an explanation?  It was an event lasting from 8am to 5pm and it involved turning programming on its head.  Corey Haines led the event with the space donated by 4Moms (thanks!!!).<br />
+</p>
+<p>We ran through a series of 45 min pair programming sessions interspersed with lecture sessions and short breaks.  Each session was with a new random programming partner and had its own evil (but useful) coding constraints.  Think of the constraints as a way to shake free many coding habits and relearn more maintainable patterns.</p>
+<p>So what did I and others learn from this day of intense and fun coding?
+1. Re-usable and easily modified code is worth its weight in rubies.
+2. Think of the ways that constraints may change in the future, code to allow this (ie is true/false sufficient or should it be more than a binary choice?).
+3. Tests are more than tests, they&#8217;re a roadmap for talking with fellow programmers on your team.
+4. Communication is very important, sometimes more than programming skill when working as a pair.  I found myself spending time and effort working on communicating well and understanding what my pair partner was envisioning.
+5. Contemplate why you&#8217;re passing primitives as output from methods.  Consider where passing an object could be better.
+6. Short methods are maintainable methods, also helps with easier testing.
+6b. The idea of a &#8216;screen-full of code&#8217; being the max for a method came from our elder days when very few lines fit on a screen &#8230;. not from now with a 1080p screen with 9 pt font.
+7. Possibly the most important learning of the day: Rubyists are very fun and supportive, even of newer programmers.</p>
+<p>So think of a CodeRetreat as a sassy, challenging, sometimes infuriating exploration of &#8216;the code less written&#8217;, with apologies to Robert Frost.</p>
+<p>Give CodeRetreat a try when its in your area.  I&#8217;ll be hitting up the next one that comes this way.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/08/wpid294-vimrepress_503589cb_mkd.odt wpid294-vimrepress_503589cb_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/08/swap-out-bad-line-endings-for-unix-standard/">Swap Out BAD Line Endings for Unix Standard</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-19T00:00:00-04:00" pubdate data-updated="true">Aug 19<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>[cc_vim]:setlocal ff=Unix
+:w [/cc_vim]</p>
+<p>Converts and saves current buffer as Unix standard line endings. 
+n FTW!</p>
+<h1>Update</h1>
+<p>[cc_bash]brew install dos2unix[/cc_bash]
+Then use dos2unix to easily swap line endings into Unix format
+[cc_bash]dos2unix *.rb[/cc_bash]</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/11/wpid289-vimrepress_50319568_mkd.odt wpid289-vimrepress_50319568_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/08/coderetreat-steelcityruby-a-post-mortem/">CodeRetreat @SteelCityRuby: A Post Mortem</a></h1>
     
     
@@ -609,119 +733,6 @@ As pointed out in comments &#8216;shutdown -p now&#8217; is the BSD equivalent.
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/07/awesome-tool-for-recovering-ecryptfs-from-ubuntucanonical/">Awesome Tool for Recovering Ecryptfs From Ubuntu/Canonical</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-05T00:00:00-04:00" pubdate data-updated="true">Jul 5<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>During the process of recovering an encrypted filesystem from an old server of mine, I found that I couldn&#8217;t access any of the data.  It appears that I encrypted my home folder on the server using Ubuntu&#8217;s default ecryptfs.</p>
-<p>I &#8216;Googled&#8217; my way through locating the encrypted &#8216;.Private&#8217; folder and tried unsuccessfully to mount the folder. I then used ecryptfs-unwrap-passphrase to unwrap my unique passphrase using the old login password.</p>
-<p>Armed with that and a tool from Dustin Kirkland over at Canonical (ecrypt-recover-private) I succeeded in using the following command to recover my data
-[cc_bash]sudo ecryptfs-recover-private .Private(at appropriate location)[/cc_bash]
-(Note - replace .Private with whichever location it&#8217;s at)
-Then type in the login password, which yields the passphrase, which leads to mounting the data as a read-only directory in /tmp.</p>
-<p>Thanks Canonical!</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/07/wpid247-vimrepress_4ff657ed_mkd.odt wpid247-vimrepress_4ff657ed_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/07/installing-jungledisk-on-mint-13-12-04/">Installing JungleDisk on Mint 13 (12.04)</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-04T00:00:00-04:00" pubdate data-updated="true">Jul 4<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&#8217;m setting up a home server (which will be a blog post for a later date).</p>
-<p>But in the process of setting up Amazon S3 backups, I was installing <a href="www.jungledisk.com">JungleDisk</a>.  This allows mounting of a remote S3 bucket as if it were a local drive.</p>
-<p>After installing, I received the following error stating that it could not find &#8216;libnotify.so.1&#8217;.  I used the locate command to find libnotify (currently libnotify.so.4) and used symlinked it into place.
-[cc_bash]sudo ln -s /usr/lib/x86_64-linux-gnu/libnotify.so.4 /usr/lib/x86_64-linux-gnu/libnotify.so.1[/cc_bash]</p>
-<p>After the symlink everything started up correctly :).</p>
-<p>Btw, server is a quad core AMD (Phenom), 12 GB RAM, plenty of storage, SSD for boot drive, spinner platters for storage&#8230; and ZFS =D.</p><!-- #VIMREPRESS_TAG# http://www.civet.ws/wp-content/uploads/2012/07/vimrepress_4ff4b054_mkd.odt vimrepress_4ff4b054_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -749,6 +760,14 @@ Then type in the login password, which yields the passphrase, which leads to mou
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
+        </li>
+      
+        <li>
+          <a href="/2014/02/finding-myself-in-bsd/">Finding myself in BSD</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
         </li>
       
@@ -758,14 +777,6 @@ Then type in the login password, which yields the passphrase, which leads to mou
       
         <li>
           <a href="/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
-        </li>
-      
-        <li>
-          <a href="/2013/06/dont-fear-pair-programming-a-guide-to-starting/">Don't fear pair programming - A Guide to Starting</a>
-        </li>
-      
-        <li>
-          <a href="/2013/05/starting-with-vim/">Starting with Vim</a>
         </li>
       
     </ul>

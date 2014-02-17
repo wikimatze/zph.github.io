@@ -1,4 +1,0 @@
-New VIM command of the day: [cc_bash]d/(searchterm)[/cc_bash]
-This will delete up until the search term.
-
-Source of this wisdom: [VIM Commands](http://www.brezeale.com/technical_notes/vim_notes.shtml)

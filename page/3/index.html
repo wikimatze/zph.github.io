@@ -151,6 +151,171 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2013/02/thinkingrock-gtd-torn-apart-3/">ThinkingRock GTD: Torn Apart</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-20T00:00:00-05:00" pubdate data-updated="true">Feb 20<span>th</span>, 2013</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>GTD FTW!</h2>
+
+<p>Why am I engaging in this hipster habit of using Covey&#8217;s &#8216;Getting Things Done&#8217; methodology?  <em>Because</em> there&#8217;s something very valuable to it!</p>
+
+<p>The analogies that Stephen Covey uses in his book hit home for geeks.  He describes the working memory we humans possess as Random Access Memory, which requires energy to sustain it.  Furthermore, he reminds the reader that if the RAM is busy, other thoughts can&#8217;t percolate through that stage of consciousness?</p>
+
+<h3>Sound too esoteric?</h3>
+
+<p>Let&#8217;s get down to <em>bare metal</em>. Or <em>brass tacks</em>. Or any other colloquialism that suits.</p>
+
+<p>Throughout the day I have ideas.  Many of them are good ideas :).  Many of these good ideas percolate to the surface at inopportune moments&#8230; like meetings, reviewing reports, or writing code.  These ideas are <em>GREAT</em> but what&#8217;s their value if they disappear before I can act on them?</p>
+
+<p>Nothing.  That&#8217;s how much value these ideas have if they flit right back out of my consciousness.  Might not be a big deal if it&#8217;s remembering a food item to pick-up on the way home.  Might be a <em>huge deal</em> if it&#8217;s a programming or business idea that could be implemented and turned into a product!</p>
+
+<h4>What&#8217;s the solution?</h4>
+
+<p>I mentioned using ThinkingRock GTD system in this <a href="http://www.civet.ws/2013/02/getting-thinking-rock-v2-1-work-on-osx-10-8/">post</a>.  ThinkingRock v2.1 is an open-source project hosted on <a href="http://sourceforge.net/projects/thinkingrock/files/ThinkingRock/TR%202.2.1/"> SourceForge </a>.</p>
+
+<p>ThinkingRock does the usual stuff that one would expect from a GTD program:
+* Collect Thoughts in an Inbox
+* Processing
+* Organization
+* Reviewing
+* Action</p>
+
+<p>What&#8217;s the killer feature of this app for my workflow?</p>
+
+<h3>That ideas can be dumped into it using the universal communication currency of our age, <em>EMAIL</em>!</h3>
+
+<p>My goal is to reduce the friction in the GTD system so that I waste as little energy as possible on the process itself.</p>
+
+<p>Email input is a very powerful feature.  I&#8217;ve setup a dedicated email account for receiving GTD tasks and then configured ThinkingRock to import tasks from there every 15 minutes.</p>
+
+<p>The next step in this process was writing a short commandline script that is prefilled with the GTD email address.  The script combines all commandline input less the scriptname itself and uses that value as the subject line of the email.  This makes for an incredibly fluid system of GTD task entry.</p>
+
+<p>Here&#8217;s the simple Ruby script for this task (note that auth info is placed in <code>~/.gmailrc</code>):
+  <script src="https://gist.github.com/zph/5001831.js"></script></p>
+
+<p>But wait, there&#8217;s more!  If you keep reading this blog post, you&#8217;ll receive more time saving advice at no additional cost.  That&#8217;s &#8220;#{SOME<em>MADE</em>UP_VALUE}&#8221;!</p>
+
+<p>Back to the point, I integrated this script into Alfred.app.  Now the tasks can be entered directly from Alfred!</p>
+
+<p>I&#8217;ve only scratched the surface so far with getting back into the GTD methodology&#8230; but I&#8217;m excited!  Having better programming chops this time when approaching GTD is certainly improving the process :).</p>
+
+<h4>Still to come:</h4>
+
+<p>I discussed in this <a href="http://www.civet.ws/2013/02/getting-thinking-rock-v2-1-work-on-osx-10-8/">post</a> that I wanted to use the open-source version rather than the newer closed source version because of having the ability to dig into the code.  In an upcoming post I&#8217;ll discuss how the open-source program allowed me to investigate the data structure used for ThinkingRock in a way that would be much more challenging if I lacked access to the project source-code!</p>
+
+<p>Let me know in the comments or on Twitter (<a href="http://www.twitter.com/_ZPH">@_ZPH</a>) if you have ideas on how to improve the process.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/02/toggling-pry-in-ruby-script/">Toggling Pry in Ruby Script</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-18T00:00:00-05:00" pubdate data-updated="true">Feb 18<span>th</span>, 2013</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been using the daylights out of <a href="https://github.com/pry/pry">Pry</a> ever since learning about it ~ 1 year ago.  I&#8217;ve also been evangelizing about it to anyone who will listen:</p>
+
+<blockquote class="twitter-tweet"><p>@<a href="https://twitter.com/_zph">_zph</a> Thanks for reading!And thanks for teaching me tmux and pry.Been trying them here and there - still very shaky with tmux.</p>&mdash; Steve Jackson (@stevejxsn) <a href="https://twitter.com/stevejxsn/status/302758800069365761">February 16, 2013</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>The most recent way that I&#8217;m using Pry is by dropping the following line into anywhere that I need to work with:
+<code>require 'pry'; binding.pry</code></p>
+
+<p>But adding that to scripts and then deleting it becomes repetitive.  So here&#8217;s a little Vim function that that toggles my Pry statement.  If the current line matches the Pry snipped, the line&#8217;s deleted.  If the current line doesn&#8217;t match the snippet, then the snippet is added at the cursor.  ( It&#8217;s best used on a blank line until I make the function more robust. )</p>
+
+<script src="https://gist.github.com/zph/4980163.js"></script>
+
+<p>Special thanks go to <a href="http://twitter.com/banisterfiend">@Banisterfiend</a> for all his hard work on the Pry gem.  It makes my Ruby life a much happier experience.  If you&#8217;ve benefited from his hard work, please consider a donation @ the following <a href="http://pryrepl.org/"> link </a>.</p>
+
+<p>Also, special thanks to <a href="http://www.twitter/tpope">Tim Pope</a>.  Reading his vim-fugitive code gave me the syntax hint on how to make this work.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/02/making-marked-app-work-with-vim/">Making Marked.app Work With Vim</a></h1>
     
     
@@ -713,128 +878,6 @@ Questions, thoughts, jeers, feedback&#8230; catch me on &#8216;ye ol Twitters&#8
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/12/rcodetools/">RCodeTools - How to Get Them Working in VIM</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-25T00:00:00-05:00" pubdate data-updated="true">Dec 25<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><a href="https://github.com/tnoda/rcodetools">RCodeTools</a> is an add-on for popular neckbeard text editors such as VIM and Emacs. (My preference currently being VIM).
-
-I came across it through <a href="http://devblog.avdi.org/rubytapas/">RubyTapas Screencasts</a> by Avdi Grimm.  He uses it extensively in his screencasts for crystal clear explanations and live displays of code execution.</p>
-
-<p>RCodeTools adds hash comments (ie [cci_bash] #=> [/cci_bash]) to the text editor buffer.  Then when another command is executed, the whole buffer is evaluated and the area beyond the hash comment is populated with the output from that specific line(s) of code.</p>
-
-<p>It&#8217;s remarkably helpful for explaining and demonstrating code because it avoids any context shift.  The comments serve to demonstrate the code&#8217;s state at any given moment!</p>
-
-<p>Avdi Grimm uses RCodeTools inside Emacs in the screencasts and I was eager to begin using RCodeTools myself.  I had difficulty getting the plugin to work in VIM, resulting in attempts to reinstall VIM, modify the $PATH, etc.</p>
-
-<p>Turns out there is a simpler way:
-1. Install RCodeTools into your ~/.vim/ folder.  Specifically this means the vimscript files.
-2. Install vim-rvm for managing path.
-3. Gem install rcodetools inside your standard RVM ruby.
-4. Add mappings to VIMRC.  Included are my mappings (which are recommended by the README.vim)</p>
-
-<script src="https://gist.github.com/4459982.js"></script>
-
-<p>I look forward to putting this addon to good use at future <a href="http://coderetreat-leandog-2013-1.eventbrite.com/">CodeRetreats</a>!  And it&#8217;s the perfect compliment to screencasting.</p>
-
-<p>Thanks Avdi for drawing my attention to this wonderful tool.</p>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/12/ruby-off-the-rails-ep-1-zero-to-ruby-pt-2/">Ruby Off the Rails - Ep. 1 &#8211; Zero to Ruby &#8211; Pt. 2</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-24T00:00:00-05:00" pubdate data-updated="true">Dec 24<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Here&#8217;s the second installment, briefly covering installing RVM and an approachable text editor (Sublime Text 2). I advocate for focusing learning on one area at a time which means learn Ruby rather than starting to learn Ruby and VIM at the same time. (Learn VIM or EMACS once you&#8217;re further along with the language itself and see it as a long term investment in your productivity and happiness as a code crafter). Ep. 2 &#8211; Zero to Ruby &#8211; Pt. 2 <a href="http://vimeo.com/56214356">Ruby Off the Rails - Ep 2. - Zero to Ruby Pt. 2</a> from <a href="http://vimeo.com/zph">ZPH</a> on <a href="http://vimeo.com">Vimeo</a>. Here&#8217;s the source for the commands used in the episode:</p>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -862,6 +905,14 @@ I came across it through <a href="http://devblog.avdi.org/rubytapas/">RubyTapas 
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
+        </li>
+      
+        <li>
+          <a href="/2014/02/finding-myself-in-bsd/">Finding myself in BSD</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
         </li>
       
@@ -871,14 +922,6 @@ I came across it through <a href="http://devblog.avdi.org/rubytapas/">RubyTapas 
       
         <li>
           <a href="/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
-        </li>
-      
-        <li>
-          <a href="/2013/06/dont-fear-pair-programming-a-guide-to-starting/">Don't fear pair programming - A Guide to Starting</a>
-        </li>
-      
-        <li>
-          <a href="/2013/05/starting-with-vim/">Starting with Vim</a>
         </li>
       
     </ul>

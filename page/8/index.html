@@ -151,6 +151,122 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/04/converting-images-of-documents-to-near-scanned-quality/">Converting Images of Documents to Near Scanned Quality</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-04-25T00:00:00-04:00" pubdate data-updated="true">Apr 25<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">I&#8217;m working on a project at the moment where we&#8217;re handling large quantity of documents that have been photographed in less than ideal circumstances.
+
+These photographs are high resolution color photos of typed and handwritten documents that need to be transformed into scan quality documents.  The steps involved are:
+<ul>
+	<li>Convert color to grayscale (128 shades or less)</li>
+	<li>Remove background noise and speckles/flecks/etc</li>
+	<li>Reduce size of images for easier distribution and lower bandwidth usage (currently ~40 GB for set of images)</li>
+</ul>
+After a few days of working on the problem and learning about the technologies involved&#8230; here&#8217;s the script I came up with, along with notes about sources and inspirations (note much of the heavy lifting is done by <a title="ImageMagick" href="www.imagemagick.org/" target="_blank">ImageMagick</a> and   <a title="Fred's ImageMagick Scripts" href="www.fmwconcepts.com/imagemagick/" target="_blank">Fred&#8217;s ImageMagick Scripts</a>
+
+[gist id=2494870]
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/02/fixing-disk-not-found-error-in-grub-after-apt-get-upgrade/">Fixing &#8216;Disk Not Found&#8217; Error in Grub After Apt-get Upgrade</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-20T00:00:00-05:00" pubdate data-updated="true">Feb 20<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">One of my development virtual machines went belly up after a recent system upgrade.
+
+After tinkering around at the grub&gt; prompt to no avail, I booted a LiveCD, followed the instructions here: <a href="http://sazeit.com/articles/repair-or-reinstall-grub-with-boot-repair">http://sazeit.com/articles/repair-or-reinstall-grub-with-boot-repair</a>, and was up and running in minutes.
+
+Moral of the story; sometimes it&#8217;s more important to solve the problem than understand the underlying issues&#8230;not often, but sometimes :).
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/02/absence/">Absence</a></h1>
     
     
@@ -670,164 +786,6 @@ Wouldn&#8217;t have gotten into these systems using those defaults but I still s
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/09/openemr-4-0-ubuntu-debian-package-installation-oemr/">OpenEMR 4.0 Ubuntu-Debian Package Installation - Oemr</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-09T00:00:00-04:00" pubdate data-updated="true">Sep 9<span>th</span>, 2011</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><a href="http://www.oemr.org/wiki/OpenEMR_4.0_Ubuntu-Debian_Package_Installation">OpenEMR 4.0 Ubuntu-Debian Package Installation - Oemr</a>.
-
-&nbsp;
-
-OpenEMR looks like a nice way to limit physician costs as re-imbursements shrink.
-
-Hearing lead Physician on the project, it&#8217;s good stuff.  By far the most techie talk I&#8217;ve attended #OhioLinuxFest
-
-Very easy install, [ccie_bash]dpkg -i openXXXXX.deb[/ccie_bash]
-
-Followed by an [ccie_bash] apt-get -f install [/ccie_bash] to clean up a missing dependency.
-
-&lt; 2 min from starting wget to finishing install &amp; logging onto http://localhost/openemr.
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2011/09/googleanalytics-and-tikiwiki/">GoogleAnalytics and TikiWiki</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-09-08T00:00:00-04:00" pubdate data-updated="true">Sep 8<span>th</span>, 2011</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Sat down this morning to integrate Google Analytics into a couple TikiWiki CMS based sites.  Went down easily for the WPress based ones&#8230; Tikis took a little (very little) research.
-
-Here&#8217;s the trick, as found on TikiWiki&#8217;s documentation. (The option of including it in the Javascript field or in standard location worked well in TikiWiki 7.0.)
-
-Their first option of including it within literal tags and using the GoogleAnalytics Plugin didn&#8217;t work on my older TikiWiki (~6.1).  Used the second answer and it worked perfectly.  Place the following code in the Look &amp; Feel tab under &#8220;Custom End of Code&#8221;:
-
-____STARTCODE_____
-
-<span class="Apple-style-span" style="color: #666666; font-family: monospace; line-height: normal;"><span class="js-punctuation" style="color: #666666;">{</span><span class="js-keyword" style="color: #770088;">if </span><span class="js-variable" style="color: black;">$tiki_p_admin </span><span class="js-variable" style="color: black;">ne </span><span class="js-string" style="color: #aa2222;">&#8216;y&#8217;</span><span class="js-punctuation" style="color: #666666;">}</span><span class="js-punctuation" style="color: #666666;">{</span><span class="js-variable" style="color: black;">literal</span><span class="js-punctuation" style="color: #666666;">}</span><span class="js-operator" style="color: #666666;">&lt;</span><span class="js-variable" style="color: black;">script</span><span class="js-variable" style="color: black;">type</span><span class="js-operator" style="color: #666666;">=</span><span class="js-string" style="color: #aa2222;">&#8220;text/javascript&#8221;</span><span class="js-operator" style="color: #666666;">&gt;</span></span>
-
-<span class="Apple-style-span" style="color: #666666; font-family: monospace; line-height: normal;">
-<span class="whitespace">  </span><span class="js-keyword" style="color: #770088;">var </span><span class="js-variable" style="color: black;">_gaq </span><span class="js-operator" style="color: #666666;">= </span><span class="js-variable" style="color: black;">_gaq </span><span class="js-operator" style="color: #666666;">|| </span><span class="js-punctuation" style="color: #666666;">[</span><span class="js-punctuation" style="color: #666666;">]</span><span class="js-punctuation" style="color: #666666;">;</span>
-<span class="whitespace">  </span><span class="js-variable" style="color: black;">_gaq</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">push</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-punctuation" style="color: #666666;">[</span><span class="js-string" style="color: #aa2222;">&#8217;_setAccount&#8217;</span><span class="js-punctuation" style="color: #666666;">, </span><span class="js-string" style="color: #aa2222;">&#8216;UA-XXXXXXXX-1&#8217;</span><span class="js-punctuation" style="color: #666666;">]</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">;</span>
-<span class="whitespace">  </span><span class="js-variable" style="color: black;">_gaq</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">push</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-punctuation" style="color: #666666;">[</span><span class="js-string" style="color: #aa2222;">&#8217;_trackPageview&#8217;</span><span class="js-punctuation" style="color: #666666;">]</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">;</span></span>
-
-<span class="whitespace">  </span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-keyword" style="color: #770088;">function</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-punctuation" style="color: #666666;">) </span><span class="js-punctuation" style="color: #666666;">{</span>
-<span class="whitespace">    </span><span class="js-keyword" style="color: #770088;">var </span><span class="js-variabledef" style="color: #0000ff;">ga </span><span class="js-operator" style="color: #666666;">= </span><span class="js-variable" style="color: black;">document</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">createElement</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-string" style="color: #aa2222;">&#8216;script&#8217;</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">; </span><span class="js-localvariable" style="color: #004499;">ga</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">type </span><span class="js-operator" style="color: #666666;">=</span><span class="js-string" style="color: #aa2222;">&#8216;text/javascript&#8217;</span><span class="js-punctuation" style="color: #666666;">; </span><span class="js-localvariable" style="color: #004499;">ga</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">async </span><span class="js-operator" style="color: #666666;">= </span><span class="js-atom" style="color: #228811;">true</span><span class="js-punctuation" style="color: #666666;">;</span>
-<span class="whitespace">    </span><span class="js-localvariable" style="color: #004499;">ga</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">src </span><span class="js-operator" style="color: #666666;">= </span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-string" style="color: #aa2222;">&#8216;https:&#8217; </span><span class="js-operator" style="color: #666666;">== </span><span class="js-variable" style="color: black;">document</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">location</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">protocol </span><span class="js-operator" style="color: #666666;">?</span><span class="js-string" style="color: #aa2222;">&#8216;https://ssl&#8217; </span><span class="js-punctuation" style="color: #666666;">: </span><span class="js-string" style="color: #aa2222;">&#8216;http://www&#8217;</span><span class="js-punctuation" style="color: #666666;">) </span><span class="js-operator" style="color: #666666;">+ </span><span class="js-string" style="color: #aa2222;">&#8216;.google-analytics.com/ga.js&#8217;</span><span class="js-punctuation" style="color: #666666;">;</span>
-<span class="whitespace">    </span><span class="js-keyword" style="color: #770088;">var </span><span class="js-variabledef" style="color: #0000ff;">s </span><span class="js-operator" style="color: #666666;">= </span><span class="js-variable" style="color: black;">document</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">getElementsByTagName</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-string" style="color: #aa2222;">&#8216;script&#8217;</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">[</span><span class="js-atom" style="color: #228811;">0</span><span class="js-punctuation" style="color: #666666;">]</span><span class="js-punctuation" style="color: #666666;">;</span><span class="js-localvariable" style="color: #004499;">s</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">parentNode</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">insertBefore</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-localvariable" style="color: #004499;">ga</span><span class="js-punctuation" style="color: #666666;">, </span><span class="js-localvariable" style="color: #004499;">s</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">;</span>
-<span class="whitespace">  </span><span class="js-punctuation" style="color: #666666;">}</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">;</span>
-
-<span class="js-operator" style="color: #666666;">&lt;</span><span class="js-string" style="color: #aa2222;">/script&gt;{/</span><span class="js-variable" style="color: black;">literal</span><span class="js-punctuation" style="color: #666666;">}</span>
-<span class="js-punctuation" style="color: #666666;">{</span><span class="js-keyword" style="color: #770088;">else</span><span class="js-punctuation" style="color: #666666;">}</span>
-<span class="js-punctuation" style="color: #666666;">{</span><span class="js-variable" style="color: black;">literal</span><span class="js-punctuation" style="color: #666666;">}</span><span class="js-operator" style="color: #666666;">&lt;</span><span class="js-variable" style="color: black;">script </span><span class="js-variable" style="color: black;">type</span><span class="js-operator" style="color: #666666;">=</span><span class="js-string" style="color: #aa2222;">&#8220;text/javascript&#8221;</span><span class="js-operator" style="color: #666666;">&gt;</span>
-
-<span class="whitespace">  </span><span class="js-keyword" style="color: #770088;">var </span><span class="js-variable" style="color: black;">_gaq </span><span class="js-operator" style="color: #666666;">= </span><span class="js-variable" style="color: black;">_gaq </span><span class="js-operator" style="color: #666666;">|| </span><span class="js-punctuation" style="color: #666666;">[</span><span class="js-punctuation" style="color: #666666;">]</span><span class="js-punctuation" style="color: #666666;">;</span>
-<span class="whitespace">  </span><span class="js-variable" style="color: black;">_gaq</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">push</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-punctuation" style="color: #666666;">[</span><span class="js-string" style="color: #aa2222;">&#8217;_setAccount&#8217;</span><span class="js-punctuation" style="color: #666666;">, </span><span class="js-string" style="color: #aa2222;">&#8216;UA-XXXXXXXX-1&#8217;</span><span class="js-punctuation" style="color: #666666;">]</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">;</span>
-<span class="whitespace">  </span><span class="js-variable" style="color: black;">_gaq</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">push</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-punctuation" style="color: #666666;">[</span><span class="js-string" style="color: #aa2222;">&#8217;_trackPageview&#8217;</span><span class="js-punctuation" style="color: #666666;">]</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">;</span>
-<span class="whitespace">  </span><span class="js-variable" style="color: black;">_gaq</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">push</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-punctuation" style="color: #666666;">[</span><span class="js-string" style="color: #aa2222;">&#8217;_setVar&#8217;</span><span class="js-punctuation" style="color: #666666;">, </span><span class="js-string" style="color: #aa2222;">&#8216;ga_exclude&#8217;</span><span class="js-punctuation" style="color: #666666;">]</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">; </span>
-<span class="whitespace">  </span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-keyword" style="color: #770088;">function</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-punctuation" style="color: #666666;">) </span><span class="js-punctuation" style="color: #666666;">{</span>
-<span class="whitespace">    </span><span class="js-keyword" style="color: #770088;">var </span><span class="js-variabledef" style="color: #0000ff;">ga </span><span class="js-operator" style="color: #666666;">= </span><span class="js-variable" style="color: black;">document</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">createElement</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-string" style="color: #aa2222;">&#8216;script&#8217;</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">; </span><span class="js-localvariable" style="color: #004499;">ga</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">type </span><span class="js-operator" style="color: #666666;">=</span><span class="js-string" style="color: #aa2222;">&#8216;text/javascript&#8217;</span><span class="js-punctuation" style="color: #666666;">; </span><span class="js-localvariable" style="color: #004499;">ga</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">async </span><span class="js-operator" style="color: #666666;">= </span><span class="js-atom" style="color: #228811;">true</span><span class="js-punctuation" style="color: #666666;">;</span>
-<span class="whitespace">    </span><span class="js-localvariable" style="color: #004499;">ga</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">src </span><span class="js-operator" style="color: #666666;">= </span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-string" style="color: #aa2222;">&#8216;https:&#8217; </span><span class="js-operator" style="color: #666666;">== </span><span class="js-variable" style="color: black;">document</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">location</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">protocol </span><span class="js-operator" style="color: #666666;">?</span><span class="js-string" style="color: #aa2222;">&#8216;https://ssl&#8217; </span><span class="js-punctuation" style="color: #666666;">: </span><span class="js-string" style="color: #aa2222;">&#8216;http://www&#8217;</span><span class="js-punctuation" style="color: #666666;">) </span><span class="js-operator" style="color: #666666;">+ </span><span class="js-string" style="color: #aa2222;">&#8216;.google-analytics.com/ga.js&#8217;</span><span class="js-punctuation" style="color: #666666;">;</span>
-<span class="whitespace">    </span><span class="js-keyword" style="color: #770088;">var </span><span class="js-variabledef" style="color: #0000ff;">s </span><span class="js-operator" style="color: #666666;">= </span><span class="js-variable" style="color: black;">document</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">getElementsByTagName</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-string" style="color: #aa2222;">&#8216;script&#8217;</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">[</span><span class="js-atom" style="color: #228811;">0</span><span class="js-punctuation" style="color: #666666;">]</span><span class="js-punctuation" style="color: #666666;">;</span><span class="js-localvariable" style="color: #004499;">s</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">parentNode</span><span class="js-punctuation" style="color: #666666;">.</span><span class="js-property" style="color: black;">insertBefore</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-localvariable" style="color: #004499;">ga</span><span class="js-punctuation" style="color: #666666;">, </span><span class="js-localvariable" style="color: #004499;">s</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">;</span>
-
-<span class="whitespace">  </span><span class="js-punctuation" style="color: #666666;">}</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">(</span><span class="js-punctuation" style="color: #666666;">)</span><span class="js-punctuation" style="color: #666666;">;</span>
-
-<span class="js-operator" style="color: #666666;">&lt;</span><span class="js-string" style="color: #aa2222;">/script&gt;{/</span><span class="js-variable" style="color: black;">literal</span><span class="js-punctuation" style="color: #666666;">}</span><span class="js-punctuation" style="color: #666666;">{</span><span class="js-string" style="color: #aa2222;">/if}</span>
-
-&nbsp;
-
-___END_CODE__
-
-Thanks for the clear documentation <a title="doc.tiki.org" href="http://doc.tiki.org" target="_blank">doc.tiki.org</a> and give the CMS a try. It&#8217;s a nicely integrated CMS w/ wiki, blog, forums, etc.
-
-Source: <a href="http://doc.tiki.org/PluginGoogleAnalytics">PluginGoogleAnalytics | Documentation for Tiki Wiki CMS Groupware</a>.
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -855,6 +813,14 @@ Source: <a href="http://doc.tiki.org/PluginGoogleAnalytics">PluginGoogleAnalyti
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
+        </li>
+      
+        <li>
+          <a href="/2014/02/finding-myself-in-bsd/">Finding myself in BSD</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
         </li>
       
@@ -864,14 +830,6 @@ Source: <a href="http://doc.tiki.org/PluginGoogleAnalytics">PluginGoogleAnalyti
       
         <li>
           <a href="/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
-        </li>
-      
-        <li>
-          <a href="/2013/06/dont-fear-pair-programming-a-guide-to-starting/">Don't fear pair programming - A Guide to Starting</a>
-        </li>
-      
-        <li>
-          <a href="/2013/05/starting-with-vim/">Starting with Vim</a>
         </li>
       
     </ul>
