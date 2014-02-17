@@ -1,6 +1,34 @@
 require "rubygems"
 require "bundler/setup"
 require "stringex"
+require 'open3'
+
+def git(arg)
+  cmd = "git #{args}"
+  output, status = Open3.capture2(cmd)
+  exit(1) if status.exitstatus != 0
+end
+
+task :zdeploy do
+
+  time = Time.now.utc
+
+  Rake::Task[:gen_deploy].invoke
+  sh "git stash"
+  sh "git push"
+  sh "git checkout master" && \
+  Dir.glob("**/*").reject { |i| i[/vendor/] }.each do |f|
+    FileUtils.rm_rf(f)
+  end
+  git "checkout source -- _deploy"
+  sh "cp -r _deploy/* ."
+  sh "rm -rf _deploy/"
+  git "add --all"
+  git "cim 'Site Updated at #{time}'"
+  git "push"
+  git "checkout -"
+  puts "Site deployed"
+end
 
 ## -- Rsync Deploy config -- ##
 # Be sure your public key is listed in your server's ~/.ssh/authorized_keys file
