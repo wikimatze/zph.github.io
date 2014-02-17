@@ -4,7 +4,7 @@ require "stringex"
 require 'open3'
 
 def git(arg)
-  cmd = "git #{args}"
+  cmd = "git #{arg}"
   output, status = Open3.capture2(cmd)
   exit(1) if status.exitstatus != 0
 end
