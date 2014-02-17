@@ -4,7 +4,7 @@
   <title><![CDATA[Civet]]></title>
   <link href="http://zph.github.io/atom.xml" rel="self"/>
   <link href="http://zph.github.io/"/>
-  <updated>2014-02-17T01:38:54-05:00</updated>
+  <updated>2014-02-17T14:15:37-05:00</updated>
   <id>http://zph.github.io/</id>
   <author>
     <name><![CDATA[Zander]]></name>
@@ -12,6 +12,80 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Pathogen.vim without the Submodules: Use Infect]]></title>
+    <link href="http://zph.github.io/2014/02/pathogen-dot-vim-without-the-submodules-use-infect/"/>
+    <updated>2014-02-17T14:06:00-05:00</updated>
+    <id>http://zph.github.io/2014/02/pathogen-dot-vim-without-the-submodules-use-infect</id>
+    <content type="html"><![CDATA[<p>Over the weekend I finally admitted to myself that I hate submodules.</p>
+
+<p>But they&rsquo;re a keystone to one of my primary development tools: Vim.  In order to use Vim, I use the Pathogen.vim plugin by @tpope.  In order to use Pathogen, you normally use submodules in the <code>.vim/bundle/</code> folder.</p>
+
+<p>But submodules are the work of the devil.</p>
+
+<p>I tried out the Vundle plugin and was seeing much longer loadtime for vim:</p>
+
+<script src="https://gist.github.com/zph/db5aa2dc128693ba9583.js"></script>
+
+
+<p>So I asked around on Twitter and <a href="https://twitter.com/jwieringa"> @jwieringa </a> advised me to checkout <a href="https://github.com/csexton/infect"> &lsquo;infect&rsquo; </a> by <a href="https://twitter.com/crsexton"> @crsexton </a>.</p>
+
+<p>And <code>infect</code> is awesome! It works with Pathogen to give it a declarative style for plugins.  An example is:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"=bundle tpope/vim-pathogen
+</span><span class='line'>"=bundle tpope/vim-sensible
+</span><span class='line'>source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
+</span><span class='line'>execute pathogen#incubate()
+</span><span class='line'>
+</span><span class='line'>"=bundle mileszs/ack.vim
+</span><span class='line'>"=bundle vim-scripts/AutoTag
+</span><span class='line'>"=bundle kien/ctrlp.vim
+</span><span class='line'>"=bundle Raimondi/delimitMate
+</span><span class='line'>"=bundle sethbc/fuzzyfinder_textmate
+</span><span class='line'>"=bundle tpope/gem-ctags
+</span><span class='line'>"=bundle gregsexton/gitv
+</span><span class='line'>"=bundle sjl/gundo.vim
+</span><span class='line'>"=bundle tpope/vim-vinegar
+</span><span class='line'>"=bundle jnwhiteh/vim-golang
+</span><span class='line'>"=bundle wting/rust.vim
+</span><span class='line'>
+</span><span class='line'>call pathogen#helptags()
+</span><span class='line'>set nocompatible      " We're running Vim, not Vi!
+</span><span class='line'>syntax on             " Enable syntax highlighting
+</span><span class='line'>filetype on           " Enable filetype detection
+</span><span class='line'>filetype indent on    " Enable filetype-specific indenting
+</span><span class='line'>filetype plugin on    " Enable filetype-specific plugins</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Use it. Love it. Don&rsquo;t look back!</p>
+
+<p>If you want faster downloads with &lsquo;infect&rsquo; try this unofficial fork of the standalone: <a href="https://github.com/zph/zph/blob/master/home/bin/infect.">https://github.com/zph/zph/blob/master/home/bin/infect.</a>  When I have time, I&rsquo;ll work w/ @crsexton to get this added to &lsquo;infect&rsquo;.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Solving Issues with RVM on BSD]]></title>
@@ -1338,31 +1412,6 @@ Given that email accounted for 6 hours of my workweek, I decided to improve the 
 Next I added two key combinations for Sparrow.app. One key combination opens a new email from ANY application while the other key combo brings Sparrow to forefront or hides it again. These two changes have saved me lots of time so far and reduced the effort related to context switching.
 
 Share your tips for email hacks and productivity (GTD) hacks! I can be reached via the comments and as [<a href="http://www.twitter.com/_zph">@_ZPH</a>] on Twitter.
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Finite Keystrokes Before Death : Making the Most of Them]]></title>
-    <link href="http://zph.github.io/2013/02/finite-keystrokes-before-death-making-the-most-of-them/"/>
-    <updated>2013-02-21T00:00:00-05:00</updated>
-    <id>http://zph.github.io/2013/02/finite-keystrokes-before-death-making-the-most-of-them</id>
-    <content type="html"><![CDATA[[caption id=&#8221;attachment_526&#8221; align=&#8221;alignleft&#8221; width=&#8221;300&#8221;]<a href="http://198.211.104.146/wp-content/uploads/2013/02/5637077256_7c2d3c7694.jpg"><img class="size-medium wp-image-526" alt="" src="http://198.211.104.146/wp-content/uploads/2013/02/5637077256_7c2d3c7694-300x225.jpg" width="300" height="225" /></a> By: <a href="http://www.flickr.com/photos/37651136@N05/5637077256/" target="_blank">ericnvntr</a>[/caption]
-
-The idea that we possess a finite number of keystrokes to consume before death is an ominous consideration.
-
-That&#8217;s the concept mentioned in one of RubyFreelancer&#8217;s archived shows by Eric Davis (if I remember correctly). I believe he&#8217;s quoting another person in the episode when he talks about having a finite number of keystrokes remaining.
-
-I&#8217;ve been using a text expander, i.e. snippet application, to help manage the repetitive work of typing. Common phrases or sentences that I use are added as re-usable phrases to a handy program called <a href="http://kapeli.com/">Dash</a>. Dash observes when keystrokes are entered and if a trigger keyword is used, such as &#8216;iirc&#8217;, the program replaces that text with &#8216;if I recall correctly&#8217;. Dash also allows the phrase to have replaceable variables, just like you would expect fom &#8216;Yasnippet&#8217; or &#8216;Snipmate&#8217;.
-
-As a bonus feature, Dash serves the dual purpose of being a &#8216;Heads Up Display&#8217; style documentation viewer. It&#8217;s a great way to lookup STDLIB info from Ruby or CSS info. The only drawback that I&#8217;ve found is needing to manually generate Rdocs since my system settings for RVM do not install them. I accomplished this using the following script:
-
-&nbsp;
-
-I&#8217;ve used the text expansion feature to save thousands of keystrokes in repetitive form entries where other automated solutions are not available.
-
-Try it out and let me know what you think in the comments or on Twitter <a href="http://www.twitter.com/_ZPH">@_ZPH</a>. Oh yeah and map the HUD to something easy to remember like CMD-CTRL-SHIFT D. I keep all of my system-wide shortcuts on the same triple modifier chord so that they&#8217;re unlikely to overwrite standard shortcuts :).
-
-What other methods do you have for reducing repetition?
 ]]></content>
   </entry>
   

@@ -151,6 +151,96 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/09/osx-and-linux-tools-i-cant-live-without/">OSX and Linux Tools I Can&#8217;t Live Without</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-12T00:00:00-04:00" pubdate data-updated="true">Sep 12<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ll keep it short and sweet but here&#8217;s the top list of tools that I&#8217;m using in various tech areas of my life.</p>
+<ul>
+<li>
+<p><a href="https://github.com/clvv/fasd">FASD</a> - Making me more of a speed daemon on cd&#8217;ing around terminal along with instant vimming from anywhere. PEW PEW!</p>
+</li>
+<li>
+<p><a href="http://www.alfredapp.com/">Alfred</a> - Speed daemon in graphical environment with starting new programs, running terminal commands, etc.  Akin to Launchy, Gnome-Do, Quicksilver (which I wish worked better on my Mac). [ This one is Mac specific but see other programs for different OSes ]</p>
+</li>
+<li>
+<p><a href="http://www.iterm2.com/#/section/home">iTerm2</a> - Customizable and nicely integrates with tmux. [Mac specific, but on Linux I&#8217;ve been super happy with Terminator ]</p>
+</li>
+<li>
+<p><a href="http://tmux.sourceforge.net">tmux</a> - Terminal multiplexer.  Like screen, but much more easily customized.  Feels like a VIM take on screen control once it&#8217;s tweaked.</p>
+</li>
+<li>
+<p><a href="http://www.vim.org/">VIM</a> - My favorite editor.  Mainly used in the terminal but occasionally I use MacVim for the glitz.</p>
+</li>
+<li>
+<p><a href="http://vimium.github.com/">Vimium</a> - Bring the powers of VIM into the Chrome Browser.  Very very slick interface, especially for opening links, scrolling &#8230; just go install it.</p>
+</li>
+<li>
+<p><a href="https://bitbucket.org/pentie/vimrepress">VimRepress</a> - Blog with Wordpress from the safety confines of VIM (as I am now)&#8230; in MARKDOWN!</p>
+</li>
+<li>
+<p><a href="http://code.google.com/p/googlecl/">GoogleCl</a> - Commandline access to Google features such as Contacts and Calendars.  Great for adding events from the commandline.  Python tool IIRC.</p>
+</li>
+<li>
+<p><a href="http://www.hogbaysoftware.com/products/quickcursor">QuickCursor</a> - Lets me use VIM to edit just about anything.  It opens a new VIM instance/buffer with the highlighted text, say from an email and pushes it back into that spot after editing w/ Vim.</p>
+</li>
+<li>
+<p><a href="http://blog.boastr.net/">BetterTouchTool</a> - Nice easy way to assign keystrokes to open a program, move window to specific region of screen, etc.  Also complemented by BetterSnapTool.</p>
+</li>
+<li>
+<p><a href="http://taskwarrior.org/projects/show/taskwarrior">TaskWarrior</a> - Task manager on the commandline.  Like Todo.sh but with more commandline power and no Android/iOS app.  Worthwhile trade at the moment after 3 weeks use.  Does have a Sinatra app with TaskWarrior integration&#8230; and I&#8217;m tempted to scrape together a Ruby tool to have commandline Pomodoro tracker that integrates with Growl and TaskWarrior (as an annotate function)</p>
+</li>
+</ul>
+<p>And in no specific order:</p>
+<p>-Dropbox, Evernote, DashExpander, Pomodairo, TweetDeck, Sparrow/Thunderbird (Sparrow for slick integration, Thunderbird for extensions and power), and last but certainly not least Z-Shell.</p>
+<p>Let me know in the comments or on Twitter if I&#8217;m missing any good tools!</p>
+<p><a href="https://twitter.com/_zph">@_zph</a></p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/09/wpid310-vimrepress_5051394d_mkd.odt wpid310-vimrepress_5051394d_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/08/coderetreat-steelcityruby-things-i-learned/">CodeRetreat @SteelCityRuby - Things I Learned</a></h1>
     
     
@@ -676,63 +766,6 @@ As pointed out in comments &#8216;shutdown -p now&#8217; is the BSD equivalent.
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/07/linux-command-of-the-day/">Linux Command of the Day</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-05T00:00:00-04:00" pubdate data-updated="true">Jul 5<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>No fancy commands today, just good ol&#8217; functional admin action. I was setting up a couple of new Virtual Private Servers (ala EC2 or <a href="www.damnvps.com">DamnVPS</a>) and came across the following helpful command [cc&#95;bash]ssh-copy-id -i ~/.ssh/id&#95;rsa.pub username@remote&#95;server&#95;ip&#95;or&#95;domain[/cc_bash] What it does is copies (appends) your ssh key to the list of permissible keys on the remote server.</p>
-
-<p>Need to make an SSH key for this purpose? [cc&#95;bash]ssh-keygen -t rsa -b 4096[/cc&#95;bash]</p>
-
-<p>Need to install ssh-copy-id on OSX? [cc&#95;bash]brew install ssh-copy-id[/cc&#95;bash]</p>
-
-<!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/07/vimrepress_4ff6488b_mkd.odt vimrepress_4ff6488b_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -760,6 +793,10 @@ As pointed out in comments &#8216;shutdown -p now&#8217; is the BSD equivalent.
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/02/pathogen-dot-vim-without-the-submodules-use-infect/">Pathogen.vim without the Submodules: Use Infect</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
         </li>
       
@@ -773,10 +810,6 @@ As pointed out in comments &#8216;shutdown -p now&#8217; is the BSD equivalent.
       
         <li>
           <a href="/2014/02/automating-email-with-ruby/">Automating Email with Ruby</a>
-        </li>
-      
-        <li>
-          <a href="/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
         </li>
       
     </ul>
