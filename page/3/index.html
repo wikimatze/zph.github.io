@@ -151,6 +151,73 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2013/02/finite-keystrokes-before-death-making-the-most-of-them/">Finite Keystrokes Before Death : Making the Most of Them</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-21T00:00:00-05:00" pubdate data-updated="true">Feb 21<span>st</span>, 2013</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">[caption id=&#8221;attachment_526&#8221; align=&#8221;alignleft&#8221; width=&#8221;300&#8221;]<a href="http://198.211.104.146/wp-content/uploads/2013/02/5637077256_7c2d3c7694.jpg"><img class="size-medium wp-image-526" alt="" src="http://198.211.104.146/wp-content/uploads/2013/02/5637077256_7c2d3c7694-300x225.jpg" width="300" height="225" /></a> By: <a href="http://www.flickr.com/photos/37651136@N05/5637077256/" target="_blank">ericnvntr</a>[/caption]
+
+The idea that we possess a finite number of keystrokes to consume before death is an ominous consideration.
+
+That&#8217;s the concept mentioned in one of RubyFreelancer&#8217;s archived shows by Eric Davis (if I remember correctly). I believe he&#8217;s quoting another person in the episode when he talks about having a finite number of keystrokes remaining.
+
+I&#8217;ve been using a text expander, i.e. snippet application, to help manage the repetitive work of typing. Common phrases or sentences that I use are added as re-usable phrases to a handy program called <a href="http://kapeli.com/">Dash</a>. Dash observes when keystrokes are entered and if a trigger keyword is used, such as &#8216;iirc&#8217;, the program replaces that text with &#8216;if I recall correctly&#8217;. Dash also allows the phrase to have replaceable variables, just like you would expect fom &#8216;Yasnippet&#8217; or &#8216;Snipmate&#8217;.
+
+As a bonus feature, Dash serves the dual purpose of being a &#8216;Heads Up Display&#8217; style documentation viewer. It&#8217;s a great way to lookup STDLIB info from Ruby or CSS info. The only drawback that I&#8217;ve found is needing to manually generate Rdocs since my system settings for RVM do not install them. I accomplished this using the following script:
+
+&nbsp;
+
+I&#8217;ve used the text expansion feature to save thousands of keystrokes in repetitive form entries where other automated solutions are not available.
+
+Try it out and let me know what you think in the comments or on Twitter <a href="http://www.twitter.com/_ZPH">@_ZPH</a>. Oh yeah and map the HUD to something easy to remember like CMD-CTRL-SHIFT D. I keep all of my system-wide shortcuts on the same triple modifier chord so that they&#8217;re unlikely to overwrite standard shortcuts :).
+
+What other methods do you have for reducing repetition?
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/02/thinkingrock-gtd-torn-apart-3/">ThinkingRock GTD: Torn Apart</a></h1>
     
     
@@ -785,99 +852,6 @@ Questions, thoughts, jeers, feedback&#8230; catch me on &#8216;ye ol Twitters&#8
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/12/trello-archiver-from-scratch/">Trello-Archiver From Scratch</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-12-29T00:00:00-05:00" pubdate data-updated="true">Dec 29<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Trello-Archiver is a set of Ruby scripts that allows one to export their Trello board into a CSV, TSV, or XLSX file. It was started by another person on Github.com named Mad_Typist. Early on in the process I sent them a pull request to contribute my changes back&#8230; but they don&#8217;t seem to be around. Given that, I&#8217;ve forked the project and continued to develop it for my own benefit.</p>
-
-<p>Trello-Archiver relies on a few conventions that exist in the Ruby world. 1. Project dependencies are managed with <code>Bundler</code> 2. A semi-recent version of Ruby is used <code>&gt;= 1.9.2</code></p>
-
-<p>To use the project on a system that isn&#8217;t setup for Ruby development, the first step is to install a recent version of Ruby. I prefer to use a tool called Ruby Version Manager for this <a href="www.rvm.io">RVM</a>.</p>
-
-<p>Install a sane Ruby Version Manager along with Recent Ruby
-<code>curl -L https://get.rvm.io | bash -s stable --ruby</code></p>
-
-<p>Source the installed script to allow for using RVM this first time w/ this command: 
-<code>source ~/.rvm/scripts/rvm</code></p>
-
-<p>Future logins will automatically source RVM using your bashrc or zshrc.</p>
-
-<p>The next step is to clone the <a href="https://github.com/zph/trello-archiver.git"> Trello-Archiver </a> repo from Github.</p>
-
-<p>Then <code>cd trello-archiver</code> and run <code>bundle install</code>. Bundler installs the necessary dependencies for <strong>Trello-Archiver</strong>. The nice feature about Bundler is that it manages individual projects&#8217; dependencies independently :).</p>
-
-<p>Next, <code>cp config.example.yml config.yml</code>. Config.example.yml is the template for where the authentication credentials are stored along with any default settings.</p>
-
-<p>Open up <code>config.yml</code> with your favorite text editor. Instructions are inclosed in there for how to gather your secret credentials from Trello.com.</p>
-
-<p>First, open <code>https://trello.com/1/appKey/generate</code> in your web browser. Copy the first key as your &#8216;public key&#8217; and the second (longer) key as your &#8216;private_key&#8217;.</p>
-
-<p>Next we need to enter those values into a special url: <code>https://trello.com/1/connect?key=PUBLIC_KEY_FROM_ABOVE&amp;name=ANYNAME&amp;response_type=token&amp;scope=read,account&amp;expiration=never</code> The two values that need replacing in this URL are PUBLIC<em>KEY</em>FROM_ABOVE nd ANYNAME. ANYNAME is a placeholder for any text that you want to use to identify this key, ie it could be TrelloArchiver. Also note that this is authorizing Read-Only access. This way, even if there&#8217;s a bug in the software the token won&#8217;t allow changes to your Trello information.</p>
-
-<p>Past that value into your web browser and click allow on the confirmation webpage.</p>
-
-<p>The following page that loads has your &#8216;access<em>token</em>key&#8217;. Copy this value into your <code>config.yml</code>. Save <code>config.yml</code> and exit to commandline.</p>
-
-<p><em>That&#8217;s it for authentication setup</em>! Make sure to be careful with this config.yml and don&#8217;t go adding it to any public git repos ;).</p>
-
-<p>Now for backing things up :). Decide if you want a specific board backed up or all of them.</p>
-
-<p>Let&#8217;s backup a single board: -<code>ruby bin/trello_backup.rb</code> -Choose your board by number and hit enter -Enter a filename or not (it defaults to name of board and date stamp) -Defaults to exporting as XLSX (this is easily changed in script).</p>
-
-<p>Now let&#8217;s backup all the boards: -<code>ruby bin/trello-autoarchive.rb</code> -Sit back and wait for it to finish! -It&#8217;s set to backup all boards with default names and using XLSX filetype.</p>
-
-<p>Caveats: It saves these files into the current folder. Apparently I broke CSV functionality with some recent changes. I&#8217;ll get it working again. The spreadsheet structure is what works for me. If you need a different configuration, please let me know and I&#8217;ll look into it. Not all info is backed up. For full backup, download your JSON export from Trello. The main thing that I didn&#8217;t include in Trello-Archiver is a set of timestamps for when a Card is moved to each List. This could be a future feature if others have a need for it.</p>
-
-<p>Below is a Gist showing the shell commands</p>
-
-<script src="https://gist.github.com/4411301.js"></script>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -905,6 +879,10 @@ Questions, thoughts, jeers, feedback&#8230; catch me on &#8216;ye ol Twitters&#8
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/02/pathogen-dot-vim-without-the-submodules-use-infect/">Pathogen.vim without the Submodules: Use Infect</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
         </li>
       
@@ -918,10 +896,6 @@ Questions, thoughts, jeers, feedback&#8230; catch me on &#8216;ye ol Twitters&#8
       
         <li>
           <a href="/2014/02/automating-email-with-ruby/">Automating Email with Ruby</a>
-        </li>
-      
-        <li>
-          <a href="/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
         </li>
       
     </ul>

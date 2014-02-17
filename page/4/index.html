@@ -151,6 +151,99 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/12/trello-archiver-from-scratch/">Trello-Archiver From Scratch</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-29T00:00:00-05:00" pubdate data-updated="true">Dec 29<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Trello-Archiver is a set of Ruby scripts that allows one to export their Trello board into a CSV, TSV, or XLSX file. It was started by another person on Github.com named Mad_Typist. Early on in the process I sent them a pull request to contribute my changes back&#8230; but they don&#8217;t seem to be around. Given that, I&#8217;ve forked the project and continued to develop it for my own benefit.</p>
+
+<p>Trello-Archiver relies on a few conventions that exist in the Ruby world. 1. Project dependencies are managed with <code>Bundler</code> 2. A semi-recent version of Ruby is used <code>&gt;= 1.9.2</code></p>
+
+<p>To use the project on a system that isn&#8217;t setup for Ruby development, the first step is to install a recent version of Ruby. I prefer to use a tool called Ruby Version Manager for this <a href="www.rvm.io">RVM</a>.</p>
+
+<p>Install a sane Ruby Version Manager along with Recent Ruby
+<code>curl -L https://get.rvm.io | bash -s stable --ruby</code></p>
+
+<p>Source the installed script to allow for using RVM this first time w/ this command: 
+<code>source ~/.rvm/scripts/rvm</code></p>
+
+<p>Future logins will automatically source RVM using your bashrc or zshrc.</p>
+
+<p>The next step is to clone the <a href="https://github.com/zph/trello-archiver.git"> Trello-Archiver </a> repo from Github.</p>
+
+<p>Then <code>cd trello-archiver</code> and run <code>bundle install</code>. Bundler installs the necessary dependencies for <strong>Trello-Archiver</strong>. The nice feature about Bundler is that it manages individual projects&#8217; dependencies independently :).</p>
+
+<p>Next, <code>cp config.example.yml config.yml</code>. Config.example.yml is the template for where the authentication credentials are stored along with any default settings.</p>
+
+<p>Open up <code>config.yml</code> with your favorite text editor. Instructions are inclosed in there for how to gather your secret credentials from Trello.com.</p>
+
+<p>First, open <code>https://trello.com/1/appKey/generate</code> in your web browser. Copy the first key as your &#8216;public key&#8217; and the second (longer) key as your &#8216;private_key&#8217;.</p>
+
+<p>Next we need to enter those values into a special url: <code>https://trello.com/1/connect?key=PUBLIC_KEY_FROM_ABOVE&amp;name=ANYNAME&amp;response_type=token&amp;scope=read,account&amp;expiration=never</code> The two values that need replacing in this URL are PUBLIC<em>KEY</em>FROM_ABOVE nd ANYNAME. ANYNAME is a placeholder for any text that you want to use to identify this key, ie it could be TrelloArchiver. Also note that this is authorizing Read-Only access. This way, even if there&#8217;s a bug in the software the token won&#8217;t allow changes to your Trello information.</p>
+
+<p>Past that value into your web browser and click allow on the confirmation webpage.</p>
+
+<p>The following page that loads has your &#8216;access<em>token</em>key&#8217;. Copy this value into your <code>config.yml</code>. Save <code>config.yml</code> and exit to commandline.</p>
+
+<p><em>That&#8217;s it for authentication setup</em>! Make sure to be careful with this config.yml and don&#8217;t go adding it to any public git repos ;).</p>
+
+<p>Now for backing things up :). Decide if you want a specific board backed up or all of them.</p>
+
+<p>Let&#8217;s backup a single board: -<code>ruby bin/trello_backup.rb</code> -Choose your board by number and hit enter -Enter a filename or not (it defaults to name of board and date stamp) -Defaults to exporting as XLSX (this is easily changed in script).</p>
+
+<p>Now let&#8217;s backup all the boards: -<code>ruby bin/trello-autoarchive.rb</code> -Sit back and wait for it to finish! -It&#8217;s set to backup all boards with default names and using XLSX filetype.</p>
+
+<p>Caveats: It saves these files into the current folder. Apparently I broke CSV functionality with some recent changes. I&#8217;ll get it working again. The spreadsheet structure is what works for me. If you need a different configuration, please let me know and I&#8217;ll look into it. Not all info is backed up. For full backup, download your JSON export from Trello. The main thing that I didn&#8217;t include in Trello-Archiver is a set of timestamps for when a Card is moved to each List. This could be a future feature if others have a need for it.</p>
+
+<p>Below is a Gist showing the shell commands</p>
+
+<script src="https://gist.github.com/4411301.js"></script>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/12/rcodetools/">RCodeTools - How to Get Them Working in VIM</a></h1>
     
     
@@ -776,96 +869,6 @@ Save dashboard settings, click &#8216;Domain Status&#8217; tab, and gloat in you
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/09/osx-and-linux-tools-i-cant-live-without/">OSX and Linux Tools I Can&#8217;t Live Without</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-09-12T00:00:00-04:00" pubdate data-updated="true">Sep 12<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&#8217;ll keep it short and sweet but here&#8217;s the top list of tools that I&#8217;m using in various tech areas of my life.</p>
-<ul>
-<li>
-<p><a href="https://github.com/clvv/fasd">FASD</a> - Making me more of a speed daemon on cd&#8217;ing around terminal along with instant vimming from anywhere. PEW PEW!</p>
-</li>
-<li>
-<p><a href="http://www.alfredapp.com/">Alfred</a> - Speed daemon in graphical environment with starting new programs, running terminal commands, etc.  Akin to Launchy, Gnome-Do, Quicksilver (which I wish worked better on my Mac). [ This one is Mac specific but see other programs for different OSes ]</p>
-</li>
-<li>
-<p><a href="http://www.iterm2.com/#/section/home">iTerm2</a> - Customizable and nicely integrates with tmux. [Mac specific, but on Linux I&#8217;ve been super happy with Terminator ]</p>
-</li>
-<li>
-<p><a href="http://tmux.sourceforge.net">tmux</a> - Terminal multiplexer.  Like screen, but much more easily customized.  Feels like a VIM take on screen control once it&#8217;s tweaked.</p>
-</li>
-<li>
-<p><a href="http://www.vim.org/">VIM</a> - My favorite editor.  Mainly used in the terminal but occasionally I use MacVim for the glitz.</p>
-</li>
-<li>
-<p><a href="http://vimium.github.com/">Vimium</a> - Bring the powers of VIM into the Chrome Browser.  Very very slick interface, especially for opening links, scrolling &#8230; just go install it.</p>
-</li>
-<li>
-<p><a href="https://bitbucket.org/pentie/vimrepress">VimRepress</a> - Blog with Wordpress from the safety confines of VIM (as I am now)&#8230; in MARKDOWN!</p>
-</li>
-<li>
-<p><a href="http://code.google.com/p/googlecl/">GoogleCl</a> - Commandline access to Google features such as Contacts and Calendars.  Great for adding events from the commandline.  Python tool IIRC.</p>
-</li>
-<li>
-<p><a href="http://www.hogbaysoftware.com/products/quickcursor">QuickCursor</a> - Lets me use VIM to edit just about anything.  It opens a new VIM instance/buffer with the highlighted text, say from an email and pushes it back into that spot after editing w/ Vim.</p>
-</li>
-<li>
-<p><a href="http://blog.boastr.net/">BetterTouchTool</a> - Nice easy way to assign keystrokes to open a program, move window to specific region of screen, etc.  Also complemented by BetterSnapTool.</p>
-</li>
-<li>
-<p><a href="http://taskwarrior.org/projects/show/taskwarrior">TaskWarrior</a> - Task manager on the commandline.  Like Todo.sh but with more commandline power and no Android/iOS app.  Worthwhile trade at the moment after 3 weeks use.  Does have a Sinatra app with TaskWarrior integration&#8230; and I&#8217;m tempted to scrape together a Ruby tool to have commandline Pomodoro tracker that integrates with Growl and TaskWarrior (as an annotate function)</p>
-</li>
-</ul>
-<p>And in no specific order:</p>
-<p>-Dropbox, Evernote, DashExpander, Pomodairo, TweetDeck, Sparrow/Thunderbird (Sparrow for slick integration, Thunderbird for extensions and power), and last but certainly not least Z-Shell.</p>
-<p>Let me know in the comments or on Twitter if I&#8217;m missing any good tools!</p>
-<p><a href="https://twitter.com/_zph">@_zph</a></p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/09/wpid310-vimrepress_5051394d_mkd.odt wpid310-vimrepress_5051394d_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -893,6 +896,10 @@ Save dashboard settings, click &#8216;Domain Status&#8217; tab, and gloat in you
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/02/pathogen-dot-vim-without-the-submodules-use-infect/">Pathogen.vim without the Submodules: Use Infect</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
         </li>
       
@@ -906,10 +913,6 @@ Save dashboard settings, click &#8216;Domain Status&#8217; tab, and gloat in you
       
         <li>
           <a href="/2014/02/automating-email-with-ruby/">Automating Email with Ruby</a>
-        </li>
-      
-        <li>
-          <a href="/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
         </li>
       
     </ul>
