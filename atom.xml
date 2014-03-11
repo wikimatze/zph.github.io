@@ -4,7 +4,7 @@
   <title><![CDATA[Civet]]></title>
   <link href="http://zph.github.io/atom.xml" rel="self"/>
   <link href="http://zph.github.io/"/>
-  <updated>2014-02-17T14:23:10-05:00</updated>
+  <updated>2014-03-11T15:34:06-07:00</updated>
   <id>http://zph.github.io/</id>
   <author>
     <name><![CDATA[Zander]]></name>
@@ -14,9 +14,50 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Conference Advice: How to Meet Devs and Influence Ppl]]></title>
+    <link href="http://zph.github.io/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/"/>
+    <updated>2014-03-11T14:55:29-07:00</updated>
+    <id>http://zph.github.io/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl</id>
+    <content type="html"><![CDATA[<p>Want to know the secret about tech conferences? It&rsquo;s not about the talks.  It&rsquo;s not about the venue.</p>
+
+<p>It&rsquo;s about all the people who are there!</p>
+
+<p>While attending <a href="https://twitter.com/rbonales">@RbOnAles</a>, I was asked by <a href="https://twitter.com/eliserius"> @eliserius </a> about how I knew so many people there.  This article is a summary of that discussion.</p>
+
+<p>First off, go to a couple conferences each year.  It&rsquo;s best if your employer will pay all or part of the way.  But if they won&rsquo;t, it&rsquo;s your responsibility to make it to the conferences.  They&rsquo;re an investment in your career&rsquo;s future.</p>
+
+<p>Now that you&rsquo;re attending 3+ regional tech conferences each year, what steps can you take to make the most of it?  Well, remember that you&rsquo;re attending to meet the other attendees.  By virtue of them also attending the conference, they either work at decent companies or they prioritize conference attendance.</p>
+
+<p>So meet these folks!  It&rsquo;s not hard*. (It&rsquo;s terrifying at first, but push past that &amp; make it happen).  I&rsquo;m an introverted person and know a fair number of Ruby conference attendees, but those first few minutes of awkwardly interacting are just that: uncomfortable.  That&rsquo;s fine, move the conversation into tech stuff.  Chat about Service Oriented Architecture, argue about Dependency Injection, take a stand and say that Ruby isn&rsquo;t a dying language.</p>
+
+<p>Remember, these folks who are at the conference also want to meet people.</p>
+
+<p>What specific steps do I recommend for breaking the ice or stacking your social deck at the conference?</p>
+
+<ul>
+<li>Don&rsquo;t attend conferences with workmates.  Or if you&rsquo;re at conference, avoid them.  There are 363 other days to bs with &lsquo;em.  You&rsquo;ve only got 24 hrs * 3 days for the conference&hellip; make the most of it and meet new people.</li>
+<li>Set a goal of meeting X new people at conference. Let&rsquo;s consider &ldquo;meeting&rdquo; to be defined as exchanging names and at least one memorable detail about the other party. Maybe they juggle, write assembly, breed horses.  Folks all have a story, ask &ldquo;What brought you to the conference&rdquo;.  Or &ldquo;What tech stuff are you playing with right now?&rdquo;. Or start a heated debate about which <code>$EDITOR</code> to use.  If you&rsquo;re stumped about approaching someone, just be candid, &ldquo;I saw you standing there &amp; realized we hadn&rsquo;t met yet: I&rsquo;m Zander&rdquo;.  Most of the time that&rsquo;s enough to kick off a conversation, though you might choose to use your own name in the prior quotation.</li>
+<li>Take your meals with a different new group each time.  With a 2 day conference, that gives you 4 opportunities to meet groups of 4+ people each time.  Some conferences actively organize this kind of activity.  Big shoutout to <a href="http://twitter.com/steelcityruby">@steelcityruby</a> for doing this stuff :).  If your conference isn&rsquo;t doing this, post on twitter that you&rsquo;re organizing a group for Italian/Thai/Indian/Bar food and see who bites.</li>
+<li>While out having food with others, buy a meal or drink for some folks you don&rsquo;t know well.  Do it for the nice factor the icing on the cake is that you&rsquo;ll seem even more awesome than you already are.</li>
+<li>Bring something to share to the conference and then offer it up to people.  Could be a cardgame, boardgame, bourbon, soda water, LAN party&hellip; just get yourself out there.</li>
+<li>Volunteer to carpool from airport to conference.  Or from major city to tiny town where conference exists.</li>
+<li>Learn 2 love Twitter.  Start or revive your account.  Twitter is the lifeblood of many Ruby conferences.  Start up Tweetdeck or Tweetbot and add a column dedicated to the conference hashtag.  That way you&rsquo;ll be aware of the pulse of things.</li>
+<li>Post Twitter messages with hashtag.  For example at this last conference, I had the pleasure of doing breakfast with my favorite Aussie (<a href="http://twitter.com/ryanbigg">@ryanbigg</a>) by virtue of an early morning Tweet about meeting for breakfast.  It&rsquo;ll also force you to meet people who you might not otherwise get to meet.</li>
+<li>Stay at the conference hotel &amp; possibly split a room w/ someone you don&rsquo;t know.  Put a call out among friends to find someone to split room.  It&rsquo;ll be awesome.  At least it has been for me thus far.  Staying at conference hotel itself is wonderful because you&rsquo;ll be in the middle of the action, late night philosophizing on OOP vs. Functional, etc.</li>
+<li>Stick around for the evening events each day.  Also stay for the workshops that often take place after the conference ends.  At Ruby On Ales, it was a MiniTest workshop by <a href="http://twitter.com/blowmage">@blowmage</a>.  It was awesome and I got to meet a few more people before leaving.</li>
+<li>Still stumped for how to approach people at conference? See if you can recognize anyone at conference from Twitter or Github profiles.  Then go up &amp; thank them for the Open Source work they do.  It&rsquo;ll give them chills :).</li>
+<li>Final tip: I&rsquo;m terrified at the beginning of each conversation.  Once I warm up, it&rsquo;s groovy, but until then it&rsquo;s rough.  Get that momentum going, force yourself out of the comfort zone, and see what happens.  Soon enough, those conferences will feel like reunions filled with friends.</li>
+</ul>
+
+
+<p>PS &ndash; I have a new friend from @RbOnAles who&rsquo;s looking for a remote role (or in SF) either as QA or Jr. Ruby Developer. DM me on Twitter if you know of options.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Pathogen.vim without the Submodules: Use Infect]]></title>
     <link href="http://zph.github.io/2014/02/pathogen-dot-vim-without-the-submodules-use-infect/"/>
-    <updated>2014-02-17T14:06:00-05:00</updated>
+    <updated>2014-02-17T14:06:00-08:00</updated>
     <id>http://zph.github.io/2014/02/pathogen-dot-vim-without-the-submodules-use-infect</id>
     <content type="html"><![CDATA[<p>Over the weekend I finally admitted to myself that I hate submodules.</p>
 
@@ -90,7 +131,7 @@
   <entry>
     <title type="html"><![CDATA[Solving Issues with RVM on BSD]]></title>
     <link href="http://zph.github.io/2014/02/solving-issues-with-rvm-on-bsd/"/>
-    <updated>2014-02-15T03:00:00-05:00</updated>
+    <updated>2014-02-15T03:00:00-08:00</updated>
     <id>http://zph.github.io/2014/02/solving-issues-with-rvm-on-bsd</id>
     <content type="html"><![CDATA[<p>RVM installation went poorly on FreeBSD.</p>
 
@@ -111,7 +152,7 @@
   <entry>
     <title type="html"><![CDATA[Finding myself in BSD]]></title>
     <link href="http://zph.github.io/2014/02/finding-myself-in-bsd/"/>
-    <updated>2014-02-15T02:01:00-05:00</updated>
+    <updated>2014-02-15T02:01:00-08:00</updated>
     <id>http://zph.github.io/2014/02/finding-myself-in-bsd</id>
     <content type="html"><![CDATA[<p>Blame smartOS not reading my SATA controller.</p>
 
@@ -138,7 +179,7 @@
   <entry>
     <title type="html"><![CDATA[Using Null Terminators in Linux/OSX]]></title>
     <link href="http://zph.github.io/2014/02/using-null-terminators-in-star-nix/"/>
-    <updated>2014-02-13T01:49:00-05:00</updated>
+    <updated>2014-02-13T01:49:00-08:00</updated>
     <id>http://zph.github.io/2014/02/using-null-terminators-in-star-nix</id>
     <content type="html"><![CDATA[<p>I ran into an issue with using <code>xargs</code> with <code>rm -rf</code>.</p>
 
@@ -171,7 +212,7 @@
   <entry>
     <title type="html"><![CDATA[Automating Email with Ruby]]></title>
     <link href="http://zph.github.io/2014/02/automating-email-with-ruby/"/>
-    <updated>2014-02-09T20:28:00-05:00</updated>
+    <updated>2014-02-09T20:28:00-08:00</updated>
     <id>http://zph.github.io/2014/02/automating-email-with-ruby</id>
     <content type="html"><![CDATA[<p>Last Friday was the kind of day where I dropped into a Pry repl in order to bang out an automation script.</p>
 
@@ -621,7 +662,7 @@
   <entry>
     <title type="html"><![CDATA[Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips]]></title>
     <link href="http://zph.github.io/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/"/>
-    <updated>2013-06-20T00:42:00-04:00</updated>
+    <updated>2013-06-20T00:42:00-07:00</updated>
     <id>http://zph.github.io/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips</id>
     <content type="html"><![CDATA[<p>It started off as a casual inquiry on Twitter:</p>
 
@@ -693,7 +734,7 @@
   <entry>
     <title type="html"><![CDATA[Don't fear pair programming - A Guide to Starting]]></title>
     <link href="http://zph.github.io/2013/06/dont-fear-pair-programming-a-guide-to-starting/"/>
-    <updated>2013-06-02T00:00:00-04:00</updated>
+    <updated>2013-06-02T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/06/dont-fear-pair-programming-a-guide-to-starting</id>
     <content type="html"><![CDATA[<p>Pair Programming is becoming a big deal in the Ruby programming world: this guide will help you get started.</p>
 
@@ -833,7 +874,7 @@ Now that we&#8217;ve laid the groundwork for it, let&#8217;s work on making it a
   <entry>
     <title type="html"><![CDATA[Starting with Vim]]></title>
     <link href="http://zph.github.io/2013/05/starting-with-vim/"/>
-    <updated>2013-05-26T00:00:00-04:00</updated>
+    <updated>2013-05-26T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/05/starting-with-vim</id>
     <content type="html"><![CDATA[[caption id=&#8221;attachment_712&#8221; align=&#8221;alignleft&#8221; width=&#8221;500&#8221;]<a href="http://www.civet.ws/wp-content/uploads/2013/05/8355974382_6063b7935d.jpg"><img src="http://www.civet.ws/wp-content/uploads/2013/05/8355974382_6063b7935d.jpg" alt="" width="500" height="313" class="size-full wp-image-712" /></a> By: <a href='http://www.flickr.com/photos/protocol7/8355974382/' target='_blank'>Niklas Gustavsson</a>[/caption]<p>It&#8217;s been two lovely years with Vim and I&#8217;m <strong>sold</strong>!  Vim&#8217;s the straight edge razor that slices through code.  It&#8217;s like having a finely crafted and personalized lightsaber.</p>
 
@@ -938,7 +979,7 @@ vim-surround
   <entry>
     <title type="html"><![CDATA[Buff - A Gem that Puts Muscle in the Buffer API]]></title>
     <link href="http://zph.github.io/2013/05/buff-a-gem-that-puts-muscle-in-the-buffer-api/"/>
-    <updated>2013-05-26T00:00:00-04:00</updated>
+    <updated>2013-05-26T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/05/buff-a-gem-that-puts-muscle-in-the-buffer-api</id>
     <content type="html"><![CDATA[<p>It&#8217;s Done!  <a href="http://github.com/zph/buff">Buff</a> is a Ruby Gem that wraps the <a href="http://bufferapp.com">Buffer</a> API.</p>
 
@@ -999,7 +1040,7 @@ vim-surround
   <entry>
     <title type="html"><![CDATA[Travel Advice You Can't Afford to Miss]]></title>
     <link href="http://zph.github.io/2013/05/travel-advice-you-cant-afford-to-miss/"/>
-    <updated>2013-05-06T00:00:00-04:00</updated>
+    <updated>2013-05-06T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/05/travel-advice-you-cant-afford-to-miss</id>
     <content type="html"><![CDATA[[caption id=&#8221;attachment_692&#8221; align=&#8221;alignleft&#8221; width=&#8221;500&#8221;]<a href="http://www.civet.ws/wp-content/uploads/2013/05/8314413270_f974052c3a.jpg"><img src="http://www.civet.ws/wp-content/uploads/2013/05/8314413270_f974052c3a.jpg" alt="By: Frontierofficial" width="500" height="335" class="size-full wp-image-692" /></a> By: <a href='http://www.flickr.com/photos/frontierofficial/8314413270/' target='_blank'>Frontierofficial</a>[/caption]
 
@@ -1037,7 +1078,7 @@ vim-surround
   <entry>
     <title type="html"><![CDATA[Privilege Means Responsibility]]></title>
     <link href="http://zph.github.io/2013/05/privilege-means-responsibility/"/>
-    <updated>2013-05-04T00:00:00-04:00</updated>
+    <updated>2013-05-04T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/05/privilege-means-responsibility</id>
     <content type="html"><![CDATA[<h1>Let&#8217;s redefine privilege</h1>
 Because it&#8217;s not working well for our society.
@@ -1100,7 +1141,7 @@ Stand up and lend your voice to the conversation. Your voice offsets the hatred 
   <entry>
     <title type="html"><![CDATA[Hack Your Finances - Thoughts on Extreme Retirement Planning]]></title>
     <link href="http://zph.github.io/2013/05/hack-your-finances-thoughts-on-extreme-retirement-planning/"/>
-    <updated>2013-05-02T00:00:00-04:00</updated>
+    <updated>2013-05-02T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/05/hack-your-finances-thoughts-on-extreme-retirement-planning</id>
     <content type="html"><![CDATA[<p>Extreme Retirement Planning is a financial movement that I discovered a few weeks ago.  At least, that&#8217;s when I heard of that terminology for being frugal.  As it happens, I&#8217;ve been implementing some of those ideas for the past year or two.  But these Extreme Retirement Planning (ERP) folks crank it up to 11 and that&#8217;s where I have something to learn.</p>
 
@@ -1128,7 +1169,7 @@ Stand up and lend your voice to the conversation. Your voice offsets the hatred 
   <entry>
     <title type="html"><![CDATA[Goals and Giving Back: Creating Meaning in Life]]></title>
     <link href="http://zph.github.io/2013/04/goals-and-giving-back-creating-meaning-in-life/"/>
-    <updated>2013-04-29T00:00:00-04:00</updated>
+    <updated>2013-04-29T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/04/goals-and-giving-back-creating-meaning-in-life</id>
     <content type="html"><![CDATA[[caption id=&#8221;attachment_599&#8221; align=&#8221;alignleft&#8221; width=&#8221;500&#8221;]<a href="http://www.civet.ws/wp-content/uploads/2013/04/4701714888_e29a0e3e8e1.jpg"><img src="http://www.civet.ws/wp-content/uploads/2013/04/4701714888_e29a0e3e8e1.jpg" alt="" width="500" height="331" class="size-full wp-image-599" /></a> By: <a href='http://www.flickr.com/photos/johnonolan/4701714888/' target='_blank'>John O&#8217;Nolan</a>[/caption]
 
@@ -1155,7 +1196,7 @@ Stand up and lend your voice to the conversation. Your voice offsets the hatred 
   <entry>
     <title type="html"><![CDATA[Stop, Drop, and Sleep]]></title>
     <link href="http://zph.github.io/2013/04/stop-drop-and-sleep/"/>
-    <updated>2013-04-24T00:00:00-04:00</updated>
+    <updated>2013-04-24T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/04/stop-drop-and-sleep</id>
     <content type="html"><![CDATA[Exhaustion is in the air today. I fell asleep at 7pm and according to my Twitter feed, it&#8217;s not just me.
 <h3>So is:</h3>
@@ -1208,7 +1249,7 @@ I&#8217;d love to hear tips and feedback for how you, my reader, addresses this.
   <entry>
     <title type="html"><![CDATA[Increasing Productivity with Shortcuts]]></title>
     <link href="http://zph.github.io/2013/04/increasing-productivity-with-shortcuts/"/>
-    <updated>2013-04-20T00:00:00-04:00</updated>
+    <updated>2013-04-20T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/04/increasing-productivity-with-shortcuts</id>
     <content type="html"><![CDATA[[caption id=&#8221;attachment_582&#8221; align=&#8221;alignleft&#8221; width=&#8221;500&#8221;]<a href="http://www.civet.ws/wp-content/uploads/2013/04/3879260111_c56e8a0c1c.jpg"><img class="size-full wp-image-582" alt="" src="http://www.civet.ws/wp-content/uploads/2013/04/3879260111_c56e8a0c1c.jpg" width="500" height="333" /></a> By: <a href="http://www.flickr.com/photos/orcmid/3879260111/" target="_blank">Dennis Hamilton</a>[/caption]
 
@@ -1237,7 +1278,7 @@ I&#8217;ll post at some point about my experiences with the Pomodoro technique, 
   <entry>
     <title type="html"><![CDATA[RubyMidwest 2013: Lessons and Reflections]]></title>
     <link href="http://zph.github.io/2013/04/rubymidwest-2013-lessons-and-reflections/"/>
-    <updated>2013-04-12T00:00:00-04:00</updated>
+    <updated>2013-04-12T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/04/rubymidwest-2013-lessons-and-reflections</id>
     <content type="html"><![CDATA[<a href="http://www.civet.ws/wp-content/uploads/2013/04/20130411-RubyMidwest-2013-Me-Evan-Light-and-PJ-Hagerty.jpg"><img class="alignleft size-full wp-image-556" alt="20130411 RubyMidwest 2013 Me, Evan Light and PJ Hagerty" src="http://www.civet.ws/wp-content/uploads/2013/04/20130411-RubyMidwest-2013-Me-Evan-Light-and-PJ-Hagerty.jpg" width="1024" height="768" /></a>
 
@@ -1284,7 +1325,7 @@ To Wes Garrison of <a href="http://databasically.com/">Databasically</a>, <a hre
   <entry>
     <title type="html"><![CDATA[Pricing a Product: Napkin Math]]></title>
     <link href="http://zph.github.io/2013/03/pricing-a-product-napkin-math/"/>
-    <updated>2013-03-20T00:00:00-04:00</updated>
+    <updated>2013-03-20T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/03/pricing-a-product-napkin-math</id>
     <content type="html"><![CDATA[I&#8217;m facing the novel prospect of pricing a software product. This product is something that I created during evenings and weekends. It&#8217;s very specialized for my current industry, so I won&#8217;t go into the details of the product. But suffice to say that it sorts data in a time saving way.
 <h2>Product Benefits</h2>
@@ -1336,7 +1377,7 @@ Note: Just for the record - I intend to retain Intellectual Property rights give
   <entry>
     <title type="html"><![CDATA[Two Factor Authentication for All the Things]]></title>
     <link href="http://zph.github.io/2013/03/two-factor-authentication-for-all-the-things/"/>
-    <updated>2013-03-09T00:00:00-05:00</updated>
+    <updated>2013-03-09T00:00:00-08:00</updated>
     <id>http://zph.github.io/2013/03/two-factor-authentication-for-all-the-things</id>
     <content type="html"><![CDATA[I recently went wild with two factor <a href="https://en.wikipedia.org/wiki/Two_factor_authentication"> authentication </a> due to reading about <a href="http://www.lowendtalk.com/discussion/5686/chicagovps-hacked-bunch-of-vps-customers-offline">Chicago VPS getting hacked</a>. I received the nicest email from <a href="http://www.lastpass.com">LastPass</a> warning me that my email address was among the SQL dump posted by the hacker.
 <h2>My Response</h2>
@@ -1370,7 +1411,7 @@ Follow up&#8230; Flashed a new Rom to phone and my only hassle was with Amazon A
   <entry>
     <title type="html"><![CDATA[A Week with ThinkingRock GTD]]></title>
     <link href="http://zph.github.io/2013/03/a-week-with-thinkingrock-gtd/"/>
-    <updated>2013-03-03T00:00:00-05:00</updated>
+    <updated>2013-03-03T00:00:00-08:00</updated>
     <id>http://zph.github.io/2013/03/a-week-with-thinkingrock-gtd</id>
     <content type="html"><![CDATA[[caption id=&#8221;attachment_529&#8221; align=&#8221;alignright&#8221; width=&#8221;300&#8221;]<a href="http://198.211.104.146/wp-content/uploads/2013/03/2301566699_aab007085c.jpg"><img class="size-medium wp-image-529" alt="" src="http://198.211.104.146/wp-content/uploads/2013/03/2301566699_aab007085c-300x225.jpg" width="300" height="225" /></a> By: <a href="http://www.flickr.com/photos/thms/2301566699/" target="_blank">Thomas van de Weerd</a>[/caption]
 <h2>The Good</h2>
@@ -1385,33 +1426,6 @@ The method that I&#8217;m using for adding tasks is very well optimized and uses
 When I go to sort the tasks, I&#8217;m stuck with a system that very literally follows GTD principles, but doesn&#8217;t have sufficient keyboard shortcuts. Processing 35 items by tabbing through textboxes and radio boxes isn&#8217;t my idea of an efficient system. It also makes me wonder if other people are painstakingly mousing through the interface.
 <h2>The Answer</h2>
 Dig into the source files for ThinkingRock and add enough keyboard shortcuts to &#8220;get things done&#8221;. I started this yesterday on the plane to California and I&#8217;ll post back when I have a chance to work on it more. Given that I don&#8217;t know any Java (other than a session at the LeanDog CodeRetreat with <a href="http://www.twitter.com/stevejxsn">Steve</a>), this will be an interesting challenge :).
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Benchmarking GTD]]></title>
-    <link href="http://zph.github.io/2013/02/efficiency-measurement-and-little-tips-real-gtd/"/>
-    <updated>2013-02-23T00:00:00-05:00</updated>
-    <id>http://zph.github.io/2013/02/efficiency-measurement-and-little-tips-real-gtd</id>
-    <content type="html"><![CDATA[[caption id=&#8221;attachment_533&#8221; align=&#8221;alignright&#8221; width=&#8221;300&#8221;]<a href="http://198.211.104.146/wp-content/uploads/2013/02/4072190666_6d21864373.jpg"><img class="size-medium wp-image-533" alt="" src="http://198.211.104.146/wp-content/uploads/2013/02/4072190666_6d21864373-300x225.jpg" width="300" height="225" /></a> By: <a href="http://www.flickr.com/photos/rubbermaid/4072190666/" target="_blank">Rubbermaid Products</a>[/caption]
-
-I&#8217;ve been working with <a href="http://www.rescuetime.com">RescueTime</a> for the past week and I&#8217;m <em>VERY</em> happy.
-
-First off, I don&#8217;t have to change a thing to make use of the system. It&#8217;s a great way to benchmark my own time spending habits on the computer. It&#8217;s well setup to allow individual configuration of what <em>you</em> believe is productive and non-productive.
-
-During setup, I thought about all the facets of business and independent projects. I concluded that email is a neutral value of productivity, while programming is +2 and reading <a href="http://www.dont_go_there_it_wastes_your_live.com">HackerNews</a> is -2.
-
-I&#8217;m happy to share this chart for my first week of use:
-
-[caption id=&#8221;&#8221; align=&#8221;aligncenter&#8221; width=&#8221;1035&#8221;]<img alt="" src="http://f.cl.ly/items/2a2V1S1P1i3c2V2P0A40/Screen%20Shot%202013-02-24%20at%2012.11.55%20AM.png" width="1035" height="377" /> RescueTime - 1st Week[/caption]
-
-Notice that I tagged email and meetings as a productivity of 0 because so little useful action comes out of them. Frequently meetings would be best accomplished in short bursts and email involves _LOTS_ of needless repetition.
-
-Given that email accounted for 6 hours of my workweek, I decided to improve the efficiency of my email process. I setup my email account with OtherInbox. OtherInbox is an email sorting service that does awesome things with Google Labels.
-
-Next I added two key combinations for Sparrow.app. One key combination opens a new email from ANY application while the other key combo brings Sparrow to forefront or hides it again. These two changes have saved me lots of time so far and reduced the effort related to context switching.
-
-Share your tips for email hacks and productivity (GTD) hacks! I can be reached via the comments and as [<a href="http://www.twitter.com/_zph">@_ZPH</a>] on Twitter.
 ]]></content>
   </entry>
   
