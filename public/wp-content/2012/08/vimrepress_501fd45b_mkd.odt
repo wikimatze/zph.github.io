@@ -1,6 +1,0 @@
-Dear Mail.app,
-
-     I don't want to open Mail for configuration every time an iCal notification arrives.  And no I don't want to use Mail as my default.  And no, I don't want to setup even a dummy email account in Mail.
-
-     [cc_bash]sudo chmod 000 /Applications/Mail.app[/cc_bash]
-     kthxbye

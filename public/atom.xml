@@ -4,7 +4,7 @@
   <title><![CDATA[Civet]]></title>
   <link href="http://zph.github.io/atom.xml" rel="self"/>
   <link href="http://zph.github.io/"/>
-  <updated>2014-02-12T17:46:24-05:00</updated>
+  <updated>2014-03-11T15:45:58-07:00</updated>
   <id>http://zph.github.io/</id>
   <author>
     <name><![CDATA[Zander]]></name>
@@ -14,9 +14,164 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Pathogen.vim without the Submodules: Use Infect]]></title>
+    <link href="http://zph.github.io/2014/02/pathogen-dot-vim-without-the-submodules-use-infect/"/>
+    <updated>2014-02-17T14:06:00-08:00</updated>
+    <id>http://zph.github.io/2014/02/pathogen-dot-vim-without-the-submodules-use-infect</id>
+    <content type="html"><![CDATA[<p>Over the weekend I finally admitted to myself that I hate submodules.</p>
+
+<p>But they&rsquo;re a keystone to one of my primary development tools: Vim.  In order to use Vim, I use the Pathogen.vim plugin by @tpope.  In order to use Pathogen, you normally use submodules in the <code>.vim/bundle/</code> folder.</p>
+
+<p>But submodules are the work of the devil.</p>
+
+<p>I tried out the Vundle plugin and was seeing much longer loadtime for vim:</p>
+
+<script src="https://gist.github.com/zph/db5aa2dc128693ba9583.js"></script>
+
+
+<p>So I asked around on Twitter and <a href="https://twitter.com/jwieringa"> @jwieringa </a> advised me to checkout <a href="https://github.com/csexton/infect"> &lsquo;infect&rsquo; </a> by <a href="https://twitter.com/crsexton"> @crsexton </a>.</p>
+
+<p>And <code>infect</code> is awesome! It works with Pathogen to give it a declarative style for plugins.  An example is:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>"=bundle tpope/vim-pathogen
+</span><span class='line'>"=bundle tpope/vim-sensible
+</span><span class='line'>source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
+</span><span class='line'>execute pathogen#incubate()
+</span><span class='line'>
+</span><span class='line'>"=bundle mileszs/ack.vim
+</span><span class='line'>"=bundle vim-scripts/AutoTag
+</span><span class='line'>"=bundle kien/ctrlp.vim
+</span><span class='line'>"=bundle Raimondi/delimitMate
+</span><span class='line'>"=bundle sethbc/fuzzyfinder_textmate
+</span><span class='line'>"=bundle tpope/gem-ctags
+</span><span class='line'>"=bundle gregsexton/gitv
+</span><span class='line'>"=bundle sjl/gundo.vim
+</span><span class='line'>"=bundle tpope/vim-vinegar
+</span><span class='line'>"=bundle jnwhiteh/vim-golang
+</span><span class='line'>"=bundle wting/rust.vim
+</span><span class='line'>
+</span><span class='line'>call pathogen#helptags()
+</span><span class='line'>set nocompatible      " We're running Vim, not Vi!
+</span><span class='line'>syntax on             " Enable syntax highlighting
+</span><span class='line'>filetype on           " Enable filetype detection
+</span><span class='line'>filetype indent on    " Enable filetype-specific indenting
+</span><span class='line'>filetype plugin on    " Enable filetype-specific plugins</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Use it. Love it. Don&rsquo;t look back!</p>
+
+<p>If you want faster downloads with &lsquo;infect&rsquo; try this unofficial fork of the standalone: <a href="https://github.com/zph/zph/blob/master/home/bin/infect.">https://github.com/zph/zph/blob/master/home/bin/infect.</a>  When I have time, I&rsquo;ll work w/ @crsexton to get this added to &lsquo;infect&rsquo;.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Solving Issues with RVM on BSD]]></title>
+    <link href="http://zph.github.io/2014/02/solving-issues-with-rvm-on-bsd/"/>
+    <updated>2014-02-15T03:00:00-08:00</updated>
+    <id>http://zph.github.io/2014/02/solving-issues-with-rvm-on-bsd</id>
+    <content type="html"><![CDATA[<p>RVM installation went poorly on FreeBSD.</p>
+
+<p>The ca-certificates weren&rsquo;t up to date according to the install script.</p>
+
+<p>Really, the ca-certificates weren&rsquo;t in the right location for RVM&rsquo;s curl install script.</p>
+
+<p>These commands as root fixed it:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mkdir -p /usr/local/opt/curl-ca-bundle
+</span><span class='line'>ln -s /usr/local/share/certs/ca-root-nss.crt /usr/local/opt/curl-ca-bundle/share/ca-bundle.crt</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Finding myself in BSD]]></title>
+    <link href="http://zph.github.io/2014/02/finding-myself-in-bsd/"/>
+    <updated>2014-02-15T02:01:00-08:00</updated>
+    <id>http://zph.github.io/2014/02/finding-myself-in-bsd</id>
+    <content type="html"><![CDATA[<p>Blame smartOS not reading my SATA controller.</p>
+
+<p>Blame Linux for not having first class support for ZFS (where my data is held).</p>
+
+<p>Blame <a href="https://twitter.com/canadiancreed"> @canadiancreed </a> for giving me a way out of the quandry.</p>
+
+<p>The backstory is that I moved all of my backups to two ZFS pools a few years ago.  I was running ZFSonLinux and it generally worked&hellip;. except when I rebooted the server and had to force import the pools.</p>
+
+<p>Fast forward to that server being replaced by a workstation (i7 Haswell, 240GB Sata3 SSD, and 24GB RAM).  I tried smartOS by Joyent and ran into issues with my SATA controller not being recognized.  It&rsquo;s a shame given how awesome the smartOS vm administration is.  I mean vmadm and imgadm are light years ahead of Docker.</p>
+
+<p>Since smartOS refused to recognize 3 of my 8 drives I ran back to Linux.  The good new, Linux recognized the sata controller.  The bad news, Linux couldn&rsquo;t import the pools.  Frankly, Linux had a hell of a time with building the ZFS on Linux kernel modules.  I managed to piece together a few clues from the ZFSonLinux Issues on Github.  In fact, thanks to <a href="https://github.com/dajhorn"> @dajhorn </a> for supplying answers on that Github issue which allowed me to build the kernel modules.</p>
+
+<p>This sounds promising doesn&rsquo;t it? It&rsquo;s not, it was a horrorshow.  Linux refused to import the one of the two zpools.  One of them imported nicely, the mission critical financial records.  The other semi-critical zpool was shot and refused to import under Linux.</p>
+
+<p>I spent a whole evening banging my head against this issue. If it hadn&rsquo;t been for <a href="https://twitter.com/canadiancreed"> Chris Reed </a> I wouldn&rsquo;t have hit upon the solution.</p>
+
+<p>His recommendation was to try FreeBSD&hellip; so I did.  And it recognized the SATA controller and also imported the zpools cleanly!  So after a dry run w/ FreeBSD, I installed PC-BSD, which is a desktop variant based on FreeBSD. Think of it as the Ubuntu of the BSD world.  And hell yeah, it&rsquo;s all working :).</p>
+
+<p>So far, I&rsquo;m really liking it.  Replace &lsquo;aptitude&rsquo; with &lsquo;pkg&rsquo; and it&rsquo;s pretty similar.  Except, PC-BSD is working where Linux &amp; ZFS were a hassle.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using Null Terminators in Linux/OSX]]></title>
+    <link href="http://zph.github.io/2014/02/using-null-terminators-in-star-nix/"/>
+    <updated>2014-02-13T01:49:00-08:00</updated>
+    <id>http://zph.github.io/2014/02/using-null-terminators-in-star-nix</id>
+    <content type="html"><![CDATA[<p>I ran into an issue with using <code>xargs</code> with <code>rm -rf</code>.</p>
+
+<p>This could be dicey, so get your safety hats on.</p>
+
+<p>The issue was that the filename included an apostrophe.  So when trying to do a simple command such as <code>tree -fi | grep conflicted | xargs rm -f '{}'</code>, I received an error about having an unterminated quote in the parameter.</p>
+
+<p>Apparently, some versions of xargs allow you to specify a delimiter with a <code>-d</code> but the copy on my Mac didn&rsquo;t have such a flag.</p>
+
+<p>Instead, I learned that <code>egrep --null</code> will use a null character as the divider between matches.  So the following solved my problem:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>tree -fi | egrep --null conflicted | xargs -0 rm -f <span class="s1">&#39;{}&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Let&rsquo;s break that command set down:</p>
+
+<ul>
+<li><code>tree -fi</code> is a trick I recently learned from my friend @olleolleolle.  It prints out the local tree of files and the -fi prints out the whole filename (including directories).</li>
+<li><code>egrep --null conflicted</code> is where the magic starts.  The <code>--null</code> flag tell egrep to separate matches with a null character.</li>
+<li><code>xargs -0 rm -f '{}'</code> this tells xargs that the null character is divider and to remove each filename that comes through the linux pipe.</li>
+</ul>
+
+
+<p>This is yet another example of why I&rsquo;m impressed with the commandline.  Simple little tools that can be chained together with symbiotic behavior.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Automating Email with Ruby]]></title>
     <link href="http://zph.github.io/2014/02/automating-email-with-ruby/"/>
-    <updated>2014-02-09T20:28:00-05:00</updated>
+    <updated>2014-02-09T20:28:00-08:00</updated>
     <id>http://zph.github.io/2014/02/automating-email-with-ruby</id>
     <content type="html"><![CDATA[<p>Last Friday was the kind of day where I dropped into a Pry repl in order to bang out an automation script.</p>
 
@@ -466,7 +621,7 @@
   <entry>
     <title type="html"><![CDATA[Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips]]></title>
     <link href="http://zph.github.io/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/"/>
-    <updated>2013-06-20T00:42:00-04:00</updated>
+    <updated>2013-06-20T00:42:00-07:00</updated>
     <id>http://zph.github.io/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips</id>
     <content type="html"><![CDATA[<p>It started off as a casual inquiry on Twitter:</p>
 
@@ -538,7 +693,7 @@
   <entry>
     <title type="html"><![CDATA[Don't fear pair programming - A Guide to Starting]]></title>
     <link href="http://zph.github.io/2013/06/dont-fear-pair-programming-a-guide-to-starting/"/>
-    <updated>2013-06-02T00:00:00-04:00</updated>
+    <updated>2013-06-02T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/06/dont-fear-pair-programming-a-guide-to-starting</id>
     <content type="html"><![CDATA[<p>Pair Programming is becoming a big deal in the Ruby programming world: this guide will help you get started.</p>
 
@@ -678,7 +833,7 @@ Now that we&#8217;ve laid the groundwork for it, let&#8217;s work on making it a
   <entry>
     <title type="html"><![CDATA[Starting with Vim]]></title>
     <link href="http://zph.github.io/2013/05/starting-with-vim/"/>
-    <updated>2013-05-26T00:00:00-04:00</updated>
+    <updated>2013-05-26T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/05/starting-with-vim</id>
     <content type="html"><![CDATA[[caption id=&#8221;attachment_712&#8221; align=&#8221;alignleft&#8221; width=&#8221;500&#8221;]<a href="http://www.civet.ws/wp-content/uploads/2013/05/8355974382_6063b7935d.jpg"><img src="http://www.civet.ws/wp-content/uploads/2013/05/8355974382_6063b7935d.jpg" alt="" width="500" height="313" class="size-full wp-image-712" /></a> By: <a href='http://www.flickr.com/photos/protocol7/8355974382/' target='_blank'>Niklas Gustavsson</a>[/caption]<p>It&#8217;s been two lovely years with Vim and I&#8217;m <strong>sold</strong>!  Vim&#8217;s the straight edge razor that slices through code.  It&#8217;s like having a finely crafted and personalized lightsaber.</p>
 
@@ -783,7 +938,7 @@ vim-surround
   <entry>
     <title type="html"><![CDATA[Buff - A Gem that Puts Muscle in the Buffer API]]></title>
     <link href="http://zph.github.io/2013/05/buff-a-gem-that-puts-muscle-in-the-buffer-api/"/>
-    <updated>2013-05-26T00:00:00-04:00</updated>
+    <updated>2013-05-26T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/05/buff-a-gem-that-puts-muscle-in-the-buffer-api</id>
     <content type="html"><![CDATA[<p>It&#8217;s Done!  <a href="http://github.com/zph/buff">Buff</a> is a Ruby Gem that wraps the <a href="http://bufferapp.com">Buffer</a> API.</p>
 
@@ -843,46 +998,8 @@ vim-surround
   
   <entry>
     <title type="html"><![CDATA[Travel Advice You Can't Afford to Miss]]></title>
-    <link href="http://zph.github.io/2013/05/travel-advice-you-cant-afford-to-miss-2/"/>
-    <updated>2013-05-06T00:00:00-04:00</updated>
-    <id>http://zph.github.io/2013/05/travel-advice-you-cant-afford-to-miss-2</id>
-    <content type="html"><![CDATA[<p>Traveling in a foreign country can be filled with wonder and excitement.  It can also turn into a nightmare without the right preparation.</p>
-
-<h2>Travel Tips</h2>
-
-<ul>
-<li>Bring currency (US / UK / Euro) in decent quantities in small bills ($500+). This is emergency money for towns without ATMs.</li>
-<li>Carry that currency distributed among various hiding places on your person and in your luggage. Consider getting extra hidden pockets sewn into some of your pants.</li>
-<li>Wear easily washed clothing. Quick dry fabric is very convenient when forced to wash clothing in a hostel&#8217;s sink.</li>
-<li>Bring all purpose liquid soap. I&#8217;m talking about hippie soap here like &#8216;Dr. Bronner&#8217;s&#8217;. It can be used for washing your body, your hair, and your clothing.</li>
-<li>Keep only enough currency for a day or two in your wallet or purse. If someone pickpockets you, you&#8217;ve lost very little and have a story to tell.</li>
-<li>Be skeptical of people who approach you. Some are great awesome people, others are hustlers. Learn the difference.</li>
-<li>Be more trusting when you approach people. I made a habit of choosing my taxi drivers rather than choosing the ones who were overly interested in me.</li>
-<li>Avoid the heavily touristed areas and densely populated areas. Pickpockets and scams will be more prevalent where a higher density of marks exists.</li>
-<li>Withdraw currency from ATMs in well lit areas.</li>
-<li>Use ATMs instead of currency exchangers.  You&#8217;ll tend to get better rates.</li>
-<li>Bring a good little flashlight and headlamp, especially when visiting areas without much infrastructure.</li>
-<li>Shoot plenty of photos, especially of people and local vibrancy. Landscape photos won&#8217;t have the same staying power.</li>
-<li>Write a journal or blog while traveling to share your experiences with those back home.</li>
-<li>Contact your banks and credit card companies before leaving. Let them know the locations of your visit and the duration. This minimizes the risk that the cards will trigger fraud alerts while traveling.</li>
-<li>Leave a photocopy of passport, credit cards and any other travel paperwork with a trusted friend or family member. Keep a second photocopy set in your luggage.</li>
-<li>If you want or need connectivity while away, bring a GSM unlocked phone.  In the US, a phone from AT&amp;T that&#8217;s unlocked would be a decent choice.</li>
-<li>Learn basic internet safety and use a VPN or SSH Tunnel for routing your data when on unknown internet connections. Better safe than hacked.</li>
-<li>Consider using 2 Factor Authentication if you must use an Internet Cafe to log into your email. Even with this protection, try to avoid it.</li>
-</ul>
-
-<p>What other travel tips have you used to make foreign travel a smoother process?</p>
-
-<h2>PS</h2>
-
-<p>If you want to engage in <a href="http://www.civet.ws/2013/05/hack-your-finances-thoughts-on-extreme-retirement-planning/"> Extreme Retirement Planning  </a>, living abroad on $600 - $1000 / mo and retiring early wouldn&#8217;t be too horrible ;) Especially with a remote job!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Travel Advice You Can't Afford to Miss]]></title>
     <link href="http://zph.github.io/2013/05/travel-advice-you-cant-afford-to-miss/"/>
-    <updated>2013-05-06T00:00:00-04:00</updated>
+    <updated>2013-05-06T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/05/travel-advice-you-cant-afford-to-miss</id>
     <content type="html"><![CDATA[[caption id=&#8221;attachment_692&#8221; align=&#8221;alignleft&#8221; width=&#8221;500&#8221;]<a href="http://www.civet.ws/wp-content/uploads/2013/05/8314413270_f974052c3a.jpg"><img src="http://www.civet.ws/wp-content/uploads/2013/05/8314413270_f974052c3a.jpg" alt="By: Frontierofficial" width="500" height="335" class="size-full wp-image-692" /></a> By: <a href='http://www.flickr.com/photos/frontierofficial/8314413270/' target='_blank'>Frontierofficial</a>[/caption]
 
@@ -918,87 +1035,9 @@ vim-surround
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[for review]]></title>
-    <link href="http://zph.github.io/2013/05/for-review/"/>
-    <updated>2013-05-05T00:00:00-04:00</updated>
-    <id>http://zph.github.io/2013/05/for-review</id>
-    <content type="html"><![CDATA[<h1>Let&#8217;s redefine privilege</h1>
-
-<p>Because it&#8217;s not working well for our society.</p>
-
-<p>Here&#8217;s what we have right now:</p>
-
-<p>Privilege
-: advantage, benefit; prerogative, entitlement, right; concession, freedom, liberty.</p>
-
-<p>Advantage, benefit, freedom, liberty: those are all accurate words for what I disproportionately enjoy with being a privileged member of American society.  In fact, I&#8217;ve got just about all of the social advantages that one could ask for with being white, male, able bodied and a few other choice characteristics. I rolled mostly 20 in this attempt at life.  Because of my family&#8217;s assistance and scholarships, I also had the advantage of completing my Bachelor&#8217;s Degree.  Did I mention that my parents both had college degrees or better when I was young?</p>
-
-<h2>Where this puts me in life according to statistics:</h2>
-
-<p>According to <a href=""http://www.infoplease.com/ipa/A0104552.html"" title="Distribution of Household Income by Race">US Census</a> data from 2010 median income varies significantly along ethnic lines:</p>
-
-<ul>
-<li>White = $54k</li>
-<li>Black = $32k</li>
-<li>Hispanic = $37k</li>
-</ul>
-
-<p>According to <a href=""https://www.census.gov/compendia/statab/2012/tables/12s0703.xls"" title="703 - Average Earnings of Year-Round Full-Time Workers by Educational Attainment: 2009">US Census</a> data from 2009 that compares income of full time workers based on education and sex for my age:</p>
-
-<ul>
-<li>Male = $67k</li>
-<li>Female = $52k</li>
-</ul>
-
-<p>How about the fact that during my childhood, I had one parent with a professional degree and one with a bachelor&#8217;s degree?</p>
-
-<p><img src="http://www.nccp.org/publications/images/pei07_fig1.jpg" alt="Poverty Based on Parent's Education" /></p>
-
-<p>To summarize, statistics indicate that I earn $1.69 for every $1 that a black person will earn, $1.29 for every $1 that a woman earns, and my odds of being a child in poverty were ~ 1/4 that of a child raised by parents without a high school diploma.  This is purely a function of my genetic and socio-economic background not about any shred of my own accomplishments.  It bears repeating that the fact that I have an advantage in earning power as outlined in this paragraph has nothing to do with my own merit.  In the words of Jethro Tull, &#8220;that was just an accident of birth&#8221;.</p>
-
-<p>Want to argue these statistics?  A study looking into Transgender transformations found that people undergoing Male to Female conversions (known as MTF) earned 32% less on average <em>after their change</em>! <a href=""http://www.time.com/time/nation/article/0,8599,1847194,00.html"" title="If Women Were More Like Men: Why Females Earn Less">3</a></p>
-
-<p>I&#8217;ve faced some challenges in life, but they&#8217;re a lot easier to overcome when playing with a stacked deck.</p>
-
-<h2>I&#8217;m Privileged So&#8230;</h2>
-
-<p>I&#8217;m introspective enough to admit that I haven&#8217;t always been as aware of my advantages as I am now.  Being a few decades into life, living meagerly for a decent chunk of my twenties, and traveling outside of the United States has opened my eyes.  Having friends who are different than myself has opened my eyes.  Listening to smart people who have huge hearts has also opened my eyes.  Witnessing people who live in abject poverty has opened my eyes.</p>
-
-<p>And this process isn&#8217;t over, I&#8217;m still learning.  A couple of months back was my first exposure to the term &#8216;ableism&#8217;.  I hadn&#8217;t previously considered that calling someone &#8216;dumb&#8217; harkenens back to this definition</p>
-
-<p>dumb
-: offensive (of a person) unable to speak, most typically because of congenital deafness: he was born deaf, dumb, and blind.</p>
-
-<p>Or that using the word &#8216;insane&#8217; as a pejorative probably refers to individuals who suffer from schizophrenia and who historically faced persecution and death.</p>
-
-<h2>I&#8217;m still learning</h2>
-
-<p>I&#8217;m proud of where I&#8217;ve gotten to in my approach to the world, but I want to share an example or two of my own past prejudices.  I share them not because I&#8217;m proud of my behavior, quite the contrary; I share them to show that it&#8217;s a learning process.</p>
-
-<p>When I was in elementary school, I remember seeing another child on the basketball court.  In most respects, he appeared quite similar to me.  But his elbows and arms were covered in scaly, reddened skin that cracked and bled.  I remember my revulsion and how I avoided him.</p>
-
-<p>I can&#8217;t say that I thought much of that child after moving on from elementary school.  I became busy with school, friends, baseball and listening to music.  In high school I started having to deal with my own challenge in life called psoriasis.  Psoriasis is an autoimmune disorder where cells reproduce much faster than normal, causing intense itching and discomfort.  It wasn&#8217;t until a few years into dealing with psoriasis that it dawned on me: that child who I avoided suffered from the very skin disorder as I did.</p>
-
-<h2>I&#8217;m Doing My Part and You&#8217;re Welcome to Join Me</h2>
-
-<p>As it stands now, I&#8217;m playing the game of life with a stacked deck. I face less consequences for raising my voice in support of individuals who don&#8217;t have that luxury. I have better financial resilience to deal with social opposition as I work towards better equity in our society.</p>
-
-<p>It&#8217;s not only my choice to do this, it&#8217;s also my responsibility that comes with this &#8216;accident of birth&#8217;. I had no choice in how I was born but I have decent control over how I act in this life. I&#8217;m going to take a stand on issues of racial equality, gender equality, sexual orientation equality (and more broadly the right to be yourself), disabled rights, bullying, and marginalizing behavior. I may not get it all right, but I&#8217;d rather work towards helping, with kindness in my heart, than stay silent for fear of accidental missteps. I also welcome receiving feedback so that I can improve.</p>
-
-<p>The next time you see someone use a pejorative based on race, disability, sex, or someone bullying another individual:</p>
-
-<p><em>Don&#8217;t fucking let it slide</em>!</p>
-
-<p>Stand up and lend your voice to the conversation. Your voice offsets the hatred and bigotry that is being leveled against someone. You&#8217;ll be glad you took a stand and you&#8217;re making this world of ours a better place.</p>
-
-<p>PS, if any of the terms or descriptions come across as offensive, please tell me. I&#8217;ve written this post to the best of my ability given the language that I have for this discussion. I&#8217;ve also left terms from the Census data as they are. But there&#8217;s lots to learn. Please tell me in the comments, Twitter, or email how I can improve it.</p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Privilege Means Responsibility]]></title>
     <link href="http://zph.github.io/2013/05/privilege-means-responsibility/"/>
-    <updated>2013-05-04T00:00:00-04:00</updated>
+    <updated>2013-05-04T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/05/privilege-means-responsibility</id>
     <content type="html"><![CDATA[<h1>Let&#8217;s redefine privilege</h1>
 Because it&#8217;s not working well for our society.
@@ -1061,7 +1100,7 @@ Stand up and lend your voice to the conversation. Your voice offsets the hatred 
   <entry>
     <title type="html"><![CDATA[Hack Your Finances - Thoughts on Extreme Retirement Planning]]></title>
     <link href="http://zph.github.io/2013/05/hack-your-finances-thoughts-on-extreme-retirement-planning/"/>
-    <updated>2013-05-02T00:00:00-04:00</updated>
+    <updated>2013-05-02T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/05/hack-your-finances-thoughts-on-extreme-retirement-planning</id>
     <content type="html"><![CDATA[<p>Extreme Retirement Planning is a financial movement that I discovered a few weeks ago.  At least, that&#8217;s when I heard of that terminology for being frugal.  As it happens, I&#8217;ve been implementing some of those ideas for the past year or two.  But these Extreme Retirement Planning (ERP) folks crank it up to 11 and that&#8217;s where I have something to learn.</p>
 
@@ -1089,7 +1128,7 @@ Stand up and lend your voice to the conversation. Your voice offsets the hatred 
   <entry>
     <title type="html"><![CDATA[Goals and Giving Back: Creating Meaning in Life]]></title>
     <link href="http://zph.github.io/2013/04/goals-and-giving-back-creating-meaning-in-life/"/>
-    <updated>2013-04-29T00:00:00-04:00</updated>
+    <updated>2013-04-29T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/04/goals-and-giving-back-creating-meaning-in-life</id>
     <content type="html"><![CDATA[[caption id=&#8221;attachment_599&#8221; align=&#8221;alignleft&#8221; width=&#8221;500&#8221;]<a href="http://www.civet.ws/wp-content/uploads/2013/04/4701714888_e29a0e3e8e1.jpg"><img src="http://www.civet.ws/wp-content/uploads/2013/04/4701714888_e29a0e3e8e1.jpg" alt="" width="500" height="331" class="size-full wp-image-599" /></a> By: <a href='http://www.flickr.com/photos/johnonolan/4701714888/' target='_blank'>John O&#8217;Nolan</a>[/caption]
 
@@ -1116,7 +1155,7 @@ Stand up and lend your voice to the conversation. Your voice offsets the hatred 
   <entry>
     <title type="html"><![CDATA[Stop, Drop, and Sleep]]></title>
     <link href="http://zph.github.io/2013/04/stop-drop-and-sleep/"/>
-    <updated>2013-04-24T00:00:00-04:00</updated>
+    <updated>2013-04-24T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/04/stop-drop-and-sleep</id>
     <content type="html"><![CDATA[Exhaustion is in the air today. I fell asleep at 7pm and according to my Twitter feed, it&#8217;s not just me.
 <h3>So is:</h3>
@@ -1169,7 +1208,7 @@ I&#8217;d love to hear tips and feedback for how you, my reader, addresses this.
   <entry>
     <title type="html"><![CDATA[Increasing Productivity with Shortcuts]]></title>
     <link href="http://zph.github.io/2013/04/increasing-productivity-with-shortcuts/"/>
-    <updated>2013-04-20T00:00:00-04:00</updated>
+    <updated>2013-04-20T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/04/increasing-productivity-with-shortcuts</id>
     <content type="html"><![CDATA[[caption id=&#8221;attachment_582&#8221; align=&#8221;alignleft&#8221; width=&#8221;500&#8221;]<a href="http://www.civet.ws/wp-content/uploads/2013/04/3879260111_c56e8a0c1c.jpg"><img class="size-full wp-image-582" alt="" src="http://www.civet.ws/wp-content/uploads/2013/04/3879260111_c56e8a0c1c.jpg" width="500" height="333" /></a> By: <a href="http://www.flickr.com/photos/orcmid/3879260111/" target="_blank">Dennis Hamilton</a>[/caption]
 
@@ -1198,7 +1237,7 @@ I&#8217;ll post at some point about my experiences with the Pomodoro technique, 
   <entry>
     <title type="html"><![CDATA[RubyMidwest 2013: Lessons and Reflections]]></title>
     <link href="http://zph.github.io/2013/04/rubymidwest-2013-lessons-and-reflections/"/>
-    <updated>2013-04-12T00:00:00-04:00</updated>
+    <updated>2013-04-12T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/04/rubymidwest-2013-lessons-and-reflections</id>
     <content type="html"><![CDATA[<a href="http://www.civet.ws/wp-content/uploads/2013/04/20130411-RubyMidwest-2013-Me-Evan-Light-and-PJ-Hagerty.jpg"><img class="alignleft size-full wp-image-556" alt="20130411 RubyMidwest 2013 Me, Evan Light and PJ Hagerty" src="http://www.civet.ws/wp-content/uploads/2013/04/20130411-RubyMidwest-2013-Me-Evan-Light-and-PJ-Hagerty.jpg" width="1024" height="768" /></a>
 
@@ -1245,7 +1284,7 @@ To Wes Garrison of <a href="http://databasically.com/">Databasically</a>, <a hre
   <entry>
     <title type="html"><![CDATA[Pricing a Product: Napkin Math]]></title>
     <link href="http://zph.github.io/2013/03/pricing-a-product-napkin-math/"/>
-    <updated>2013-03-20T00:00:00-04:00</updated>
+    <updated>2013-03-20T00:00:00-07:00</updated>
     <id>http://zph.github.io/2013/03/pricing-a-product-napkin-math</id>
     <content type="html"><![CDATA[I&#8217;m facing the novel prospect of pricing a software product. This product is something that I created during evenings and weekends. It&#8217;s very specialized for my current industry, so I won&#8217;t go into the details of the product. But suffice to say that it sorts data in a time saving way.
 <h2>Product Benefits</h2>
@@ -1297,7 +1336,7 @@ Note: Just for the record - I intend to retain Intellectual Property rights give
   <entry>
     <title type="html"><![CDATA[Two Factor Authentication for All the Things]]></title>
     <link href="http://zph.github.io/2013/03/two-factor-authentication-for-all-the-things/"/>
-    <updated>2013-03-09T00:00:00-05:00</updated>
+    <updated>2013-03-09T00:00:00-08:00</updated>
     <id>http://zph.github.io/2013/03/two-factor-authentication-for-all-the-things</id>
     <content type="html"><![CDATA[I recently went wild with two factor <a href="https://en.wikipedia.org/wiki/Two_factor_authentication"> authentication </a> due to reading about <a href="http://www.lowendtalk.com/discussion/5686/chicagovps-hacked-bunch-of-vps-customers-offline">Chicago VPS getting hacked</a>. I received the nicest email from <a href="http://www.lastpass.com">LastPass</a> warning me that my email address was among the SQL dump posted by the hacker.
 <h2>My Response</h2>
@@ -1331,7 +1370,7 @@ Follow up&#8230; Flashed a new Rom to phone and my only hassle was with Amazon A
   <entry>
     <title type="html"><![CDATA[A Week with ThinkingRock GTD]]></title>
     <link href="http://zph.github.io/2013/03/a-week-with-thinkingrock-gtd/"/>
-    <updated>2013-03-03T00:00:00-05:00</updated>
+    <updated>2013-03-03T00:00:00-08:00</updated>
     <id>http://zph.github.io/2013/03/a-week-with-thinkingrock-gtd</id>
     <content type="html"><![CDATA[[caption id=&#8221;attachment_529&#8221; align=&#8221;alignright&#8221; width=&#8221;300&#8221;]<a href="http://198.211.104.146/wp-content/uploads/2013/03/2301566699_aab007085c.jpg"><img class="size-medium wp-image-529" alt="" src="http://198.211.104.146/wp-content/uploads/2013/03/2301566699_aab007085c-300x225.jpg" width="300" height="225" /></a> By: <a href="http://www.flickr.com/photos/thms/2301566699/" target="_blank">Thomas van de Weerd</a>[/caption]
 <h2>The Good</h2>
@@ -1352,7 +1391,7 @@ Dig into the source files for ThinkingRock and add enough keyboard shortcuts to 
   <entry>
     <title type="html"><![CDATA[Benchmarking GTD]]></title>
     <link href="http://zph.github.io/2013/02/efficiency-measurement-and-little-tips-real-gtd/"/>
-    <updated>2013-02-23T00:00:00-05:00</updated>
+    <updated>2013-02-23T00:00:00-08:00</updated>
     <id>http://zph.github.io/2013/02/efficiency-measurement-and-little-tips-real-gtd</id>
     <content type="html"><![CDATA[[caption id=&#8221;attachment_533&#8221; align=&#8221;alignright&#8221; width=&#8221;300&#8221;]<a href="http://198.211.104.146/wp-content/uploads/2013/02/4072190666_6d21864373.jpg"><img class="size-medium wp-image-533" alt="" src="http://198.211.104.146/wp-content/uploads/2013/02/4072190666_6d21864373-300x225.jpg" width="300" height="225" /></a> By: <a href="http://www.flickr.com/photos/rubbermaid/4072190666/" target="_blank">Rubbermaid Products</a>[/caption]
 
@@ -1373,88 +1412,6 @@ Given that email accounted for 6 hours of my workweek, I decided to improve the 
 Next I added two key combinations for Sparrow.app. One key combination opens a new email from ANY application while the other key combo brings Sparrow to forefront or hides it again. These two changes have saved me lots of time so far and reduced the effort related to context switching.
 
 Share your tips for email hacks and productivity (GTD) hacks! I can be reached via the comments and as [<a href="http://www.twitter.com/_zph">@_ZPH</a>] on Twitter.
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Finite Keystrokes Before Death : Making the Most of Them]]></title>
-    <link href="http://zph.github.io/2013/02/finite-keystrokes-before-death-making-the-most-of-them/"/>
-    <updated>2013-02-21T00:00:00-05:00</updated>
-    <id>http://zph.github.io/2013/02/finite-keystrokes-before-death-making-the-most-of-them</id>
-    <content type="html"><![CDATA[[caption id=&#8221;attachment_526&#8221; align=&#8221;alignleft&#8221; width=&#8221;300&#8221;]<a href="http://198.211.104.146/wp-content/uploads/2013/02/5637077256_7c2d3c7694.jpg"><img class="size-medium wp-image-526" alt="" src="http://198.211.104.146/wp-content/uploads/2013/02/5637077256_7c2d3c7694-300x225.jpg" width="300" height="225" /></a> By: <a href="http://www.flickr.com/photos/37651136@N05/5637077256/" target="_blank">ericnvntr</a>[/caption]
-
-The idea that we possess a finite number of keystrokes to consume before death is an ominous consideration.
-
-That&#8217;s the concept mentioned in one of RubyFreelancer&#8217;s archived shows by Eric Davis (if I remember correctly). I believe he&#8217;s quoting another person in the episode when he talks about having a finite number of keystrokes remaining.
-
-I&#8217;ve been using a text expander, i.e. snippet application, to help manage the repetitive work of typing. Common phrases or sentences that I use are added as re-usable phrases to a handy program called <a href="http://kapeli.com/">Dash</a>. Dash observes when keystrokes are entered and if a trigger keyword is used, such as &#8216;iirc&#8217;, the program replaces that text with &#8216;if I recall correctly&#8217;. Dash also allows the phrase to have replaceable variables, just like you would expect fom &#8216;Yasnippet&#8217; or &#8216;Snipmate&#8217;.
-
-As a bonus feature, Dash serves the dual purpose of being a &#8216;Heads Up Display&#8217; style documentation viewer. It&#8217;s a great way to lookup STDLIB info from Ruby or CSS info. The only drawback that I&#8217;ve found is needing to manually generate Rdocs since my system settings for RVM do not install them. I accomplished this using the following script:
-
-&nbsp;
-
-I&#8217;ve used the text expansion feature to save thousands of keystrokes in repetitive form entries where other automated solutions are not available.
-
-Try it out and let me know what you think in the comments or on Twitter <a href="http://www.twitter.com/_ZPH">@_ZPH</a>. Oh yeah and map the HUD to something easy to remember like CMD-CTRL-SHIFT D. I keep all of my system-wide shortcuts on the same triple modifier chord so that they&#8217;re unlikely to overwrite standard shortcuts :).
-
-What other methods do you have for reducing repetition?
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[ThinkingRock GTD: Torn Apart]]></title>
-    <link href="http://zph.github.io/2013/02/thinkingrock-gtd-torn-apart-3/"/>
-    <updated>2013-02-20T00:00:00-05:00</updated>
-    <id>http://zph.github.io/2013/02/thinkingrock-gtd-torn-apart-3</id>
-    <content type="html"><![CDATA[<h2>GTD FTW!</h2>
-
-<p>Why am I engaging in this hipster habit of using Covey&#8217;s &#8216;Getting Things Done&#8217; methodology?  <em>Because</em> there&#8217;s something very valuable to it!</p>
-
-<p>The analogies that Stephen Covey uses in his book hit home for geeks.  He describes the working memory we humans possess as Random Access Memory, which requires energy to sustain it.  Furthermore, he reminds the reader that if the RAM is busy, other thoughts can&#8217;t percolate through that stage of consciousness?</p>
-
-<h3>Sound too esoteric?</h3>
-
-<p>Let&#8217;s get down to <em>bare metal</em>. Or <em>brass tacks</em>. Or any other colloquialism that suits.</p>
-
-<p>Throughout the day I have ideas.  Many of them are good ideas :).  Many of these good ideas percolate to the surface at inopportune moments&#8230; like meetings, reviewing reports, or writing code.  These ideas are <em>GREAT</em> but what&#8217;s their value if they disappear before I can act on them?</p>
-
-<p>Nothing.  That&#8217;s how much value these ideas have if they flit right back out of my consciousness.  Might not be a big deal if it&#8217;s remembering a food item to pick-up on the way home.  Might be a <em>huge deal</em> if it&#8217;s a programming or business idea that could be implemented and turned into a product!</p>
-
-<h4>What&#8217;s the solution?</h4>
-
-<p>I mentioned using ThinkingRock GTD system in this <a href="http://www.civet.ws/2013/02/getting-thinking-rock-v2-1-work-on-osx-10-8/">post</a>.  ThinkingRock v2.1 is an open-source project hosted on <a href="http://sourceforge.net/projects/thinkingrock/files/ThinkingRock/TR%202.2.1/"> SourceForge </a>.</p>
-
-<p>ThinkingRock does the usual stuff that one would expect from a GTD program:
-* Collect Thoughts in an Inbox
-* Processing
-* Organization
-* Reviewing
-* Action</p>
-
-<p>What&#8217;s the killer feature of this app for my workflow?</p>
-
-<h3>That ideas can be dumped into it using the universal communication currency of our age, <em>EMAIL</em>!</h3>
-
-<p>My goal is to reduce the friction in the GTD system so that I waste as little energy as possible on the process itself.</p>
-
-<p>Email input is a very powerful feature.  I&#8217;ve setup a dedicated email account for receiving GTD tasks and then configured ThinkingRock to import tasks from there every 15 minutes.</p>
-
-<p>The next step in this process was writing a short commandline script that is prefilled with the GTD email address.  The script combines all commandline input less the scriptname itself and uses that value as the subject line of the email.  This makes for an incredibly fluid system of GTD task entry.</p>
-
-<p>Here&#8217;s the simple Ruby script for this task (note that auth info is placed in <code>~/.gmailrc</code>):
-  <script src="https://gist.github.com/zph/5001831.js"></script></p>
-
-<p>But wait, there&#8217;s more!  If you keep reading this blog post, you&#8217;ll receive more time saving advice at no additional cost.  That&#8217;s &#8220;#{SOME<em>MADE</em>UP_VALUE}&#8221;!</p>
-
-<p>Back to the point, I integrated this script into Alfred.app.  Now the tasks can be entered directly from Alfred!</p>
-
-<p>I&#8217;ve only scratched the surface so far with getting back into the GTD methodology&#8230; but I&#8217;m excited!  Having better programming chops this time when approaching GTD is certainly improving the process :).</p>
-
-<h4>Still to come:</h4>
-
-<p>I discussed in this <a href="http://www.civet.ws/2013/02/getting-thinking-rock-v2-1-work-on-osx-10-8/">post</a> that I wanted to use the open-source version rather than the newer closed source version because of having the ability to dig into the code.  In an upcoming post I&#8217;ll discuss how the open-source program allowed me to investigate the data structure used for ThinkingRock in a way that would be much more challenging if I lacked access to the project source-code!</p>
-
-<p>Let me know in the comments or on Twitter (<a href="http://www.twitter.com/_ZPH">@_ZPH</a>) if you have ideas on how to improve the process.</p>
 ]]></content>
   </entry>
   

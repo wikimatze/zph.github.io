@@ -13,7 +13,7 @@
   
     
   
-  <meta name="description" content="Blame smartOS not reading my SATA controller. Blame Linux for not having first class support for ZFS (where my data is held). Blame https://twitter. &hellip;">
+  <meta name="description" content="Blame smartOS not reading my SATA controller. Blame Linux for not having first class support for ZFS (where my data is held). Blame @canadiancreed &hellip;">
   
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -29,7 +29,7 @@
   <meta name="og:type" content="website" />
   <meta name="og:site_name" content="Civet" />
   <meta name="og:title" content="Finding myself in BSD" />
-  <meta name="og:description" content="Blame smartOS not reading my SATA controller. Blame Linux for not having first class support for ZFS (where my data is held). Blame https://twitter. &hellip;" />
+  <meta name="og:description" content="Blame smartOS not reading my SATA controller. Blame Linux for not having first class support for ZFS (where my data is held). Blame @canadiancreed &hellip;" />
   <meta name="og:url" content="http://zph.github.io/2014/02/finding-myself-in-bsd/"/>
   <meta name="url" content="http://zph.github.io/2014/02/finding-myself-in-bsd/">
   
@@ -115,7 +115,7 @@
   
 
 
-<time datetime="2014-02-15T02:01:00-05:00" pubdate data-updated="true">Feb 15<span>th</span>, 2014</time> - 
+<time datetime="2014-02-15T02:01:00-08:00" pubdate data-updated="true">Feb 15<span>th</span>, 2014</time> - 
         
 
 
@@ -129,17 +129,17 @@
 
 <p>Blame Linux for not having first class support for ZFS (where my data is held).</p>
 
-<p>Blame <a href="@canadiancreed">https://twitter.com/canadiancreed</a> for giving me a way out of the quandry.</p>
+<p>Blame <a href="https://twitter.com/canadiancreed"> @canadiancreed </a> for giving me a way out of the quandry.</p>
 
 <p>The backstory is that I moved all of my backups to two ZFS pools a few years ago.  I was running ZFSonLinux and it generally worked&hellip;. except when I rebooted the server and had to force import the pools.</p>
 
 <p>Fast forward to that server being replaced by a workstation (i7 Haswell, 240GB Sata3 SSD, and 24GB RAM).  I tried smartOS by Joyent and ran into issues with my SATA controller not being recognized.  It&rsquo;s a shame given how awesome the smartOS vm administration is.  I mean vmadm and imgadm are light years ahead of Docker.</p>
 
-<p>Since smartOS refused to recognize 3 of my 8 drives I ran back to Linux.  The good new, Linux recognized the sata controller.  The bad news, Linux couldn&rsquo;t import the pools.  Frankly, Linux had a hell of a time with building the ZFS on Linux kernel modules.  I managed to piece together a few clues from the ZFSonLinux Issues on Github.  In fact, thanks to <a href="@dajhorn">https://github.com/dajhorn</a> for supplying answers on that Github issue which allowed me to build the kernel modules.</p>
+<p>Since smartOS refused to recognize 3 of my 8 drives I ran back to Linux.  The good new, Linux recognized the sata controller.  The bad news, Linux couldn&rsquo;t import the pools.  Frankly, Linux had a hell of a time with building the ZFS on Linux kernel modules.  I managed to piece together a few clues from the ZFSonLinux Issues on Github.  In fact, thanks to <a href="https://github.com/dajhorn"> @dajhorn </a> for supplying answers on that Github issue which allowed me to build the kernel modules.</p>
 
 <p>This sounds promising doesn&rsquo;t it? It&rsquo;s not, it was a horrorshow.  Linux refused to import the one of the two zpools.  One of them imported nicely, the mission critical financial records.  The other semi-critical zpool was shot and refused to import under Linux.</p>
 
-<p>I spent a whole evening banging my head against this issue. If it hadn&rsquo;t been for <a href="Chris%20Reed">https://twitter.com/canadiancreed</a> I wouldn&rsquo;t have hit upon the solution.</p>
+<p>I spent a whole evening banging my head against this issue. If it hadn&rsquo;t been for <a href="https://twitter.com/canadiancreed"> Chris Reed </a> I wouldn&rsquo;t have hit upon the solution.</p>
 
 <p>His recommendation was to try FreeBSD&hellip; so I did.  And it recognized the SATA controller and also imported the zpools cleanly!  So after a dry run w/ FreeBSD, I installed PC-BSD, which is a desktop variant based on FreeBSD. Think of it as the Ubuntu of the BSD world.  And hell yeah, it&rsquo;s all working :).</p>
 
@@ -170,7 +170,7 @@
   
 
 
-<time datetime="2014-02-15T02:01:00-05:00" pubdate data-updated="true">Feb 15<span>th</span>, 2014</time>
+<time datetime="2014-02-15T02:01:00-08:00" pubdate data-updated="true">Feb 15<span>th</span>, 2014</time>
       
 
 
@@ -211,6 +211,10 @@
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/02/pathogen-dot-vim-without-the-submodules-use-infect/">Pathogen.vim without the Submodules: Use Infect</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
         </li>
       
@@ -224,10 +228,6 @@
       
         <li>
           <a href="/2014/02/automating-email-with-ruby/">Automating Email with Ruby</a>
-        </li>
-      
-        <li>
-          <a href="/2013/06/adventures-with-mri-2-dot-0-0-and-zlib-a-story-of-malformed-gzips/">Adventures with MRI 2.0.0 and Zlib: A Story of Malformed Gzips</a>
         </li>
       
     </ul>
