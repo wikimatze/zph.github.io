@@ -151,6 +151,62 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/07/file-under-commands-i-should-know/">File Under &#8216;Commands I Should Know&#8217;</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-06T00:00:00-07:00" pubdate data-updated="true">Jul 6<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">[cc_bash]#shutdown now -h[/cc_bash]
+Pretty important but didn&#8217;t know about the &#8216;-h&#8217; flag until today. When run as root this will shutdown system (Linux specific) now and send it to a init-level 0, ie a full halt.
+
+Good to know =D.
+
+As pointed out in comments &#8216;shutdown -p now&#8217; is the BSD equivalent.
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/07/linux-command-of-the-day/">Linux Command of the Day</a></h1>
     
     
@@ -685,66 +741,6 @@ ImageMagic, svg2png, cad2svg (except proprietary blob) are great tools made even
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/using-zshs-history-incremental-search-with-vi-mode/">Using ZSH&#8217;s History Incremental Search With Vi-Mode</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-21T00:00:00-07:00" pubdate data-updated="true">May 21<span>st</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I switched to ZSH a few months back and am spending more and more time in commandline + VIM/MacVIM.</p>
-<p>Once I added the tag to my dotfile to force vi-mode on the commandline I lost the ability to do incremental searches of my zsh history.  So here&#8217;s the fix which saves lots of typing:</p>
-<p>First, the regular keybind to allow Ctrl-R to enter history search backward mode:
-[cc_bash]bindkey &#8220;^R&#8221; history-incremental-search-backward[/cc_bash]</p>
-<p>To fix the fact that the prior keymap no longer works in vi-mode zsh, add this to a zsh config:
-[cc_bash]
-bindkey -M viins &#8216;^R&#8217; history-incremental-search-backward
-bindkey -M vicmd &#8216;^R&#8217; history-incremental-search-backward[/cc_bash]</p>
-<p>Now I can ^R with aplomb&#8230;</p>
-<p>This is thanks to the explanation from JDeBP over on <a href="http://superuser.com/questions/328026/can-i-use-vim-editing-mode-on-the-command-line-without-losing-recursive-history">superuser.com</a>.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/vimrepress_4fbb0104_mkd.odt vimrepress_4fbb0104_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -772,6 +768,10 @@ bindkey -M vicmd &#8216;^R&#8217; history-incremental-search-backward[/cc_bash]<
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/">Conference Advice: How to Meet Devs and Influence Ppl</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/pathogen-dot-vim-without-the-submodules-use-infect/">Pathogen.vim without the Submodules: Use Infect</a>
         </li>
       
@@ -785,10 +785,6 @@ bindkey -M vicmd &#8216;^R&#8217; history-incremental-search-backward[/cc_bash]<
       
         <li>
           <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/automating-email-with-ruby/">Automating Email with Ruby</a>
         </li>
       
     </ul>

@@ -4,7 +4,7 @@
   <title><![CDATA[Civet]]></title>
   <link href="http://zph.github.io/atom.xml" rel="self"/>
   <link href="http://zph.github.io/"/>
-  <updated>2014-03-11T15:45:58-07:00</updated>
+  <updated>2014-03-11T16:13:25-07:00</updated>
   <id>http://zph.github.io/</id>
   <author>
     <name><![CDATA[Zander]]></name>
@@ -12,6 +12,48 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Conference Advice: How to Meet Devs and Influence Ppl]]></title>
+    <link href="http://zph.github.io/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/"/>
+    <updated>2014-03-11T14:55:29-07:00</updated>
+    <id>http://zph.github.io/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl</id>
+    <content type="html"><![CDATA[<p>Want to know the secret about tech conferences? It&rsquo;s not about the talks.  It&rsquo;s not about the venue.</p>
+
+<p>It&rsquo;s about all the people who are there!</p>
+
+<p>While attending <a href="https://twitter.com/rbonales">@RbOnAles</a>, I was asked by <a href="https://twitter.com/eliserius"> @eliserius </a> about how I knew so many people there.  This article is a summary of that discussion.</p>
+
+<p>First off, go to a couple conferences each year.  It&rsquo;s best if your employer will pay all or part of the way.  But if they won&rsquo;t, it&rsquo;s your responsibility to make it to the conferences.  They&rsquo;re an investment in your career&rsquo;s future.</p>
+
+<p>Now that you&rsquo;re attending 3+ regional tech conferences each year, what steps can you take to make the most of it?  Well, remember that you&rsquo;re attending to meet the other attendees.  By virtue of them also attending the conference, they either work at decent companies or they prioritize conference attendance.</p>
+
+<p>So meet these folks!  It&rsquo;s not hard*. (It&rsquo;s terrifying at first, but push past that &amp; make it happen).  I&rsquo;m an introverted person and know a fair number of Ruby conference attendees, but those first few minutes of awkwardly interacting are just that: uncomfortable.  That&rsquo;s fine, move the conversation into tech stuff.  Chat about Service Oriented Architecture, argue about Dependency Injection, take a stand and say that Ruby isn&rsquo;t a dying language.</p>
+
+<p>Remember, these folks who are at the conference also want to meet people.</p>
+
+<p>What specific steps do I recommend for breaking the ice or stacking your social deck at the conference?</p>
+
+<ul>
+<li>Don&rsquo;t attend conferences with workmates.  Or if you&rsquo;re at conference, avoid them.  There are 363 other days to bs with &lsquo;em.  You&rsquo;ve only got 24 hrs * 3 days for the conference&hellip; make the most of it and meet new people.</li>
+<li>Set a goal of meeting X new people at conference. Let&rsquo;s consider &ldquo;meeting&rdquo; to be defined as exchanging names and at least one memorable detail about the other party. Maybe they juggle, write assembly, breed horses.  Folks all have a story, ask &ldquo;What brought you to the conference&rdquo;.  Or &ldquo;What tech stuff are you playing with right now?&rdquo;. Or start a heated debate about which <code>$EDITOR</code> to use.  If you&rsquo;re stumped about approaching someone, just be candid, &ldquo;I saw you standing there &amp; realized we hadn&rsquo;t met yet: I&rsquo;m Zander&rdquo;.  Most of the time that&rsquo;s enough to kick off a conversation, though you might choose to use your own name in the prior quotation.</li>
+<li>Take your meals with a different new group each time.  With a 2 day conference, that gives you 4 opportunities to meet groups of 4+ people each time.  Some conferences actively organize this kind of activity.  Big shoutout to <a href="http://twitter.com/steelcityruby">@steelcityruby</a> for doing this stuff :).  If your conference isn&rsquo;t doing this, post on twitter that you&rsquo;re organizing a group for Italian/Thai/Indian/Bar food and see who bites.</li>
+<li>While out having food with others, buy a meal or drink for some folks you don&rsquo;t know well.  Do it for the nice factor the icing on the cake is that you&rsquo;ll seem even more awesome than you already are.</li>
+<li>Bring something to share to the conference and then offer it up to people.  Could be a cardgame, boardgame, bourbon, soda water, LAN party&hellip; just get yourself out there.</li>
+<li>Volunteer to carpool from airport to conference.  Or from major city to tiny town where conference exists.</li>
+<li>Learn 2 love Twitter.  Start or revive your account.  Twitter is the lifeblood of many Ruby conferences.  Start up Tweetdeck or Tweetbot and add a column dedicated to the conference hashtag.  That way you&rsquo;ll be aware of the pulse of things.</li>
+<li>Post Twitter messages with hashtag.  For example at this last conference, I had the pleasure of doing breakfast with my favorite Aussie (<a href="http://twitter.com/ryanbigg">@ryanbigg</a>) by virtue of an early morning Tweet about meeting for breakfast.  It&rsquo;ll also force you to meet people who you might not otherwise get to meet.</li>
+<li>Stay at the conference hotel &amp; possibly split a room w/ someone you don&rsquo;t know.  Put a call out among friends to find someone to split room.  It&rsquo;ll be awesome.  At least it has been for me thus far.  Staying at conference hotel itself is wonderful because you&rsquo;ll be in the middle of the action, late night philosophizing on OOP vs. Functional, etc.</li>
+<li>Stick around for the evening events each day.  Also stay for the workshops that often take place after the conference ends.  At Ruby On Ales, it was a MiniTest workshop by <a href="http://twitter.com/blowmage">@blowmage</a>.  It was awesome and I got to meet a few more people before leaving.</li>
+<li>Still stumped for how to approach people at conference? See if you can recognize anyone at conference from Twitter or Github profiles.  Then go up &amp; thank them for the Open Source work they do.  It&rsquo;ll give them chills :).</li>
+<li>Be a speaker: you literally have to talk to people.  At end of talk, invite them to stop you and chat, because you&rsquo;re shy and want to meet people.  Ask for help, it&rsquo;s cool :).</li>
+<li>Final tip: I&rsquo;m terrified at the beginning of each conversation.  Once I warm up, it&rsquo;s groovy, but until then it&rsquo;s rough.  Get that momentum going, force yourself out of the comfort zone, and see what happens.  Soon enough, those conferences will feel like reunions filled with friends.</li>
+</ul>
+
+
+<p>PS &ndash; I have a new friend from @RbOnAles who&rsquo;s looking for a remote role (or in SF) either as QA or Jr. Ruby Developer. DM me on Twitter if you know of options.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Pathogen.vim without the Submodules: Use Infect]]></title>
@@ -1385,33 +1427,6 @@ The method that I&#8217;m using for adding tasks is very well optimized and uses
 When I go to sort the tasks, I&#8217;m stuck with a system that very literally follows GTD principles, but doesn&#8217;t have sufficient keyboard shortcuts. Processing 35 items by tabbing through textboxes and radio boxes isn&#8217;t my idea of an efficient system. It also makes me wonder if other people are painstakingly mousing through the interface.
 <h2>The Answer</h2>
 Dig into the source files for ThinkingRock and add enough keyboard shortcuts to &#8220;get things done&#8221;. I started this yesterday on the plane to California and I&#8217;ll post back when I have a chance to work on it more. Given that I don&#8217;t know any Java (other than a session at the LeanDog CodeRetreat with <a href="http://www.twitter.com/stevejxsn">Steve</a>), this will be an interesting challenge :).
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Benchmarking GTD]]></title>
-    <link href="http://zph.github.io/2013/02/efficiency-measurement-and-little-tips-real-gtd/"/>
-    <updated>2013-02-23T00:00:00-08:00</updated>
-    <id>http://zph.github.io/2013/02/efficiency-measurement-and-little-tips-real-gtd</id>
-    <content type="html"><![CDATA[[caption id=&#8221;attachment_533&#8221; align=&#8221;alignright&#8221; width=&#8221;300&#8221;]<a href="http://198.211.104.146/wp-content/uploads/2013/02/4072190666_6d21864373.jpg"><img class="size-medium wp-image-533" alt="" src="http://198.211.104.146/wp-content/uploads/2013/02/4072190666_6d21864373-300x225.jpg" width="300" height="225" /></a> By: <a href="http://www.flickr.com/photos/rubbermaid/4072190666/" target="_blank">Rubbermaid Products</a>[/caption]
-
-I&#8217;ve been working with <a href="http://www.rescuetime.com">RescueTime</a> for the past week and I&#8217;m <em>VERY</em> happy.
-
-First off, I don&#8217;t have to change a thing to make use of the system. It&#8217;s a great way to benchmark my own time spending habits on the computer. It&#8217;s well setup to allow individual configuration of what <em>you</em> believe is productive and non-productive.
-
-During setup, I thought about all the facets of business and independent projects. I concluded that email is a neutral value of productivity, while programming is +2 and reading <a href="http://www.dont_go_there_it_wastes_your_live.com">HackerNews</a> is -2.
-
-I&#8217;m happy to share this chart for my first week of use:
-
-[caption id=&#8221;&#8221; align=&#8221;aligncenter&#8221; width=&#8221;1035&#8221;]<img alt="" src="http://f.cl.ly/items/2a2V1S1P1i3c2V2P0A40/Screen%20Shot%202013-02-24%20at%2012.11.55%20AM.png" width="1035" height="377" /> RescueTime - 1st Week[/caption]
-
-Notice that I tagged email and meetings as a productivity of 0 because so little useful action comes out of them. Frequently meetings would be best accomplished in short bursts and email involves _LOTS_ of needless repetition.
-
-Given that email accounted for 6 hours of my workweek, I decided to improve the efficiency of my email process. I setup my email account with OtherInbox. OtherInbox is an email sorting service that does awesome things with Google Labels.
-
-Next I added two key combinations for Sparrow.app. One key combination opens a new email from ANY application while the other key combo brings Sparrow to forefront or hides it again. These two changes have saved me lots of time so far and reduced the effort related to context switching.
-
-Share your tips for email hacks and productivity (GTD) hacks! I can be reached via the comments and as [<a href="http://www.twitter.com/_zph">@_ZPH</a>] on Twitter.
 ]]></content>
   </entry>
   

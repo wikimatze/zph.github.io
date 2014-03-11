@@ -151,6 +151,97 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2013/02/getting-started-configuring-bashzsh/">Getting Started Configuring Bash/Zsh</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-14T00:00:00-08:00" pubdate data-updated="true">Feb 14<span>th</span>, 2013</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">I saw a post this afternoon by a member of Ruby Rogue&#8217;s Parley list asking how to write Ruby code to help them create a shorthand word for a longer commandline command.  It takes moxy to ask questions on a list filled with many experienced developers.  I was happy to see that positive responses flowed in.
+
+The immediate response was that the individual should perform the action by writing commandline aliases using the shell &#8216;alias&#8217; command. But that only points the developer in the right direction. Instead of just pointing in the direction, the rest of this post will be walking a new developer through setting up helpful customizations in the shell environment.
+
+(Note, the generic information will be fairly compatible whether using the BASH environment or ZShell environment. Moving past general configurations into advanced configurations are where the two start to diverge, particularly with the environmental settings used in .bashrc or .zshrc files. I&#8217;ve found that the best remedy for this is reading through and gradually adopting a few lines here and there from well commented .bashrc/.zshrc files).
+
+Many of the customizations in the shell relate to minimizing repetitive keystrokes. Imagine the difference between typing [cc_bash]bundle exec rails server[/cc_bash] and [cc_bash]be r s[/cc_bash]. If you&#8217;re typing this more than occasionally, it&#8217;s a large savings of keystrokes over a period of months. So how is it done? <em>* Aliases *</em>!
+
+Simply put, include the following code in your config file (a generic term that I&#8217;ll use for either .bashrc or .zshrc, depending on your shell):
+[cc_bash]alias j=&#8221;jobs&#8221;[/cc_bash]
+
+Or to help avoid dumb mistakes (it makes the remove command verbose and interactive =D. Even astute geeks fat finger the occasional keys )
+[cc_bash]alias rm=&#8221;rm -iv&#8221;[/cc_bash]
+
+I&#8217;ve taken to heart the adage, which I can&#8217;t attribute precisely, that anything typed more than a couple times on the commandline should be shortened to save future keystrokes. To prove this point, I currently have greater than <em>* 100 *</em> aliases and growing.  Note that the following is from dumping all of my aliases to STDOUT via [cc_bash]alias > jist -p -c[/cc_bash] and is not representative of one of my alias files.  (For that, see the second inset codeblock).
+<script type="text/javascript" src="https://gist.github.com/zph/4958386.js"></script>
+
+Here&#8217;s an example of one of my alias files&#8230; appropriately called &#8216;aliases.conf.zsh&#8217;:
+<script src="https://gist.github.com/zph/4965016.js"></script>
+(Original code is at: https://github.com/zph/zph/blob/master/home/.zsh.d/aliases.conf.zsh)
+
+So that&#8217;s &#8216;aliases&#8217;. I find that they&#8217;re easier to keep organized if I setup a dedicated &#8216;.zsh.d&#8217; folder. By which I mean that I created a folder called &#8216;.zsh.d&#8217; in the base of my home directory with the following layout:
+<script type="text/javascript" src="https://gist.github.com/zph/1f94ccb11a59eee9ffb0.js"></script>
+This folder contains all of the &#8216;zsh&#8217; configuration files on my system other than &#8216;.zshrc&#8217;.  Each general category of config files gets its own file, ie git.zsh, ruby.zsh, homebrew.zsh, etc.  Helps me keep everything organized =D.
+
+I set the following lines in my &#8216;~/.zshrc&#8217; to source each file within the &#8216;.zsh.d&#8217; directory that has the extension of &#8216;.zsh&#8217;
+[cc_bash]
+_source_zshd(){
+# Finally, source all the files in zsh.d (ALPHA order)
+for zshd in $(find ~/.zsh.d/*.zsh | sort ); do
+source &#8220;${zshd}&#8221;
+done
+}
+_source_zshd
+[/cc_bash]
+
+This isn&#8217;t necessary, but it helps me keep the individual configurations nicely ordered.
+
+To recap, use aliases. Use the daylights out of them. Make your shell a finely honed tool that&#8217;s nicely crafted to your needs. Oh yeah&#8230; do the same with &#8216;functions&#8217; which I can cover in a future blog post.  And look into <a href="https://github.com/clvv/fasd" title="FASD">FASD</a> because it&#8217;s awesome like Narwhals!
+
+Questions, thoughts, jeers, feedback&#8230; catch me on &#8216;ye ol Twitters&#8217; <a href="https://twitter.com/_zph">@_ZPH</a>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/12/trello-archiver-from-scratch/">Trello-Archiver From Scratch</a></h1>
     
     
@@ -802,73 +893,6 @@ Thanks to <a href="http://www.tuaw.com/2011/12/30/daily-mac-app-flashmount-quick
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/11/migrating-neorouter-server-to-new-vps/">Migrating NeoRouter Server to New VPS</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-01T00:00:00-07:00" pubdate data-updated="true">Nov 1<span>st</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Migrating from a flaky VPS to a more reliable one has generally been a hassle.
-But one easy part was migrating NeoRouter Server to a new Xen VPS.
-
-[cc_bash]
-tar -zcvpf OUTPUT_FILENAME.tar.gz /usr/local/ZebraNetworks/NeoRouter [/cc_bash]
-Rsync or scp that file over to new VPS
-[cc_bash]
-
-wget http://download.neorouter.com/Downloads/NRPro/Update_1.6.3.3150/Linux/Ubuntu/nrclient-1.6.3.3150-pro-ubuntu-amd64.deb
-
-sudo dpkg -i nrclient-1.6.3.3150-pro-ubuntu-amd64.deb[/cc_bash]
-
-Decompress file into place in /usr/local&#8230; etc
-Log into <a href="https://secure.neorouter.com/dashboard/default.aspx">NeoRouter dashboard</a> and redirect domain to new IP address (as found by running [cci_bash]ifconfig[/cci_bash] on NeoRouter Server VPS)
-Save dashboard settings, click &#8216;Domain Status&#8217; tab, and gloat in your success!
-
-<!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/11/wpid314-vimrepress_5093143d_mkd.odt wpid314-vimrepress_5093143d_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -896,6 +920,10 @@ Save dashboard settings, click &#8216;Domain Status&#8217; tab, and gloat in you
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/">Conference Advice: How to Meet Devs and Influence Ppl</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/pathogen-dot-vim-without-the-submodules-use-infect/">Pathogen.vim without the Submodules: Use Infect</a>
         </li>
       
@@ -909,10 +937,6 @@ Save dashboard settings, click &#8216;Domain Status&#8217; tab, and gloat in you
       
         <li>
           <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/automating-email-with-ruby/">Automating Email with Ruby</a>
         </li>
       
     </ul>
