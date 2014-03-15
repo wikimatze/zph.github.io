@@ -151,6 +151,66 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/05/using-zshs-history-incremental-search-with-vi-mode/">Using ZSH&#8217;s History Incremental Search With Vi-Mode</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-21T00:00:00-07:00" pubdate data-updated="true">May 21<span>st</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I switched to ZSH a few months back and am spending more and more time in commandline + VIM/MacVIM.</p>
+<p>Once I added the tag to my dotfile to force vi-mode on the commandline I lost the ability to do incremental searches of my zsh history.  So here&#8217;s the fix which saves lots of typing:</p>
+<p>First, the regular keybind to allow Ctrl-R to enter history search backward mode:
+[cc_bash]bindkey &#8220;^R&#8221; history-incremental-search-backward[/cc_bash]</p>
+<p>To fix the fact that the prior keymap no longer works in vi-mode zsh, add this to a zsh config:
+[cc_bash]
+bindkey -M viins &#8216;^R&#8217; history-incremental-search-backward
+bindkey -M vicmd &#8216;^R&#8217; history-incremental-search-backward[/cc_bash]</p>
+<p>Now I can ^R with aplomb&#8230;</p>
+<p>This is thanks to the explanation from JDeBP over on <a href="http://superuser.com/questions/328026/can-i-use-vim-editing-mode-on-the-command-line-without-losing-recursive-history">superuser.com</a>.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/vimrepress_4fbb0104_mkd.odt vimrepress_4fbb0104_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/05/5-days-of-osx/">5 Days of OSX</a></h1>
     
     
@@ -673,61 +733,6 @@ Plus, it didn&#8217;t necessitate installing and configuring VIM with Ruby 1.8.7
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/04/label-every-image-with-its-filename-in-one-fell-swoop/">Label Every Image With Its Filename in One Fell Swoop</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-25T00:00:00-07:00" pubdate data-updated="true">Apr 25<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">Here&#8217;s a one off Ruby script to wrap up some ImageMagick labeling magic.
-
-This script takes all the JPG images in folder and applies the file&#8217;s name, as a label, to the bottom of the image.
-
-[gist id=2495001]
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -755,6 +760,10 @@ This script takes all the JPG images in folder and applies the file&#8217;s name
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/">Conference Advice: How to Meet Devs and Influence Ppl</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/pathogen-dot-vim-without-the-submodules-use-infect/">Pathogen.vim without the Submodules: Use Infect</a>
         </li>
       
@@ -768,10 +777,6 @@ This script takes all the JPG images in folder and applies the file&#8217;s name
       
         <li>
           <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/automating-email-with-ruby/">Automating Email with Ruby</a>
         </li>
       
     </ul>

@@ -151,6 +151,73 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/11/migrating-neorouter-server-to-new-vps/">Migrating NeoRouter Server to New VPS</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-01T00:00:00-07:00" pubdate data-updated="true">Nov 1<span>st</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Migrating from a flaky VPS to a more reliable one has generally been a hassle.
+But one easy part was migrating NeoRouter Server to a new Xen VPS.
+
+[cc_bash]
+tar -zcvpf OUTPUT_FILENAME.tar.gz /usr/local/ZebraNetworks/NeoRouter [/cc_bash]
+Rsync or scp that file over to new VPS
+[cc_bash]
+
+wget http://download.neorouter.com/Downloads/NRPro/Update_1.6.3.3150/Linux/Ubuntu/nrclient-1.6.3.3150-pro-ubuntu-amd64.deb
+
+sudo dpkg -i nrclient-1.6.3.3150-pro-ubuntu-amd64.deb[/cc_bash]
+
+Decompress file into place in /usr/local&#8230; etc
+Log into <a href="https://secure.neorouter.com/dashboard/default.aspx">NeoRouter dashboard</a> and redirect domain to new IP address (as found by running [cci_bash]ifconfig[/cci_bash] on NeoRouter Server VPS)
+Save dashboard settings, click &#8216;Domain Status&#8217; tab, and gloat in your success!
+
+<!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/11/wpid314-vimrepress_5093143d_mkd.odt wpid314-vimrepress_5093143d_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/09/osx-and-linux-tools-i-cant-live-without/">OSX and Linux Tools I Can&#8217;t Live Without</a></h1>
     
     
@@ -710,62 +777,6 @@ Here&#8217;s the true xpath as parsed by Nokogiri:
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/07/file-under-commands-i-should-know/">File Under &#8216;Commands I Should Know&#8217;</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-06T00:00:00-07:00" pubdate data-updated="true">Jul 6<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">[cc_bash]#shutdown now -h[/cc_bash]
-Pretty important but didn&#8217;t know about the &#8216;-h&#8217; flag until today. When run as root this will shutdown system (Linux specific) now and send it to a init-level 0, ie a full halt.
-
-Good to know =D.
-
-As pointed out in comments &#8216;shutdown -p now&#8217; is the BSD equivalent.
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -793,6 +804,10 @@ As pointed out in comments &#8216;shutdown -p now&#8217; is the BSD equivalent.
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/">Conference Advice: How to Meet Devs and Influence Ppl</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/pathogen-dot-vim-without-the-submodules-use-infect/">Pathogen.vim without the Submodules: Use Infect</a>
         </li>
       
@@ -806,10 +821,6 @@ As pointed out in comments &#8216;shutdown -p now&#8217; is the BSD equivalent.
       
         <li>
           <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/automating-email-with-ruby/">Automating Email with Ruby</a>
         </li>
       
     </ul>

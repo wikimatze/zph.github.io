@@ -151,6 +151,75 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2013/02/efficiency-measurement-and-little-tips-real-gtd/">Benchmarking GTD</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-23T00:00:00-08:00" pubdate data-updated="true">Feb 23<span>rd</span>, 2013</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">[caption id=&#8221;attachment_533&#8221; align=&#8221;alignright&#8221; width=&#8221;300&#8221;]<a href="http://198.211.104.146/wp-content/uploads/2013/02/4072190666_6d21864373.jpg"><img class="size-medium wp-image-533" alt="" src="http://198.211.104.146/wp-content/uploads/2013/02/4072190666_6d21864373-300x225.jpg" width="300" height="225" /></a> By: <a href="http://www.flickr.com/photos/rubbermaid/4072190666/" target="_blank">Rubbermaid Products</a>[/caption]
+
+I&#8217;ve been working with <a href="http://www.rescuetime.com">RescueTime</a> for the past week and I&#8217;m <em>VERY</em> happy.
+
+First off, I don&#8217;t have to change a thing to make use of the system. It&#8217;s a great way to benchmark my own time spending habits on the computer. It&#8217;s well setup to allow individual configuration of what <em>you</em> believe is productive and non-productive.
+
+During setup, I thought about all the facets of business and independent projects. I concluded that email is a neutral value of productivity, while programming is +2 and reading <a href="http://www.dont_go_there_it_wastes_your_live.com">HackerNews</a> is -2.
+
+I&#8217;m happy to share this chart for my first week of use:
+
+[caption id=&#8221;&#8221; align=&#8221;aligncenter&#8221; width=&#8221;1035&#8221;]<img alt="" src="http://f.cl.ly/items/2a2V1S1P1i3c2V2P0A40/Screen%20Shot%202013-02-24%20at%2012.11.55%20AM.png" width="1035" height="377" /> RescueTime - 1st Week[/caption]
+
+Notice that I tagged email and meetings as a productivity of 0 because so little useful action comes out of them. Frequently meetings would be best accomplished in short bursts and email involves _LOTS_ of needless repetition.
+
+Given that email accounted for 6 hours of my workweek, I decided to improve the efficiency of my email process. I setup my email account with OtherInbox. OtherInbox is an email sorting service that does awesome things with Google Labels.
+
+Next I added two key combinations for Sparrow.app. One key combination opens a new email from ANY application while the other key combo brings Sparrow to forefront or hides it again. These two changes have saved me lots of time so far and reduced the effort related to context switching.
+
+Share your tips for email hacks and productivity (GTD) hacks! I can be reached via the comments and as [<a href="http://www.twitter.com/_zph">@_ZPH</a>] on Twitter.
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2013/02/finite-keystrokes-before-death-making-the-most-of-them/">Finite Keystrokes Before Death : Making the Most of Them</a></h1>
     
     
@@ -761,97 +830,6 @@ Now on to revive my 3 year old GTD files, do some major deleting, get email dump
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/02/getting-started-configuring-bashzsh/">Getting Started Configuring Bash/Zsh</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-14T00:00:00-08:00" pubdate data-updated="true">Feb 14<span>th</span>, 2013</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">I saw a post this afternoon by a member of Ruby Rogue&#8217;s Parley list asking how to write Ruby code to help them create a shorthand word for a longer commandline command.  It takes moxy to ask questions on a list filled with many experienced developers.  I was happy to see that positive responses flowed in.
-
-The immediate response was that the individual should perform the action by writing commandline aliases using the shell &#8216;alias&#8217; command. But that only points the developer in the right direction. Instead of just pointing in the direction, the rest of this post will be walking a new developer through setting up helpful customizations in the shell environment.
-
-(Note, the generic information will be fairly compatible whether using the BASH environment or ZShell environment. Moving past general configurations into advanced configurations are where the two start to diverge, particularly with the environmental settings used in .bashrc or .zshrc files. I&#8217;ve found that the best remedy for this is reading through and gradually adopting a few lines here and there from well commented .bashrc/.zshrc files).
-
-Many of the customizations in the shell relate to minimizing repetitive keystrokes. Imagine the difference between typing [cc_bash]bundle exec rails server[/cc_bash] and [cc_bash]be r s[/cc_bash]. If you&#8217;re typing this more than occasionally, it&#8217;s a large savings of keystrokes over a period of months. So how is it done? <em>* Aliases *</em>!
-
-Simply put, include the following code in your config file (a generic term that I&#8217;ll use for either .bashrc or .zshrc, depending on your shell):
-[cc_bash]alias j=&#8221;jobs&#8221;[/cc_bash]
-
-Or to help avoid dumb mistakes (it makes the remove command verbose and interactive =D. Even astute geeks fat finger the occasional keys )
-[cc_bash]alias rm=&#8221;rm -iv&#8221;[/cc_bash]
-
-I&#8217;ve taken to heart the adage, which I can&#8217;t attribute precisely, that anything typed more than a couple times on the commandline should be shortened to save future keystrokes. To prove this point, I currently have greater than <em>* 100 *</em> aliases and growing.  Note that the following is from dumping all of my aliases to STDOUT via [cc_bash]alias > jist -p -c[/cc_bash] and is not representative of one of my alias files.  (For that, see the second inset codeblock).
-<script type="text/javascript" src="https://gist.github.com/zph/4958386.js"></script>
-
-Here&#8217;s an example of one of my alias files&#8230; appropriately called &#8216;aliases.conf.zsh&#8217;:
-<script src="https://gist.github.com/zph/4965016.js"></script>
-(Original code is at: https://github.com/zph/zph/blob/master/home/.zsh.d/aliases.conf.zsh)
-
-So that&#8217;s &#8216;aliases&#8217;. I find that they&#8217;re easier to keep organized if I setup a dedicated &#8216;.zsh.d&#8217; folder. By which I mean that I created a folder called &#8216;.zsh.d&#8217; in the base of my home directory with the following layout:
-<script type="text/javascript" src="https://gist.github.com/zph/1f94ccb11a59eee9ffb0.js"></script>
-This folder contains all of the &#8216;zsh&#8217; configuration files on my system other than &#8216;.zshrc&#8217;.  Each general category of config files gets its own file, ie git.zsh, ruby.zsh, homebrew.zsh, etc.  Helps me keep everything organized =D.
-
-I set the following lines in my &#8216;~/.zshrc&#8217; to source each file within the &#8216;.zsh.d&#8217; directory that has the extension of &#8216;.zsh&#8217;
-[cc_bash]
-_source_zshd(){
-# Finally, source all the files in zsh.d (ALPHA order)
-for zshd in $(find ~/.zsh.d/*.zsh | sort ); do
-source &#8220;${zshd}&#8221;
-done
-}
-_source_zshd
-[/cc_bash]
-
-This isn&#8217;t necessary, but it helps me keep the individual configurations nicely ordered.
-
-To recap, use aliases. Use the daylights out of them. Make your shell a finely honed tool that&#8217;s nicely crafted to your needs. Oh yeah&#8230; do the same with &#8216;functions&#8217; which I can cover in a future blog post.  And look into <a href="https://github.com/clvv/fasd" title="FASD">FASD</a> because it&#8217;s awesome like Narwhals!
-
-Questions, thoughts, jeers, feedback&#8230; catch me on &#8216;ye ol Twitters&#8217; <a href="https://twitter.com/_zph">@_ZPH</a>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -879,6 +857,10 @@ Questions, thoughts, jeers, feedback&#8230; catch me on &#8216;ye ol Twitters&#8
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/">Conference Advice: How to Meet Devs and Influence Ppl</a>
+        </li>
+      
+        <li>
           <a href="/2014/02/pathogen-dot-vim-without-the-submodules-use-infect/">Pathogen.vim without the Submodules: Use Infect</a>
         </li>
       
@@ -892,10 +874,6 @@ Questions, thoughts, jeers, feedback&#8230; catch me on &#8216;ye ol Twitters&#8
       
         <li>
           <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/automating-email-with-ruby/">Automating Email with Ruby</a>
         </li>
       
     </ul>
