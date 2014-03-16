@@ -151,65 +151,6 @@
 
   <header>
     
-      <h1 class="entry-title"><a href="/2013/02/ignoring-all-the-things/">Ignoring All the Things</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-02-16T00:00:00-05:00" pubdate data-updated="true">Feb 16<span>th</span>, 2013</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I found a great talk by Scott Hanselman on Vimeo about information overload and learning to ignore things. In the <a href="https://vimeo.com/39020426">video</a> he laments that more conversation is taking place in walled gardens (ie Twitter) rather than on the wide open web (ie blogs).  He also summarizes what I&#8217;ve felt for a few months: * that keeping up with news and the latest things is reducing my ability to produce and innovate *.</p>
-
-<p>It comes back to the concepts in this article: <a href="http://www.informationdiet.com/blog/read/500-words-before-8am">500 Words before 8am</a>.  Start the day as a producer, not a consumer.</p>
-
-<p>In order to work on this, I&#8217;ve set myself up with <a href="https://www.rescuetime.com">RescueTime</a> and am tracking the amount of time spent on &#8216;consumptive tasks&#8217; (no relation to romantic portrayals of consumption by Val Kilmer in &#8216;Tombstone&#8217;).  I&#8217;m receiving pop-up warnings when I exceed a set quantity of time on reading Twitter, reading blogs, etc.  I&#8217;m also looking to transition more of my consumption time to &#8216;curated content&#8217; such as &#8216;ye old books&#8217;.</p>
-
-<p>Another point that I took to heart from Scott Hanselman&#8217;s talk was about learning to use <a href="www.ifttt.com">IFTTT</a>.  It&#8217;s an SF startup that makes common web tasks automatic.  Think of it as a recurrent cron job for the web.  Things like : &#8216;anytime I start a tweet, add the contained links to instapaper&#8217;, or &#8216;anytime I start a vimeo video, post it to twitter&#8217;.  One filter that I added to help with the Ruby Rogues Parley list is &#8216;anytime I star a gmail message, copy the content into Evernote&#8217;&#8230; this should help easily archive good content for later viewing and recall :).</p>
-
-<p>Well, that&#8217;s it for this round of production.  I spent much of last night working on an internal web application for work that I plan to soon pitch to my company :).  I finished the final polish on it (CSS, a little Javascript) and I must say that it feels 100% better.  It&#8217;s a good reminder for me about how important the UI is for applications.</p>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
       <h1 class="entry-title"><a href="/2013/02/make-the-shell-your-home/">Make the Shell Your $HOME</a></h1>
     
     
@@ -901,6 +842,71 @@ PS - Never ever trust public or semi-public Wifi.  Using a proxy like this is t
 
       </article>
     
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/12/rcodetools-and-vim/">Rcodetools and VIM</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-15T00:00:00-05:00" pubdate data-updated="true">Dec 15<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been listening to RubyRogues which introduced me to Avdi Grimm from the Ruby community.
+I&#8217;ve also been subscribed to his RubyTapas screencast series which is a 2x a week Ruby show.</p>
+<p>He uses a neat tool called rcodetools to execute Ruby code from within an Emacs buffer.  Unfortunately, it wasn&#8217;t working when I tried to use the VIM counterpart, with segfault codes showing up.
+Here&#8217;s the fix:
+( I&#8217;m using RVM to manage my Ruby Versions )
+*Install Tim Pope&#8217;s excellent rvm extension for VIM
+  [cc_bash]
+cd ~/.vim/bundle
+git clone git://github.com/tpope/vim-rvm.git
+[/cc_bash]</p>
+<p>*Install rcodetools using RVM
+[cc_bash]gem install rcodetools[/cc_bash]</p>
+<p>*Remove keybindings in other programs (ie Dashboard &amp; Expose) for F10, F11, F12 or rebind the keys per README.vim</p>
+<p>Now enter a VIM file and type F12 on any lines that you want the output from followed by F11 to evaluate the whole file.  If you want to only re-evaluate the current line use F10 instead of F11.</p>
+<p>It&#8217;s a great tool for terminal screencasting!  Thanks Avdi for letting me know that this tool is available.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/12/vimrepress_50cd462e_mkd.odt vimrepress_50cd462e_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
     </div>
       <div class="row">
         <ul class="pager">
@@ -932,10 +938,6 @@ PS - Never ever trust public or semi-public Wifi.  Using a proxy like this is t
         </li>
       
         <li>
-          <a href="/2014/03/dont-pee-in-the-pool/">Don't Pee in the Pool: Swimming With the Big Kids</a>
-        </li>
-      
-        <li>
           <a href="/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/">Conference Advice: How to Meet Devs and Influence Ppl</a>
         </li>
       
@@ -945,6 +947,10 @@ PS - Never ever trust public or semi-public Wifi.  Using a proxy like this is t
       
         <li>
           <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
+        </li>
+      
+        <li>
+          <a href="/2014/02/finding-myself-in-bsd/">Finding myself in BSD</a>
         </li>
       
     </ul>
