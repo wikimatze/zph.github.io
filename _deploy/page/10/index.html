@@ -151,6 +151,141 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2011/09/tribute-to-linus-with-due-credit-to-isaac-hayes/">Tribute to Linus (With Due Credit to Isaac Hayes)</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-05T00:00:00-04:00" pubdate data-updated="true">Sep 5<span>th</span>, 2011</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Theme for Linus
+
+Who&#8217;s the Swedish GPL hacker
+That&#8217;s a procedural coding machine to all the *nixes?
+Linus, ya, damn right!
+
+Who is the kernel master who would risk his Freax
+For all the n00bs?
+Linus, can you dig it?
+
+Who&#8217;s the dude that won&#8217;t sell out
+When there&#8217;s proprietary all about?
+Linus, right on.
+
+They say this cat Shaft is a bad mother
+Shut your mouth
+I&#8217;m talkin&#8217; &#8216;bout Linus
+Then we can digg it
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2011/09/php5-curl-installed-but-not-found-by-wp-plugin-open-book/">PHP5-Curl Installed but Not Found by WP Plugin Open Book</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-09-05T00:00:00-04:00" pubdate data-updated="true">Sep 5<span>th</span>, 2011</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">Setting up a friend&#8217;s WP blog on a VPS Debian box. Open Book Plugin wouldn&#8217;t work insisting that curl wasn&#8217;t present on the system (despite [ccie_bash] apt-get update &amp;&amp; apt-get install php5-curl [/ccie_bash] showing it&#8217;s the most recent).
+
+Loaded a php file to test if it was a recognized extension by creating a file named info.php in the web root for that site including the following code:
+
+<span class="Apple-style-span" style="font-family: Consolas, Monaco, monospace; font-size: 12px; line-height: 18px; white-space: pre;">&lt;?php phpinfo(); ?&gt;</span>
+
+After pulling this document up in a browser, I deleted the file :). This pointed me in the right direction showing that the PHP.ini was deferring to /etc/php5/apache2/conf.d/curl.ini
+
+I checked there and it was [ccie_php] extension=curl.so [/ccie_php] as expected, but obviously it wasn&#8217;t being correctly located.
+
+Did the following as root [ccie_bash] locate curl.so [/ccie_bash] and found it @ /usr/lib/php5/20090626/curl.so
+
+Commented out the current curl.ini file for a byte trail of my actions and appended [ccie_php] extension=/usr/lib/php5/20090626/curl.so [/ccie_php]
+
+Then a quick service apache2 restart and we were back in business.
+
+Thanks to this blog for pointing me in the right direction: <a href="http://www.ivankristianto.com/os/ubuntu/howto-install-curl-in-php-apache/379/">http://www.ivankristianto.com/os/ubuntu/howto-install-curl-in-php-apache/379/</a>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2011/09/open-copyright-books/">Open Copyright Books</a></h1>
     
     
@@ -176,7 +311,7 @@
   
 
 
-<time datetime="2011-09-05T00:00:00-07:00" pubdate data-updated="true">Sep 5<span>th</span>, 2011</time> - 
+<time datetime="2011-09-05T00:00:00-04:00" pubdate data-updated="true">Sep 5<span>th</span>, 2011</time> - 
         
 
 
@@ -232,7 +367,7 @@ Some of the books are in HTML documents which can be converted to EPUB for unive
   
 
 
-<time datetime="2011-09-05T00:00:00-07:00" pubdate data-updated="true">Sep 5<span>th</span>, 2011</time> - 
+<time datetime="2011-09-05T00:00:00-04:00" pubdate data-updated="true">Sep 5<span>th</span>, 2011</time> - 
         
 
 
@@ -293,7 +428,7 @@ STDOUT&gt; Hello world!
   
 
 
-<time datetime="2011-09-05T00:00:00-07:00" pubdate data-updated="true">Sep 5<span>th</span>, 2011</time> - 
+<time datetime="2011-09-05T00:00:00-04:00" pubdate data-updated="true">Sep 5<span>th</span>, 2011</time> - 
         
 
 
@@ -342,6 +477,14 @@ Looking forward to the LinFest
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/03/git-archeology-find-the-secrets-of-those-who-came-before/">Git Archeology - Find the Secrets of those Who Came Before</a>
+        </li>
+      
+        <li>
+          <a href="/2014/03/dont-pee-in-the-pool/">Don't Pee in the Pool: Swimming With the Big Kids</a>
+        </li>
+      
+        <li>
           <a href="/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/">Conference Advice: How to Meet Devs and Influence Ppl</a>
         </li>
       
@@ -351,14 +494,6 @@ Looking forward to the LinFest
       
         <li>
           <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/finding-myself-in-bsd/">Finding myself in BSD</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
         </li>
       
     </ul>
