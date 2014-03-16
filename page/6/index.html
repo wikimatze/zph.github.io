@@ -151,6 +151,121 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/07/x11-forwarding-or-how-to-use-my-favorite-calculator-in-osx/">X11 Forwarding: Or How to Use My Favorite Calculator in OSX</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-19T00:00:00-04:00" pubdate data-updated="true">Jul 19<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I switched to a Macbook Air a few months ago and I&#8217;ve been generally quite happy with the setup.</p>
+<p>One thing I&#8217;m unhappy with is the availability of my two favorite calculator programs.  On Linux distos I&#8217;m accustomed to installing &#8216;qalculate&#8217; and on Windows it&#8217;s been GraphCalc.  I tried to find equivalent programs under OSX, giving it all of 15 min of effort, but couldn&#8217;t find a robust solution with good history, nice data entry, etc.</p>
+<p>So, I decided to stick with my favorite (&#8216;Qalculate&#8217;).  I then tried installing it from source under OSX which didn&#8217;t succeed.  I then tried to do the same with graphcalc&#8217;s Linux source, with the same result.</p>
+<p>At this point I remembered toying around with X-forwarding over SSH.  Since I had already installed the X11 environment for running GIMP (GNU Image Manipulation Program), it was trivial to que up a virtual instance of Debian Linux under Parallels.  I installed Qalculate in that virtual instance and used the ssh command for X-forwarding:
+[cc_bash]ssh -X username@server_name &#8216;qalculate-gtk &amp;&#8217;[/cc_bash]</p>
+<p>The result is that I have a virtual instance of Debian running in the background, my normal OSX interface, and my favorite calculate ready to go (as if it were a native OSX application).</p>
+<p>Thanks SSH!</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/07/vimrepress_5008c862_mkd.odt vimrepress_5008c862_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/07/my-firefox-confuzzled-my-nokogiri/">My Firefox Confuzzled My Nokogiri</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-15T00:00:00-04:00" pubdate data-updated="true">Jul 15<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been working on a project to import a large dataset from HTML pages where the content isn&#8217;t very clearly divided with CSS classes. The tool that normally works for me is Ruby&#8217;s Nokogiri library.<br />
+</p>
+<p>I&#8217;d had some trouble in the past where Nokogiri insists that a certain xpath doesn&#8217;t exist, while it can clearly find it through the css selector.  This time instead of going with the css, I investigated to see why it wasn&#8217;t finding the &#8216;correct&#8217; xpath.  After playing with it in a Pry session, I figured it out.  Here&#8217;s the xpath that Firefox/Firebug/Firepath all report:
+[cc]//html/body/p[4]/table/tbody/tr[3][/cc]
+Here&#8217;s the true xpath as parsed by Nokogiri:
+[cc]//html/body/table/tr[3][/cc]</p>
+<p>Notice that the &#8216;p[4]&#8217; element disappears along with the &#8216;tbody&#8217; element.  After reading on StackOverflow.com about the issue it sounds like Firefox &#8216;corrects&#8217; improperly formed HTML by adding tags.  So thus the disparity between what Firefox sees (the orderly HTML standards) and what Nokogiri sees (the cold hard real-life web).</p>
+<p>Now I want a browser plugin that shows me what is truly there so I don&#8217;t have to interpret and modify the information that Firefox gives me.  Please speak up in the comments if you know a better way to avoid this annoyance.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/07/vimrepress_5002e173_mkd.odt vimrepress_5002e173_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/07/file-under-commands-i-should-know/">File Under &#8216;Commands I Should Know&#8217;</a></h1>
     
     
@@ -176,7 +291,7 @@
   
 
 
-<time datetime="2012-07-06T00:00:00-07:00" pubdate data-updated="true">Jul 6<span>th</span>, 2012</time> - 
+<time datetime="2012-07-06T00:00:00-04:00" pubdate data-updated="true">Jul 6<span>th</span>, 2012</time> - 
         
 
 
@@ -232,7 +347,7 @@ As pointed out in comments &#8216;shutdown -p now&#8217; is the BSD equivalent.
   
 
 
-<time datetime="2012-07-05T00:00:00-07:00" pubdate data-updated="true">Jul 5<span>th</span>, 2012</time> - 
+<time datetime="2012-07-05T00:00:00-04:00" pubdate data-updated="true">Jul 5<span>th</span>, 2012</time> - 
         
 
 
@@ -289,7 +404,7 @@ As pointed out in comments &#8216;shutdown -p now&#8217; is the BSD equivalent.
   
 
 
-<time datetime="2012-07-05T00:00:00-07:00" pubdate data-updated="true">Jul 5<span>th</span>, 2012</time> - 
+<time datetime="2012-07-05T00:00:00-04:00" pubdate data-updated="true">Jul 5<span>th</span>, 2012</time> - 
         
 
 
@@ -346,7 +461,7 @@ Then type in the login password, which yields the passphrase, which leads to mou
   
 
 
-<time datetime="2012-07-04T00:00:00-07:00" pubdate data-updated="true">Jul 4<span>th</span>, 2012</time> - 
+<time datetime="2012-07-04T00:00:00-04:00" pubdate data-updated="true">Jul 4<span>th</span>, 2012</time> - 
         
 
 
@@ -402,7 +517,7 @@ Then type in the login password, which yields the passphrase, which leads to mou
   
 
 
-<time datetime="2012-06-25T00:00:00-07:00" pubdate data-updated="true">Jun 25<span>th</span>, 2012</time> - 
+<time datetime="2012-06-25T00:00:00-04:00" pubdate data-updated="true">Jun 25<span>th</span>, 2012</time> - 
         
 
 
@@ -458,7 +573,7 @@ Then type in the login password, which yields the passphrase, which leads to mou
   
 
 
-<time datetime="2012-05-29T00:00:00-07:00" pubdate data-updated="true">May 29<span>th</span>, 2012</time> - 
+<time datetime="2012-05-29T00:00:00-04:00" pubdate data-updated="true">May 29<span>th</span>, 2012</time> - 
         
 
 
@@ -517,7 +632,7 @@ Then type in the login password, which yields the passphrase, which leads to mou
   
 
 
-<time datetime="2012-05-28T00:00:00-07:00" pubdate data-updated="true">May 28<span>th</span>, 2012</time> - 
+<time datetime="2012-05-28T00:00:00-04:00" pubdate data-updated="true">May 28<span>th</span>, 2012</time> - 
         
 
 
@@ -579,7 +694,7 @@ Then type in the login password, which yields the passphrase, which leads to mou
   
 
 
-<time datetime="2012-05-27T00:00:00-07:00" pubdate data-updated="true">May 27<span>th</span>, 2012</time> - 
+<time datetime="2012-05-27T00:00:00-04:00" pubdate data-updated="true">May 27<span>th</span>, 2012</time> - 
         
 
 
@@ -627,120 +742,6 @@ RPS1=&#8221;${${KEYMAP/vicmd/&gt;&gt;&gt; ○[$(todo_count)]}/(main|viins)/± &l
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/vim-movement-command-of-the-day/">VIM Movement Command of the Day</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-24T00:00:00-07:00" pubdate data-updated="true">May 24<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The movment letter of today for VIM is [cci_bash]G[/cci_bash]
-Using &#8216;G&#8217; moves to the end of the file (or more specifically to the final line of the file).</p>
-<p>The complimentary command is &#8216;gg&#8217;, to jump to top of file!</p>
-<p>VIM: The more I learn, the better it gets.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/vimrepress_4fbebdf4_mkd.odt vimrepress_4fbebdf4_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/05/why-i-love-open-source-software/">Why I Love Open-Source Software</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-05-22T00:00:00-07:00" pubdate data-updated="true">May 22<span>nd</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Open-source software is wonderful.  For example, I needed to batch convert 700 AutoCad files (DWG) into regular image files.</p>
-<p>Step one: Find library to do this for me. Succeeded by finding cad2svg.  Can&#8217;t run as its compiled in OSX, can&#8217;t recompile b/c it has unavailable proprietary blob.  Read author&#8217;s blog &amp; README.  He states that it was developed in Red Hat Linux/ Fedora.  Blog is dated ~ 2009.</p>
-<p>Off I go to grab Fedora 12.  Install in virtual machine, set up shared folder between host and vboxclient.  Use script like [cc_bash]find . -name *.dwg -print0 | xargs -0 cad2svg - OUTPUT.svg[/cc_bash]</p>
-<p>Then jump back into OSX to use a library from Cairo 2d image library, svg2png.  This will convert them into png images.</p>
-<p>Do some googling for correct imagemagick settings to invert the image, convert all non-white to black, and then convert to monochrome.</p>
-<p>Spent a few minutes tweaking the settings, order of events, properly piping the output image from svg2png into imagemagick&#8230; and voila! Computer is currently chugging through all 700 conversions.
-Command to convert from svg to png (with tweaks)
-[cc_bash]svg2png -w8000 &#8216;#{item}&#8217; | convert png:- -negate -fill black +opaque white &#8216;svgs/#{output}.png&#8217;[/cc_bash]
-(Note: Piping these two commands saves writing temp file to hard drive)
-ImageMagic, svg2png, cad2svg (except proprietary blob) are great tools made even greater by their Unix philosophy (doing one thing well and using standard-in and stdout to chain together commands)</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/wpid210-vimrepress_4fbc6929_mkd.odt wpid210-vimrepress_4fbc6929_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -768,6 +769,14 @@ ImageMagic, svg2png, cad2svg (except proprietary blob) are great tools made even
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/03/git-archeology-find-the-secrets-of-those-who-came-before/">Git Archeology - Find the Secrets of those Who Came Before</a>
+        </li>
+      
+        <li>
+          <a href="/2014/03/dont-pee-in-the-pool/">Don't Pee in the Pool: Swimming With the Big Kids</a>
+        </li>
+      
+        <li>
           <a href="/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/">Conference Advice: How to Meet Devs and Influence Ppl</a>
         </li>
       
@@ -777,14 +786,6 @@ ImageMagic, svg2png, cad2svg (except proprietary blob) are great tools made even
       
         <li>
           <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/finding-myself-in-bsd/">Finding myself in BSD</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
         </li>
       
     </ul>

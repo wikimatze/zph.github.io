@@ -151,6 +151,120 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/05/vim-movement-command-of-the-day/">VIM Movement Command of the Day</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-24T00:00:00-04:00" pubdate data-updated="true">May 24<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The movment letter of today for VIM is [cci_bash]G[/cci_bash]
+Using &#8216;G&#8217; moves to the end of the file (or more specifically to the final line of the file).</p>
+<p>The complimentary command is &#8216;gg&#8217;, to jump to top of file!</p>
+<p>VIM: The more I learn, the better it gets.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/vimrepress_4fbebdf4_mkd.odt vimrepress_4fbebdf4_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/05/why-i-love-open-source-software/">Why I Love Open-Source Software</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-22T00:00:00-04:00" pubdate data-updated="true">May 22<span>nd</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Open-source software is wonderful.  For example, I needed to batch convert 700 AutoCad files (DWG) into regular image files.</p>
+<p>Step one: Find library to do this for me. Succeeded by finding cad2svg.  Can&#8217;t run as its compiled in OSX, can&#8217;t recompile b/c it has unavailable proprietary blob.  Read author&#8217;s blog &amp; README.  He states that it was developed in Red Hat Linux/ Fedora.  Blog is dated ~ 2009.</p>
+<p>Off I go to grab Fedora 12.  Install in virtual machine, set up shared folder between host and vboxclient.  Use script like [cc_bash]find . -name *.dwg -print0 | xargs -0 cad2svg - OUTPUT.svg[/cc_bash]</p>
+<p>Then jump back into OSX to use a library from Cairo 2d image library, svg2png.  This will convert them into png images.</p>
+<p>Do some googling for correct imagemagick settings to invert the image, convert all non-white to black, and then convert to monochrome.</p>
+<p>Spent a few minutes tweaking the settings, order of events, properly piping the output image from svg2png into imagemagick&#8230; and voila! Computer is currently chugging through all 700 conversions.
+Command to convert from svg to png (with tweaks)
+[cc_bash]svg2png -w8000 &#8216;#{item}&#8217; | convert png:- -negate -fill black +opaque white &#8216;svgs/#{output}.png&#8217;[/cc_bash]
+(Note: Piping these two commands saves writing temp file to hard drive)
+ImageMagic, svg2png, cad2svg (except proprietary blob) are great tools made even greater by their Unix philosophy (doing one thing well and using standard-in and stdout to chain together commands)</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/wpid210-vimrepress_4fbc6929_mkd.odt wpid210-vimrepress_4fbc6929_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/05/using-zshs-history-incremental-search-with-vi-mode/">Using ZSH&#8217;s History Incremental Search With Vi-Mode</a></h1>
     
     
@@ -176,7 +290,7 @@
   
 
 
-<time datetime="2012-05-21T00:00:00-07:00" pubdate data-updated="true">May 21<span>st</span>, 2012</time> - 
+<time datetime="2012-05-21T00:00:00-04:00" pubdate data-updated="true">May 21<span>st</span>, 2012</time> - 
         
 
 
@@ -236,7 +350,7 @@ bindkey -M vicmd &#8216;^R&#8217; history-incremental-search-backward[/cc_bash]<
   
 
 
-<time datetime="2012-05-21T00:00:00-07:00" pubdate data-updated="true">May 21<span>st</span>, 2012</time> - 
+<time datetime="2012-05-21T00:00:00-04:00" pubdate data-updated="true">May 21<span>st</span>, 2012</time> - 
         
 
 
@@ -306,7 +420,7 @@ laptop with the hardware support of OSX&#8230;(not holding my breath)</p>
   
 
 
-<time datetime="2012-05-20T00:00:00-07:00" pubdate data-updated="true">May 20<span>th</span>, 2012</time> - 
+<time datetime="2012-05-20T00:00:00-04:00" pubdate data-updated="true">May 20<span>th</span>, 2012</time> - 
         
 
 
@@ -361,7 +475,7 @@ laptop with the hardware support of OSX&#8230;(not holding my breath)</p>
   
 
 
-<time datetime="2012-05-20T00:00:00-07:00" pubdate data-updated="true">May 20<span>th</span>, 2012</time> - 
+<time datetime="2012-05-20T00:00:00-04:00" pubdate data-updated="true">May 20<span>th</span>, 2012</time> - 
         
 
 
@@ -414,7 +528,7 @@ This will delete up until the search term.</p>
   
 
 
-<time datetime="2012-05-12T00:00:00-07:00" pubdate data-updated="true">May 12<span>th</span>, 2012</time> - 
+<time datetime="2012-05-12T00:00:00-04:00" pubdate data-updated="true">May 12<span>th</span>, 2012</time> - 
         
 
 
@@ -473,7 +587,7 @@ This one allows you to stay on the commandline and ESCAPE out of insert mode by 
   
 
 
-<time datetime="2012-05-12T00:00:00-07:00" pubdate data-updated="true">May 12<span>th</span>, 2012</time> - 
+<time datetime="2012-05-12T00:00:00-04:00" pubdate data-updated="true">May 12<span>th</span>, 2012</time> - 
         
 
 
@@ -531,7 +645,7 @@ ln -s ~/Dropbox/dotfiles/* ~/. [/cc_bash]</p>
   
 
 
-<time datetime="2012-05-07T00:00:00-07:00" pubdate data-updated="true">May 7<span>th</span>, 2012</time> - 
+<time datetime="2012-05-07T00:00:00-04:00" pubdate data-updated="true">May 7<span>th</span>, 2012</time> - 
         
 
 
@@ -594,7 +708,7 @@ zle -N zle-keymap-select[/cc_vim]</p>
   
 
 
-<time datetime="2012-04-29T00:00:00-07:00" pubdate data-updated="true">Apr 29<span>th</span>, 2012</time> - 
+<time datetime="2012-04-29T00:00:00-04:00" pubdate data-updated="true">Apr 29<span>th</span>, 2012</time> - 
         
 
 
@@ -613,117 +727,6 @@ The first option allow moving into a new directory by directly typing it&#8217;s
 <p>The second option allows easier navigation using &#8216;dirs -v&#8217; to check for recent directories or cd ~+<TAB> for tab completion jumping :).</p>
 <p>Another little way to save small repetitions!</p>
 <p>As a side note: I&#8217;m quite sad not to have the flexibility of AutoJump in my repetoire with ZSH.  It&#8217;s the only feature I find lacking compared to BASH.  Hopefully it works better in ZSH in the near future, or hopefully I can look into why it doesn&#8217;t work and learn how to patch it. </p>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/04/switching-to-vimrepress/">Switching to VIMRepress</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-28T00:00:00-07:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">I&#8217;ve been looking for a way to lower the friction involved in blogging. Since I&#8217;m spending much of my free time on the commandline, I looked for a VIM solution.
-The plugin is called <a href="https://github.com/vim-scripts/VimRepress.git">VimRepress</a> and it allows you to revise, edit and post blog postings in VIM!
-The installation process was simple using &#8216;pathogen&#8217;: just a git clone of the repository into my ~/.vim/bundle, install the python-markdown module, and add a few configuration &amp; authorization lines to my ~/.vimrc.</p>
-Add the following to your ~/.vimrc
-[cc_vim]let g:vimrepress_tags_completable = &#8216;true&#8217;
-let VIMPRESS=[{&#8216;username&#8217;:&#8217;BLOG_USER&#8217;, &#8216;password&#8217;:&#8217;SECRET&#8217;, &#8216;blog_url&#8217;:&#8217;http://www.civet.ws/&#8217;}]     [/cc]
-Now open up VIM and the blog commands start with :Blog[List, New, etc].
-
-Source and Thanks to : [Conner McD](http://connermcd.com/2011/05/blogging-with-wordpress-vim-and-markdown-4)
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/04/my-kingdom-for-a-good-fuzzy-finder/">My Kingdom for a Good Fuzzy Finder</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-04-28T00:00:00-07:00" pubdate data-updated="true">Apr 28<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I&#8217;ve been working on my VIM configurations recently which involved cleaning out cruft from when I hadn&#8217;t transitioned to using Pathogen. While doing so I realized that I wanted to take the advice of <a href="www.DestroyAllSoftware.com">DestroyAllSoftware.com</a> and switch away from Nerdtree to something that doesn&#8217;t involve a context switch.  CtrlP to the rescue! Slick addon that I&#8217;m happy to have in my arsenal.
-Plus, it didn&#8217;t necessitate installing and configuring VIM with Ruby 1.8.7 as Command-T did :).</p>
 </div>
   
   
@@ -760,6 +763,14 @@ Plus, it didn&#8217;t necessitate installing and configuring VIM with Ruby 1.8.7
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/03/git-archeology-find-the-secrets-of-those-who-came-before/">Git Archeology - Find the Secrets of those Who Came Before</a>
+        </li>
+      
+        <li>
+          <a href="/2014/03/dont-pee-in-the-pool/">Don't Pee in the Pool: Swimming With the Big Kids</a>
+        </li>
+      
+        <li>
           <a href="/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/">Conference Advice: How to Meet Devs and Influence Ppl</a>
         </li>
       
@@ -769,14 +780,6 @@ Plus, it didn&#8217;t necessitate installing and configuring VIM with Ruby 1.8.7
       
         <li>
           <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/finding-myself-in-bsd/">Finding myself in BSD</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
         </li>
       
     </ul>

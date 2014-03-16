@@ -151,6 +151,198 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2014/03/git-archeology-find-the-secrets-of-those-who-came-before/">Git Archeology - Find the Secrets of Those Who Came Before</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-15T11:21:00-04:00" pubdate data-updated="true">Mar 15<span>th</span>, 2014</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2014/03/dont-pee-in-the-pool/">Don&#8217;t Pee in the Pool: Swimming With the Big Kids</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-03-15T06:39:00-04:00" pubdate data-updated="true">Mar 15<span>th</span>, 2014</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As developers, we&rsquo;re familiar with the basic software tools that grease the wheels of the programming world.  Version control systems, deployment tools, notification hooks, CI servers: they all make our jobs easier.</p>
+
+<p>But how can we work better as an organization when our startup exceeds 2, 4, 8, 16, 32, 64, 128 software developers?</p>
+
+<p>There are three essential tools/behaviors that need to be implemented for a software company to be successful.</p>
+
+<ol>
+<li>Project Management Software</li>
+<li>Git workflows and commit message standards</li>
+<li>Cultivating your Developers&#8217; creativity</li>
+</ol>
+
+
+<h2>Project Management Software</h2>
+
+<p>If you&rsquo;re like me, you hate long running email threads that attempt to pin down the acceptance criteria and context of projects or stories. Instead of pinning down anything, they drag on from one day to the next, to everyones&#8217; chagrin.</p>
+
+<p>Pull the email escape hatch and move into the 21st century!</p>
+
+<p>A good start is having a unified interface for tasks, ie a Project Tracker.  This gives the technical and non-technical folks a single point of interface for all the knowledge of &ldquo;what&rsquo;s happening&rdquo; and &ldquo;what timelines are we operating under?&rdquo;.  It&rsquo;s incredibly important that the software is convenient to use &amp; updated in realtime.</p>
+
+<p>Though I don&rsquo;t get any referral bonuses, my favorite thus far is Pivotal Tracker and if you&rsquo;re an Emacs user check out <a href="https://github.com/jxa/pivotal-tracker">Pivotal-Tracker-mode</a> or my <a href="https://github.com/zph/pivotal-tracker">fork</a> of that project. I prefer using the Emacs interface rather than their web interface when working in a large organization because it&rsquo;s faster.</p>
+
+<p>So now you have a single channel of communication and record keeping system for projects, YAY!  Rambling email threads will (mostly) fade into your company&rsquo;s past!</p>
+
+<h2>Git workflows and commit message standards</h2>
+
+<p>Next, come up with a style guide for Git commits and version control practices.  Maybe you use &lsquo;git-flow&rsquo;.  Maybe you come up with your own variant of an established workflow.  But discuss it among the engaged members on the team.</p>
+
+<p>I strongly recommend running all code changes through other members on the team. A spare pair of eyes is invaluable as is the unique context/domain knowledge that a team-member brings to the table.  If you&rsquo;re using a web based interface for Git such as Github, consider using &ldquo;Pull Requests&rdquo;.  They&rsquo;ve become a standard practice in the Github using community.  If you have a team using an alternate git-based solution, consider submitting all code as patches through the Dev Leads.  Doing so will catch some issues before they make it into production.</p>
+
+<p>As for git commit messages, educate your developers on why they&rsquo;re important.</p>
+
+<p>Take the following commits:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Fixed thing that was wrong</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[ZPH/KM][#3489634] Updated Jquery selector for dashboard login box
+</span><span class='line'>
+</span><span class='line'>Dashboard login box functionality was broken (SHA a98adf91) due to a change in `dashboard.slim`.
+</span><span class='line'>
+</span><span class='line'>Changed selector to $('.login_box') to match slim file.</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Can you imagine which is easier to reference 6 months in the future?  Say, when you&rsquo;re investigating why the dashboard login is broken? Or maybe you&rsquo;re a Dev lead looking for the commits related to a specific project story.  If you&rsquo;re on a team where stories are completed in pairs, it&rsquo;s a good idea to include the initials of both parties who worked on the commits.  Then it&rsquo;s simple to answer the question of: &ldquo;Didn&rsquo;t Zander and Kerri do something with our dashboard last week?&rdquo;.</p>
+
+<p>If you have developers writing descriptive commits, finding answers to questions is as easy as <code>git log -S dashboard</code> for a list of each commit involving the word dashboard.</p>
+
+<h2>Care and Feeding of Developers</h2>
+
+<p>Last and certainly not least is related to the care and feeding of software developers.  We might not all be beautiful and unique snowflakes (we in the Ruby community do largely use Apple computers after all) but we require regular care to stay sharp and engaged.</p>
+
+<h3>10% Time</h3>
+
+<p>Set aside dedicated time to have developers work on more creative projects.  Why bother?</p>
+
+<ul>
+<li>Developers are valuable and losing them is expensive.</li>
+<li>Happy programmers are productive programmers.</li>
+<li>Who else could be better situated to see inherent flaws in existing software/tools/workflows in the organization? Let them scratch their own itch.</li>
+<li>Doing the same tasks day in and day out is a sure-fire recipe for dulling even the brightest minds.  So knock it off!</li>
+</ul>
+
+
+<p>Build in time each two weeks that&rsquo;s dedicated to creative projects envisioned by the coders.</p>
+
+<p>Where I&rsquo;m currently working, we do this every 10th business day and it&rsquo;s called our 10% time.  On those days, we come up with interesting projects that advance the company&rsquo;s interests without the same pressure of failure.  These are great times to implement something in a new technology or setup those Git hook integrations with Pivotal Tracker. Fix things that are slowing you down or bothering you on a regular basis.  What else could you work on?</p>
+
+<ul>
+<li>An idempotent way to setup new developer workstations (script based please).</li>
+<li>A unified script for firing up the application stack on a local machine (or stopping, reloading, updating, etc).</li>
+<li>Team chat integrations like Campfire + Hubot, HipChat + Github Merge notification.</li>
+<li>Dashboard for your income generating parts of software. Track those leads in realtime!</li>
+<li>Build tools to simplify your Quality Assurance teams&#8217; lives. Or build tools so Product can be more efficient.</li>
+</ul>
+
+
+<p>10% is the perfect time for fixing these nagging issues. The only requirement is that the developers generate most of the 10% ideas and get to vote with their feet (or digital feet) in choosing what tasks to work on.  They&rsquo;ll self organize into teams where they can be most efficient. Cultivate your developers and they&rsquo;ll flourish!  Also, you won&rsquo;t have to engage recruiters because your retention will go through the roof. It&rsquo;s a win-win situation.</p>
+
+<p>PS &ndash; I have a new friend from @RbOnAles with experience in automated QA and some Ruby programming who is looking for his next adventure, either in SF or remote.  DM me on Twitter to find out more information.</p>
+
+<p>Thoughts, comments or jeers are all encouraged! Come have chat w/ me on Twitter <a href="https://twitter.com/_zph">@_ZPH</a>.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/">Conference Advice: How to Meet Devs and Influence Ppl</a></h1>
     
     
@@ -176,7 +368,7 @@
   
 
 
-<time datetime="2014-03-11T14:55:29-07:00" pubdate data-updated="true">Mar 11<span>th</span>, 2014</time> - 
+<time datetime="2014-03-11T17:55:29-04:00" pubdate data-updated="true">Mar 11<span>th</span>, 2014</time> - 
         
 
 
@@ -213,10 +405,13 @@
 <li>Post Twitter messages with hashtag.  For example at this last conference, I had the pleasure of doing breakfast with my favorite Aussie (<a href="http://twitter.com/ryanbigg">@ryanbigg</a>) by virtue of an early morning Tweet about meeting for breakfast.  It&rsquo;ll also force you to meet people who you might not otherwise get to meet.</li>
 <li>Stay at the conference hotel &amp; possibly split a room w/ someone you don&rsquo;t know.  Put a call out among friends to find someone to split room.  It&rsquo;ll be awesome.  At least it has been for me thus far.  Staying at conference hotel itself is wonderful because you&rsquo;ll be in the middle of the action, late night philosophizing on OOP vs. Functional, etc.</li>
 <li>Stick around for the evening events each day.  Also stay for the workshops that often take place after the conference ends.  At Ruby On Ales, it was a MiniTest workshop by <a href="http://twitter.com/blowmage">@blowmage</a>.  It was awesome and I got to meet a few more people before leaving.</li>
-<li>Still stumped for how to approach people at conference? See if you can recognize anyone at conference from Twitter or Github profiles.  Then go up &amp; thank them for the Open Source work they do.  It&rsquo;ll give them chills :).</li>
+<li>Still stumped for how to approach people at conference? See if you can recognize anyone at conference from Twitter or Github profiles.  Then go up &amp; thank them for the Open Source work they do.  It&rsquo;ll give them chills :). (This advice brought to you by <a href="http://twitter.com/sarahmei">@sarahmei</a> who you should say hi to when you see her at a conference).</li>
+<li>Be a speaker: you literally have to talk to people.  At end of talk, invite them to stop you and chat, because you&rsquo;re shy and want to meet people.  Ask for help, it&rsquo;s cool :).</li>
 <li>Final tip: I&rsquo;m terrified at the beginning of each conversation.  Once I warm up, it&rsquo;s groovy, but until then it&rsquo;s rough.  Get that momentum going, force yourself out of the comfort zone, and see what happens.  Soon enough, those conferences will feel like reunions filled with friends.</li>
 </ul>
 
+
+<p>Also, I&rsquo;m terrified of starting conversations&hellip; so be my guest and come up &amp; tell me you read this post.  That&rsquo;ll break the ice!</p>
 
 <p>PS &ndash; I have a new friend from @RbOnAles who&rsquo;s looking for a remote role (or in SF) either as QA or Jr. Ruby Developer. DM me on Twitter if you know of options.</p>
 </div>
@@ -259,7 +454,7 @@
   
 
 
-<time datetime="2014-02-17T14:06:00-08:00" pubdate data-updated="true">Feb 17<span>th</span>, 2014</time> - 
+<time datetime="2014-02-17T14:06:00-05:00" pubdate data-updated="true">Feb 17<span>th</span>, 2014</time> - 
         
 
 
@@ -375,7 +570,7 @@
   
 
 
-<time datetime="2014-02-15T03:00:00-08:00" pubdate data-updated="true">Feb 15<span>th</span>, 2014</time> - 
+<time datetime="2014-02-15T03:00:00-05:00" pubdate data-updated="true">Feb 15<span>th</span>, 2014</time> - 
         
 
 
@@ -438,7 +633,7 @@
   
 
 
-<time datetime="2014-02-15T02:01:00-08:00" pubdate data-updated="true">Feb 15<span>th</span>, 2014</time> - 
+<time datetime="2014-02-15T02:01:00-05:00" pubdate data-updated="true">Feb 15<span>th</span>, 2014</time> - 
         
 
 
@@ -507,7 +702,7 @@
   
 
 
-<time datetime="2014-02-13T01:49:00-08:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time> - 
+<time datetime="2014-02-13T01:49:00-05:00" pubdate data-updated="true">Feb 13<span>th</span>, 2014</time> - 
         
 
 
@@ -582,7 +777,7 @@
   
 
 
-<time datetime="2014-02-09T20:28:00-08:00" pubdate data-updated="true">Feb 9<span>th</span>, 2014</time> - 
+<time datetime="2014-02-09T20:28:00-05:00" pubdate data-updated="true">Feb 9<span>th</span>, 2014</time> - 
         
 
 
@@ -1074,7 +1269,7 @@
   
 
 
-<time datetime="2013-06-20T00:42:00-07:00" pubdate data-updated="true">Jun 20<span>th</span>, 2013</time> - 
+<time datetime="2013-06-20T00:42:00-04:00" pubdate data-updated="true">Jun 20<span>th</span>, 2013</time> - 
         
 
 
@@ -1188,7 +1383,7 @@
   
 
 
-<time datetime="2013-06-02T00:00:00-07:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2013</time> - 
+<time datetime="2013-06-02T00:00:00-04:00" pubdate data-updated="true">Jun 2<span>nd</span>, 2013</time> - 
         
 
 
@@ -1339,256 +1534,6 @@ Now that we&#8217;ve laid the groundwork for it, let&#8217;s work on making it a
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/05/starting-with-vim/">Starting With Vim</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-26T00:00:00-07:00" pubdate data-updated="true">May 26<span>th</span>, 2013</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">[caption id=&#8221;attachment_712&#8221; align=&#8221;alignleft&#8221; width=&#8221;500&#8221;]<a href="http://www.civet.ws/wp-content/uploads/2013/05/8355974382_6063b7935d.jpg"><img src="http://www.civet.ws/wp-content/uploads/2013/05/8355974382_6063b7935d.jpg" alt="" width="500" height="313" class="size-full wp-image-712" /></a> By: <a href='http://www.flickr.com/photos/protocol7/8355974382/' target='_blank'>Niklas Gustavsson</a>[/caption]<p>It&#8217;s been two lovely years with Vim and I&#8217;m <strong>sold</strong>!  Vim&#8217;s the straight edge razor that slices through code.  It&#8217;s like having a finely crafted and personalized lightsaber.</p>
-
-<p>This post is aimed at getting a new Vim user up to speed without cutting off or wanting to sever their hands.</p>
-
-<h2>Getting Started</h2>
-
-<ul>
-<li>Use GVim or MacVim (avoid Terminal Vim until more proficient, then generally avoid GUI Vims)</li>
-<li>Learn the Vim Modes</li>
-<li>Learn survival tactics ala <a href="http://yannesposito.com/Scratch/en/blog/Learn-Vim-Progressively/">Progressive Vim</a></li>
-<li>Learn to serenade this wild beast called Vim in its own language</li>
-<li>Add plugins</li>
-</ul>
-
-<p>I&#8217;ll assume that readers of my blog can install GVim or MacVim on their own.  On OSX it&#8217;s as simple as using homebrew.  On Linux, use the awesome package manager of your choice.</p>
-
-<h2>Vim Modes</h2>
-
-<p>Vim is a modal editor.  You have three essential modes of operating:</p>
-
-<ul>
-<li>Insert Mode (used for typing)</li>
-<li>Visual Mode (used for selecting)</li>
-<li>Command Mode (used for executing commands/movements)</li>
-</ul>
-
-<p>Having three modes means that the keyboard can have 3x the number of functions because each key can have an alternate meaning in the various modes.  For example, take the letter &#8216;i&#8217;:</p>
-
-<ul>
-<li>In command mode, i places the user in insert mode</li>
-<li>In insert mode, i types the letter i</li>
-<li>in visual mode, it appears not to do anything (I could be wrong, but 10 secs of testing back me up)</li>
-</ul>
-
-<p>The first thing to learn is a lesson from Douglas Adams: &#8220;Don&#8217;t Panic!&#8221;.</p>
-
-<p>When lost in Vim or things are going wrong, mash ESC until you&#8217;re back in Command Mode.</p>
-
-<p>When a file gets messed up because you&#8217;re unfamiliar with Vim, type ESC followed by :q! This will quit the file without saving changes (forced quit).  If the changes are important, enter command mode with ESC and type :wq to write the changes to disk.</p>
-
-<p>When you&#8217;re ready to type into the text file, type i to enter insert mode.  At this point, typing will proceed as normal until you hit escape to leave insert mode.</p>
-
-<h2>Pat yourself on the back</h2>
-
-<p>You&#8217;re now as accomplished as I was for my first year of dabbling with Vim!</p>
-
-<p>I didn&#8217;t realize how little of Vim I knew until I saw the surgeon&#8217;s precision with which Gary Bernhardt wielded Vim.  As soon as I saw this I wanted more.</p>
-
-<p>I took his advice and started paying attention to the language of Vim, which largely consists of unmodified alphabet keys and shifted alphabet keys.  Learning some of these has made my typing DRASTICALLY more efficient.  I now feel very little resistance when typing.  It&#8217;s as if my thoughts are able to leap onto the screen without obstacles.  It&#8217;s magic folks!  And you too can cast these spells with enough time and effort.</p>
-
-<p>But mastering Vim (or at least becoming proficient) is a longer topic than I can cover in this post.  So let&#8217;s move on to discuss plugins and the .vimrc.</p>
-
-<h2>Vimrc</h2>
-
-<p>Let&#8217;s get this out of the way: Vim&#8217;s not terribly friendly with the default configuration!</p>
-
-<p>So what&#8217;s the solution? .vimrc and Vim plugins.</p>
-
-<p>The .vimrc file goes in your home directory, ie ~/.vimrc, and dictates Vim&#8217;s configuration.  You can tweak the colorscheme, the timeoutlen, and just about anything from here.  Here&#8217;s an example of what&#8217;s in my own .vimrc:</p>
-
-<script src="https://gist.github.com/db3c4ad77f7a9d27fcaa.js"></script>
-
-<p>Plugins are re-usable Vim code that has grown too large to be included in the Vimrc.  Plugins extend the functionality of Vim and can make it act more like an IDE.  There&#8217;s currently a vibrant community of Vim users and a growing number of Vim plugins.</p>
-
-<p>Here&#8217;s a list of My Current Plugins <a href="https://github.com/zph/zph/tree/master/home/.vim/bundle">repo</a>:</p>
-
-<p>And here are the ones that I use daily:</p>
-
-<p>[cc_bash]
-ack.vim
-ctrlp.vim
-delimitMate
-gundo
-slimux
-supertab
-sweet-rspec-vim
-vim-bundler
-vim-commentary
-vim-detailed
-vim-dispatch
-vim-endwise
-vim-eunuch
-vim-fugitive
-vim-git
-vim-numbertoggle
-vim-powerline
-vim-rails
-vim-repeat
-vim-rspec
-vim-ruby
-vim-ruby-refactoring
-vim-surround
-[/cc_bash]</p>
-
-<p>Hope this helps get someone started in Vim.  It&#8217;s a very rewarding and sometimes frustrating journey.</p>
-
-<p>I&#8217;d love to help my readers learn Vim! Let me know about your stumbling blocks and difficulties in the comments or on Twitter <a href="http://twitter.com/_ZPH">@_ZPH</a></p>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2013/05/buff-a-gem-that-puts-muscle-in-the-buffer-api/">Buff - a Gem That Puts Muscle in the Buffer API</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-05-26T00:00:00-07:00" pubdate data-updated="true">May 26<span>th</span>, 2013</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>It&#8217;s Done!  <a href="http://github.com/zph/buff">Buff</a> is a Ruby Gem that wraps the <a href="http://bufferapp.com">Buffer</a> API.</p>
-
-<h2>Why Write Buff Gem from Scratch?</h2>
-
-<p>Because the current Buffer Gem doesn&#8217;t have full coverage for the API.  I started to update the Buffer Gem but quickly realized that I was spinning my wheels.  I wanted to implement the gem as a set of layered abstractions and to be able to process the responses using Hashie::Mash.  I envisioned a Gem where each response was a first class Ruby object, where each nested key could be called as a method.</p>
-
-<p>I realized that it would be cleaner and more expedient to code from scratch: I spent the next few hours and produced a gem that had feature parity with Buffer&#8217;s existing gem:</p>
-
-<p>Introducing <a href="http://github.com/zph/buff">Buff</a>, the API complete Ruby Wrapper for <a href="http://bufferapp.com"> BufferApp.com. </a> Buff muscles Ruby into Buffer&#8217;s API.</p>
-
-<h4>Buff is RSpec tested, Webmocked, Travis CI&#8217;d, and easy to use.</h4>
-
-<script src="https://gist.github.com/zph/5654310.js"></script>
-
-<h2>Setbacks and Triumphs</h2>
-
-<p>It wasn&#8217;t all roses and perfume in the creation of this gem.   Three setbacks stand out in my mind.</p>
-
-<h3>Webmock</h3>
-
-<p>I&#8217;ve previously used VCR for testing web APIs, but wanted to use a new system to build new skills.  Webmocks are very pleasant to use and allowed the Specs to verify what API was contacted, along with testing the body content and return values.</p>
-
-<h3>HTTP Libraries</h3>
-
-<p>Buff Gem started with <strong>HTTParty</strong>, which was splendid while implementing the [cci]HTTP GET API[/cci] methods.  Once I began implementing the [cci]HTTP POST[/cci] requests I started experiencing discomfort with using <strong>HTTParty</strong>.  It&#8217;s a reliable library but I didn&#8217;t gel with the DSL for describing HTTP requests.  Thankfully the <strong>HTTParty</strong> calls were wrapped inside the [cci]post[/cci] and [cci]get[/cci] methods in [cci]Buff::Client::Core[/cci].</p>
-
-<p>Since the code was tested with Rspec and the post and get methods were abstracted, swapping out <strong>HTTParty</strong> for <strong>Faraday</strong> was merely a one hour setback.</p>
-
-<p>What a wonderful confirmation that it&#8217;s valuable to wrap external library calls in an abstraction method inside your own library.  This made dependency swaps much simpler.</p>
-
-<h3>Creating correct &#8220;application/x-www-form-urlencoded&#8221; Data</h3>
-
-<p>I expected to find a Standard Library tool for converting a nested Hash + Array object into www-form-encoded data.  I was sorely disappointed, looking at you Addressable Gem, and spent hours trying to find an already coded solution.</p>
-
-<p>After stepping back from the code for two days, I was explaining the problem to non-technical coworkers.  In that moment, my subconscious presented the answer.  I realized how easily I could write the transformation myself.  I mentally coded it on the way home that afternoon and wrote it in bytes that evening.  Here&#8217;s the implementation from [cci]Buff::Client::Encode[/cci]:</p>
-
-<script src="https://gist.github.com/94a89ea5abcfa6f60ee1.js"></script>
-
-<p><strong>Moral of the story</strong>: When stumped, back off and solve another problem.  The subconscious is a useful ally.  Hours of struggling could have been saved through patience and getting other things done.</p>
-
-<h2>What&#8217;s Next?</h2>
-
-<p>Since the Buff Gem provides greater coverage of the Buffer API than the existing Gem, it&#8217;d be awesome to see it replace Buffer Gem as the official Ruby Wrapper.</p>
-
-<p>I feel great about completing a Gem with 100% coverage of an HTTP API :).</p>
-
-<p>I&#8217;m considering writing a couple of small Buffer CommandLine tools for easy posting.  If I have more steam, I&#8217;ll add an Alfred Workflow on top that allows posting to Buffer!</p>
-
-<h2>Want a Demo of Using Buff inside Pry?</h2>
-<iframe src="http://showterm.io/1b512291be06a620e4bc6#fast" width="640" height="480"></iframe>
-<h2>PS</h2>
-
-<p>If you work with <a href="http://bufferapp.com"> Bufferapp </a> and want to adopt this Gem as your Official Ruby Wrapper, that would be snazzy.  Let&#8217;s talk: <a href="http://twitter.com/_ZPH">@_ZPH</a> or <a href="mailto:zander@civet.ws">Zander</a>!</p>
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -1612,6 +1557,14 @@ vim-surround
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/03/git-archeology-find-the-secrets-of-those-who-came-before/">Git Archeology - Find the Secrets of those Who Came Before</a>
+        </li>
+      
+        <li>
+          <a href="/2014/03/dont-pee-in-the-pool/">Don't Pee in the Pool: Swimming With the Big Kids</a>
+        </li>
+      
+        <li>
           <a href="/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/">Conference Advice: How to Meet Devs and Influence Ppl</a>
         </li>
       
@@ -1621,14 +1574,6 @@ vim-surround
       
         <li>
           <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/finding-myself-in-bsd/">Finding myself in BSD</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/using-null-terminators-in-star-nix/">Using Null Terminators in Linux/OSX</a>
         </li>
       
     </ul>
