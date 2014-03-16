@@ -151,63 +151,6 @@
 
   <header>
     
-      <h1 class="entry-title"><a href="/2012/07/x11-forwarding-or-how-to-use-my-favorite-calculator-in-osx/">X11 Forwarding: Or How to Use My Favorite Calculator in OSX</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-19T00:00:00-04:00" pubdate data-updated="true">Jul 19<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I switched to a Macbook Air a few months ago and I&#8217;ve been generally quite happy with the setup.</p>
-<p>One thing I&#8217;m unhappy with is the availability of my two favorite calculator programs.  On Linux distos I&#8217;m accustomed to installing &#8216;qalculate&#8217; and on Windows it&#8217;s been GraphCalc.  I tried to find equivalent programs under OSX, giving it all of 15 min of effort, but couldn&#8217;t find a robust solution with good history, nice data entry, etc.</p>
-<p>So, I decided to stick with my favorite (&#8216;Qalculate&#8217;).  I then tried installing it from source under OSX which didn&#8217;t succeed.  I then tried to do the same with graphcalc&#8217;s Linux source, with the same result.</p>
-<p>At this point I remembered toying around with X-forwarding over SSH.  Since I had already installed the X11 environment for running GIMP (GNU Image Manipulation Program), it was trivial to que up a virtual instance of Debian Linux under Parallels.  I installed Qalculate in that virtual instance and used the ssh command for X-forwarding:
-[cc_bash]ssh -X username@server_name &#8216;qalculate-gtk &amp;&#8217;[/cc_bash]</p>
-<p>The result is that I have a virtual instance of Debian running in the background, my normal OSX interface, and my favorite calculate ready to go (as if it were a native OSX application).</p>
-<p>Thanks SSH!</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/07/vimrepress_5008c862_mkd.odt vimrepress_5008c862_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
       <h1 class="entry-title"><a href="/2012/07/my-firefox-confuzzled-my-nokogiri/">My Firefox Confuzzled My Nokogiri</a></h1>
     
     
@@ -742,6 +685,60 @@ RPS1=&#8221;${${KEYMAP/vicmd/&gt;&gt;&gt; ○[$(todo_count)]}/(main|viins)/± &l
 
       </article>
     
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2012/05/vim-movement-command-of-the-day/">VIM Movement Command of the Day</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-05-24T00:00:00-04:00" pubdate data-updated="true">May 24<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The movment letter of today for VIM is [cci_bash]G[/cci_bash]
+Using &#8216;G&#8217; moves to the end of the file (or more specifically to the final line of the file).</p>
+<p>The complimentary command is &#8216;gg&#8217;, to jump to top of file!</p>
+<p>VIM: The more I learn, the better it gets.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/05/vimrepress_4fbebdf4_mkd.odt vimrepress_4fbebdf4_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
     </div>
       <div class="row">
         <ul class="pager">
@@ -773,10 +770,6 @@ RPS1=&#8221;${${KEYMAP/vicmd/&gt;&gt;&gt; ○[$(todo_count)]}/(main|viins)/± &l
         </li>
       
         <li>
-          <a href="/2014/03/dont-pee-in-the-pool/">Don't Pee in the Pool: Swimming With the Big Kids</a>
-        </li>
-      
-        <li>
           <a href="/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/">Conference Advice: How to Meet Devs and Influence Ppl</a>
         </li>
       
@@ -786,6 +779,10 @@ RPS1=&#8221;${${KEYMAP/vicmd/&gt;&gt;&gt; ○[$(todo_count)]}/(main|viins)/± &l
       
         <li>
           <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
+        </li>
+      
+        <li>
+          <a href="/2014/02/finding-myself-in-bsd/">Finding myself in BSD</a>
         </li>
       
     </ul>

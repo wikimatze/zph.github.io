@@ -151,82 +151,6 @@
 
   <header>
     
-      <h1 class="entry-title"><a href="/2013/03/two-factor-authentication-for-all-the-things/">Two Factor Authentication for All the Things</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-03-09T00:00:00-05:00" pubdate data-updated="true">Mar 9<span>th</span>, 2013</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">I recently went wild with two factor <a href="https://en.wikipedia.org/wiki/Two_factor_authentication"> authentication </a> due to reading about <a href="http://www.lowendtalk.com/discussion/5686/chicagovps-hacked-bunch-of-vps-customers-offline">Chicago VPS getting hacked</a>. I received the nicest email from <a href="http://www.lastpass.com">LastPass</a> warning me that my email address was among the SQL dump posted by the hacker.
-<h2>My Response</h2>
-First off, according to ChicagoVPS all the passwords were in the form of salted hashes. So that&#8217;s good! Also, I use unique passwords thanks to LastPass. So losing one password to a SQL dump in the form of a salted hash isn&#8217;t a big deal. At least not with ChicagoVPS. Might be a bigger deal if it was Amazon AWS or a Google Account.
-<h3>Back to the Point</h3>
-I read a wonderful article, by chance, about a new service called <a href="https://www.authy.com/">Authy</a>. Authy provides easily integrated Two Factor Authentication services that use your phone as the second factor. Authy either uses a smartphone application or a system based on SMS.
-<h3>So where did I add it?</h3>
-<ul>
-	<li><a href="http://www.civet.ws">Here</a> via the <a href="http://wordpress.org/extend/plugins/authy-for-wp/">WP Plugin</a></li>
-	<li><a href="http://www.dropbox.com">Dropbox</a></li>
-	<li><a href="https://aws.amazon.com/">Amazon AWS</a></li>
-	<li><a href="http://gmail.com">Google Account - Gmail</a></li>
-</ul>
-<h3>Caveats</h3>
-After turning on Two Factor Authentication with my Google Account, I needed to setup and start using &#8216;Application Specific Passwords&#8217;. They&#8217;re a way to have a unique password for specific services that are not setup for the Two Factor Authentication system.
-
-To find the settings: Log into Gmail &gt; Settings &gt; Account &gt; Security &gt; 2 Step Verification Settings &gt; Manage Application Specific Passwords &gt; Login Again &gt; Scroll to Bottom of Page.
-
-For each item, like Thunderbird, Sparrow App, Android applications, etc, you&#8217;ll need to give the specific password a name. Next click &#8216;Generate Password&#8217;. Copy that password into your application.
-
-I must say, I&#8217;ll be a lot more comfortable with online transactions when most service providers (esp. Banks, Investment Accounts, Amazon.com, etc) offer Two Factor Login options!
-
-Let me know if you&#8217;ve found any other useful places for using Authy&#8217;s wonderful 2 Factor Auth through the comments below or on Twitter <a href="http://www.twitter.com/_zph">@_ZPH</a>.
-
-Credit for this article&#8217;s inspiration belongs to : <a href="http://danielmiessler.com/blog/">This Blog</a>
-
-Follow up&#8230; Flashed a new Rom to phone and my only hassle was with Amazon Aws 2 factor Auth.  Make sure to do Authy backup to simplify this before flashing new Roman.
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
       <h1 class="entry-title"><a href="/2013/03/a-week-with-thinkingrock-gtd/">A Week With ThinkingRock GTD</a></h1>
     
     
@@ -841,6 +765,65 @@ Now on to revive my 3 year old GTD files, do some major deleting, get email dump
 
       </article>
     
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
+      <h1 class="entry-title"><a href="/2013/02/ignoring-all-the-things/">Ignoring All the Things</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-16T00:00:00-05:00" pubdate data-updated="true">Feb 16<span>th</span>, 2013</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I found a great talk by Scott Hanselman on Vimeo about information overload and learning to ignore things. In the <a href="https://vimeo.com/39020426">video</a> he laments that more conversation is taking place in walled gardens (ie Twitter) rather than on the wide open web (ie blogs).  He also summarizes what I&#8217;ve felt for a few months: * that keeping up with news and the latest things is reducing my ability to produce and innovate *.</p>
+
+<p>It comes back to the concepts in this article: <a href="http://www.informationdiet.com/blog/read/500-words-before-8am">500 Words before 8am</a>.  Start the day as a producer, not a consumer.</p>
+
+<p>In order to work on this, I&#8217;ve set myself up with <a href="https://www.rescuetime.com">RescueTime</a> and am tracking the amount of time spent on &#8216;consumptive tasks&#8217; (no relation to romantic portrayals of consumption by Val Kilmer in &#8216;Tombstone&#8217;).  I&#8217;m receiving pop-up warnings when I exceed a set quantity of time on reading Twitter, reading blogs, etc.  I&#8217;m also looking to transition more of my consumption time to &#8216;curated content&#8217; such as &#8216;ye old books&#8217;.</p>
+
+<p>Another point that I took to heart from Scott Hanselman&#8217;s talk was about learning to use <a href="www.ifttt.com">IFTTT</a>.  It&#8217;s an SF startup that makes common web tasks automatic.  Think of it as a recurrent cron job for the web.  Things like : &#8216;anytime I start a tweet, add the contained links to instapaper&#8217;, or &#8216;anytime I start a vimeo video, post it to twitter&#8217;.  One filter that I added to help with the Ruby Rogues Parley list is &#8216;anytime I star a gmail message, copy the content into Evernote&#8217;&#8230; this should help easily archive good content for later viewing and recall :).</p>
+
+<p>Well, that&#8217;s it for this round of production.  I spent much of last night working on an internal web application for work that I plan to soon pitch to my company :).  I finished the final polish on it (CSS, a little Javascript) and I must say that it feels 100% better.  It&#8217;s a good reminder for me about how important the UI is for applications.</p>
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
     </div>
       <div class="row">
         <ul class="pager">
@@ -872,10 +855,6 @@ Now on to revive my 3 year old GTD files, do some major deleting, get email dump
         </li>
       
         <li>
-          <a href="/2014/03/dont-pee-in-the-pool/">Don't Pee in the Pool: Swimming With the Big Kids</a>
-        </li>
-      
-        <li>
           <a href="/2014/03/conference-advice-how-to-meet-devs-and-influence-ppl/">Conference Advice: How to Meet Devs and Influence Ppl</a>
         </li>
       
@@ -885,6 +864,10 @@ Now on to revive my 3 year old GTD files, do some major deleting, get email dump
       
         <li>
           <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
+        </li>
+      
+        <li>
+          <a href="/2014/02/finding-myself-in-bsd/">Finding myself in BSD</a>
         </li>
       
     </ul>
