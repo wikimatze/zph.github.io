@@ -4,7 +4,7 @@
   <title><![CDATA[Civet]]></title>
   <link href="http://zph.github.io/atom.xml" rel="self"/>
   <link href="http://zph.github.io/"/>
-  <updated>2014-03-16T19:09:24-04:00</updated>
+  <updated>2014-03-16T20:11:19-04:00</updated>
   <id>http://zph.github.io/</id>
   <author>
     <name><![CDATA[Zander]]></name>
@@ -14,11 +14,96 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Git Archeology - Find the Secrets of those Who Came Before]]></title>
+    <title type="html"><![CDATA[Git Archaeology - Find the Secrets of those Who Came Before]]></title>
     <link href="http://zph.github.io/2014/03/git-archeology-find-the-secrets-of-those-who-came-before/"/>
     <updated>2014-03-15T11:21:00-04:00</updated>
     <id>http://zph.github.io/2014/03/git-archeology-find-the-secrets-of-those-who-came-before</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<h3>&ldquo;Those who don&rsquo;t know their Git history are doomed to repeat its mistakes&rdquo; &ndash; Yammy the Programming Kitten</h3>
+
+<h2>Setup</h2>
+
+<p>You&rsquo;re working for Cato Consulting.</p>
+
+<p>And, you&rsquo;ve been lent out to a new client on an unfamiliar project. It&rsquo;s a codebase that you haven&rsquo;t touched before.  In the sense that you&rsquo;ve never worked on it, you could kind of call it &ldquo;Greenfield&rdquo;&hellip; but from where you sit, the project looks like &ldquo;Brownfield with withered vestiges of healthy code.&rdquo;  This isn&rsquo;t going to be an easy upcoming two weeks.</p>
+
+<p>So it&rsquo;s a new day and you have a new story from the client about a text input box that&rsquo;s no longer working.  It should behave as a search field, but instead it does nothing.  You realize you also do nothing useful before coffee while sitting there, pondering the solution and decide to increase your caffeine level.</p>
+
+<p>Much better, there can be coding once the caffeine hits.</p>
+
+<h2>How Do You Approach the Problem</h2>
+
+<p>First, you need the text field. Perhaps it will have a unique id or class.</p>
+
+<p>Bingo, you learn that the field has an id of &ldquo;#super_search_box&rdquo;.</p>
+
+<p>Your other big clue in the story is that this feature was working well up until a few weeks ago.  The client doesn&rsquo;t have a schedule of exactly when it went bad, but that gives you a starting point.  You can reasonably estimate that the code from 4 weeks ago was working.</p>
+
+<p>Let&rsquo;s dig into this Git Archaeology!  We&rsquo;ll dirty our hands but our spirits will be clean and we&rsquo;ll sleep well at night knowing that our problem domains were well understood when implementing a fix.</p>
+
+<h2>Git Bisect</h2>
+
+<p>Our first useful incantation is <code>git bisect</code>.  Git bisect helps in a situation where something stops working.</p>
+
+<p>The basic workflow looks like this:</p>
+
+<p>(Starting on git branch = master at newest commit, which happens to be broken)
+<code>git bisect start</code>
+(Then identify a good and a bad commit.)
+<code>git checkout SHA_from_4_weeks_ago</code>
+(manually check that search box worked, or run associated automatic tests)
+If it&rsquo;s good, mark it via <code>git bisect good</code>, otherwise <code>git bisect bad</code>
+Then find an opposite example (ie if you found a bad one, find a good working commit).
+Tag that one via a <code>git commit [good || bad]</code>
+Then git bisect&rsquo;s magical excavation will begin.</p>
+
+<p>Git will do a binary search, and each step of the way, you will enter <code>git bisect [bad || good]</code> until <code>git bisect</code> identifies the earliest commit that broke that feature.</p>
+
+<p>After that process is over, you&rsquo;ll have the <code>bad</code> commit where a breaking change was introduced to that feature.</p>
+
+<p>Next, it&rsquo;s time to understand why the code author would do such a dastardly thing!</p>
+
+<p>Run a <code>git show bisect~bad</code> to see the full content of that commit, both the message and the code differences.</p>
+
+<h2>Project Tracker</h2>
+
+<p>If there are more than 2 people on the project, hopefully there&rsquo;s a central project management tool like Pivotal Tracker or Jira.  Ever hopeful, you expect to see a story number or issue number listed in the git commit.  Let&rsquo;s see what it looks like:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[CTL] [#3443450] Switched JQuery selector for search box
+</span><span class='line'>
+</span><span class='line'>Changes selector from '#super_search_box' to '.snazzy_search'.
+</span><span class='line'>
+</span><span class='line'>diff monolithic_everything.coffee
+</span><span class='line'>- '#super_search_box'
+</span><span class='line'>+ '.snazzy_search'
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Not a very helpful message but at least it contains a story id.  Looking that up in the Project Tracker show that this was a chore to refactor some code &amp; apparently it wasn&rsquo;t done with sufficient care or any automated behavioral tests.  Bummer :(.</p>
+
+<h2>Advanced Git Searching</h2>
+
+<p>Since we&rsquo;re left underwhelmed but the currently available info, it would be nice to know when the markdown was modified that relates to &lsquo;.snazzy_search&rsquo;</p>
+
+<p><code>git log -S 'snazzy_search'</code></p>
+
+<p>This will search each git log entry for any mentions of <code>snazzy_search</code>.</p>
+
+<p>With knowing when the markdown was changed, along with knowing the exact commit that introduced the regression, you&rsquo;re set to implement a fix.  By doing a bit of digging, the underlying domain becomes clear &amp; the possibility of introducing your own regression will decrease.</p>
+
+<h2>Go Forth And Dig</h2>
+
+<p>Check out my <code>.gitconfig</code> and my <code>.zsh.d/git.zsh</code> files <a href="http://github.com/zph/zph">here</a> for some helpful shortcuts for everyday git behaviors.</p>
+
+<p>Also, look into <code>git blame</code> via Fugitive.vim or Magit (on Emacs).  Git blame&rsquo;s a great way to find out if the developer who introduced the changes is still around and can give you a bit of context on the changes.</p>
+
+<p>If you&rsquo;re just getting started as a Git Archeologist and want some help with getting started, or if you&rsquo;re an experienced Git Excavator and want to bounce ideas off me, ping me on Twitter at <a href="https://twitter.com/_ZPH">@_ZPH</a>.</p>
 ]]></content>
   </entry>
   
