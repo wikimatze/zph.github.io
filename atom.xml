@@ -4,7 +4,7 @@
   <title><![CDATA[Civet]]></title>
   <link href="http://zph.github.io/atom.xml" rel="self"/>
   <link href="http://zph.github.io/"/>
-  <updated>2014-03-16T20:19:29-04:00</updated>
+  <updated>2014-03-16T20:31:50-04:00</updated>
   <id>http://zph.github.io/</id>
   <author>
     <name><![CDATA[Zander]]></name>
@@ -62,7 +62,9 @@ Then git bisect&rsquo;s magical excavation will begin.</p>
 
 <p>Next, it&rsquo;s time to understand why the code author would do such a dastardly thing!</p>
 
-<p>Run a <code>git show bisect~bad</code> to see the full content of that commit, both the message and the code differences.</p>
+<p>Run a <code>git show</code> to see the full content of that commit, both the message and the code differences.</p>
+
+<p>(Note that you can see which were marked as good/bad by checking out <code>git log --oneline</code>)</p>
 
 <h2>Project Tracker</h2>
 
@@ -104,6 +106,8 @@ Then git bisect&rsquo;s magical excavation will begin.</p>
 <p>Also, look into <code>git blame</code> via Fugitive.vim or Magit (on Emacs).  Git blame&rsquo;s a great way to find out if the developer who introduced the changes is still around and can give you a bit of context on the changes.</p>
 
 <p>If you&rsquo;re just getting started as a Git Archeologist and want some help with getting started, or if you&rsquo;re an experienced Git Excavator and want to bounce ideas off me, ping me on Twitter at <a href="https://twitter.com/_ZPH">@_ZPH</a>.</p>
+
+<p>For further reading, checkout these two great blog posts: <a href="http://ruturaj.net/git-bisect-tutorial/">http://ruturaj.net/git-bisect-tutorial/</a> and <a href="http://mislav.uniqpath.com/2014/02/hidden-documentation/">http://mislav.uniqpath.com/2014/02/hidden-documentation/</a></p>
 ]]></content>
   </entry>
   
