@@ -50,7 +50,9 @@ After that process is over, you'll have the `bad` commit where a breaking change
 
 Next, it's time to understand why the code author would do such a dastardly thing!
 
-Run a `git show bisect~bad` to see the full content of that commit, both the message and the code differences.
+Run a `git show` to see the full content of that commit, both the message and the code differences.
+
+(Note that you can see which were marked as good/bad by checking out `git log --oneline`)
 
 ## Project Tracker
 
@@ -86,3 +88,5 @@ Check out my `.gitconfig` and my `.zsh.d/git.zsh` files [here](http://github.com
 Also, look into `git blame` via Fugitive.vim or Magit (on Emacs).  Git blame's a great way to find out if the developer who introduced the changes is still around and can give you a bit of context on the changes.
 
 If you're just getting started as a Git Archeologist and want some help with getting started, or if you're an experienced Git Excavator and want to bounce ideas off me, ping me on Twitter at [@_ZPH](https://twitter.com/_ZPH).
+
+For further reading, checkout these two great blog posts: http://ruturaj.net/git-bisect-tutorial/ and http://mislav.uniqpath.com/2014/02/hidden-documentation/
