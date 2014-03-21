@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Open Copyright Books - Civet</title>
+  <title>Weather Github Downtime by Pushing to All the Places - Civet</title>
   <meta name="author" content="Zander">
   <link rel="author" href="humans.txt">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -13,8 +13,7 @@
   
     
   
-  <meta name="description" content="Found these yesterday:
-http://www.computer-books.us/ Some good stuff, especially traditional programming languages like Assembly and C/C++. Be sure &hellip;">
+  <meta name="description" content="Want to not care whether Github&rsquo;s up or down at the moment? # Have faulty servers of your own? Or tend to anger people with bot armies? # Want &hellip;">
   
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -22,18 +21,17 @@ http://www.computer-books.us/ Some good stuff, especially traditional programmin
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zph.github.io/2011/09/open-copyright-books/">
+  <link rel="canonical" href="http://zph.github.io/2014/03/weather-github-downtime-by-pushing-to-all-the-places/">
   <link href="/favicon.png" rel="icon">
   <link href='http://fonts.googleapis.com/css?family=Cantarell' rel='stylesheet' type='text/css'>
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Civet" type="application/atom+xml">
   <meta name="og:type" content="website" />
   <meta name="og:site_name" content="Civet" />
-  <meta name="og:title" content="Open Copyright Books" />
-  <meta name="og:description" content="Found these yesterday:
-http://www.computer-books.us/ Some good stuff, especially traditional programming languages like Assembly and C/C++. Be sure &hellip;" />
-  <meta name="og:url" content="http://zph.github.io/2011/09/open-copyright-books/"/>
-  <meta name="url" content="http://zph.github.io/2011/09/open-copyright-books/">
+  <meta name="og:title" content="Weather Github Downtime by Pushing to All the Places" />
+  <meta name="og:description" content="Want to not care whether Github&rsquo;s up or down at the moment? # Have faulty servers of your own? Or tend to anger people with bot armies? # Want &hellip;" />
+  <meta name="og:url" content="http://zph.github.io/2014/03/weather-github-downtime-by-pushing-to-all-the-places/"/>
+  <meta name="url" content="http://zph.github.io/2014/03/weather-github-downtime-by-pushing-to-all-the-places/">
   
   <meta name="subject" content=""/>
   <meta name="category" content=""/>
@@ -92,7 +90,7 @@ http://www.computer-books.us/ Some good stuff, especially traditional programmin
 
   <header>
     
-      <h1 class="entry-title">Open Copyright Books</h1>
+      <h1 class="entry-title">Weather Github Downtime by Pushing to All the Places</h1>
     
     
       <p class="meta">
@@ -117,7 +115,7 @@ http://www.computer-books.us/ Some good stuff, especially traditional programmin
   
 
 
-<time datetime="2011-09-05T00:00:00-04:00" pubdate data-updated="true">Sep 5<span>th</span>, 2011</time> - 
+<time datetime="2014-03-21T09:37:00-04:00" pubdate data-updated="true">Mar 21<span>st</span>, 2014</time> - 
         
 
 
@@ -127,12 +125,68 @@ http://www.computer-books.us/ Some good stuff, especially traditional programmin
   </header>
 
 
-  <div class="entry-content">Found these yesterday:
-<a title="http://www.computer-books.us/" href="http://www.computer-books.us/" target="_blank">http://www.computer-books.us/</a>
+  <div class="entry-content"><h3>Want to not care whether Github&rsquo;s up or down at the moment?</h3>
 
-Some good stuff, especially traditional programming languages like Assembly and C/C++. Be sure to check the files for viruses.
+<h2>#</h2>
 
-Some of the books are in HTML documents which can be converted to EPUB for universal reading by using Sybil (Google Code Project)
+<h3>Have faulty servers of your own? Or tend to anger people with bot armies?</h3>
+
+<h2>#</h2>
+
+<h3>Want to push to two Git Repos via a single command?</h3>
+
+<h2>#</h2>
+
+<h3>Want to do it easily via a simple .git edit?</h3>
+
+<p>My use case is pushing code that resides on Github as well as on Bitbucket.  I want it available in both remote locations in case one is unavailable.</p>
+
+<p>Here&rsquo;s how you do it:</p>
+
+<p>Add the two remotes as normal</p>
+
+<p><code>git remote add origin GIT_LINK_TO_REPO</code></p>
+
+<p><code>git remote add bitbucket GIT_LINK_TO_REPO</code></p>
+
+<p>In local repo, edit .git/config.
+Find the entry for origin and bitbucket</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[remote "origin"]
+</span><span class='line'>url = git@github.com:zph/zph.git
+</span><span class='line'>fetch = +refs/heads/*:refs/remotes/origin/*</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[remote "bitbucket"]
+</span><span class='line'>url = ssh://git@bitbucket.org/zph/zph.git
+</span><span class='line'>fetch = +refs/heads/*:refs/remotes/bitbucket/*</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Add a new entry using that information and urls:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[remote "all"]
+</span><span class='line'>url = git@github.com:zph/zph.git
+</span><span class='line'>url = ssh://git@bitbucket.org/zph/zph.git</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now when pushing code:</p>
+
+<pre><code>`git push all`
+</code></pre>
+
+<p>Credit for this solution:
+<a href="http://stackoverflow.com/questions/849308/pull-push-from-multiple-remote-locations?lq=1">http://stackoverflow.com/questions/849308/pull-push-from-multiple-remote-locations?lq=1</a></p>
 </div>
 
 
@@ -159,7 +213,7 @@ Some of the books are in HTML documents which can be converted to EPUB for unive
   
 
 
-<time datetime="2011-09-05T00:00:00-04:00" pubdate data-updated="true">Sep 5<span>th</span>, 2011</time>
+<time datetime="2014-03-21T09:37:00-04:00" pubdate data-updated="true">Mar 21<span>st</span>, 2014</time>
       
 
 
@@ -179,10 +233,8 @@ Some of the books are in HTML documents which can be converted to EPUB for unive
 
     
     
-      <a class="pull-left" href="/2011/09/hello-world-2/" title="Previous Post: Traditional Beginnings">&laquo; Traditional Beginnings</a>
+      <a class="pull-left" href="/2014/03/git-archeology-find-the-secrets-of-those-who-came-before/" title="Previous Post: Git Archaeology - Find the Secrets of those Who Came Before">&laquo; Git Archaeology - Find the Secrets of those Who Came Before</a>
     
-    
-      <a class="pull-right" href="/2011/09/php5-curl-installed-but-not-found-by-wp-plugin-open-book/" title="Next Post: PHP5-Curl installed but not found by WP plugin Open Book">PHP5-Curl installed but not found by WP plugin Open Book &raquo;</a>
     
   </footer>
 
