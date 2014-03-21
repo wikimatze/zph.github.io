@@ -151,6 +151,71 @@
 
   <header>
     
+      <h1 class="entry-title"><a href="/2012/12/rcodetools-and-vim/">Rcodetools and VIM</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+
+  
+    <span class="byline author vcard">by <span class="fn">Zander</span></span>
+  
+
+ - 
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-15T00:00:00-05:00" pubdate data-updated="true">Dec 15<span>th</span>, 2012</time> - 
+        
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I&#8217;ve been listening to RubyRogues which introduced me to Avdi Grimm from the Ruby community.
+I&#8217;ve also been subscribed to his RubyTapas screencast series which is a 2x a week Ruby show.</p>
+<p>He uses a neat tool called rcodetools to execute Ruby code from within an Emacs buffer.  Unfortunately, it wasn&#8217;t working when I tried to use the VIM counterpart, with segfault codes showing up.
+Here&#8217;s the fix:
+( I&#8217;m using RVM to manage my Ruby Versions )
+*Install Tim Pope&#8217;s excellent rvm extension for VIM
+  [cc_bash]
+cd ~/.vim/bundle
+git clone git://github.com/tpope/vim-rvm.git
+[/cc_bash]</p>
+<p>*Install rcodetools using RVM
+[cc_bash]gem install rcodetools[/cc_bash]</p>
+<p>*Remove keybindings in other programs (ie Dashboard &amp; Expose) for F10, F11, F12 or rebind the keys per README.vim</p>
+<p>Now enter a VIM file and type F12 on any lines that you want the output from followed by F11 to evaluate the whole file.  If you want to only re-evaluate the current line use F10 instead of F11.</p>
+<p>It&#8217;s a great tool for terminal screencasting!  Thanks Avdi for letting me know that this tool is available.</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/12/vimrepress_50cd462e_mkd.odt vimrepress_50cd462e_mkd.odt -->
+</div>
+  
+  
+
+
+</div>
+
+      </article>
+    
+    
+      <article class="span4">
+        <div class="article-format">
+
+  <header>
+    
       <h1 class="entry-title"><a href="/2012/11/script-to-update-sandy-knolls-metes-and-bounds-software-on-osx/">Script to Update Sandy Knolls Metes and Bounds Software on OSX</a></h1>
     
     
@@ -717,63 +782,6 @@ kthxbye
 
       </article>
     
-    
-      <article class="span4">
-        <div class="article-format">
-
-  <header>
-    
-      <h1 class="entry-title"><a href="/2012/07/x11-forwarding-or-how-to-use-my-favorite-calculator-in-osx/">X11 Forwarding: Or How to Use My Favorite Calculator in OSX</a></h1>
-    
-    
-      <p class="meta">
-        
-  
-
-
-  
-    <span class="byline author vcard">by <span class="fn">Zander</span></span>
-  
-
- - 
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-19T00:00:00-04:00" pubdate data-updated="true">Jul 19<span>th</span>, 2012</time> - 
-        
-
-
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>I switched to a Macbook Air a few months ago and I&#8217;ve been generally quite happy with the setup.</p>
-<p>One thing I&#8217;m unhappy with is the availability of my two favorite calculator programs.  On Linux distos I&#8217;m accustomed to installing &#8216;qalculate&#8217; and on Windows it&#8217;s been GraphCalc.  I tried to find equivalent programs under OSX, giving it all of 15 min of effort, but couldn&#8217;t find a robust solution with good history, nice data entry, etc.</p>
-<p>So, I decided to stick with my favorite (&#8216;Qalculate&#8217;).  I then tried installing it from source under OSX which didn&#8217;t succeed.  I then tried to do the same with graphcalc&#8217;s Linux source, with the same result.</p>
-<p>At this point I remembered toying around with X-forwarding over SSH.  Since I had already installed the X11 environment for running GIMP (GNU Image Manipulation Program), it was trivial to que up a virtual instance of Debian Linux under Parallels.  I installed Qalculate in that virtual instance and used the ssh command for X-forwarding:
-[cc_bash]ssh -X username@server_name &#8216;qalculate-gtk &amp;&#8217;[/cc_bash]</p>
-<p>The result is that I have a virtual instance of Debian running in the background, my normal OSX interface, and my favorite calculate ready to go (as if it were a native OSX application).</p>
-<p>Thanks SSH!</p><!-- #VIMREPRESS_TAG# http://198.211.104.146/wp-content/uploads/2012/07/vimrepress_5008c862_mkd.odt vimrepress_5008c862_mkd.odt -->
-</div>
-  
-  
-
-
-</div>
-
-      </article>
-    
     </div>
       <div class="row">
         <ul class="pager">
@@ -801,6 +809,10 @@ kthxbye
     <ul class="recent_posts">
       
         <li>
+          <a href="/2014/03/weather-github-downtime-by-pushing-to-all-the-places/">Weather Github Downtime by Pushing to All the Places</a>
+        </li>
+      
+        <li>
           <a href="/2014/03/git-archeology-find-the-secrets-of-those-who-came-before/">Git Archaeology - Find the Secrets of those Who Came Before</a>
         </li>
       
@@ -814,10 +826,6 @@ kthxbye
       
         <li>
           <a href="/2014/02/solving-issues-with-rvm-on-bsd/">Solving Issues with RVM on BSD</a>
-        </li>
-      
-        <li>
-          <a href="/2014/02/finding-myself-in-bsd/">Finding myself in BSD</a>
         </li>
       
     </ul>
