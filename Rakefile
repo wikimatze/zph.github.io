@@ -2,6 +2,18 @@ require "rubygems"
 require "bundler/setup"
 require "stringex"
 require 'open3'
+require 'yaml'
+require 'environs'
+
+# Add this w/ your other imports:
+begin
+ require 'aws/s3'
+rescue
+ puts "No S3 upload support!"
+end
+
+# and in your config section...
+# s3_config_file = "amazon_s3.yml" # location of file with S3 access key, private key, bucket name
 
 def git(arg)
   cmd = "git #{arg}"
@@ -37,7 +49,7 @@ ssh_port       = "22"
 document_root  = "~/website.com/"
 rsync_delete   = false
 rsync_args     = ""  # Any extra arguments to pass to rsync
-deploy_default = "push"
+deploy_default = "deploy_s3"
 
 # This will be configured for you when you run config_deploy
 deploy_branch  = "master"
@@ -408,4 +420,59 @@ desc "list tasks"
 task :list do
   puts "Tasks: #{(Rake::Task.tasks - [Rake::Task[:list]]).join(', ')}"
   puts "(type rake -T for more detail)\n\n"
+end
+
+# Use deploy_s3[.*html] to upload only HTML files since the timestamp matching
+# doesn't really work well. Most files get re-generated even if they haven't
+# changed.
+desc "Deploy blog to Amazon S3"
+task :deploy_s3, :file_match do |t, args|
+ # follow these instructions to setup your bucket:
+ # http://docs.amazonwebservices.com/AmazonS3/latest/dev/WebsiteHosting.html
+ # Note that `s3_config_file` should be set at the top of yer rakefile
+ args.with_defaults :file_match => '.*'
+
+ begin
+  AWS::S3::Base.establish_connection!(
+   :access_key_id => Env.AMAZON_KEY_ID,
+   :secret_access_key => Env.AMAZON_SECRET_KEY
+  )
+ rescue
+  puts "Please verify your AWS credentials in ENV"
+  exit(1)
+ end
+
+ bucket_name = Env.AMAZON_BLOG_BUCKET
+ puts "Bucket: #{bucket_name}"
+ bucket = AWS::S3::Bucket.find bucket_name
+
+ Dir.glob("#{public_dir}/**/*") do |f|
+
+  next if File.directory? f
+  f_name = f[public_dir.length+1..-1]
+  next unless f_name.match( args.file_match ) != nil
+
+  # compare atime for each file, only sync changes
+  local_modified = Time.at( File.stat( f ).mtime ).to_datetime
+  existing = bucket[f_name]
+
+  unless existing and local_modified < DateTime.parse( existing.about['last-modified'] )
+   puts "Pushing #{f_name} to #{bucket_name}..."
+   AWS::S3::S3Object.store f_name, File.new(f,'r'), bucket_name
+  end
+ end
+end
+
+
+desc 'Notify Google & Bing of the new sitemap'
+task :ping do
+ config = YAML.load File.open config_yaml
+ sitemap_url = URI.escape "#{config['url']}#{config['root']}sitemap.xml"
+ puts "* Pinging Google sitemap... #{sitemap_url}"
+ resp = Net::HTTP.get_response 'www.google.com', "/webmasters/tools/ping?sitemap=#{sitemap_url}"
+ puts "Error! #{resp.code} : #{resp.message}" if resp.code.to_i != 200
+ puts '* Pinging Bing sitemap...'
+ resp = Net::HTTP.get_response 'www.bing.com',  "/webmaster/ping.aspx?siteMap=#{sitemap_url}"
+ puts "Error! #{resp.code} : #{resp.message}" if resp.code.to_i != 200
+ puts '... Done.'
 end

@@ -2,8 +2,13 @@ GEM
   remote: http://rubygems.org/
   specs:
     RedCloth (4.2.9)
+    aws-s3 (0.6.3)
+      builder
+      mime-types
+      xml-simple
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    builder (3.2.2)
     chunky_png (1.2.5)
     classifier (1.3.3)
       fast-stemmer (>= 1.0.0)
@@ -14,6 +19,7 @@ GEM
       sass (~> 3.1)
     debug_inspector (0.0.2)
     directory_watcher (1.4.1)
+    environs (1.1.0)
     fast-stemmer (1.0.1)
     fssm (0.2.9)
     haml (3.1.7)
@@ -29,6 +35,7 @@ GEM
     maruku (0.6.1)
       syntax (>= 1.0.0)
     method_source (0.8.2)
+    mime-types (2.3)
     posix-spawn (0.3.6)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -58,6 +65,7 @@ GEM
     stringex (1.4.0)
     syntax (1.0.0)
     tilt (1.3.7)
+    xml-simple (1.1.3)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -65,7 +73,9 @@ PLATFORMS
 
 DEPENDENCIES
   RedCloth (~> 4.2.9)
+  aws-s3
   compass (~> 0.12.2)
+  environs
   haml (~> 3.1.7)
   jekyll (~> 0.12)
   liquid (~> 2.3.0)
