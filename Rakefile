@@ -26,20 +26,7 @@ task :zdeploy do
   time = Time.now.utc
 
   Rake::Task[:gen_deploy].invoke
-  sh "git stash"
-  sh "git push"
-  sh "git checkout master"
-  Dir.glob("**/*").reject { |i| i[/vendor/] }.each do |f|
-    FileUtils.rm_rf(f)
-  end
-  git "checkout source -- _deploy"
-  sh "cp -r _deploy/* ."
-  sh "rm -rf _deploy/"
-  git "add --all"
-  git "cim 'Site Updated at #{time}'"
-  git "push"
-  git "checkout -"
-  puts "Site deployed"
+  puts "Site deployed #{time}"
 end
 
 ## -- Rsync Deploy config -- ##
