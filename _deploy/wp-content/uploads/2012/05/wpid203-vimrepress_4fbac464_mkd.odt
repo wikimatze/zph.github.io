@@ -18,6 +18,6 @@ What's not so cool:
 2. Fn key is a complete waste of space, need to remap it to be Ctrl (Did this with [KeyReMap4Macbook](http://pqrs.org/macosx/keyremap4macbook/): Note that the config can be tricky depending on other keyboard tweaks, but it's now working)
 3. Logitech mouse is a bit tweakier than under Linux & windows. (Update: MagicMouse looks pretty cool, esp with multitouchtool)
 4. Terminal based VIM is SegFaulting with one of my addons (it allows me to
-    blog from commandline for www.civet.ws, my tech blog. Thankfully it works
+    blog from commandline for blog.xargs.io, my tech blog. Thankfully it works
     ok in MacVIM). Haven't solved this yet but with it working for 99% of my tasks... the troubleshooting can wait for a rainy day. Maybe updating Mac's pre-installed python...and recompiling VIM.
 

@@ -6,7 +6,7 @@ The installation process was simple using 'pathogen': just a git clone of the re
 
 Add the following to your ~/.vimrc
 [cc_vim]let g:vimrepress_tags_completable = 'true'
-let VIMPRESS=[{'username':'BLOG_USER', 'password':'SECRET', 'blog_url':'http://www.civet.ws/'}]     [/cc]
+let VIMPRESS=[{'username':'BLOG_USER', 'password':'SECRET', 'blog_url':'http://blog.xargs.io/'}]     [/cc]
 Now open up VIM and the blog commands start with :Blog[List, New, etc].
 
 Source: Thanks to [Conner McD](http://connermcd.com/2011/05/blogging-with-wordpress-vim-and-markdown-4/)
