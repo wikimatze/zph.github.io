@@ -413,6 +413,7 @@ task :list do
   puts "(type rake -T for more detail)\n\n"
 end
 
+# Credit: http://blog.thomnichols.org/2013/08/deploying-octopress-on-amazon-s3
 # Use deploy_s3[.*html] to upload only HTML files since the timestamp matching
 # doesn't really work well. Most files get re-generated even if they haven't
 # changed.
