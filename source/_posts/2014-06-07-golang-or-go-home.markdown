@@ -8,7 +8,7 @@ categories:
 
 I've recently gotten a little hooked on Golang.  Strangely enough, I think it finally started to click for me as a result of one [Haskeller](https://twitter.com/bitemyapp) and one friend Christopher Stingl.
 
-Christopher was kind enough to link me to this wonderful [introduction to Golang](viget.com/extend/diving-into-go-a-five-week-intro).  And as a result of the Haskell reading that I've done lately, Golang started to make sense.
+Christopher was kind enough to link me to this wonderful [Introduction To Golang](http://viget.com/extend/diving-into-go-a-five-week-intro).  And as a result of the Haskell reading that I've done lately, Golang started to make sense.
 
 For a little background, I'm coming from a Ruby development standpoint with no prior formal training in compiled statically typed languages.
 
