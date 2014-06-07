@@ -1,15 +1,9 @@
-/* the humans responsible & colophon */
 /* humanstxt.org */
 
-
 /* TEAM */
-  Owner: Adrian Artiles
-  Site: http://AdrianArtiles.com
-  Twitter: @AdrianArtiles
-
-  UX Designer: Adrian Artiles
-  Site: http://AdrianArtiles.com
-  Twitter: @AdrianArtiles
+  Owner: Zander Hill
+  Site: http://blog.xargs.io
+  Twitter: @_ZPH
 
 /* SITE */
   Standards: HTML5, CSS3
