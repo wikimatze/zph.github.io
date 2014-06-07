@@ -44,33 +44,58 @@ I'm very fortunate to be happily employed but if you want to offer me the chance
 
 Public Key for Secure Communications or to Report Site Vulnerabilities (all of which will be publicly credited):
 
-    -----BEGIN PGP PUBLIC KEY BLOCK-----
-    Version: GnuPG v1.4.12 (Darwin)
+https://keybase.io/zph/key.asc
 
-    mQENBFELRMkBCADCzRhXRay07dUrFEErtzbsHM7vlALoJqG32uVhr/HvrOVN5Rlk
-    BXUPK9HvD2TtQlb9B9lFmpb1NDbdhl9VeunRzHMp0G8XcH4gO8mXe9rhcLo+c5Cm
-    5vcvFM0XKLckSXf52mngkxdiXJiCtciG8TI1ef6qL01xBoo1lUjSLT3liTFTNZ0W
-    01xnoaos0mTVIETRa0WthDuYiKUxtCRMU0WIZdrnYwsSDDI/R4oFi7OhO/iGVRVt
-    A+g46ebFSRPT6uOTdkybtvW4LAJANfJA6yF9W4fwd/f68pXI++7GMZ12m93e5HAJ
-    iLhaJdNZ80pjg+rfPJo/9aRKNfKzPXlsoKpLABEBAAG0HlphbmRlciA8emFuZGVy
-    LmhpbGxAZ21haWwuY29tPokBPgQTAQIAKAUCUQtEyQIbIwUJCWYBgAYLCQgHAwIG
-    FQgCCQoLBBYCAwECHgECF4AACgkQlEecm9I/+eVSDwf+IMWe0BiOnjMOKpNqTcqb
-    uFHeuFoAqsBXuery35c36yuTry5IssWY4WjvNj48xY1uACBjdc0dsb6KM9irJSv3
-    jo2W5je0A4EDZ65ivwiU2TuWmt6IbTDQUNE3Am56h3u8AwFqb9DewuEDtPdjX+Uw
-    fSlgPwkr7npyi8PJgndJRJy8v+78wbPz+aRgaAvW23wITgE5y2QpwXjMfmm51jKO
-    naEGy57RKSB8FhezcbenpHEi74KfXT3JJpJlai7Yvf16a7Ra9IKPi8/JrJ0m8aMd
-    UYyV2yifhg5z0TGEfaqj8X9IrrmFLRVhGqI8UDwXtMDgi/gBj+XDd+91dqSPbztv
-    FbkBDQRRC0TJAQgA2mf4NEU4DnUFaEaex1T8oDldSc2O7z0gg5RocQ3Y4e/D3F2Z
-    2KTvk05of7ZKO+Aihw+eGucFe94zlOZdhsWZpau1vEG8ROpHKWD6Oi77DGx9usfn
-    +alWOqyzr4W3bxmp52qdjYRBGmYaOwBLW0fdoeMfHvsrdYdITSpIB14svWMP6nLV
-    QRrgKKncdsf+PTAOF4c/FyrCzDu3CjDa8HSJFNQkcDnO+uHlgNn99xAkn/XwPSQj
-    yKrwc96f2T7fQSpSQpNHQQsdTHUozPxIW6KXKk8UdPHTC5IgtdvIeGMdkS+gRxX2
-    yLZZezxKqCoRV7ggupSqehTCJOC6ZpZXqsku3QARAQABiQElBBgBAgAPBQJRC0TJ
-    AhsMBQkJZgGAAAoJEJRHnJvSP/nlqCcH/0U7NAuCqY+eKFcBPx97Ch+/e8cya9Dn
-    yxTYzFfhE6x7yGu/u/whLZVkhi/CgqyZUnddro+ZxttVbCwo5LwaN0sLwBDXSxqr
-    JHyWHGtRkWS9qWosxazI32wVDGStmMdyQCCpT02fR0Fp/px7ZH0WV00ybdOuy0nR
-    1k3y6I7zSvq74a4JHEITnZqWaDSo/BO8tWbCPS+KGAcF5ifTcsoxcQBNu3AVb9ob
-    Kd0BywMvwVE2eAT8mw7iAlGLAM2b4ymJXVCf5rBfINhMaoIl5ADiks8bP8teOcJP
-    LB4GLiL/xFfWlfHNpw+lBIfrj0Mvwu/AYtwpQ0u5aMlbiImN6LMv+w4=
-    =JT+k
+    -----BEGIN PGP PUBLIC KEY BLOCK-----
+    Version: Keybase OpenPGP JS 0.0.1
+    Comment: https://keybase.io/zph
+
+    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
+    iKSRFaEgwQnLxdq3jEzKSvM5F5P1W1o2
+    =tZR0
     -----END PGP PUBLIC KEY BLOCK-----

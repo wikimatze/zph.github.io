@@ -14,7 +14,7 @@ For a little background, I'm coming from a Ruby development standpoint with no p
 
 ## First Impressions
 
-```
+``` go
 package sack
 
 import (
@@ -45,7 +45,7 @@ But after reading through that 5 Week Intro to Golang and doing some Haskell hom
 
 So let me back up and explain the static typing for those readers that don't have any background in such languages.  In Go, you define functions (the rough equivalent of a method in ruby) as having specific stypes of inputs and outputs.  So you might define something as follows:
 
-```
+``` go
 func Version() string {
   return "0.3.0"
 }
@@ -55,7 +55,7 @@ This function will take 0 arguments and return one argument of type `string`.
 
 Or this function:
 
-```
+``` go
 func executeCmd(term string, path string, flags string) []string {
 
   var lines []string
