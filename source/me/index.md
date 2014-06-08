@@ -10,7 +10,7 @@ meta:
 ---
 ##Hi! I'm [ZPH]("https://github.com/zph") and [ZPH]("https://twitter.com/_zph").
 
-I enjoy solving problems, using the [commandline]("http://www.xargs.io/2012/07/fasd-the-commandline-shortcuts-i-always-wanted/"), and learning new things.  I'm a Linux enthusiast for my web server, a FreeBSD enthusiast for my home server, and I tend to develop software on a Macbook Pro.
+Polyglot, problem solver and remote-work advocate. Currently enjoys learning about Functional Programming and Statically Typed languages.  Works in Ruby/Js space, dabbles in DevOps, and dreams about Golang, Haskell and Elixir.
 
 I'm currently excited and interested in:
 
@@ -24,10 +24,10 @@ For a list of open source projects that I've worked on, see my [github](https://
 
 * Ruby (MRI & JRUBY)
 * [Vim](https://github.com/zph/zph/blob/master/home/.vimrc)
-* Bash/Zshell
-* Rspec, Minitest, Pry
 * Sinatra / Ruby on Rails 
-* OSX &amp; Linux (Debian, Ubuntu &amp; Arch)
+* Bash/ZSH
+* Rspec, Minitest, Pry
+* OSX & Linux (Debian, Ubuntu & Arch)
 * PostgreSQL, Redis, and the underappreciated SQlite
 * Nginx, Varnish, Unicorn
 * Amazon EC2, S3
