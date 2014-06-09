@@ -7,8 +7,6 @@ sharing: true
 footer: true
 ---
 
-## Invited to Present:
-
 ### 2014
   1. "Surviving Large Unfamiliar Codebases: A Harrowing Tale of Legacy Apps and Oracle Databases" - 757rb User Group
 
