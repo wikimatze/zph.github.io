@@ -38,3 +38,7 @@ readonly FILENAME=surviving_large_unfamiliar_codebases
 (cd ${FILENAME} && \
   echo ${FILENAME}.md | entr make reveal)
 ```
+
+Edit:
+
+In case only a single file needs to be monitored, try out this BASH script: <script src="https://gist.github.com/18532e0797ee7608ee06.js"></script>
