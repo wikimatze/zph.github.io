@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Zander Hill" />
+  <meta name="dcterms.date" content="2014-07-10" />
+  <title>Surviving Large Unfamiliar Codebases</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.min.css"/>
+    <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+    </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" media="print" href="reveal.js/css/print/pdf.css" />
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Surviving Large Unfamiliar Codebases</h1>
+    <h2 class="author">Zander Hill</h2>
+    <h3 class="date">July 10, 2014</h3>
+</section>
+
+<section><section id="a-harrowing-tale-of-legacy-apps-and-oracle-databases" class="titleslide slide level1"><h1>A Harrowing Tale of Legacy Apps and Oracle Databases</h1></section></section>
+<section><section id="my-background" class="titleslide slide level1"><h1>My Background</h1></section><section id="zander" class="slide level2">
+<h1>Zander</h1>
+<ul>
+<li><p>Polyglot. Ruby by day, statically typed by night. Remote work evangelist.</p></li>
+<li><p>Use vim for coding and Emacs for writing this presentation.</p></li>
+<li><p>&lt;3 modal editing and longs walks through documentation.</p></li>
+</ul>
+</section><section id="where-i-work" class="slide level2">
+<h1>Where I Work</h1>
+<ul>
+<li><p>Work at a product company on team with 20 Engineers. Around 80 Engineers when including all software development teams.</p></li>
+<li><p>We've had our primary website since 1999 (.NET).</p></li>
+<li><p>Currently support two primary sites and ~ 10 secondary services.</p></li>
+</ul>
+</section><section id="section" class="slide level2">
+<h1></h1>
+<figure>
+<img src="images/databases-at-rentpath.jpg" alt="Permanent and Semi-Permanent Datastores" /><figcaption>Permanent and Semi-Permanent Datastores</figcaption>
+</figure>
+</section><section id="section-1" class="slide level2">
+<h1></h1>
+<figure>
+<img src="images/programming-languages-at-rentpath.jpg" alt="Languages" /><figcaption>Languages</figcaption>
+</figure>
+</section><section id="section-2" class="slide level2">
+<h1></h1>
+<figure>
+<img src="images/programming-languages-at-rentpath-hopeful.jpg" />
+</figure>
+<aside class="notes">
+<ul>
+<li>Keep Ruby/Coffeescript for ample supply of coders</li>
+<li>Haskell for the mission critical stuff</li>
+<li>Golang for the systems level programming/easy deploy</li>
+<li>Elixir for our distributed systems that are critical</li>
+<li>This is not to knock clojure or other languages from prior slide, but in our organization I haven't seen Clojure used for anything that Ruby/JRuby couldn't be doing.</li>
+</ul>
+</aside>
+</section><section id="section-3" class="slide level2">
+<h1></h1>
+<figure>
+<img src="images/1999-apartment-guide.jpg" alt="Old Site" /><figcaption>Old Site</figcaption>
+</figure>
+</section><section id="weve-got-history-." class="slide level2">
+<h1>We've got history :).</h1>
+<ul>
+<li><p>Started in 1999 (date of first website on wayback machine)</p></li>
+<li><p>2 Apps still on <code>ruby-1.8.7</code>.</p></li>
+<li><p>At least one still on <code>rails-2.3.x</code>.</p></li>
+</ul>
+</section></section>
+<section><section id="legacy-code" class="titleslide slide level1"><h1>Legacy Code</h1></section><section id="starts-simple-as-an-application-with-a-few-routes" class="slide level2">
+<h1>Starts simple as an application with a few routes</h1>
+</section><section id="authentication" class="slide level2">
+<h1>Authentication</h1>
+</section><section id="extra-features" class="slide level2">
+<h1>Extra Features</h1>
+<ul>
+<li>Background processing</li>
+</ul>
+</section><section id="painful-features" class="slide level2">
+<h1>Painful Features</h1>
+<ul>
+<li>Integrate RPC</li>
+<li>Parse complex and irregular .XLS uploads</li>
+<li>Parse irregular XML feeds</li>
+</ul>
+</section><section id="add-various-managersceos" class="slide level2">
+<h1>Add various managers/CEOs</h1>
+</section><section id="changing-business-goals" class="slide level2">
+<h1>Changing Business Goals</h1>
+</section><section id="introduce-50-devs" class="slide level2">
+<h1>Introduce 50 devs</h1>
+<ul>
+<li>Varying backgrounds</li>
+<li>Various skill levels</li>
+<li>Various coding patterns</li>
+</ul>
+</section><section id="agitate-for-5-yrs" class="slide level2">
+<h1>Agitate for 5+ yrs</h1>
+</section><section id="confusing" class="slide level2">
+<h1>Confusing</h1>
+<figure>
+<img src="images/kitten-with-yarn.jpeg" />
+</figure>
+</section><section id="section-4" class="slide level2">
+<h1></h1>
+<figure>
+<img src="images/train-wreck.jpg" />
+</figure>
+</section><section id="how-to-make-things-happy" class="slide level2">
+<h1>How to make things happy?</h1>
+<figure>
+<img src="images/cat-pile.jpg" />
+</figure>
+</section><section id="section-5" class="slide level2">
+<h1></h1>
+<figure>
+<img src="images/legacy-car.jpg" />
+</figure>
+</section><section id="respect" class="slide level2">
+<h1>Respect</h1>
+<figure>
+<img src="images/honor-legacy-code.jpg" />
+</figure>
+</section></section>
+<section><section id="outline" class="titleslide slide level1"><h1>Outline</h1></section><section id="section-6" class="slide level2">
+<h1></h1>
+<ul>
+<li>Searching</li>
+<li>Debugging</li>
+<li>Communication</li>
+<li>Testing</li>
+</ul>
+</section></section>
+<section><section id="searching" class="titleslide slide level1"><h1>Searching</h1></section><section id="how-to-search-efficiently-in-codebase" class="slide level2">
+<h1>How to search efficiently in codebase</h1>
+<ul>
+<li><a href="https://github.com/ggreer/the_silver_searcher">the-silver-searcher</a>, <a href="https://github.com/monochromegane/the_platinum_searcher">pt</a>, ack, grep</li>
+<li>Fast and recursive (some by default, some with proper flags)</li>
+</ul>
+</section><section id="know-your-ack" class="slide level2">
+<h1>Know your ack</h1>
+<figure>
+<img src="images/ack.vim.jpg" />
+</figure>
+</section><section id="search-edit" class="slide level2">
+<h1>Search + Edit</h1>
+<ul>
+<li>the-silver-searcher + wrapper tool called <a href="https://github.com/zph/go-sack">sack</a>. <img src="images/sack-example.jpg" /></li>
+</ul>
+</section><section id="search-edit-1" class="slide level2">
+<h1>Search + Edit</h1>
+<ul>
+<li>To Edit <img src="images/sack-edit.jpg" /></li>
+</ul>
+</section></section>
+<section><section id="debugging" class="titleslide slide level1"><h1>Debugging</h1></section><section id="section-7" class="slide level2">
+<h1></h1>
+<figure>
+<img src="images/99-problems.jpg" />
+</figure>
+</section><section id="pry.gem" class="slide level2">
+<h1>Pry.gem</h1>
+<pre class="sourceCode ruby"><code class="sourceCode ruby">
+<span class="kw">def</span> troublesome_method
+    require <span class="st">&#39;pry&#39;</span>;binding.pry
+    even_more_troublesome_variable_that_blows_up
+<span class="kw">end</span></code></pre>
+</section><section id="pry-remote.gem" class="slide level2">
+<h1>pry-remote.gem</h1>
+<pre class="sourceCode ruby"><code class="sourceCode ruby">
+<span class="kw">def</span> troublesome_method_where_we_cant_see_answer
+    require <span class="st">&#39;pry&#39;</span>;binding.pry_remote
+    even_more_troublesome_variable_that_blows_up
+<span class="kw">end</span></code></pre>
+<pre class="sourceCode ruby"><code class="sourceCode ruby">
+$ bundle exec pry-remote</code></pre>
+</section></section>
+<section><section id="communication" class="titleslide slide level1"><h1>Communication</h1></section><section id="team-vcs-sum-of-knowledge" class="slide level2">
+<h1>Team + VCS == Sum of Knowledge</h1>
+</section><section id="know-whos-expert-with-what" class="slide level2">
+<h1>Know who's expert with what</h1>
+<ul>
+<li>Who has 3+ yrs with company?</li>
+<li>Who knows the multidimensional Oracle DB?</li>
+<li>Who knows why we chose this routing scheme?</li>
+<li>Who knows how to navigate social dynamics/politics</li>
+</ul>
+</section><section id="humans-knowledge-is-important" class="slide level2">
+<h1>Humans knowledge is important</h1>
+<ul>
+<li>They'll have context that might be lost in commit</li>
+<li>They might have navigated that issue before</li>
+</ul>
+</section><section id="go-out-of-your-way-for-people" class="slide level2">
+<h1>Go out of your way for people</h1>
+</section><section id="when-the-devs-cant-speak" class="slide level2">
+<h1>When the devs can't speak</h1>
+</section><section id="code-archeology" class="slide level2">
+<h1>Code Archeology</h1>
+<ul>
+<li>Who here has a shortcut in their editor for git blame?</li>
+<li>What about a shortcut for opening a Pivotal Story (or other project tracker)?</li>
+<li>Are your commits tagged with story information?</li>
+</ul>
+</section><section id="code-archeology-1" class="slide level2">
+<h1>Code Archeology</h1>
+<ul>
+<li>Fugitive.vim by <span class="citation" data-cites="tpope">@tpope</span> <img src="images/fugitive-git-blame.png" /></li>
+</ul>
+</section><section id="code-archeology-2" class="slide level2">
+<h1>Code Archeology</h1>
+<figure>
+<img src="images/fugitive-git-blame-2.png" />
+</figure>
+</section></section>
+<section><section id="testing" class="titleslide slide level1"><h1>Testing</h1></section><section id="testing---in-a-perfect-world" class="slide level2">
+<h1>Testing - In a Perfect World</h1>
+<ul>
+<li>Unit (minitest/rspec/jasmine)</li>
+<li>Integration (cucumber)</li>
+<li>Smoke tests</li>
+<li>Human QA team</li>
+</ul>
+</section><section id="testing---in-the-real-world" class="slide level2">
+<h1>Testing - In the Real World</h1>
+<ul>
+<li>Some unit (minitest/rspec/jasmine), sparse Integration</li>
+<li>Manual smoke test at the end of a change</li>
+<li>Human QA team</li>
+</ul>
+</section><section id="coping-strategies" class="slide level2">
+<h1>Coping Strategies</h1>
+<ul>
+<li>Use <a href="https://github.com/myronmarston/vcr">VCR</a> at app boundary for APIs that you don't control <img src="images/vcr.jpg" /></li>
+</ul>
+</section><section id="coping-strategies-1" class="slide level2">
+<h1>Coping Strategies</h1>
+<ul>
+<li>Mock carefully, stub even more carefully.</li>
+<li>Keep logic in places that can easily be tested</li>
+<li>Away from views.</li>
+</ul>
+</section><section id="stubs" class="slide level2">
+<h1>Stubs</h1>
+<figure>
+<img src="images/stub-demon.jpg" />
+</figure>
+</section><section id="coping-strategies-2" class="slide level2">
+<h1>Coping Strategies</h1>
+<ul>
+<li>Wrap tests with scaffold tests before changes</li>
+<li><a href="https://github.com/kytrinyx/approvals">Approvals.gem</a></li>
+<li>Possibly disposable, consider in your context.</li>
+</ul>
+</section><section id="still-exploring" class="slide level2">
+<h1>Still Exploring</h1>
+<ul>
+<li>Property based testing/generative testing with <a href="https://github.com/hayeah/rantly">Rantly</a></li>
+<li>Ruby <a href="https://github.com/egonSchiele/contracts.ruby">contracts</a> (a pale version of Haskell function typing)</li>
+</ul>
+</section></section>
+<section><section id="closing-thoughts" class="titleslide slide level1"><h1>Closing Thoughts</h1></section><section id="think-about-how-you-write-code" class="slide level2">
+<h1>Think about how you write code</h1>
+</section><section id="write-once-read-many" class="slide level2">
+<h1>Write Once; Read Many</h1>
+</section><section id="write-for-the-maintenance" class="slide level2">
+<h1>Write for the Maintenance</h1>
+<figure>
+<img src="images/car-mechanic.jpg" />
+</figure>
+</section><section id="write-for-the-least-experienced-dev-on-team" class="slide level2">
+<h1>Write for the least experienced dev on team</h1>
+</section><section id="write-for-the-tired-dev" class="slide level2">
+<h1>Write for the Tired Dev</h1>
+<figure>
+<img src="images/exhausted-programmer.jpg" />
+</figure>
+</section></section>
+<section><section id="el-fin" class="titleslide slide level1"><h1>El Fin</h1></section><section id="zander-hill" class="slide level2">
+<h1>Zander Hill</h1>
+<pre class="sourceCode ruby"><code class="sourceCode ruby">{
+  email: <span class="st">&#39;zander@xargs.io&#39;</span>,
+  github: <span class="st">&#39;ZPH&#39;</span>,
+  twitter: <span class="st">&#39;@_ZPH&#39;</span>,
+}</code></pre>
+</section></section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+  </body>
+</html>
