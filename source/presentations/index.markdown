@@ -11,4 +11,4 @@ footer: true
   1. ["Surviving Large Unfamiliar Codebases: A Harrowing Tale of Legacy Apps and Oracle Databases" - 757rb User Group](/presentations/surviving_large_unfamiliar_codebases/)
 
 ### 2013
-  1. "Introduction to Elixir" - Pittsburgh Ruby User Group
+  1. ["Introduction to Elixir" - Pittsburgh Ruby User Group](https://speakerdeck.com/zph/catwhales-guide-to-elixir)
