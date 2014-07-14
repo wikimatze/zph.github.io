@@ -8,31 +8,33 @@ published: true
 meta:
   _edit_last: '1'
 ---
-##Hi! I'm [ZPH]("https://github.com/zph") and [ZPH]("https://twitter.com/_zph").
+## I'm Zander (aka [ZPH]("https://github.com/zph") and [ZPH]("https://twitter.com/_zph"))
 
-Polyglot, problem solver and remote-work advocate. Currently enjoys learning about Functional Programming and Statically Typed languages.  Works in Ruby/Js space, dabbles in DevOps, and dreams about Golang, Haskell and Elixir.
+Polyglot, problem solver and remote-work advocate. Currently enjoy learning about Functional Programming and Statically Typed languages.  I solve problems with Ruby and Javascript, dabble in DevOps, and learn about and code in  Golang, Elixir, Clojure and Haskell in the evening.
 
-I'm currently excited and interested in:
+I'm currently excited and interested in working with:
 
-  * Functional Programming/Statically Typed Languages (incl. Haskell, Golang, and Elixir/Erlang)
-  * Distributed Systems
-  * Continuous Deployment
+  * Functional Programming & Statically Typed Languages
+  * Distributed & Fault Tolerant Systems
 
 For a list of open source projects that I've worked on, see my [github](https://github.com/zph).
 
-###As for the software stack that I have known and loved:
+###As for the software stack that I have known and loved (daily use || proficient):
 
 * Ruby (MRI & JRUBY)
 * [Vim](https://github.com/zph/zph/blob/master/home/.vimrc)
-* Sinatra / Ruby on Rails 
-* Bash/ZSH
+* Rails / Rails-api / Sinatra
+* PostgreSQL, MySQL, and the underappreciated SQlite
+* HTTP APIs
+* Bash/ZSH (<3 the cmdline)
 * Rspec, Minitest, Pry
 * OSX & Linux (Debian, Ubuntu & Arch)
-* PostgreSQL, Redis, and the underappreciated SQlite
-* Nginx, Varnish, Unicorn
-* Amazon EC2, S3
+* Nginx, Unicorn
 * Virtual Private Servers
-* QGIS & ArcGIS - GIS Mapping Software
+
+###Techologies I want to spend more time with:
+* Clojure, Elixir, Golang, Haskell
+* Emacs (currently used for Org-mode & Clojure)
 
 I enjoy programming, pairing, Open Source Software, FP, TDD and some other important buzzwords.
 
